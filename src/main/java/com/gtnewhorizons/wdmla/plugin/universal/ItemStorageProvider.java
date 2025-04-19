@@ -266,6 +266,21 @@ public class ItemStorageProvider<T extends Accessor> implements IComponentProvid
         return TooltipPosition.TAIL;
     }
 
+    @Override
+    public boolean shouldRequestData(T accessor) {
+        int amount;
+        if (accessor.showDetails()) {
+            amount = PluginsConfig.universal.itemStorage.detailedAmount;
+        } else {
+            amount = PluginsConfig.universal.itemStorage.normalAmount;
+        }
+        if (amount == 0) {
+            return false;
+        }
+        return accessor.getTarget() != null &&
+                !WDMlaCommonRegistration.instance().itemStorageProviders.wrappedGet(accessor).isEmpty();
+    }
+
     public static class ForBlock extends ItemStorageProvider<BlockAccessor> {
 
         private static final ForBlock INSTANCE = new ForBlock();

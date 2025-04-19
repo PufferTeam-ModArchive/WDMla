@@ -254,7 +254,8 @@ public class FluidStorageProvider<T extends Accessor> implements IComponentProvi
 
     @Override
     public boolean shouldRequestData(T accessor) {
-        return accessor.showDetails() || !PluginsConfig.universal.fluidStorage.detailed;
+        return (accessor.showDetails() || !PluginsConfig.universal.fluidStorage.detailed) &&
+                accessor.getTarget() != null && !WDMlaCommonRegistration.instance().fluidStorageProviders.wrappedGet(accessor).isEmpty();
     }
 
     public enum Extension
