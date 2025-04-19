@@ -128,16 +128,7 @@ public class ItemStorageProvider<T extends Accessor> implements IComponentProvid
         return new ViewGroup<>(itemStacks, contentDecodedGroup);
     }
 
-    public static void append(ITooltip tooltip, Accessor accessor) {
-        List<ClientViewGroup<ItemView>> groups = ClientProxy.mapToClientGroups(
-                accessor,
-                Identifiers.ITEM_STORAGE,
-                ItemStorageProvider::decodeGroups,
-                WDMlaClientRegistration.instance().itemStorageProviders::get);
-        if (groups == null || groups.isEmpty()) {
-            return;
-        }
-
+    public static void append(ITooltip tooltip, Accessor accessor, List<ClientViewGroup<ItemView>> groups) {
         boolean renderGroup = groups.size() > 1 || groups.get(0).shouldRenderGroup();
         ClientViewGroup.tooltip(tooltip, groups, renderGroup, (theTooltip, group) -> {
             MutableBoolean showName = getShowName(group);
@@ -248,7 +239,16 @@ public class ItemStorageProvider<T extends Accessor> implements IComponentProvid
 
     @Override
     public void appendTooltip(ITooltip tooltip, T accessor) {
-        append(tooltip, accessor);
+        List<ClientViewGroup<ItemView>> groups = ClientProxy.mapToClientGroups(
+                accessor,
+                Identifiers.ITEM_STORAGE,
+                ItemStorageProvider::decodeGroups,
+                WDMlaClientRegistration.instance().itemStorageProviders::get);
+        if (groups == null || groups.isEmpty()) {
+            return;
+        }
+
+        append(tooltip, accessor, groups);
     }
 
     @Override
