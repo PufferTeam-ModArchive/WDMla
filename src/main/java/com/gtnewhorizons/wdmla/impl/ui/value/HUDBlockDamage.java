@@ -5,17 +5,18 @@ import net.minecraft.client.Minecraft;
 import com.gtnewhorizons.wdmla.api.ui.sizer.IArea;
 import com.gtnewhorizons.wdmla.config.General;
 import com.gtnewhorizons.wdmla.impl.ui.sizer.Area;
+import net.minecraft.util.MathHelper;
 
 public class HUDBlockDamage {
 
     private final float damage;
 
     public HUDBlockDamage() {
-        damage = Minecraft.getMinecraft().playerController.curBlockDamageMP;
+        damage = MathHelper.clamp_float(Minecraft.getMinecraft().playerController.curBlockDamageMP, 0, 1);
     }
 
     public HUDBlockDamage(int damage) {
-        this.damage = 1;
+        this.damage = damage;
     }
 
     public boolean isIntact() {

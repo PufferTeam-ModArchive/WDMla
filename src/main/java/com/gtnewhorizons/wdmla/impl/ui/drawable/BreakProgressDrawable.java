@@ -47,7 +47,7 @@ public enum BreakProgressDrawable implements IDrawable {
         int color = progressAlpha.apply(ColorPalette.BREAK_PROGRESS_DEFAULT); // TODO: change color with harvestability
 
         if (General.breakProgress.position == General.BreakProgress.Position.BOTTOM) {
-            area = new Area(area.getX(), area.getEY(), area.getEX(), area.getEY());
+            area = new Area(area.getX(), area.getEY(), area.getW(), area.getH());
         }
         GuiDraw.drawGradientRect(savedDamage.computeDrawArea(area), color, color);
     }
