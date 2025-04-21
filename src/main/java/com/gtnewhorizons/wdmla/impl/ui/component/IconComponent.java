@@ -18,4 +18,9 @@ public class IconComponent extends TooltipComponent {
                 new Size(icon.getIconWidth(), icon.getIconHeight()),
                 new IconDrawable(icon, path));
     }
+
+    public IconComponent clip(float suRatio, float svRatio, float twRatio, float thRatio) {
+        ((IconDrawable)foreground).clip(suRatio, svRatio, twRatio, thRatio);
+        return this;
+    }
 }

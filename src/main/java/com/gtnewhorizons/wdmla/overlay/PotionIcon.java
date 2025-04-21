@@ -15,6 +15,8 @@ public class PotionIcon implements IIcon {
     public static final ResourceLocation PATH = new ResourceLocation("textures/gui/container/inventory.png");;
 
     private final int iconIndex;
+    public static final int TEX_WIDTH = 256;
+    public static final int TEX_HEIGHT = 256;
 
     public PotionIcon(PotionEffect potionEffect) {
         this.iconIndex = Potion.potionTypes[potionEffect.getPotionID()].getStatusIconIndex();
@@ -22,32 +24,32 @@ public class PotionIcon implements IIcon {
 
     @Override
     public float getMinU() {
-        return iconIndex % 8 * 18;
+        return ((float) iconIndex % 8 * 18) / TEX_WIDTH;
     }
 
     @Override
     public float getMaxU() {
-        return (iconIndex % 8 * 18) + 18;
+        return ((float) iconIndex % 8 * 18 + 18) / TEX_WIDTH;
     }
 
     @Override
-    public float getInterpolatedU(double interporation) {
-        return iconIndex % 8 * 18 + 18 * (float) interporation;
+    public float getInterpolatedU(double interpolation) {
+        return (iconIndex % 8 * 18 + 18 * (float) interpolation) / TEX_WIDTH;
     }
 
     @Override
     public float getMinV() {
-        return 198 + (int) (iconIndex / 8) * 18;
+        return (198 + (float)iconIndex / 8 * 18) / TEX_HEIGHT;
     }
 
     @Override
     public float getMaxV() {
-        return 198 + (int) (iconIndex / 8) * 18 + 18;
+        return (198 + (float)iconIndex / 8 * 18 + 18) / TEX_HEIGHT;
     }
 
     @Override
-    public float getInterpolatedV(double interporation) {
-        return 198 + (int) (iconIndex / 8) * 18 + 18 * (float) interporation;
+    public float getInterpolatedV(double interpolation) {
+        return (198 + (float) (iconIndex / 8) * 18 + 18 * (float) interpolation) / TEX_HEIGHT;
     }
 
     @Override

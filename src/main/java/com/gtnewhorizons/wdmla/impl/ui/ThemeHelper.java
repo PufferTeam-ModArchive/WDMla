@@ -4,6 +4,9 @@ import static mcp.mobius.waila.api.SpecialChars.ITALIC;
 
 import java.util.List;
 
+import com.gtnewhorizons.wdmla.impl.ui.component.IconComponent;
+import com.gtnewhorizons.wdmla.impl.ui.sizer.Padding;
+import com.gtnewhorizons.wdmla.overlay.WDMlaUIIcons;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.item.ItemStack;
@@ -22,7 +25,6 @@ import com.gtnewhorizons.wdmla.impl.format.TimeFormattingPattern;
 import com.gtnewhorizons.wdmla.impl.ui.component.HPanelComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.ItemComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.TextComponent;
-import com.gtnewhorizons.wdmla.impl.ui.component.TexturedProgressComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.VPanelComponent;
 import com.gtnewhorizons.wdmla.impl.ui.sizer.Size;
 import com.gtnewhorizons.wdmla.impl.ui.style.TextStyle;
@@ -132,13 +134,15 @@ public class ThemeHelper {
     public IComponent furnaceLikeProgress(List<ItemStack> input, List<ItemStack> output, int currentProgress,
             int maxProgress, boolean showDetails, @Nullable IComponent legacyProcessText) {
         if (!General.forceLegacy) {
-            ITooltip hPanel = new HPanelComponent();
+            HPanelComponent hPanel = new HPanelComponent();
             for (ItemStack inputStack : input) {
                 if (inputStack != null) {
                     hPanel.item(inputStack);
                 }
             }
-            hPanel.child(new TexturedProgressComponent(currentProgress, maxProgress));
+            float ratio = (float)currentProgress / maxProgress;
+            hPanel.padding(new Padding().horizontal(2)).child(new IconComponent(WDMlaUIIcons.FURNACE_BG, WDMlaUIIcons.FURNACE_PATH).padding(new Padding())
+                    .child(new IconComponent(WDMlaUIIcons.FURNACE, WDMlaUIIcons.FURNACE_PATH).clip(0f,0f, ratio, 1f).padding(new Padding())));
             for (ItemStack outputStack : output) {
                 if (outputStack != null) {
                     hPanel.item(outputStack);

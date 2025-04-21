@@ -254,38 +254,36 @@ public final class GuiDraw {
         Gui.drawRect(x1, y1, x2, y1 + 1, color);
     }
 
-    public static void drawTexturedModelRect(int x, int y, int u, int v, int w, int h, int tw, int th) {
+    public static void drawTexturedModelRect(float x, float y, float u, float v, float w, float h, float tw, float th) {
         GL11.glEnable(GL11.GL_BLEND);
         GL11.glDisable(GL11.GL_ALPHA_TEST);
         OpenGlHelper.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA, 1, 0);
-        float f = 0.00390625F;
-        float f1 = 0.00390625F;
         float zLevel = 0.0F;
         Tessellator tessellator = Tessellator.instance;
         tessellator.startDrawingQuads();
         tessellator.setColorOpaque_F(1, 1, 1);
-        tessellator.addVertexWithUV(x, y + h, zLevel, (u) * f, (v + th) * f1);
-        tessellator.addVertexWithUV(x + w, y + h, zLevel, (u + tw) * f, (v + th) * f1);
-        tessellator.addVertexWithUV(x + w, y, zLevel, (u + tw) * f, (v) * f1);
-        tessellator.addVertexWithUV(x, y, zLevel, (u) * f, (v) * f1);
+        tessellator.addVertexWithUV(x, y + h, zLevel, u, v + th);
+        tessellator.addVertexWithUV(x + w, y + h, zLevel, u + tw, v + th);
+        tessellator.addVertexWithUV(x + w, y, zLevel, u + tw, v);
+        tessellator.addVertexWithUV(x, y, zLevel, u, v);
         tessellator.draw();
         GL11.glDisable(GL11.GL_BLEND);
         GL11.glEnable(GL11.GL_ALPHA_TEST);
     }
 
-    public static void renderVanillaIcon(int x, int y, int w, int h, IIcon icon, ResourceLocation path) {
+    public static void renderVanillaIcon(float x, float y, float w, float h, IIcon icon, ResourceLocation path) {
         Minecraft.getMinecraft().getTextureManager().bindTexture(path);
 
         if (icon == null) return;
         drawTexturedModelRect(
                 x,
                 y,
-                (int) icon.getMinU(),
-                (int) icon.getMinV(),
+                icon.getMinU(),
+                icon.getMinV(),
                 w,
                 h,
-                icon.getIconWidth(),
-                icon.getIconHeight());
+                icon.getMaxU() - icon.getMinU(),
+                icon.getMaxV() - icon.getMinV());
     }
 
     public static void renderFluidStack(FluidStack content, float x0, float y0, float width, float height, float z) {
