@@ -263,7 +263,7 @@ public class ItemStorageProvider<T extends Accessor> implements IComponentProvid
 
     @Override
     public int getDefaultPriority() {
-        return TooltipPosition.TAIL;
+        return TooltipPosition.TAIL + 100;
     }
 
     @Override
@@ -277,8 +277,8 @@ public class ItemStorageProvider<T extends Accessor> implements IComponentProvid
         if (amount == 0) {
             return false;
         }
-        return accessor.getTarget() != null &&
-                !WDMlaCommonRegistration.instance().itemStorageProviders.wrappedGet(accessor).isEmpty();
+        return accessor.getTarget() != null
+                && !WDMlaCommonRegistration.instance().itemStorageProviders.wrappedGet(accessor).isEmpty();
     }
 
     public static class ForBlock extends ItemStorageProvider<BlockAccessor> {

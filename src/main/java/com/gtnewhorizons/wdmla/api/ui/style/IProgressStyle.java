@@ -7,7 +7,7 @@ import com.gtnewhorizons.wdmla.api.ui.IDrawable;
 /**
  * Collection of filled bar settings.
  */
-public interface IAmountStyle extends IRectStyle {
+public interface IProgressStyle {
 
     /**
      * If this is not null, it will be rendered instead of filled color.<br>
@@ -21,12 +21,13 @@ public interface IAmountStyle extends IRectStyle {
     /**
      * TODO:animated sprite instead of single color
      * 
-     * @return the single color for partially filling the background rectangle.
+     * @return The single color for partially filling the background rectangle.
      */
     int getFilledColor();
 
     /**
-     * @return the color which is applied to the vertical indicator of the bar
+     * @return The color which is applied to the vertical indicator of the bar. It will not be rendered unless
+     *         specified.
      */
     int getAlternateFilledColor();
 }

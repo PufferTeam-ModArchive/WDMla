@@ -31,6 +31,7 @@ import com.gtnewhorizons.wdmla.api.provider.IClientExtensionProvider;
 import com.gtnewhorizons.wdmla.api.provider.IComponentProvider;
 import com.gtnewhorizons.wdmla.api.view.FluidView;
 import com.gtnewhorizons.wdmla.api.view.ItemView;
+import com.gtnewhorizons.wdmla.api.view.ProgressView;
 import com.gtnewhorizons.wdmla.impl.lookup.HierarchyLookup;
 
 import mcp.mobius.waila.Waila;
@@ -47,6 +48,8 @@ public class WDMlaClientRegistration implements IWDMlaClientRegistration {
     public final Map<ResourceLocation, IClientExtensionProvider<ItemStack, ItemView>> itemStorageProviders = Maps
             .newHashMap();
     public final Map<ResourceLocation, IClientExtensionProvider<FluidView.Data, FluidView>> fluidStorageProviders = Maps
+            .newHashMap();
+    public final Map<ResourceLocation, IClientExtensionProvider<ProgressView.Data, ProgressView>> progressProviders = Maps
             .newHashMap();
 
     public final Map<Class<Accessor>, AccessorClientHandler<Accessor>> accessorHandlers = Maps.newIdentityHashMap();
@@ -108,6 +111,12 @@ public class WDMlaClientRegistration implements IWDMlaClientRegistration {
     public void registerFluidStorageClient(IClientExtensionProvider<FluidView.Data, FluidView> provider) {
         Objects.requireNonNull(provider.getUid());
         fluidStorageProviders.put(provider.getUid(), provider);
+    }
+
+    @Override
+    public void registerProgressClient(IClientExtensionProvider<ProgressView.Data, ProgressView> provider) {
+        Objects.requireNonNull(provider.getUid());
+        progressProviders.put(provider.getUid(), provider);
     }
 
     @Override

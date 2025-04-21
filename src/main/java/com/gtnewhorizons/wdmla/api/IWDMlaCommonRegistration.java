@@ -10,6 +10,7 @@ import com.gtnewhorizons.wdmla.api.accessor.EntityAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IServerDataProvider;
 import com.gtnewhorizons.wdmla.api.provider.IServerExtensionProvider;
 import com.gtnewhorizons.wdmla.api.view.FluidView;
+import com.gtnewhorizons.wdmla.api.view.ProgressView;
 
 /**
  * Main server registration class of WDMla.<br>
@@ -42,4 +43,7 @@ public interface IWDMlaCommonRegistration {
 
     @ApiStatus.Experimental
     <T> void registerFluidStorage(IServerExtensionProvider<FluidView.Data> provider, Class<? extends T> clazz);
+
+    @ApiStatus.Experimental
+    <T> void registerProgress(IServerExtensionProvider<ProgressView.Data> provider, Class<? extends T> clazz);
 }

@@ -1,6 +1,5 @@
 package com.gtnewhorizons.wdmla.impl.ui;
 
-import static com.gtnewhorizons.wdmla.impl.ui.component.TooltipComponent.DEFAULT_AMOUNT_TEXT_PADDING;
 import static mcp.mobius.waila.api.SpecialChars.ITALIC;
 
 import java.util.List;
@@ -20,7 +19,6 @@ import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.api.ui.MessageType;
 import com.gtnewhorizons.wdmla.config.General;
 import com.gtnewhorizons.wdmla.impl.format.TimeFormattingPattern;
-import com.gtnewhorizons.wdmla.impl.ui.component.AmountComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.HPanelComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.ItemComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.TextComponent;
@@ -191,12 +189,6 @@ public class ThemeHelper {
                 return null;
             }
         }
-    }
-
-    public IComponent amount(long current, long max, IComponent content) {
-        ITooltip amountTooltip = new AmountComponent(current, max);
-        amountTooltip.child(new VPanelComponent().padding(DEFAULT_AMOUNT_TEXT_PADDING).child(content));
-        return amountTooltip;
     }
 
     public IComponent value(String entry, String value) {

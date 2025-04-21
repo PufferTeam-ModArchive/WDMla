@@ -15,6 +15,7 @@ import com.gtnewhorizons.wdmla.api.provider.IClientExtensionProvider;
 import com.gtnewhorizons.wdmla.api.provider.IComponentProvider;
 import com.gtnewhorizons.wdmla.api.view.FluidView;
 import com.gtnewhorizons.wdmla.api.view.ItemView;
+import com.gtnewhorizons.wdmla.api.view.ProgressView;
 
 /**
  * Main client registration class of WDMla.<br>
@@ -45,6 +46,8 @@ public interface IWDMlaClientRegistration {
     void registerItemStorageClient(IClientExtensionProvider<ItemStack, ItemView> provider);
 
     void registerFluidStorageClient(IClientExtensionProvider<FluidView.Data, FluidView> provider);
+
+    void registerProgressClient(IClientExtensionProvider<ProgressView.Data, ProgressView> provider);
 
     /**
      * @return is server validation succeeded on world join

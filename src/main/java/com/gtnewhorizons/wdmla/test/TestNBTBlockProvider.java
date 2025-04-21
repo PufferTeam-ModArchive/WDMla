@@ -1,5 +1,7 @@
 package com.gtnewhorizons.wdmla.test;
 
+import static com.gtnewhorizons.wdmla.impl.ui.component.TooltipComponent.DEFAULT_PROGRESS_DESCRIPTION_PADDING;
+
 import java.util.Random;
 
 import net.minecraft.init.Blocks;
@@ -16,7 +18,7 @@ import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
 import com.gtnewhorizons.wdmla.api.provider.IServerDataProvider;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.api.ui.sizer.IPadding;
-import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
+import com.gtnewhorizons.wdmla.impl.ui.component.ProgressComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.TextComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.VPanelComponent;
 import com.gtnewhorizons.wdmla.impl.ui.sizer.Padding;
@@ -68,8 +70,10 @@ public enum TestNBTBlockProvider implements IBlockComponentProvider, IServerData
         tooltip.child(new TextComponent("Recieved Server Data: " + random));
 
         if (cookTime != 0) {
-            tooltip.child(
-                    ThemeHelper.INSTANCE.amount(cookTime, 10, new TextComponent("Smelting: " + cookTime + " / 10 s")));
+            ITooltip amountTooltip = new ProgressComponent(cookTime, 10).child(
+                    new VPanelComponent().padding(DEFAULT_PROGRESS_DESCRIPTION_PADDING)
+                            .child(new TextComponent("Smelting: " + cookTime + " / 10 s")));
+            tooltip.child(amountTooltip);
         }
 
         int burnTime = accessor.getServerData().getInteger("BurnTime") / 20;
@@ -112,7 +116,7 @@ public enum TestNBTBlockProvider implements IBlockComponentProvider, IServerData
         }
         data.setTag("Items", nbttaglist);
 
-        data.setShort("CookTime", (short) 5);
+        data.setShort("CookTime", (short) 100);
         data.setInteger("BurnTime", 5);
         data.setInteger("random", new Random().nextInt(11));
     }

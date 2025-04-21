@@ -21,6 +21,7 @@ import com.gtnewhorizons.wdmla.api.provider.IServerDataProvider;
 import com.gtnewhorizons.wdmla.api.provider.IServerExtensionProvider;
 import com.gtnewhorizons.wdmla.api.provider.IWDMlaProvider;
 import com.gtnewhorizons.wdmla.api.view.FluidView;
+import com.gtnewhorizons.wdmla.api.view.ProgressView;
 import com.gtnewhorizons.wdmla.impl.lookup.HierarchyLookup;
 import com.gtnewhorizons.wdmla.impl.lookup.PairHierarchyLookup;
 import com.gtnewhorizons.wdmla.impl.lookup.WrappedHierarchyLookup;
@@ -35,6 +36,7 @@ public class WDMlaCommonRegistration implements IWDMlaCommonRegistration {
 
     public final WrappedHierarchyLookup<IServerExtensionProvider<ItemStack>> itemStorageProviders;
     public final WrappedHierarchyLookup<IServerExtensionProvider<FluidView.Data>> fluidStorageProviders;
+    public final WrappedHierarchyLookup<IServerExtensionProvider<ProgressView.Data>> progressProviders;
 
     private CommonRegistrationSession session;
 
@@ -61,6 +63,7 @@ public class WDMlaCommonRegistration implements IWDMlaCommonRegistration {
 
         itemStorageProviders = WrappedHierarchyLookup.forAccessor();
         fluidStorageProviders = WrappedHierarchyLookup.forAccessor();
+        progressProviders = WrappedHierarchyLookup.forAccessor();
     }
 
     @Override
@@ -130,5 +133,10 @@ public class WDMlaCommonRegistration implements IWDMlaCommonRegistration {
     @Override
     public <T> void registerFluidStorage(IServerExtensionProvider<FluidView.Data> provider, Class<? extends T> clazz) {
         fluidStorageProviders.register(clazz, provider);
+    }
+
+    @Override
+    public <T> void registerProgress(IServerExtensionProvider<ProgressView.Data> provider, Class<? extends T> clazz) {
+        progressProviders.register(clazz, provider);
     }
 }
