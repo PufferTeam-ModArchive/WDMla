@@ -3,6 +3,7 @@ package com.gtnewhorizons.wdmla.plugin.vanilla;
 import java.util.Arrays;
 import java.util.List;
 
+import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -26,8 +27,9 @@ public enum CauldronProvider implements IBlockComponentProvider {
         if (fluidView == null) {
             return;
         }
-        fluidView.overrideText = accessor.getMetadata() == 0 ? StatCollector.translateToLocal("hud.msg.wdmla.empty")
-                : String.format("%d / 3", accessor.getMetadata());
+        fluidView.description = ThemeHelper.INSTANCE.info(
+                accessor.getMetadata() == 0 ? StatCollector.translateToLocal("hud.msg.wdmla.empty")
+                : String.format("%d / 3", accessor.getMetadata()));
         List<ClientViewGroup<FluidView>> viewList = Arrays.asList(new ClientViewGroup<>(Arrays.asList(fluidView)));
         FluidStorageProvider.getBlock().append(tooltip, accessor, viewList);
     }

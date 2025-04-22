@@ -40,7 +40,6 @@ import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
 import com.gtnewhorizons.wdmla.impl.ui.component.FluidComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.HPanelComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.ProgressComponent;
-import com.gtnewhorizons.wdmla.impl.ui.component.TextComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.VPanelComponent;
 import com.gtnewhorizons.wdmla.impl.ui.drawable.FluidDrawable;
 import com.gtnewhorizons.wdmla.impl.ui.sizer.Padding;
@@ -95,7 +94,7 @@ public class FluidStorageProvider<T extends Accessor> implements IComponentProvi
                 group.renderHeader(tooltip);
             }
             for (var view : group.views) {
-                IComponent mainText;
+                IComponent description;
                 ThemeHelper helper = ThemeHelper.INSTANCE;
                 String currentStr = FormatUtil.STANDARD.format(view.current)
                         + StatCollector.translateToLocal("hud.wdmla.msg.millibucket");
@@ -104,24 +103,25 @@ public class FluidStorageProvider<T extends Accessor> implements IComponentProvi
                 PluginsConfig.Universal.FluidStorage.Mode showMode = General.forceLegacy
                         ? PluginsConfig.Universal.FluidStorage.Mode.TEXT
                         : PluginsConfig.universal.fluidStorage.mode;
-                if (view.overrideText != null) {
-                    mainText = new TextComponent(view.overrideText);
+                if (view.description != null) {
+                    description = view.description;
                 } else if (view.fluidName == null) {
                     if (accessor.showDetails() && showMode != PluginsConfig.Universal.FluidStorage.Mode.GAUGE) {
-                        mainText = new HPanelComponent()
+                        description = new HPanelComponent()
                                 .child(helper.info(StatCollector.translateToLocal("hud.msg.wdmla.empty"))).text(": / ")
                                 .text(maxStr);
                     } else {
-                        mainText = helper.info(StatCollector.translateToLocal("hud.msg.wdmla.empty"));
+                        description = helper.info(StatCollector.translateToLocal("hud.msg.wdmla.empty"));
                     }
                 } else {
                     String fluidName = DisplayUtil.stripSymbols(view.fluidName);
                     if (accessor.showDetails() && showMode != PluginsConfig.Universal.FluidStorage.Mode.GAUGE) {
-                        mainText = new HPanelComponent().child(helper.info(currentStr)).text(" / ").text(maxStr);
+                        description = new HPanelComponent().child(helper.info(currentStr)).text(" / ").text(maxStr);
                     } else {
-                        mainText = helper.info(currentStr);
+                        description = helper.info(currentStr);
                     }
-                    mainText = new HPanelComponent().child(helper.info(fluidName)).text(": ").child(mainText);
+                    description = new HPanelComponent()
+                            .child(helper.info(fluidName)).text(": ").child(description);
                 }
                 switch (showMode) {
                     case GAUGE -> {
@@ -133,28 +133,28 @@ public class FluidStorageProvider<T extends Accessor> implements IComponentProvi
                             progressStyle.color(General.progressColor.filled, General.progressColor.border);
                         }
                         tooltip.child(
-                                new ProgressComponent(view.current, view.max).style(progressStyle).child(
-                                        new VPanelComponent().padding(DEFAULT_PROGRESS_DESCRIPTION_PADDING)
-                                                .child(mainText)));
+                                new ProgressComponent(view.current, view.max).style(progressStyle)
+                                        .child(new VPanelComponent().padding(DEFAULT_PROGRESS_DESCRIPTION_PADDING)
+                                                .child(description)));
                     }
                     case ICON_TEXT -> {
                         if (view.overlay != null) {
                             tooltip.horizontal()
                                     .child(
                                             new FluidComponent(view.overlay)
-                                                    .size(new Size(mainText.getHeight(), mainText.getHeight())))
-                                    .child(mainText);
+                                                    .size(new Size(description.getHeight(), description.getHeight())))
+                                    .child(description);
                         } else {
                             theTooltip.horizontal()
                                     .item(
                                             new ItemStack(Items.bucket),
                                             new Padding(),
-                                            new Size(mainText.getHeight(), mainText.getHeight()))
-                                    .child(mainText);
+                                            new Size(description.getHeight(), description.getHeight()))
+                                    .child(description);
                         }
                     }
                     case TEXT -> {
-                        theTooltip.child(mainText);
+                        theTooltip.child(description);
                     }
                 }
             }

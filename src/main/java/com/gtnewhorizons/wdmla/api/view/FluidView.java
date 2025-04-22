@@ -1,5 +1,6 @@
 package com.gtnewhorizons.wdmla.api.view;
 
+import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fluids.FluidStack;
 
@@ -16,7 +17,7 @@ public class FluidView {
     @Nullable
     public String fluidName;
     @Nullable
-    public String overrideText;
+    public IComponent description;
     /**
      * If true, the progress bar will have vertical stripes
      */

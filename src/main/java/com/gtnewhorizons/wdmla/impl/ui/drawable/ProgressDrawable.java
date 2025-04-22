@@ -44,7 +44,7 @@ public class ProgressDrawable implements IDrawable {
         }
         if (style.getFilledColor() != style.getAlternateFilledColor()) {
             for (int xx = area.getX() + 1; xx <= area.getX() + dx + 1; ++xx) {
-                if ((xx % 3) != 2) {
+                if ((xx & 1) == 0) {
                     continue;
                 }
                 GuiDraw.drawVerticalLine(xx, area.getY() + 1, area.getEY() - 1, style.getAlternateFilledColor());
