@@ -165,7 +165,7 @@ public class WDMlaTickHandler {
                 accessor.getServerData().func_150296_c().clear();
             }
             boolean request = handler.shouldRequestData(accessor);
-            if (ObjectDataCenter.isTimeElapsed(ObjectDataCenter.rateLimiter)) {
+            if (ObjectDataCenter.isRequestTimeElapsed()) {
                 ObjectDataCenter.resetTimer();
                 if (request) {
                     handler.requestData(accessor);

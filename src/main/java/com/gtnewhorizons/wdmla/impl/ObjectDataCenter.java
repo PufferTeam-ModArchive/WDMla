@@ -1,5 +1,8 @@
 package com.gtnewhorizons.wdmla.impl;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.MovingObjectPosition;
@@ -14,12 +17,15 @@ import com.gtnewhorizons.wdmla.api.accessor.AccessorClientHandler;
  * It sometimes has to be used along with {@link mcp.mobius.waila.api.impl.DataAccessorCommon}.<br>
  * TODO: full implementation
  */
+@SideOnly(Side.CLIENT)
 public final class ObjectDataCenter {
 
+    public static final int RATE_LIMIT_MP = 250;
+    public static final int RATE_LIMIT_SP = 1;
     /**
-     * the passive frequency of requesting server data
+     * the current passive frequency of requesting server data
      */
-    public static int rateLimiter = 250;
+    private static int rateLimiter = RATE_LIMIT_MP;
     public static long timeLastUpdate = System.currentTimeMillis();
     private static Accessor accessor;
     private static AccessorClientHandler<Accessor> clientHandler;
@@ -84,12 +90,13 @@ public final class ObjectDataCenter {
         timeLastUpdate = System.currentTimeMillis() - rateLimiter;
     }
 
-    public static boolean isTimeElapsed(long time) {
-        return System.currentTimeMillis() - timeLastUpdate >= time;
+    public static boolean isRequestTimeElapsed() {
+        return System.currentTimeMillis() - timeLastUpdate >= rateLimiter;
     }
 
     public static void resetTimer() {
         timeLastUpdate = System.currentTimeMillis();
+        rateLimiter = Minecraft.getMinecraft().isSingleplayer() ? RATE_LIMIT_SP : RATE_LIMIT_MP;
     }
 
     /**
