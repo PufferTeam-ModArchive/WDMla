@@ -271,21 +271,6 @@ public final class GuiDraw {
         GL11.glEnable(GL11.GL_ALPHA_TEST);
     }
 
-    public static void renderVanillaIcon(float x, float y, float w, float h, IIcon icon, ResourceLocation path) {
-        Minecraft.getMinecraft().getTextureManager().bindTexture(path);
-
-        if (icon == null) return;
-        drawTexturedModelRect(
-                x,
-                y,
-                icon.getMinU(),
-                icon.getMinV(),
-                w,
-                h,
-                icon.getMaxU() - icon.getMinU(),
-                icon.getMaxV() - icon.getMinV());
-    }
-
     public static void renderFluidStack(FluidStack content, float x0, float y0, float width, float height, float z) {
         if (content == null) {
             return;

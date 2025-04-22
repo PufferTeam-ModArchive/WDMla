@@ -15,7 +15,7 @@ public enum VanillaUIIcons implements IIcon {
     EHEART(52, 9, 9, 9),
     ARMOR(34, 9, 9, 9),
     ARMOR_BG(16, 9, 9, 9),
-    HARMOR(24, 9, 9, 9),
+    HARMOR(25, 9, 9, 9),
     EARMOR(16, 9, 9, 9),
     BUBBLEEXP(25, 18, 9, 9);
 
