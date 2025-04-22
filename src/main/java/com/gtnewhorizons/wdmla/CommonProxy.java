@@ -90,7 +90,7 @@ public class CommonProxy {
         for (IWDMlaPlugin plugin : PluginScanner.INSTANCE.results) {
             plugin.register(registration);
         }
-        if (WDMla.isDevEnv() && WDMla.testMode == TestMode.WDMla) {
+        if (WDMla.isDevEnv() && (WDMla.testMode == TestMode.WDMla || WDMla.testMode == TestMode.PACKET)) {
             new TestPlugin().register(registration);
         }
     }
@@ -99,7 +99,7 @@ public class CommonProxy {
         for (IWDMlaPlugin plugin : PluginScanner.INSTANCE.results) {
             plugin.registerClient(registration);
         }
-        if (WDMla.isDevEnv() && WDMla.testMode == TestMode.WDMla) {
+        if (WDMla.isDevEnv() && (WDMla.testMode == TestMode.WDMla || WDMla.testMode == TestMode.PACKET)) {
             new TestPlugin().registerClient(registration);
         }
     }

@@ -3,6 +3,11 @@ package mcp.mobius.waila.network;
 import java.io.IOException;
 import java.util.EnumMap;
 
+import com.gtnewhorizons.wdmla.WDMla;
+import com.gtnewhorizons.wdmla.test.TestMode;
+import cpw.mods.fml.common.network.internal.FMLProxyPacket;
+import io.netty.channel.ChannelInboundHandlerAdapter;
+import mcp.mobius.waila.Waila;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.CompressedStreamTools;
 import net.minecraft.nbt.NBTSizeTracker;
@@ -49,6 +54,20 @@ public enum WailaPacketHandler {
     private void addClientHandlers() {
         FMLEmbeddedChannel channel = this.channels.get(Side.CLIENT);
         String codec = channel.findChannelHandlerNameForType(WailaCodec.class);
+        if(WDMla.testMode == TestMode.PACKET) {
+            channel.pipeline().addBefore(codec, "packetReceiveLogger", new ChannelInboundHandlerAdapter() {
+                @Override
+                public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+                    if (msg instanceof FMLProxyPacket) {
+                        FMLProxyPacket proxyPacket = (FMLProxyPacket) msg;
+                        ByteBuf payload = proxyPacket.payload();
+                        int size = payload.readableBytes();
+                        Waila.log.info("Received readable packet size: %d bytes", size);
+                    }
+                    super.channelRead(ctx, msg);
+                }
+            });
+        }
 
         channel.pipeline().addAfter(codec, "ServerPing", new Message0x00ServerPing());
         channel.pipeline().addAfter("ServerPing", "TENBTData", new Message0x02TENBTData());
