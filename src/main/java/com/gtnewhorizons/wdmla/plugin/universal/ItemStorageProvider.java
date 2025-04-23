@@ -185,7 +185,7 @@ public class ItemStorageProvider<T extends Accessor> implements IComponentProvid
 
                 if (showName.isTrue()) {
                     if (itemView.description != null) {
-                        int itemSize = itemView.description.getHeight();
+                        float itemSize = itemView.description.getHeight();
                         elements.child(new ItemComponent(stack).doDrawOverlay(false).size(new Size(itemSize, itemSize)))
                                 .child(itemView.description);
                     } else {

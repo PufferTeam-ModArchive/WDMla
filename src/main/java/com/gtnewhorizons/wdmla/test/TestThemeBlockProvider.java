@@ -4,6 +4,7 @@ import static com.gtnewhorizons.wdmla.impl.ui.component.TooltipComponent.DEFAULT
 
 import java.util.Arrays;
 
+import com.gtnewhorizons.wdmla.impl.ui.sizer.Padding;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -37,6 +38,7 @@ public enum TestThemeBlockProvider implements IBlockComponentProvider {
         tooltip.child(ThemeHelper.INSTANCE.warning("This is warning"));
         tooltip.child(ThemeHelper.INSTANCE.danger("This is danger"));
         tooltip.child(ThemeHelper.INSTANCE.failure("This is failure"));
+        tooltip.child(new TextComponent("This is 0.5 pixel off text.").padding(new Padding(-1f,0,0.5f,0)));
         tooltip.child(
                 new ProgressComponent(8, 10).style(
                         new ProgressStyle().color(ColorPalette.ENERGY_FILLED, ColorPalette.ENERGY_FILLED_ALTERNATE))

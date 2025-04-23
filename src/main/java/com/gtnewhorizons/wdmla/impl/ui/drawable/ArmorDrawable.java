@@ -33,8 +33,8 @@ public class ArmorDrawable implements IDrawable {
         int nArmor = MathHelper.ceiling_float_int(maxArmor);
         int nArmorsPerLine = (int) (Math.min(maxArmorsPerLine, Math.ceil(maxArmor)));
 
-        int offsetX = area.getX();
-        int offsetY = area.getY();
+        float offsetX = area.getX();
+        float offsetY = area.getY();
 
         for (int iArmor = 1; iArmor <= nArmor; iArmor++) {
 

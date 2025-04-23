@@ -7,15 +7,15 @@ package com.gtnewhorizons.wdmla.api.ui.sizer;
  */
 public interface IArea extends ISize {
 
-    int getX();
+    float getX();
 
-    int getY();
+    float getY();
 
-    default int getEX() {
+    default float getEX() {
         return getX() + getW();
     }
 
-    default int getEY() {
+    default float getEY() {
         return getY() + getH();
     }
 }

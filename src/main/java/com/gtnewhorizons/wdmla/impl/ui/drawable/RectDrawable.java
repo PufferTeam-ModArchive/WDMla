@@ -25,9 +25,9 @@ public class RectDrawable implements IDrawable {
     @Override
     public void draw(IArea area) {
         if (area.getH() == 1) {
-            GuiDraw.drawHorizontalLine(area.getX(), area.getY(), area.getEX(), style.getBackgroundColor1());
+            GuiDraw.drawHorizontalLine(area.getX(), area.getY(), area.getW(), style.getBackgroundColor1());
         } else if (area.getW() == 1) {
-            GuiDraw.drawVerticalLine(area.getX(), area.getY(), area.getEY(), style.getBackgroundColor1());
+            GuiDraw.drawVerticalLine(area.getX(), area.getY(), area.getH(), style.getBackgroundColor1());
         } else {
             GuiDraw.drawGradientRect(area, style.getBackgroundColor1(), style.getBackgroundColor2());
             if (style.getBorderColor() != ColorPalette.TRANSPARENT) {

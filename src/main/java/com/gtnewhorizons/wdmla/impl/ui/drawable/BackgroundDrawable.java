@@ -17,10 +17,10 @@ public class BackgroundDrawable implements IDrawable {
 
     @Override
     public void draw(IArea area) {
-        int x = area.getX();
-        int y = area.getY();
-        int w = area.getW();
-        int h = area.getH();
+        float x = area.getX();
+        float y = area.getY();
+        float w = area.getW();
+        float h = area.getH();
         int bg = theme.bgColor;
         int grad1 = theme.bgGradient1;
         int grad2 = theme.bgGradient2;

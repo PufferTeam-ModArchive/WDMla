@@ -1,27 +1,31 @@
 package com.gtnewhorizons.wdmla.impl.ui.sizer;
 
-import java.awt.Point;
-
-import org.jetbrains.annotations.NotNull;
-
 import com.gtnewhorizons.wdmla.api.ui.sizer.IArea;
 
 public class Area extends Size implements IArea {
 
-    private final @NotNull Point point;
+    private final float x;
+    private final float y;
 
     public Area(int x, int y, int width, int height) {
         super(width, height);
-        point = new Point(x, y);
+        this.x = x;
+        this.y = y;
+    }
+
+    public Area(float x, float y, float width, float height) {
+        super(width, height);
+        this.x = x;
+        this.y = y;
     }
 
     @Override
-    public int getX() {
-        return point.x;
+    public float getX() {
+        return x;
     }
 
     @Override
-    public int getY() {
-        return point.y;
+    public float getY() {
+        return y;
     }
 }

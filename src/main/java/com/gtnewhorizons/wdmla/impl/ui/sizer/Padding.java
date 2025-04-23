@@ -4,10 +4,10 @@ import com.gtnewhorizons.wdmla.api.ui.sizer.IPadding;
 
 public class Padding implements IPadding {
 
-    private int top;
-    private int bottom;
-    private int left;
-    private int right;
+    private float top;
+    private float bottom;
+    private float left;
+    private float right;
 
     public Padding() {
         this.top = 0;
@@ -17,6 +17,13 @@ public class Padding implements IPadding {
     }
 
     public Padding(int top, int bottom, int left, int right) {
+        this.top = top;
+        this.bottom = bottom;
+        this.left = left;
+        this.right = right;
+    }
+
+    public Padding(float top, float bottom, float left, float right) {
         this.top = top;
         this.bottom = bottom;
         this.left = left;
@@ -61,22 +68,22 @@ public class Padding implements IPadding {
     }
 
     @Override
-    public int getTop() {
+    public float getTop() {
         return top;
     }
 
     @Override
-    public int getBottom() {
+    public float getBottom() {
         return bottom;
     }
 
     @Override
-    public int getLeft() {
+    public float getLeft() {
         return left;
     }
 
     @Override
-    public int getRight() {
+    public float getRight() {
         return right;
     }
 }

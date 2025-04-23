@@ -16,12 +16,12 @@ public class VPanelComponent extends PanelComponent {
     }
 
     @Override
-    public void tick(int x, int y) {
-        int totWidth = this.getWidth();
-        int cy = y + padding.getTop() + style.getBorderThickness();
+    public void tick(float x, float y) {
+        float totWidth = this.getWidth();
+        float cy = y + padding.getTop() + style.getBorderThickness();
         for (int i = 0; i < children.size(); i++) {
-            int w = children.get(i).getWidth();
-            int cx = x;
+            float w = children.get(i).getWidth();
+            float cx = x;
             switch (style.getAlignment()) {
                 case TOPLEFT:
                     cx = x + padding.getLeft() + style.getBorderThickness();
@@ -46,10 +46,10 @@ public class VPanelComponent extends PanelComponent {
     }
 
     @Override
-    public int getWidth() {
-        int w = 0;
+    public float getWidth() {
+        float w = 0;
         for (IComponent child : children) {
-            int ww = child.getWidth();
+            float ww = child.getWidth();
             if (ww > w) {
                 w = ww;
             }
@@ -59,7 +59,7 @@ public class VPanelComponent extends PanelComponent {
     }
 
     @Override
-    public int getHeight() {
+    public float getHeight() {
         int h = 0;
         for (IComponent child : children) {
             h += child.getHeight();

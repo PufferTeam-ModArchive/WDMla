@@ -10,10 +10,10 @@ public interface ISize {
     /**
      * @return width
      */
-    int getW();
+    float getW();
 
     /**
      * @return height
      */
-    int getH();
+    float getH();
 }

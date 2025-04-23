@@ -34,7 +34,8 @@ public class EntityDrawable implements IDrawable {
         try {
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
             GL11.glEnable(GL11.GL_DEPTH_TEST);
-            GuiInventory.func_147046_a(area.getX(), area.getY() + area.getH(), area.getW(), 135, 0, entity);
+            //TODO: support float
+            GuiInventory.func_147046_a((int)area.getX(), (int)(area.getY() + area.getH()), (int)area.getW(), 135, 0, entity);
             GL11.glDisable(GL11.GL_DEPTH_TEST);
         } catch (Exception e) {
             Waila.log.error("Error rendering instance of entity", e);

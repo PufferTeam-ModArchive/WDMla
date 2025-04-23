@@ -21,12 +21,12 @@ public class TextSize extends Size {
     }
 
     @Override
-    public int getW() {
+    public float getW() {
         return (int) Math.ceil(Minecraft.getMinecraft().fontRenderer.getStringWidth(text) * scale);
     }
 
     @Override
-    public int getH() {
+    public float getH() {
         return (int) Math.ceil(Minecraft.getMinecraft().fontRenderer.FONT_HEIGHT * scale);
     }
 

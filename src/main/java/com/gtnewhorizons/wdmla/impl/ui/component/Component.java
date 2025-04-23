@@ -41,17 +41,17 @@ public abstract class Component implements IComponent {
     }
 
     @Override
-    public void tick(int x, int y) {
+    public void tick(float x, float y) {
         foreground.draw(new Area(x + padding.getLeft(), y + padding.getTop(), size.getW(), size.getH()));
     }
 
     @Override
-    public int getWidth() {
+    public float getWidth() {
         return padding.getLeft() + size.getW() + padding.getRight();
     }
 
     @Override
-    public int getHeight() {
+    public float getHeight() {
         return padding.getTop() + size.getH() + padding.getBottom();
     }
 

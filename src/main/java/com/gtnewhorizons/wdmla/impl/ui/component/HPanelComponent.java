@@ -15,12 +15,12 @@ public class HPanelComponent extends PanelComponent {
         super();
     }
 
-    public void tick(int x, int y) {
-        int totHeight = this.getHeight();
-        int cx = x + padding.getLeft() + style.getBorderThickness();
+    public void tick(float x, float y) {
+        float totHeight = this.getHeight();
+        float cx = x + padding.getLeft() + style.getBorderThickness();
         for (int i = 0; i < children.size(); i++) {
-            int h = children.get(i).getHeight();
-            int cy = y;
+            float h = children.get(i).getHeight();
+            float cy = y;
             switch (style.getAlignment()) {
                 case TOPLEFT:
                     cy = y + padding.getTop() + style.getBorderThickness();
@@ -45,7 +45,7 @@ public class HPanelComponent extends PanelComponent {
     }
 
     @Override
-    public int getWidth() {
+    public float getWidth() {
         int w = 0;
         for (IComponent child : children) {
             w += child.getWidth();
@@ -56,10 +56,10 @@ public class HPanelComponent extends PanelComponent {
     }
 
     @Override
-    public int getHeight() {
-        int h = 0;
+    public float getHeight() {
+        float h = 0;
         for (IComponent child : children) {
-            int ww = child.getHeight();
+            float ww = child.getHeight();
             if (ww > h) {
                 h = ww;
             }

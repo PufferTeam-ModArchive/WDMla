@@ -39,9 +39,9 @@ public class TextComponent extends Component {
     }
 
     @Override
-    public void tick(int x, int y) {
-        int width = size.getW();
-        int height = size.getH();
+    public void tick(float x, float y) {
+        float width = size.getW();
+        float height = size.getH();
         switch (style.getAlignment()) {
             case BOTTOMRIGHT -> foreground
                     .draw(new Area((x + width) + padding.getLeft(), y + padding.getTop(), width, height));

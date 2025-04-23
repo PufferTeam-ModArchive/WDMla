@@ -43,18 +43,18 @@ public class ProgressDrawable implements IDrawable {
             }
         }
         if (style.getFilledColor() != style.getAlternateFilledColor()) {
-            for (int xx = area.getX() + 1; xx <= area.getX() + dx + 1; ++xx) {
+            for (int xx = (int)area.getX() + 1; xx <= area.getX() + dx + 1; ++xx) {
                 if ((xx & 1) == 0) {
                     continue;
                 }
-                GuiDraw.drawVerticalLine(xx, area.getY() + 1, area.getEY() - 1, style.getAlternateFilledColor());
+                GuiDraw.drawVerticalLine(xx, area.getY() + 1, area.getH() - 2, style.getAlternateFilledColor());
             }
         }
     }
 
     private void fillWithGradient(IArea area, int dx) {
         int darker = Color.setLightness(style.getFilledColor(), 0.7f);
-        int half = (area.getH() - 2) / 2;
+        float half = (area.getH() - 2) / 2;
         GuiDraw.drawStraightGradientRect(
                 new Area(area.getX() + 1, area.getY() + 1, dx + 1, half),
                 darker,

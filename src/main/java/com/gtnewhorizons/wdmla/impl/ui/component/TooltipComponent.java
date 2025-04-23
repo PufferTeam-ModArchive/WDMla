@@ -39,7 +39,7 @@ public class TooltipComponent extends Component implements ITooltip {
     }
 
     @Override
-    public void tick(int x, int y) {
+    public void tick(float x, float y) {
         foreground.draw(new Area(x + padding.getLeft(), y + padding.getTop(), size.getW(), size.getH()));
 
         for (IComponent child : children) {

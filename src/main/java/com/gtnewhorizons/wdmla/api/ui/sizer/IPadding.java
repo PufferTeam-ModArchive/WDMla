@@ -27,11 +27,11 @@ public interface IPadding {
      */
     IPadding horizontal(int horizontal);
 
-    int getTop();
+    float getTop();
 
-    int getBottom();
+    float getBottom();
 
-    int getLeft();
+    float getLeft();
 
-    int getRight();
+    float getRight();
 }

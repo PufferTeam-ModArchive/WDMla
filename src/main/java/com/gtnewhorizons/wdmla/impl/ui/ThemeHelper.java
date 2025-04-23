@@ -205,7 +205,7 @@ public class ThemeHelper {
     public IComponent itemStackFullLine(ItemStack stack) {
         String strippedName = DisplayUtil.stripSymbols(DisplayUtil.itemDisplayNameShort(stack));
         TextComponent name = new TextComponent(strippedName);
-        int itemSize = name.getHeight();
+        float itemSize = name.getHeight();
         ITooltip hPanel = new HPanelComponent()
                 .child(new ItemComponent(stack).doDrawOverlay(false).size(new Size(itemSize, itemSize)));
         String s = String.valueOf(stack.stackSize); // TODO: unit format

@@ -52,7 +52,7 @@ public class ProgressComponent extends TooltipComponent {
     }
 
     @Override
-    public void tick(int x, int y) {
+    public void tick(float x, float y) {
         rectDrawable.draw(new Area(x + padding.getLeft(), y + padding.getTop(), size.getW(), size.getH()));
         super.tick(x, y);
     }
@@ -68,8 +68,8 @@ public class ProgressComponent extends TooltipComponent {
                     this.getClass().getName(),
                     null);
         }
-        int width = Math.max(size.getW(), children.get(0).getWidth());
-        int height = Math.max(size.getH(), children.get(0).getHeight());
+        float width = Math.max(size.getW(), children.get(0).getWidth());
+        float height = Math.max(size.getH(), children.get(0).getHeight());
         size(new Size(width, height));
         return this;
     }

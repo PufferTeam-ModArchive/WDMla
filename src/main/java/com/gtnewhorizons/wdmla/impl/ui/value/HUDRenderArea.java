@@ -30,15 +30,15 @@ public class HUDRenderArea {
                 ConfigHandler.instance().getConfig(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_POSX, 0),
                 ConfigHandler.instance().getConfig(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_POSY, 0));
 
-        int w = hudSize.getW() + MARGIN * 2;
-        int h = hudSize.getH() + MARGIN * 2;
+        float w = hudSize.getW() + MARGIN * 2;
+        float h = hudSize.getH() + MARGIN * 2;
 
         Minecraft mc = Minecraft.getMinecraft();
         ScaledResolution res = new ScaledResolution(mc, mc.displayWidth, mc.displayHeight);
         int width = res.getScaledWidth();
         int height = res.getScaledHeight();
-        int x = ((int) (width / OverlayConfig.scale) - w - 1) * pos.x / 10000;
-        int y = ((int) (height / OverlayConfig.scale) - h - 1) * pos.y / 10000;
+        float x = ((int) (width / OverlayConfig.scale) - w - 1) * pos.x / 10000;
+        float y = ((int) (height / OverlayConfig.scale) - h - 1) * pos.y / 10000;
 
         return new Area(x, y, w, h);
     }

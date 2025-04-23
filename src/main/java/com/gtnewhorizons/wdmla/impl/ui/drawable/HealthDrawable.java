@@ -33,8 +33,8 @@ public class HealthDrawable implements IDrawable {
         int nHearts = MathHelper.ceiling_float_int(maxHealth);
         int heartsPerLine = (int) (Math.min(maxHeartsPerLine, Math.ceil(maxHealth)));
 
-        int offsetX = area.getX();
-        int offsetY = area.getY();
+        float offsetX = area.getX();
+        float offsetY = area.getY();
 
         for (int iheart = 1; iheart <= nHearts; iheart++) {
 

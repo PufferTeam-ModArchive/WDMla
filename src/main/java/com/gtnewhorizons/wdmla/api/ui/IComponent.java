@@ -52,23 +52,23 @@ public interface IComponent {
      * @param x x position in the minecraft screen coordinate
      * @param y y position in the minecraft screen coordinate
      */
-    void tick(int x, int y);
+    void tick(float x, float y);
 
     /**
      * Must return positive value for rendering. If you want a negative sized element for layout, use
      * {@link com.gtnewhorizons.wdmla.api.ui.sizer.IPadding}.
-     * 
+     *
      * @return the ui component width.
      */
-    int getWidth();
+    float getWidth();
 
     /**
      * Must return positive value for rendering. If you want a negative sized element for layout, use
      * {@link com.gtnewhorizons.wdmla.api.ui.sizer.IPadding}.
-     * 
+     *
      * @return the ui component height.
      */
-    int getHeight();
+    float getHeight();
 
     /**
      * Applies custom identifier of resource location to component for later lookup purpose.<br>

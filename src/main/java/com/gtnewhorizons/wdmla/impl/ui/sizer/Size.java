@@ -1,31 +1,37 @@
 package com.gtnewhorizons.wdmla.impl.ui.sizer;
 
-import java.awt.Dimension;
-
 import com.gtnewhorizons.wdmla.api.ui.sizer.ISize;
 
 public class Size implements ISize {
 
-    protected final Dimension dim;
+    protected final float width;
+    protected final float height;
 
     public Size(int width, int height) {
-        dim = new Dimension(width, height);
+        this.width = width;
+        this.height = height;
+        verify();
+    }
+
+    public Size(float width, float height) {
+        this.width = width;
+        this.height = height;
         verify();
     }
 
     private void verify() {
-        if (dim.width < 0 || dim.height < 0) {
+        if (width < 0 || height < 0) {
             throw new IllegalArgumentException("Size must not below zero");
         }
     }
 
     @Override
-    public int getW() {
-        return dim.width;
+    public float getW() {
+        return width;
     }
 
     @Override
-    public int getH() {
-        return dim.height;
+    public float getH() {
+        return height;
     }
 }
