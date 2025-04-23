@@ -17,20 +17,22 @@ public class VPanelComponent extends PanelComponent {
 
     @Override
     public void tick(float x, float y) {
+        foreground.draw(new Area(x + padding.getLeft(), y + padding.getTop(), getWidth(), getHeight()));
+
         float totWidth = this.getWidth();
-        float cy = y + padding.getTop() + style.getBorderThickness();
+        float cy = y + padding.getTop() + bgStyle.getBorderThickness();
         for (int i = 0; i < children.size(); i++) {
             float w = children.get(i).getWidth();
             float cx = x;
             switch (style.getAlignment()) {
                 case TOPLEFT:
-                    cx = x + padding.getLeft() + style.getBorderThickness();
+                    cx = x + padding.getLeft() + bgStyle.getBorderThickness();
                     break;
                 case CENTER:
                     cx = x + (totWidth - w) / 2;
                     break;
                 case BOTTOMRIGHT:
-                    cx = x + totWidth - w - padding.getRight() - style.getBorderThickness();
+                    cx = x + totWidth - w - padding.getRight() - bgStyle.getBorderThickness();
                 default:
                     break;
             }
@@ -41,8 +43,6 @@ public class VPanelComponent extends PanelComponent {
                 cy += children.get(i).getHeight() + style.getSpacing();
             }
         }
-
-        foreground.draw(new Area(x + padding.getLeft(), y + padding.getTop(), getWidth(), getHeight()));
     }
 
     @Override
@@ -55,7 +55,7 @@ public class VPanelComponent extends PanelComponent {
             }
         }
 
-        return padding.getLeft() + w + padding.getRight() + style.getBorderThickness() * 2;
+        return padding.getLeft() + w + padding.getRight() + bgStyle.getBorderThickness() * 2;
     }
 
     @Override
@@ -66,7 +66,7 @@ public class VPanelComponent extends PanelComponent {
         }
 
         int totalSpacing = children.isEmpty() ? 0 : style.getSpacing() * (children.size() - 1);
-        return padding.getTop() + h + totalSpacing + padding.getBottom() + style.getBorderThickness() * 2;
+        return padding.getTop() + h + totalSpacing + padding.getBottom() + bgStyle.getBorderThickness() * 2;
     }
 
     @Override

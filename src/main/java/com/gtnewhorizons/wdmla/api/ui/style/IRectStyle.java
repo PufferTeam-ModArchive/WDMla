@@ -21,4 +21,6 @@ public interface IRectStyle {
      * @return the color which is applied to the edge of rectangle
      */
     int getBorderColor();
+
+    int getBorderThickness();
 }

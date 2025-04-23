@@ -17,7 +17,7 @@ public enum DefaultThemes {
                     ColorPalette.DANGER,
                     ColorPalette.FAILURE,
                     ColorPalette.MOD_NAME),
-            new PanelStyle(2, 2)),
+            new PanelStyle(2)),
     JADE(ColorPalette.BG_COLOR_JADE, ColorPalette.BG_GRADIENT1_JADE, ColorPalette.BG_GRADIENT2_JADE,
             new TextColors(
                     ColorPalette.DEFAULT,
@@ -28,7 +28,7 @@ public enum DefaultThemes {
                     ColorPalette.DANGER,
                     ColorPalette.FAILURE,
                     ColorPalette.MOD_NAME),
-            new PanelStyle(1, 2)), // Jade has tight spacing than others
+            new PanelStyle(1)), // Jade has tight spacing than others
     TOP(ColorPalette.BG_COLOR_TOP, ColorPalette.BG_GRADIENT1_TOP, ColorPalette.BG_GRADIENT2_TOP,
             new TextColors(
                     ColorPalette.DEFAULT,
@@ -39,7 +39,7 @@ public enum DefaultThemes {
                     ColorPalette.DANGER,
                     ColorPalette.FAILURE,
                     ColorPalette.MOD_NAME),
-            new PanelStyle(2, 2));
+            new PanelStyle(2));
 
     private Theme theme;
 
