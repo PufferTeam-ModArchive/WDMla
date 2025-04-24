@@ -103,6 +103,7 @@ hud.msg.wdmla.seeing=Seeing
 hud.msg.wdmla.seeing.block=Seeing Block
 hud.msg.wdmla.seeing.entity=Seeing Entity
 hud.msg.wdmla.more.tanks=+ %d more tanks
+hud.msg.wdmla.remaining.time=Remaining Time
 
 # state
 hud.msg.wdmla.mature=Mature
@@ -217,6 +218,8 @@ provider.wdmla.minecraft.zombie.villager=Zombie Villager
 provider.wdmla.minecraft.zombie.villager.header=Zombie Villager Header
 provider.wdmla.minecraft.te.custom.name.header=Custom Name Block Header
 provider.wdmla.minecraft.cauldron=Cauldron
+provider.wdmla.minecraft.minecart.command.block=Minecart with Command Block
+provider.wdmla.minecraft.minecart.furnace=Minecart with Furnace
 
 provider.wdmla.harvestability.category=Waila Harvestability
 provider.wdmla.harvestability.legacy=Legacy

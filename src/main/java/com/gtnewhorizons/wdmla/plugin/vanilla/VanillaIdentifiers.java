@@ -40,6 +40,7 @@ public class VanillaIdentifiers {
     public static final ResourceLocation TE_CUSTOM_NAME_HEADER = MC("te_custom_name_header");
     public static final ResourceLocation CAULDRON = MC("cauldron");
     public static final ResourceLocation MINECART_COMMAND_BLOCK = MC("minecart_command_block");
+    public static final ResourceLocation MINECART_FURNACE = MC("minecart_furnace");
 
     public static final String NAMESPACE_MINECRAFT = "minecraft";
 
