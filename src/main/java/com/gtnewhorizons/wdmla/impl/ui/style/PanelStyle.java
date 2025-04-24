@@ -7,7 +7,7 @@ import com.gtnewhorizons.wdmla.config.General;
 public class PanelStyle implements IPanelStyle {
 
     private ComponentAlignment alignment;
-    private int spacing;
+    private float spacing;
 
     public PanelStyle(int spacing) {
         this.alignment = ComponentAlignment.TOPLEFT;
@@ -20,7 +20,7 @@ public class PanelStyle implements IPanelStyle {
         this.spacing = theme.getSpacing();
     }
 
-    public PanelStyle spacing(int spacing) {
+    public PanelStyle spacing(float spacing) {
         this.spacing = spacing;
         return this;
     }
@@ -36,7 +36,7 @@ public class PanelStyle implements IPanelStyle {
     }
 
     @Override
-    public int getSpacing() {
+    public float getSpacing() {
         return spacing;
     }
 }

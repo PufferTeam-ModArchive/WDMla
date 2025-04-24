@@ -24,6 +24,7 @@ public class ProgressComponent extends TooltipComponent {
     public static final int MINIMAL_W = 125;
     public static final int MINIMAL_H = 8;
     private final RectDrawable rectDrawable;
+    private IRectStyle rectStyle;
 
     public ProgressComponent(float ratio) {
         this(Math.round(ratio * 1000), 1000);
@@ -35,9 +36,9 @@ public class ProgressComponent extends TooltipComponent {
                 new Padding(),
                 new Size(MINIMAL_W, MINIMAL_H),
                 new ProgressDrawable(new FilledProgress(current, max)));
-        this.rectDrawable = new RectDrawable().style(
-                new RectStyle().backgroundColor(General.progressColor.background)
-                        .borderColor(General.progressColor.border));
+        this.rectStyle = new RectStyle().backgroundColor(General.progressColor.background)
+                .borderColor(General.progressColor.border);
+        this.rectDrawable = new RectDrawable().style(rectStyle);
         // TODO:register ProgressTracker to unify the Width of All ProgressComponent
     }
 
@@ -47,6 +48,7 @@ public class ProgressComponent extends TooltipComponent {
     }
 
     public ProgressComponent rectStyle(IRectStyle style) {
+        this.rectStyle = style;
         rectDrawable.style(style);
         return this;
     }
@@ -54,7 +56,13 @@ public class ProgressComponent extends TooltipComponent {
     @Override
     public void tick(float x, float y) {
         rectDrawable.draw(new Area(x + padding.getLeft(), y + padding.getTop(), size.getW(), size.getH()));
-        super.tick(x, y);
+        float thickness = rectStyle.getBorderThickness();
+        foreground.draw(new Area(x + padding.getLeft() + thickness,
+                y + padding.getTop() + thickness, size.getW() - thickness * 2, size.getH() - thickness * 2));
+
+        if(!children.isEmpty()) {
+            children.get(0).tick(x + padding.getLeft() + thickness, y + padding.getTop() + thickness);
+        }
     }
 
     @Override
@@ -68,8 +76,8 @@ public class ProgressComponent extends TooltipComponent {
                     this.getClass().getName(),
                     null);
         }
-        float width = Math.max(size.getW(), children.get(0).getWidth());
-        float height = Math.max(size.getH(), children.get(0).getHeight());
+        float width = Math.max(size.getW(), children.get(0).getWidth() + rectStyle.getBorderThickness() * 2);
+        float height = Math.max(size.getH(), children.get(0).getHeight() + rectStyle.getBorderThickness() * 2);
         size(new Size(width, height));
         return this;
     }

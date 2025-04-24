@@ -34,34 +34,34 @@ public class ProgressDrawable implements IDrawable {
             return;
         }
 
-        int dx = (int) Math.min(current * (long) (area.getW() - 2) / max, (long) (area.getW() - 2));
+        float dx = Math.min(current * area.getW() / max, area.getW());
         if (dx > 0) {
             if (style.getOverlay() != null) {
-                style.getOverlay().draw(new Area(area.getX() + 1, area.getY() + 1, dx + 1, area.getH() - 2));
+                style.getOverlay().draw(new Area(area.getX(), area.getY(), dx, area.getH()));
             } else {
                 fillWithGradient(area, dx);
             }
         }
         if (style.getFilledColor() != style.getAlternateFilledColor()) {
-            for (int xx = (int)area.getX() + 1; xx <= area.getX() + dx + 1; ++xx) {
+            for (int xx = (int)area.getX(); xx <= area.getX() + dx; ++xx) {
                 if ((xx & 1) == 0) {
                     continue;
                 }
-                GuiDraw.drawVerticalLine(xx, area.getY() + 1, area.getH() - 2, style.getAlternateFilledColor());
+                GuiDraw.drawVerticalLine(xx, area.getY(), area.getH(), style.getAlternateFilledColor());
             }
         }
     }
 
-    private void fillWithGradient(IArea area, int dx) {
+    private void fillWithGradient(IArea area, float dx) {
         int darker = Color.setLightness(style.getFilledColor(), 0.7f);
-        float half = (area.getH() - 2) / 2;
+        float half = area.getH() / 2;
         GuiDraw.drawStraightGradientRect(
-                new Area(area.getX() + 1, area.getY() + 1, dx + 1, half),
+                new Area(area.getX(), area.getY(), dx, half),
                 darker,
                 style.getFilledColor(),
                 false);
         GuiDraw.drawStraightGradientRect(
-                new Area(area.getX() + 1, area.getY() + 1 + half, dx + 1, area.getH() - 2 - half),
+                new Area(area.getX(), area.getY() + half, dx, area.getH() - half),
                 style.getFilledColor(),
                 darker,
                 false);

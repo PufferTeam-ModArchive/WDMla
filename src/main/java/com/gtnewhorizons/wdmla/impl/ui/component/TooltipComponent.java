@@ -19,7 +19,7 @@ public class TooltipComponent extends Component implements ITooltip {
 
     protected List<IComponent> children;
 
-    public static final IPadding DEFAULT_PROGRESS_DESCRIPTION_PADDING = new Padding(3, 2, 2, 3);
+    public static final IPadding DEFAULT_PROGRESS_DESCRIPTION_PADDING = new Padding(2, 2, 2, 3);
 
     protected TooltipComponent(List<IComponent> children, IPadding padding, ISize size, IDrawable foreground) {
         super(padding, size, foreground);

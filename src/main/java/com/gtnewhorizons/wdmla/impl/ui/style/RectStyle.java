@@ -8,7 +8,7 @@ public class RectStyle implements IRectStyle {
     private int backgroundColor1;
     private int backgroundColor2;
     private int borderColor;
-    private int borderThickness;
+    private float borderThickness;
 
     public RectStyle() {
         this.backgroundColor1 = ColorPalette.TRANSPARENT;
@@ -28,7 +28,7 @@ public class RectStyle implements IRectStyle {
         return this;
     }
 
-    public RectStyle borderThickness(int borderThickness) {
+    public RectStyle borderThickness(float borderThickness) {
         this.borderThickness = borderThickness;
         return this;
     }
@@ -49,7 +49,7 @@ public class RectStyle implements IRectStyle {
     }
 
     @Override
-    public int getBorderThickness() {
+    public float getBorderThickness() {
         return borderColor == ColorPalette.TRANSPARENT ? 0 : borderThickness;
     }
 }

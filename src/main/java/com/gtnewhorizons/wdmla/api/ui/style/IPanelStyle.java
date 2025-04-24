@@ -12,5 +12,5 @@ public interface IPanelStyle {
     /**
      * @return the space pixel between each panel elements
      */
-    int getSpacing();
+    float getSpacing();
 }

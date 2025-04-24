@@ -4,7 +4,11 @@ import static com.gtnewhorizons.wdmla.impl.ui.component.TooltipComponent.DEFAULT
 
 import java.util.Arrays;
 
+import com.gtnewhorizons.wdmla.impl.ui.component.HPanelComponent;
+import com.gtnewhorizons.wdmla.impl.ui.component.ItemComponent;
+import com.gtnewhorizons.wdmla.impl.ui.component.TooltipComponent;
 import com.gtnewhorizons.wdmla.impl.ui.sizer.Padding;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -31,29 +35,40 @@ public enum TestThemeBlockProvider implements IBlockComponentProvider {
 
     @Override
     public void appendTooltip(ITooltip tooltip, BlockAccessor accessor) {
-        tooltip.text("normal");
-        tooltip.child(ThemeHelper.INSTANCE.info("This is info"));
-        tooltip.child(ThemeHelper.INSTANCE.title("This is title"));
-        tooltip.child(ThemeHelper.INSTANCE.success("This is success"));
-        tooltip.child(ThemeHelper.INSTANCE.warning("This is warning"));
-        tooltip.child(ThemeHelper.INSTANCE.danger("This is danger"));
-        tooltip.child(ThemeHelper.INSTANCE.failure("This is failure"));
-        tooltip.child(new TextComponent("This is 0.5 pixel off text.").padding(new Padding(-1f,0,0.5f,0)));
-        tooltip.child(
-                new ProgressComponent(8, 10).style(
-                        new ProgressStyle().color(ColorPalette.ENERGY_FILLED, ColorPalette.ENERGY_FILLED_ALTERNATE))
-                        .child(
-                                new VPanelComponent().padding(DEFAULT_PROGRESS_DESCRIPTION_PADDING)
-                                        .child(new TextComponent("Test Energy: 8μI / 10μI"))));
+        if(!accessor.showDetails()) {
+            tooltip.text("normal");
+            tooltip.child(ThemeHelper.INSTANCE.info("This is info"));
+            tooltip.child(ThemeHelper.INSTANCE.title("This is title"));
+            tooltip.child(ThemeHelper.INSTANCE.success("This is success"));
+            tooltip.child(ThemeHelper.INSTANCE.warning("This is warning"));
+            tooltip.child(ThemeHelper.INSTANCE.danger("This is danger"));
+            tooltip.child(ThemeHelper.INSTANCE.failure("This is failure"));
+        }
+        else {
+            tooltip.child(new TextComponent("This is 0.5 pixel off text.").padding(new Padding(-1f,0,0.5f,0)));
+            for (float i = 0; i < 1; i += 0.2f) {
+                TooltipComponent panel = new HPanelComponent().padding(new Padding(0,0, i,0));
+                for (int j = 0; j < 10; j++) {
+                    panel.child(new ItemComponent(new ItemStack(Blocks.redstone_ore)));
+                }
+                tooltip.child(panel);
+            }
+            tooltip.child(
+                    new ProgressComponent(8, 10).style(
+                                    new ProgressStyle().color(ColorPalette.ENERGY_FILLED, ColorPalette.ENERGY_FILLED_ALTERNATE))
+                            .child(
+                                    new VPanelComponent().padding(DEFAULT_PROGRESS_DESCRIPTION_PADDING)
+                                            .child(new TextComponent("Test Energy: 8μI / 10μI"))));
 
-        tooltip.child(ThemeHelper.INSTANCE.value("The answer", "42"));
-        tooltip.child(
-                ThemeHelper.INSTANCE.furnaceLikeProgress(
-                        Arrays.asList(new ItemStack(Items.egg)),
-                        Arrays.asList(new ItemStack(Items.chicken)),
-                        1,
-                        8,
-                        accessor.showDetails(),
-                        new TextComponent("1 / 8")));
+            tooltip.child(ThemeHelper.INSTANCE.value("The answer", "42"));
+            tooltip.child(
+                    ThemeHelper.INSTANCE.furnaceLikeProgress(
+                            Arrays.asList(new ItemStack(Items.egg)),
+                            Arrays.asList(new ItemStack(Items.chicken)),
+                            1,
+                            8,
+                            accessor.showDetails(),
+                            new TextComponent("1 / 8")));
+        }
     }
 }

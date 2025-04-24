@@ -60,12 +60,12 @@ public class VPanelComponent extends PanelComponent {
 
     @Override
     public float getHeight() {
-        int h = 0;
+        float h = 0;
         for (IComponent child : children) {
             h += child.getHeight();
         }
 
-        int totalSpacing = children.isEmpty() ? 0 : style.getSpacing() * (children.size() - 1);
+        float totalSpacing = children.isEmpty() ? 0 : style.getSpacing() * (children.size() - 1);
         return padding.getTop() + h + totalSpacing + padding.getBottom() + bgStyle.getBorderThickness() * 2;
     }
 

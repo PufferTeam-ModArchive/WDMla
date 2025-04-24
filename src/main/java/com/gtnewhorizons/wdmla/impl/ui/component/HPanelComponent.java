@@ -47,12 +47,12 @@ public class HPanelComponent extends PanelComponent {
 
     @Override
     public float getWidth() {
-        int w = 0;
+        float w = 0;
         for (IComponent child : children) {
             w += child.getWidth();
         }
 
-        int totalSpacing = children.isEmpty() ? 0 : style.getSpacing() * (children.size() - 1);
+        float totalSpacing = children.isEmpty() ? 0 : style.getSpacing() * (children.size() - 1);
         return padding.getLeft() + w + totalSpacing + padding.getRight() + bgStyle.getBorderThickness() * 2;
     }
 

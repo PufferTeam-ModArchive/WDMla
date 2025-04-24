@@ -22,5 +22,5 @@ public interface IRectStyle {
      */
     int getBorderColor();
 
-    int getBorderThickness();
+    float getBorderThickness();
 }
