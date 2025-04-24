@@ -36,6 +36,7 @@ import net.minecraft.block.BlockSkull;
 import net.minecraft.block.BlockStem;
 import net.minecraft.block.BlockStoneSlab;
 import net.minecraft.block.BlockWoodSlab;
+import net.minecraft.entity.EntityMinecartCommandBlock;
 import net.minecraft.entity.item.EntityFallingBlock;
 import net.minecraft.entity.item.EntityItemFrame;
 import net.minecraft.entity.item.EntityMinecartChest;
@@ -124,6 +125,7 @@ public class VanillaPlugin implements IWDMlaPlugin {
         registration.registerEntityComponent(PaintingProvider.INSTANCE, EntityPainting.class);
         registration.registerEntityComponent(ZombieVillagerProvider.INSTANCE, EntityZombie.class);
         registration.registerEntityComponent(ZombieVillagerHeaderProvider.INSTANCE, EntityZombie.class);
+        registration.registerEntityComponent(MinecartCommandBlockProvider.INSTANCE, EntityMinecartCommandBlock.class);
 
         registration.registerItemStorageClient(ItemFrameProvider.INSTANCE);
 
@@ -154,6 +156,7 @@ public class VanillaPlugin implements IWDMlaPlugin {
         registration.registerEntityDataProvider(PrimedTNTProvider.INSTANCE, EntityTNTPrimed.class);
         registration.registerEntityDataProvider(ChickenProvider.INSTANCE, EntityChicken.class);
         registration.registerEntityDataProvider(ZombieVillagerProvider.INSTANCE, EntityZombie.class);
+        registration.registerEntityDataProvider(MinecartCommandBlockProvider.INSTANCE, EntityMinecartCommandBlock.class);
 
         registration.registerItemStorage(ItemStorageProvider.Extension.INSTANCE, BlockChest.class);
         registration.registerItemStorage(ItemStorageProvider.Extension.INSTANCE, BlockEnderChest.class);
