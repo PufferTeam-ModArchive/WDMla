@@ -8,13 +8,22 @@ import org.jetbrains.annotations.Nullable;
 
 import com.gtnewhorizons.wdmla.api.ui.IComponent;
 
-@ApiStatus.Experimental
+/**
+ * This is an ItemStack wrapper which is used in client Waila storage view.<br>
+ * It allows ItemStack to be linked with custom amount like "1k" or custom description line.<br>
+ */
 public class ItemView {
 
     public ItemStack item;
 
+    /**
+     * Any text that should be placed at the right bottom of ItemStack
+     */
     @Nullable
     public String amountText;
+    /**
+     * A full line description about this ItemStack
+     */
     @Nullable
     public IComponent description;
 
@@ -30,18 +39,5 @@ public class ItemView {
     public ItemView description(IComponent description) {
         this.description = description;
         return this;
-    }
-
-    public static NBTTagCompound encode(ItemView view) {
-        NBTTagCompound nbt = new NBTTagCompound();
-        view.item.writeToNBT(nbt);
-        nbt.setString("amount", view.amountText);
-        return nbt;
-    }
-
-    public static ItemView decode(NBTTagCompound nbt) {
-        ItemView view = new ItemView(ItemStack.loadItemStackFromNBT(nbt));
-        view.amountText = nbt.getString("amount");
-        return view;
     }
 }

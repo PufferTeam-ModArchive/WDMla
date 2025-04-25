@@ -22,26 +22,36 @@ import com.gtnewhorizons.wdmla.api.view.ProgressView;
 public interface IWDMlaCommonRegistration {
 
     /**
-     * registers server side provider that provides block info
+     * Registers server side provider that provides block info
      * 
      * @param dataProvider           provider instance
-     * @param blockOrTileEntityClass the block or tile entity class the provider want to support
+     * @param blockOrTileEntityClass the block or tile entity class the provider wants to support
      */
     void registerBlockDataProvider(IServerDataProvider<BlockAccessor> dataProvider, Class<?> blockOrTileEntityClass);
 
     /**
-     * registers server side provider that provides entity info
+     * Registers server side provider that provides entity info
      * 
      * @param dataProvider provider instance
-     * @param entityClass  the entity class the provider want to support
+     * @param entityClass  the entity class the provider wants to support
      */
     void registerEntityDataProvider(IServerDataProvider<EntityAccessor> dataProvider,
             Class<? extends Entity> entityClass);
 
-    @ApiStatus.Experimental
+    /**
+     * Registers server side item storage provider.<br>
+     *
+     * @param provider the extension provider instance
+     * @param clazz the tile entity or entity class the provider wants to support
+     */
     <T> void registerItemStorage(IServerExtensionProvider<ItemStack> provider, Class<? extends T> clazz);
 
-    @ApiStatus.Experimental
+    /**
+     * Registers server side fluid storage provider.<br>
+     *
+     * @param provider the extension provider instance
+     * @param clazz the tile entity or entity class the provider wants to support
+     */
     <T> void registerFluidStorage(IServerExtensionProvider<FluidView.Data> provider, Class<? extends T> clazz);
 
     @ApiStatus.Experimental

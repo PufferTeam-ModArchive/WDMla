@@ -30,13 +30,26 @@ import com.gtnewhorizons.wdmla.impl.ui.style.PanelStyle;
 import com.gtnewhorizons.wdmla.impl.ui.style.ProgressStyle;
 import com.gtnewhorizons.wdmla.impl.ui.style.RectStyle;
 
-@ApiStatus.Experimental
+/**
+ * The client side collections of views that is processed from ViewGroup.
+ */
 public class ClientViewGroup<T> {
 
     public final List<T> views;
+    /**
+     * The title of the view group which is rendered on the top section of the group.
+     */
     @Nullable
     public String title;
+    /**
+     * Used to decide the color of a progress bar across the view group.
+     */
+    @ApiStatus.Experimental
     public MessageType messageType = MessageType.NORMAL;
+    /**
+     * Used to render a progress bar across the view group (0~1).
+     */
+    @ApiStatus.Experimental
     public float boxProgress;
     @Nullable
     public NBTTagCompound extraData;

@@ -4,18 +4,26 @@ import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fluids.FluidStack;
 
-import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Nullable;
 
-@ApiStatus.Experimental
+/**
+ * This is a Fluid Tank wrapper which is used in client Waila fluid storage view.<br>
+ */
 public class FluidView {
 
+    /**
+     * This is only used to render Fluid Stack icon on tank. <br>
+     * Do not expect the other states of fluid is correct here.
+     */
     @Nullable
-    public FluidStack overlay; // requires FluidStack to get icon
+    public FluidStack overlay;
     public long current;
     public long max;
     @Nullable
     public String fluidName;
+    /**
+     * the override text or any component to be displayed instead of fluid name
+     */
     @Nullable
     public IComponent description;
     /**
@@ -48,6 +56,9 @@ public class FluidView {
         return fluidView;
     }
 
+    /**
+     * The Fluid Tank data representation for synchronization
+     */
     public static class Data {
 
         public final FluidStack fluid;

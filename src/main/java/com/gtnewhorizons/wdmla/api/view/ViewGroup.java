@@ -9,13 +9,22 @@ import net.minecraft.nbt.NBTTagList;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Nullable;
 
-@ApiStatus.Experimental
+/**
+ * The collection of server side views, or any class that needs to be grouped in WDMla view creation process.
+ * This class can be synced from server to client
+ */
 public class ViewGroup<T> {
 
     public List<T> views;
 
+    /**
+     * The id of this viewGroup, which is convenient for a simple if state processing.
+     */
     @Nullable
     public String id;
+    /**
+     * The extra data about the views that have to be synced from server to client
+     */
     @Nullable
     protected NBTTagCompound extraData;
 

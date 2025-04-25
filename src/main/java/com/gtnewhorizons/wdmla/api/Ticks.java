@@ -12,7 +12,6 @@ import org.jetbrains.annotations.ApiStatus;
  * 
  * @see java.time.temporal.ChronoUnit
  */
-@ApiStatus.Experimental
 public enum Ticks implements TemporalUnit {
 
     INSTANCE;
