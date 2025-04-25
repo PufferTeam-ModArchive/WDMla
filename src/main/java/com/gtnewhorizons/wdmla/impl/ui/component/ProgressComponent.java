@@ -57,10 +57,14 @@ public class ProgressComponent extends TooltipComponent {
     public void tick(float x, float y) {
         rectDrawable.draw(new Area(x + padding.getLeft(), y + padding.getTop(), size.getW(), size.getH()));
         float thickness = rectStyle.getBorderThickness();
-        foreground.draw(new Area(x + padding.getLeft() + thickness,
-                y + padding.getTop() + thickness, size.getW() - thickness * 2, size.getH() - thickness * 2));
+        foreground.draw(
+                new Area(
+                        x + padding.getLeft() + thickness,
+                        y + padding.getTop() + thickness,
+                        size.getW() - thickness * 2,
+                        size.getH() - thickness * 2));
 
-        if(!children.isEmpty()) {
+        if (!children.isEmpty()) {
             children.get(0).tick(x + padding.getLeft() + thickness, y + padding.getTop() + thickness);
         }
     }

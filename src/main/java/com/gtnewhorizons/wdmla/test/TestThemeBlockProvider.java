@@ -4,11 +4,6 @@ import static com.gtnewhorizons.wdmla.impl.ui.component.TooltipComponent.DEFAULT
 
 import java.util.Arrays;
 
-import com.gtnewhorizons.wdmla.impl.ui.StatusHelper;
-import com.gtnewhorizons.wdmla.impl.ui.component.HPanelComponent;
-import com.gtnewhorizons.wdmla.impl.ui.component.ItemComponent;
-import com.gtnewhorizons.wdmla.impl.ui.component.TooltipComponent;
-import com.gtnewhorizons.wdmla.impl.ui.sizer.Padding;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -20,12 +15,16 @@ import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
 import com.gtnewhorizons.wdmla.api.ui.ColorPalette;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import com.gtnewhorizons.wdmla.impl.ui.StatusHelper;
 import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
+import com.gtnewhorizons.wdmla.impl.ui.component.HPanelComponent;
+import com.gtnewhorizons.wdmla.impl.ui.component.ItemComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.ProgressComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.TextComponent;
+import com.gtnewhorizons.wdmla.impl.ui.component.TooltipComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.VPanelComponent;
+import com.gtnewhorizons.wdmla.impl.ui.sizer.Padding;
 import com.gtnewhorizons.wdmla.impl.ui.style.ProgressStyle;
-import net.minecraft.util.StatCollector;
 
 public enum TestThemeBlockProvider implements IBlockComponentProvider {
 
@@ -38,8 +37,7 @@ public enum TestThemeBlockProvider implements IBlockComponentProvider {
 
     @Override
     public void appendTooltip(ITooltip tooltip, BlockAccessor accessor) {
-        if(accessor.getTileEntity() instanceof TileEntitySkull skull
-                && skull.func_145904_a() == 1) {
+        if (accessor.getTileEntity() instanceof TileEntitySkull skull && skull.func_145904_a() == 1) {
             tooltip.child(StatusHelper.INSTANCE.structureIncomplete());
             tooltip.child(StatusHelper.INSTANCE.hasProblem());
             tooltip.child(StatusHelper.INSTANCE.runningFine());
@@ -51,7 +49,7 @@ public enum TestThemeBlockProvider implements IBlockComponentProvider {
             return;
         }
 
-        if(!accessor.showDetails()) {
+        if (!accessor.showDetails()) {
             tooltip.text("normal");
             tooltip.child(ThemeHelper.INSTANCE.info("This is info"));
             tooltip.child(ThemeHelper.INSTANCE.title("This is title"));
@@ -59,11 +57,10 @@ public enum TestThemeBlockProvider implements IBlockComponentProvider {
             tooltip.child(ThemeHelper.INSTANCE.warning("This is warning"));
             tooltip.child(ThemeHelper.INSTANCE.danger("This is danger"));
             tooltip.child(ThemeHelper.INSTANCE.failure("This is failure"));
-        }
-        else {
-            tooltip.child(new TextComponent("This is 0.5 pixel off text.").padding(new Padding(-1f,0,0.5f,0)));
+        } else {
+            tooltip.child(new TextComponent("This is 0.5 pixel off text.").padding(new Padding(-1f, 0, 0.5f, 0)));
             for (float i = 0; i < 1; i += 0.2f) {
-                TooltipComponent panel = new HPanelComponent().padding(new Padding(0,0, i,0));
+                TooltipComponent panel = new HPanelComponent().padding(new Padding(0, 0, i, 0));
                 for (int j = 0; j < 10; j++) {
                     panel.child(new ItemComponent(new ItemStack(Blocks.redstone_ore)));
                 }
@@ -71,7 +68,7 @@ public enum TestThemeBlockProvider implements IBlockComponentProvider {
             }
             tooltip.child(
                     new ProgressComponent(8, 10).style(
-                                    new ProgressStyle().color(ColorPalette.ENERGY_FILLED, ColorPalette.ENERGY_FILLED_ALTERNATE))
+                            new ProgressStyle().color(ColorPalette.ENERGY_FILLED, ColorPalette.ENERGY_FILLED_ALTERNATE))
                             .child(
                                     new VPanelComponent().padding(DEFAULT_PROGRESS_DESCRIPTION_PADDING)
                                             .child(new TextComponent("Test Energy: 8μI / 10μI"))));

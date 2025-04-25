@@ -3,11 +3,6 @@ package mcp.mobius.waila.network;
 import java.io.IOException;
 import java.util.EnumMap;
 
-import com.gtnewhorizons.wdmla.WDMla;
-import com.gtnewhorizons.wdmla.test.TestMode;
-import cpw.mods.fml.common.network.internal.FMLProxyPacket;
-import io.netty.channel.ChannelInboundHandlerAdapter;
-import mcp.mobius.waila.Waila;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.CompressedStreamTools;
 import net.minecraft.nbt.NBTSizeTracker;
@@ -15,16 +10,21 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetHandlerPlayServer;
 
 import com.google.common.base.Charsets;
+import com.gtnewhorizons.wdmla.WDMla;
+import com.gtnewhorizons.wdmla.test.TestMode;
 
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.network.FMLEmbeddedChannel;
 import cpw.mods.fml.common.network.FMLIndexedMessageToMessageCodec;
 import cpw.mods.fml.common.network.FMLOutboundHandler;
 import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.network.internal.FMLProxyPacket;
 import cpw.mods.fml.relauncher.Side;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandlerAdapter;
+import mcp.mobius.waila.Waila;
 
 /**
  * root packet handler that sends and receives packets
@@ -54,8 +54,9 @@ public enum WailaPacketHandler {
     private void addClientHandlers() {
         FMLEmbeddedChannel channel = this.channels.get(Side.CLIENT);
         String codec = channel.findChannelHandlerNameForType(WailaCodec.class);
-        if(WDMla.testMode == TestMode.PACKET) {
+        if (WDMla.testMode == TestMode.PACKET) {
             channel.pipeline().addBefore(codec, "packetReceiveLogger", new ChannelInboundHandlerAdapter() {
+
                 @Override
                 public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
                     if (msg instanceof FMLProxyPacket) {

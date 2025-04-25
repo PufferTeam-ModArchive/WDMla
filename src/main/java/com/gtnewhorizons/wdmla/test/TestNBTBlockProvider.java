@@ -4,7 +4,6 @@ import static com.gtnewhorizons.wdmla.impl.ui.component.TooltipComponent.DEFAULT
 
 import java.util.Random;
 
-import com.gtnewhorizons.wdmla.impl.ui.style.RectStyle;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -24,6 +23,7 @@ import com.gtnewhorizons.wdmla.impl.ui.component.TextComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.VPanelComponent;
 import com.gtnewhorizons.wdmla.impl.ui.sizer.Padding;
 import com.gtnewhorizons.wdmla.impl.ui.sizer.Size;
+import com.gtnewhorizons.wdmla.impl.ui.style.RectStyle;
 
 import mcp.mobius.waila.overlay.DisplayUtil;
 
@@ -84,7 +84,8 @@ public enum TestNBTBlockProvider implements IBlockComponentProvider, IServerData
 
         if (!allEmpty) {
             IPadding itemPadding = new Padding().vertical(2);
-            ITooltip itemSection = new VPanelComponent().bgStyle(new RectStyle().backgroundColor(0x8000ffff).borderColor(0xff00ffff));
+            ITooltip itemSection = new VPanelComponent()
+                    .bgStyle(new RectStyle().backgroundColor(0x8000ffff).borderColor(0xff00ffff));
             if (items[0] != null) {
                 itemSection.horizontal().text("In: ", itemPadding).item(items[0], new Padding(), new Size(10, 10))
                         .text(" " + DisplayUtil.itemDisplayNameShort(items[0]), itemPadding);

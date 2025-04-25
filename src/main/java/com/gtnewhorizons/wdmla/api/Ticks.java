@@ -4,8 +4,6 @@ import java.time.Duration;
 import java.time.temporal.Temporal;
 import java.time.temporal.TemporalUnit;
 
-import org.jetbrains.annotations.ApiStatus;
-
 /**
  * Implements Minecraft Tick for {@code java.time.Duration} package.<br>
  * TODO: make a PR to GTNHLib along with Render Tick

@@ -29,7 +29,7 @@ public class PotionIcon implements IIcon {
 
     @Override
     public float getMaxU() {
-        return (float)(iconIndex % 8 * 18 + 18) / TEX_WIDTH;
+        return (float) (iconIndex % 8 * 18 + 18) / TEX_WIDTH;
     }
 
     @Override
@@ -39,17 +39,17 @@ public class PotionIcon implements IIcon {
 
     @Override
     public float getMinV() {
-        return (float)(198 + iconIndex / 8 * 18) / TEX_HEIGHT;
+        return (float) (198 + iconIndex / 8 * 18) / TEX_HEIGHT;
     }
 
     @Override
     public float getMaxV() {
-        return (float)(198 + iconIndex / 8 * 18 + 18) / TEX_HEIGHT;
+        return (float) (198 + iconIndex / 8 * 18 + 18) / TEX_HEIGHT;
     }
 
     @Override
     public float getInterpolatedV(double interpolation) {
-        return (198 + (int)(iconIndex / 8) * 18 + 18 * (float) interpolation) / TEX_HEIGHT;
+        return (198 + (int) (iconIndex / 8) * 18 + 18 * (float) interpolation) / TEX_HEIGHT;
     }
 
     @Override

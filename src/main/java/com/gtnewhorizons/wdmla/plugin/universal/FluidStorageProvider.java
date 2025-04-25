@@ -120,8 +120,7 @@ public class FluidStorageProvider<T extends Accessor> implements IComponentProvi
                     } else {
                         description = helper.info(currentStr);
                     }
-                    description = new HPanelComponent()
-                            .child(helper.info(fluidName)).text(": ").child(description);
+                    description = new HPanelComponent().child(helper.info(fluidName)).text(": ").child(description);
                 }
                 switch (showMode) {
                     case GAUGE -> {
@@ -133,8 +132,8 @@ public class FluidStorageProvider<T extends Accessor> implements IComponentProvi
                             progressStyle.color(General.progressColor.filled, General.progressColor.border);
                         }
                         tooltip.child(
-                                new ProgressComponent(view.current, view.max).style(progressStyle)
-                                        .child(new VPanelComponent().padding(DEFAULT_PROGRESS_DESCRIPTION_PADDING)
+                                new ProgressComponent(view.current, view.max).style(progressStyle).child(
+                                        new VPanelComponent().padding(DEFAULT_PROGRESS_DESCRIPTION_PADDING)
                                                 .child(description)));
                     }
                     case ICON_TEXT -> {

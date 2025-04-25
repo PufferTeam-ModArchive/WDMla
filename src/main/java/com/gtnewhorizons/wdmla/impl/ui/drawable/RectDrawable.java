@@ -24,7 +24,8 @@ public class RectDrawable implements IDrawable {
 
     @Override
     public void draw(IArea area) {
-        if (style.getBackgroundColor1() != ColorPalette.TRANSPARENT || style.getBackgroundColor2() != ColorPalette.TRANSPARENT) {
+        if (style.getBackgroundColor1() != ColorPalette.TRANSPARENT
+                || style.getBackgroundColor2() != ColorPalette.TRANSPARENT) {
             if (area.getH() == 1) {
                 GuiDraw.drawHorizontalLine(area.getX(), area.getY(), area.getW(), style.getBackgroundColor1());
             } else if (area.getW() == 1) {

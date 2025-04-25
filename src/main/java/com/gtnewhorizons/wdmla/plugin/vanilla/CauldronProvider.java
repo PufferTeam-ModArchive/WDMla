@@ -3,7 +3,6 @@ package com.gtnewhorizons.wdmla.plugin.vanilla;
 import java.util.Arrays;
 import java.util.List;
 
-import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -14,6 +13,7 @@ import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.api.view.ClientViewGroup;
 import com.gtnewhorizons.wdmla.api.view.FluidView;
+import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
 import com.gtnewhorizons.wdmla.plugin.universal.FluidStorageProvider;
 
 public enum CauldronProvider implements IBlockComponentProvider {
@@ -29,7 +29,7 @@ public enum CauldronProvider implements IBlockComponentProvider {
         }
         fluidView.description = ThemeHelper.INSTANCE.info(
                 accessor.getMetadata() == 0 ? StatCollector.translateToLocal("hud.msg.wdmla.empty")
-                : String.format("%d / 3", accessor.getMetadata()));
+                        : String.format("%d / 3", accessor.getMetadata()));
         List<ClientViewGroup<FluidView>> viewList = Arrays.asList(new ClientViewGroup<>(Arrays.asList(fluidView)));
         FluidStorageProvider.getBlock().append(tooltip, accessor, viewList);
     }

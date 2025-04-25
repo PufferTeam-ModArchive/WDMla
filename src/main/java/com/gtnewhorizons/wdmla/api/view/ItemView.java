@@ -1,9 +1,7 @@
 package com.gtnewhorizons.wdmla.api.view;
 
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 
-import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Nullable;
 
 import com.gtnewhorizons.wdmla.api.ui.IComponent;

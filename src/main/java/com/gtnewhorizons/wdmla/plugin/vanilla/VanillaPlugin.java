@@ -158,7 +158,8 @@ public class VanillaPlugin implements IWDMlaPlugin {
         registration.registerEntityDataProvider(PrimedTNTProvider.INSTANCE, EntityTNTPrimed.class);
         registration.registerEntityDataProvider(ChickenProvider.INSTANCE, EntityChicken.class);
         registration.registerEntityDataProvider(ZombieVillagerProvider.INSTANCE, EntityZombie.class);
-        registration.registerEntityDataProvider(MinecartCommandBlockProvider.INSTANCE, EntityMinecartCommandBlock.class);
+        registration
+                .registerEntityDataProvider(MinecartCommandBlockProvider.INSTANCE, EntityMinecartCommandBlock.class);
         registration.registerEntityDataProvider(MinecartFurnaceProvider.INSTANCE, EntityMinecartFurnace.class);
 
         registration.registerItemStorage(ItemStorageProvider.Extension.INSTANCE, BlockChest.class);

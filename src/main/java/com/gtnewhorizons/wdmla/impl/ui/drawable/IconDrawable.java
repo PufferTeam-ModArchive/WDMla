@@ -47,14 +47,6 @@ public class IconDrawable implements IDrawable {
         float th = fullV * h / area.getH();
 
         Minecraft.getMinecraft().getTextureManager().bindTexture(path);
-        GuiDraw.drawTexturedModelRect(
-                x,
-                y,
-                u0,
-                v0,
-                w,
-                h,
-                tw,
-                th);
+        GuiDraw.drawTexturedModelRect(x, y, u0, v0, w, h, tw, th);
     }
 }

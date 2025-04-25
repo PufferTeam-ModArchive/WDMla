@@ -1,9 +1,7 @@
 package com.gtnewhorizons.wdmla.overlay;
 
-import com.gtnewhorizons.wdmla.impl.ui.sizer.Area;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.client.gui.Gui;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.RenderItem;
@@ -11,7 +9,6 @@ import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 
@@ -22,6 +19,7 @@ import org.lwjgl.opengl.GL12;
 import com.gtnewhorizons.wdmla.api.ui.ColorPalette;
 import com.gtnewhorizons.wdmla.api.ui.sizer.IArea;
 import com.gtnewhorizons.wdmla.config.General;
+import com.gtnewhorizons.wdmla.impl.ui.sizer.Area;
 
 import mcp.mobius.waila.api.SpecialChars;
 import mcp.mobius.waila.utils.WailaExceptionHandler;
@@ -108,21 +106,10 @@ public final class GuiDraw {
             GL11.glScalef(xScale, yScale, 1);
 
             net.minecraft.client.renderer.RenderHelper.enableGUIStandardItemLighting();
-            renderItem.renderItemAndEffectIntoGUI(
-                    fontRenderer,
-                    textureManager,
-                    stack,
-                    0,
-                    0);
+            renderItem.renderItemAndEffectIntoGUI(fontRenderer, textureManager, stack, 0, 0);
             if (drawOverlay) {
                 if (stack.stackSize > 0) {
-                    renderItem.renderItemOverlayIntoGUI(
-                            fontRenderer,
-                            textureManager,
-                            stack,
-                            0,
-                            0,
-                            stackSizeOverride);
+                    renderItem.renderItemOverlayIntoGUI(fontRenderer, textureManager, stack, 0, 0, stackSizeOverride);
                 } else if (General.ghostProduct) {
                     if (stackSizeOverride == null) {
                         stackSizeOverride = String.valueOf(stack.stackSize);

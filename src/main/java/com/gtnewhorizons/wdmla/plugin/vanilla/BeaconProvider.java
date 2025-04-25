@@ -1,6 +1,5 @@
 package com.gtnewhorizons.wdmla.plugin.vanilla;
 
-import com.gtnewhorizons.wdmla.impl.ui.StatusHelper;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.tileentity.TileEntityBeacon;
@@ -11,6 +10,7 @@ import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
 import com.gtnewhorizons.wdmla.api.provider.IServerDataProvider;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import com.gtnewhorizons.wdmla.impl.ui.StatusHelper;
 import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
 
 public enum BeaconProvider implements IBlockComponentProvider, IServerDataProvider<BlockAccessor> {

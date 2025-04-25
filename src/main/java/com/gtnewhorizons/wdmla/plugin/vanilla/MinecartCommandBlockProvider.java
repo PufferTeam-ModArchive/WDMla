@@ -1,17 +1,20 @@
 package com.gtnewhorizons.wdmla.plugin.vanilla;
 
+import net.minecraft.entity.EntityMinecartCommandBlock;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.ResourceLocation;
+
+import org.apache.commons.lang3.StringUtils;
+
 import com.gtnewhorizons.wdmla.api.accessor.EntityAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IEntityComponentProvider;
 import com.gtnewhorizons.wdmla.api.provider.IServerDataProvider;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.config.PluginsConfig;
-import net.minecraft.entity.EntityMinecartCommandBlock;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.util.ResourceLocation;
-import org.apache.commons.lang3.StringUtils;
 
 public enum MinecartCommandBlockProvider implements IEntityComponentProvider, IServerDataProvider<EntityAccessor> {
+
     INSTANCE;
 
     @Override

@@ -42,7 +42,7 @@ public interface IWDMlaCommonRegistration {
      * Registers server side item storage provider.<br>
      *
      * @param provider the extension provider instance
-     * @param clazz the tile entity or entity class the provider wants to support
+     * @param clazz    the tile entity or entity class the provider wants to support
      */
     <T> void registerItemStorage(IServerExtensionProvider<ItemStack> provider, Class<? extends T> clazz);
 
@@ -50,7 +50,7 @@ public interface IWDMlaCommonRegistration {
      * Registers server side fluid storage provider.<br>
      *
      * @param provider the extension provider instance
-     * @param clazz the tile entity or entity class the provider wants to support
+     * @param clazz    the tile entity or entity class the provider wants to support
      */
     <T> void registerFluidStorage(IServerExtensionProvider<FluidView.Data> provider, Class<? extends T> clazz);
 

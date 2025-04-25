@@ -1,10 +1,11 @@
 package com.gtnewhorizons.wdmla.api.view;
 
-import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fluids.FluidStack;
 
 import org.jetbrains.annotations.Nullable;
+
+import com.gtnewhorizons.wdmla.api.ui.IComponent;
 
 /**
  * This is a Fluid Tank wrapper which is used in client Waila fluid storage view.<br>

@@ -1,12 +1,13 @@
 package com.gtnewhorizons.wdmla.impl.ui;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.util.StatCollector;
+
 import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.HPanelComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.IconComponent;
 import com.gtnewhorizons.wdmla.impl.ui.sizer.Size;
 import com.gtnewhorizons.wdmla.overlay.WDMlaUIIcons;
-import net.minecraft.client.Minecraft;
-import net.minecraft.util.StatCollector;
 
 /**
  * Use this class to unify common object status
@@ -22,46 +23,56 @@ public class StatusHelper {
     }
 
     public IComponent structureIncomplete() {
-        return new HPanelComponent()
-                .child(new IconComponent(WDMlaUIIcons.ERROR, WDMlaUIIcons.ERROR.texPath).size(new Size(ICON_SIZE, ICON_SIZE)))
-                .child(ThemeHelper.INSTANCE.failure(StatCollector.translateToLocal("hud.msg.wdmla.incomplete.structure")))
-                .child(new IconComponent(WDMlaUIIcons.ERROR, WDMlaUIIcons.ERROR.texPath).size(new Size(ICON_SIZE, ICON_SIZE)));
+        return new HPanelComponent().child(
+                new IconComponent(WDMlaUIIcons.ERROR, WDMlaUIIcons.ERROR.texPath).size(new Size(ICON_SIZE, ICON_SIZE)))
+                .child(
+                        ThemeHelper.INSTANCE
+                                .failure(StatCollector.translateToLocal("hud.msg.wdmla.incomplete.structure")))
+                .child(
+                        new IconComponent(WDMlaUIIcons.ERROR, WDMlaUIIcons.ERROR.texPath)
+                                .size(new Size(ICON_SIZE, ICON_SIZE)));
     }
 
     public IComponent hasProblem() {
-        return new HPanelComponent()
-                .child(new IconComponent(WDMlaUIIcons.ERROR, WDMlaUIIcons.ERROR.texPath).size(new Size(ICON_SIZE, ICON_SIZE)))
-                .child(ThemeHelper.INSTANCE.failure(StatCollector.translateToLocal("hud.msg.wdmla.has.problem")))
-                .child(new IconComponent(WDMlaUIIcons.ERROR, WDMlaUIIcons.ERROR.texPath).size(new Size(ICON_SIZE, ICON_SIZE)));
+        return new HPanelComponent().child(
+                new IconComponent(WDMlaUIIcons.ERROR, WDMlaUIIcons.ERROR.texPath).size(new Size(ICON_SIZE, ICON_SIZE)))
+                .child(ThemeHelper.INSTANCE.failure(StatCollector.translateToLocal("hud.msg.wdmla.has.problem"))).child(
+                        new IconComponent(WDMlaUIIcons.ERROR, WDMlaUIIcons.ERROR.texPath)
+                                .size(new Size(ICON_SIZE, ICON_SIZE)));
     }
 
     public IComponent runningFine() {
-        return new HPanelComponent()
-                .child(new IconComponent(WDMlaUIIcons.START, WDMlaUIIcons.START.texPath).size(new Size(ICON_SIZE, ICON_SIZE)))
+        return new HPanelComponent().child(
+                new IconComponent(WDMlaUIIcons.START, WDMlaUIIcons.START.texPath).size(new Size(ICON_SIZE, ICON_SIZE)))
                 .child(ThemeHelper.INSTANCE.success(StatCollector.translateToLocal("hud.msg.wdmla.running.fine")));
     }
 
     public IComponent idle() {
-        return new HPanelComponent()
-                .child(new IconComponent(WDMlaUIIcons.IDLE, WDMlaUIIcons.IDLE.texPath).size(new Size(ICON_SIZE, ICON_SIZE)))
+        return new HPanelComponent().child(
+                new IconComponent(WDMlaUIIcons.IDLE, WDMlaUIIcons.IDLE.texPath).size(new Size(ICON_SIZE, ICON_SIZE)))
                 .child(ThemeHelper.INSTANCE.info(StatCollector.translateToLocal("hud.msg.wdmla.idle")));
     }
 
     public IComponent workingDisabled() {
-        return new HPanelComponent()
-                .child(new IconComponent(WDMlaUIIcons.PAUSE, WDMlaUIIcons.PAUSE.texPath).size(new Size(ICON_SIZE, ICON_SIZE)))
+        return new HPanelComponent().child(
+                new IconComponent(WDMlaUIIcons.PAUSE, WDMlaUIIcons.PAUSE.texPath).size(new Size(ICON_SIZE, ICON_SIZE)))
                 .child(ThemeHelper.INSTANCE.info(StatCollector.translateToLocal("hud.msg.wdmla.working.disabled")));
     }
 
     public IComponent insufficientEnergy() {
-        return new HPanelComponent()
-                .child(new IconComponent(WDMlaUIIcons.WARNING, WDMlaUIIcons.WARNING.texPath).size(new Size(ICON_SIZE, ICON_SIZE)))
-                .child(ThemeHelper.INSTANCE.warning(StatCollector.translateToLocal("hud.msg.wdmla.insufficient.energy")));
+        return new HPanelComponent().child(
+                new IconComponent(WDMlaUIIcons.WARNING, WDMlaUIIcons.WARNING.texPath)
+                        .size(new Size(ICON_SIZE, ICON_SIZE)))
+                .child(
+                        ThemeHelper.INSTANCE
+                                .warning(StatCollector.translateToLocal("hud.msg.wdmla.insufficient.energy")));
     }
 
     public IComponent insufficientFuel() {
         return new HPanelComponent()
-                .child(new IconComponent(WDMlaUIIcons.WARNING, WDMlaUIIcons.WARNING.texPath).size(new Size(ICON_SIZE, ICON_SIZE)))
+                .child(
+                        new IconComponent(WDMlaUIIcons.WARNING, WDMlaUIIcons.WARNING.texPath)
+                                .size(new Size(ICON_SIZE, ICON_SIZE)))
                 .child(ThemeHelper.INSTANCE.warning(StatCollector.translateToLocal("hud.msg.wdmla.insufficient.fuel")));
     }
 }

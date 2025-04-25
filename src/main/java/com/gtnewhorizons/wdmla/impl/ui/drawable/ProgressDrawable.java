@@ -43,7 +43,7 @@ public class ProgressDrawable implements IDrawable {
             }
         }
         if (style.getFilledColor() != style.getAlternateFilledColor()) {
-            for (int xx = (int)area.getX(); xx <= area.getX() + dx; ++xx) {
+            for (int xx = (int) area.getX(); xx <= area.getX() + dx; ++xx) {
                 if ((xx & 1) == 0) {
                     continue;
                 }

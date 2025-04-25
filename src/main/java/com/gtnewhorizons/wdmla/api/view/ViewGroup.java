@@ -6,12 +6,11 @@ import java.util.List;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 
-import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * The collection of server side views, or any class that needs to be grouped in WDMla view creation process.
- * This class can be synced from server to client
+ * The collection of server side views, or any class that needs to be grouped in WDMla view creation process. This class
+ * can be synced from server to client
  */
 public class ViewGroup<T> {
 

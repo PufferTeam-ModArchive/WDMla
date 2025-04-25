@@ -2,11 +2,10 @@ package com.gtnewhorizons.wdmla.api.provider;
 
 import java.util.List;
 
-import com.gtnewhorizons.wdmla.api.view.ClientViewGroup;
-import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Nullable;
 
 import com.gtnewhorizons.wdmla.api.accessor.Accessor;
+import com.gtnewhorizons.wdmla.api.view.ClientViewGroup;
 import com.gtnewhorizons.wdmla.api.view.ViewGroup;
 
 /**
@@ -25,6 +24,7 @@ public interface IServerExtensionProvider<T> extends IWDMlaProvider {
 
     /**
      * should this provider on the client side send the packet for target data request?
+     * 
      * @param accessor current target info
      */
     default boolean shouldRequestData(Accessor accessor) {

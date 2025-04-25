@@ -4,9 +4,6 @@ import static mcp.mobius.waila.api.SpecialChars.ITALIC;
 
 import java.util.List;
 
-import com.gtnewhorizons.wdmla.impl.ui.component.IconComponent;
-import com.gtnewhorizons.wdmla.impl.ui.sizer.Padding;
-import com.gtnewhorizons.wdmla.overlay.WDMlaUIIcons;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.item.ItemStack;
@@ -23,11 +20,14 @@ import com.gtnewhorizons.wdmla.api.ui.MessageType;
 import com.gtnewhorizons.wdmla.config.General;
 import com.gtnewhorizons.wdmla.impl.format.TimeFormattingPattern;
 import com.gtnewhorizons.wdmla.impl.ui.component.HPanelComponent;
+import com.gtnewhorizons.wdmla.impl.ui.component.IconComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.ItemComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.TextComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.VPanelComponent;
+import com.gtnewhorizons.wdmla.impl.ui.sizer.Padding;
 import com.gtnewhorizons.wdmla.impl.ui.sizer.Size;
 import com.gtnewhorizons.wdmla.impl.ui.style.TextStyle;
+import com.gtnewhorizons.wdmla.overlay.WDMlaUIIcons;
 
 import mcp.mobius.waila.overlay.DisplayUtil;
 import mcp.mobius.waila.utils.ModIdentification;
@@ -144,9 +144,12 @@ public class ThemeHelper {
                     hPanel.item(inputStack);
                 }
             }
-            float ratio = (float)currentProgress / maxProgress;
-            hPanel.padding(new Padding().horizontal(2)).child(new IconComponent(WDMlaUIIcons.FURNACE_BG, WDMlaUIIcons.FURNACE_BG.texPath).padding(new Padding())
-                    .child(new IconComponent(WDMlaUIIcons.FURNACE, WDMlaUIIcons.FURNACE.texPath).clip(0f,0f, ratio, 1f).padding(new Padding())));
+            float ratio = (float) currentProgress / maxProgress;
+            hPanel.padding(new Padding().horizontal(2)).child(
+                    new IconComponent(WDMlaUIIcons.FURNACE_BG, WDMlaUIIcons.FURNACE_BG.texPath).padding(new Padding())
+                            .child(
+                                    new IconComponent(WDMlaUIIcons.FURNACE, WDMlaUIIcons.FURNACE.texPath)
+                                            .clip(0f, 0f, ratio, 1f).padding(new Padding())));
             for (ItemStack outputStack : output) {
                 if (outputStack != null) {
                     hPanel.item(outputStack);

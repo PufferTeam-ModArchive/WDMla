@@ -20,7 +20,7 @@ public class IconComponent extends TooltipComponent {
     }
 
     public IconComponent clip(float suRatio, float svRatio, float twRatio, float thRatio) {
-        ((IconDrawable)foreground).clip(suRatio, svRatio, twRatio, thRatio);
+        ((IconDrawable) foreground).clip(suRatio, svRatio, twRatio, thRatio);
         return this;
     }
 }
