@@ -118,6 +118,13 @@ hud.msg.wdmla.block.registry.data.short=[%d:%d] | %s
 hud.msg.wdmla.entity.registry.data.short=[%d:%d] | %s
 hud.msg.wdmla.coordinates="%s:%s:%s"
 hud.msg.wdmla.empty=Empty
+hud.msg.wdmla.incomplete.structure=INCOMPLETE STRUCTURE
+hud.msg.wdmla.has.problem=HAS PROBLEMS
+hud.msg.wdmla.running.fine=Running Fine
+hud.msg.wdmla.idle=Idle
+hud.msg.wdmla.working.disabled=Working Disabled
+hud.msg.wdmla.insufficient.energy=Insufficient Energy
+hud.msg.wdmla.insufficient.fuel=Insufficient Fuel
 
 # dummy tooltip
 hud.msg.wdmla.cfg.dummy.1=Hover over anything in game

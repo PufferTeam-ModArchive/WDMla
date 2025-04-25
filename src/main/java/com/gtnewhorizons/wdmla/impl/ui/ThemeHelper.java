@@ -39,6 +39,10 @@ public class ThemeHelper {
 
     public static final ThemeHelper INSTANCE = new ThemeHelper();
 
+    private ThemeHelper() {
+
+    }
+
     public void overrideTooltipIcon(ITooltip root, ItemStack newItemStack) {
         root.replaceChildWithTag(
                 Identifiers.ITEM_ICON,
@@ -141,8 +145,8 @@ public class ThemeHelper {
                 }
             }
             float ratio = (float)currentProgress / maxProgress;
-            hPanel.padding(new Padding().horizontal(2)).child(new IconComponent(WDMlaUIIcons.FURNACE_BG, WDMlaUIIcons.FURNACE_PATH).padding(new Padding())
-                    .child(new IconComponent(WDMlaUIIcons.FURNACE, WDMlaUIIcons.FURNACE_PATH).clip(0f,0f, ratio, 1f).padding(new Padding())));
+            hPanel.padding(new Padding().horizontal(2)).child(new IconComponent(WDMlaUIIcons.FURNACE_BG, WDMlaUIIcons.FURNACE_BG.texPath).padding(new Padding())
+                    .child(new IconComponent(WDMlaUIIcons.FURNACE, WDMlaUIIcons.FURNACE.texPath).clip(0f,0f, ratio, 1f).padding(new Padding())));
             for (ItemStack outputStack : output) {
                 if (outputStack != null) {
                     hPanel.item(outputStack);

@@ -3,6 +3,7 @@ package com.gtnewhorizons.wdmla.test;
 import net.minecraft.block.BlockCommandBlock;
 import net.minecraft.block.BlockDispenser;
 import net.minecraft.block.BlockSign;
+import net.minecraft.block.BlockSkull;
 import net.minecraft.block.BlockStoneSlab;
 import net.minecraft.entity.passive.EntityPig;
 import net.minecraft.entity.passive.EntitySheep;
@@ -27,6 +28,7 @@ public class TestPlugin implements IWDMlaPlugin {
         registration.registerBlockComponent(TestHeaderProvider.INSTANCE, BlockCommandBlock.class);
         registration.registerBlockComponent(TestNBTBlockProvider.INSTANCE, BlockCommandBlock.class);
         registration.registerBlockComponent(TestThemeBlockProvider.INSTANCE, BlockStoneSlab.class);
+        registration.registerBlockComponent(TestThemeBlockProvider.INSTANCE, BlockSkull.class);
         registration.registerEntityComponent(TestEntityProvider.INSTANCE, EntityPig.class);
         registration.registerItemStorageClient(TestItemStorageProvider.INSTANCE);
         registration.registerFluidStorageClient(TestFluidStorageProvider.INSTANCE);

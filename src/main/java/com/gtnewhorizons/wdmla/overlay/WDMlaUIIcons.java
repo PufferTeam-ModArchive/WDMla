@@ -3,25 +3,39 @@ package com.gtnewhorizons.wdmla.overlay;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.ResourceLocation;
 
+import static com.gtnewhorizons.wdmla.api.Identifiers.FURNACE_PATH;
+import static com.gtnewhorizons.wdmla.api.Identifiers.RS2_ICON_PATH;
+
 public enum WDMlaUIIcons implements IIcon {
-    FURNACE(4, 0, 28, 16),
-    FURNACE_BG(4, 16, 28, 16),
+    FURNACE(4, 0, 28, 16, 256, 256, FURNACE_PATH),
+    FURNACE_BG(4, 16, 28, 16, 256, 256, FURNACE_PATH),
+    CANCEL(1,1,12,12,42,42, RS2_ICON_PATH),
+    ERROR(15,1,12,12,42,42, RS2_ICON_PATH),
+    RESET(29, 1, 12, 12, 42, 42, RS2_ICON_PATH),
+    IDLE(1,15,12, 12, 42, 42, RS2_ICON_PATH),
+    PAUSE(15,15,12, 12, 42, 42, RS2_ICON_PATH),
+    SET(29,15,12, 12, 42, 42, RS2_ICON_PATH),
+    START(2,29,10, 12, 42, 42, RS2_ICON_PATH),
+    WARNING(15,29,10, 10, 42, 42, RS2_ICON_PATH),
     ;
 
-    public static final ResourceLocation FURNACE_PATH = new ResourceLocation("waila", "textures/sprites.png");
-    public static final int TEX_WIDTH = 256;
-    public static final int TEX_HEIGHT = 256;
+    public final int texWidth;
+    public final int texHeight;
+    public final ResourceLocation texPath;
 
     /**
      * u, v, sizeU, sizeV
      */
     public final int u, v, su, sv;
 
-    WDMlaUIIcons(int u, int v, int su, int sv) {
+    WDMlaUIIcons(int u, int v, int su, int sv, int texWidth, int texHeight, ResourceLocation texPath) {
         this.u = u;
         this.v = v;
         this.su = su;
         this.sv = sv;
+        this.texWidth = texWidth;
+        this.texHeight = texHeight;
+        this.texPath = texPath;
     }
 
     @Override
@@ -36,32 +50,32 @@ public enum WDMlaUIIcons implements IIcon {
 
     @Override
     public float getMinU() {
-        return (float) u / TEX_WIDTH;
+        return (float) u / texWidth;
     }
 
     @Override
     public float getMaxU() {
-        return (float) (u + su) / TEX_WIDTH;
+        return (float) (u + su) / texWidth;
     }
 
     @Override
     public float getInterpolatedU(double interpolation) {
-        return (u + su * (float) interpolation) / TEX_WIDTH;
+        return (u + su * (float) interpolation) / texWidth;
     }
 
     @Override
     public float getMinV() {
-        return (float) v / TEX_HEIGHT;
+        return (float) v / texHeight;
     }
 
     @Override
     public float getMaxV() {
-        return (float) (v + sv) / TEX_HEIGHT;
+        return (float) (v + sv) / texHeight;
     }
 
     @Override
     public float getInterpolatedV(double interpolation) {
-        return (v + sv * (float) interpolation) / TEX_HEIGHT;
+        return (v + sv * (float) interpolation) / texHeight;
     }
 
     @Override

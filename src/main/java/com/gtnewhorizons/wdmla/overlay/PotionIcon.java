@@ -12,7 +12,7 @@ import net.minecraft.util.ResourceLocation;
  */
 public class PotionIcon implements IIcon {
 
-    public static final ResourceLocation PATH = new ResourceLocation("textures/gui/container/inventory.png");;
+    public static final ResourceLocation PATH = new ResourceLocation("textures/gui/container/inventory.png");
 
     private final int iconIndex;
     public static final int TEX_WIDTH = 256;

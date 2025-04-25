@@ -4,6 +4,7 @@ import static com.gtnewhorizons.wdmla.impl.ui.component.TooltipComponent.DEFAULT
 
 import java.util.Arrays;
 
+import com.gtnewhorizons.wdmla.impl.ui.StatusHelper;
 import com.gtnewhorizons.wdmla.impl.ui.component.HPanelComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.ItemComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.TooltipComponent;
@@ -11,6 +12,7 @@ import com.gtnewhorizons.wdmla.impl.ui.sizer.Padding;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntitySkull;
 import net.minecraft.util.ResourceLocation;
 
 import com.gtnewhorizons.wdmla.api.Identifiers;
@@ -23,6 +25,7 @@ import com.gtnewhorizons.wdmla.impl.ui.component.ProgressComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.TextComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.VPanelComponent;
 import com.gtnewhorizons.wdmla.impl.ui.style.ProgressStyle;
+import net.minecraft.util.StatCollector;
 
 public enum TestThemeBlockProvider implements IBlockComponentProvider {
 
@@ -35,6 +38,19 @@ public enum TestThemeBlockProvider implements IBlockComponentProvider {
 
     @Override
     public void appendTooltip(ITooltip tooltip, BlockAccessor accessor) {
+        if(accessor.getTileEntity() instanceof TileEntitySkull skull
+                && skull.func_145904_a() == 1) {
+            tooltip.child(StatusHelper.INSTANCE.structureIncomplete());
+            tooltip.child(StatusHelper.INSTANCE.hasProblem());
+            tooltip.child(StatusHelper.INSTANCE.runningFine());
+            tooltip.child(StatusHelper.INSTANCE.idle());
+            tooltip.child(StatusHelper.INSTANCE.workingDisabled());
+            tooltip.child(StatusHelper.INSTANCE.insufficientEnergy());
+            tooltip.child(StatusHelper.INSTANCE.insufficientFuel());
+
+            return;
+        }
+
         if(!accessor.showDetails()) {
             tooltip.text("normal");
             tooltip.child(ThemeHelper.INSTANCE.info("This is info"));

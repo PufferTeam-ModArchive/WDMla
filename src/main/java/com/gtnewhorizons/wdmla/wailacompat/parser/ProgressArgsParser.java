@@ -14,8 +14,8 @@ public class ProgressArgsParser implements ITTRenderParser {
         int current = Integer.parseInt(args[0]);
         int max = Integer.parseInt(args[1]);
         HPanelComponent hPanel = new HPanelComponent();
-        hPanel.padding(new Padding().horizontal(2)).child(new IconComponent(WDMlaUIIcons.FURNACE_BG, WDMlaUIIcons.FURNACE_PATH).padding(new Padding())
-                .child(new IconComponent(WDMlaUIIcons.FURNACE, WDMlaUIIcons.FURNACE_PATH).clip(0f,0f, (float) current / max, 1f).padding(new Padding())));
+        hPanel.padding(new Padding().horizontal(2)).child(new IconComponent(WDMlaUIIcons.FURNACE_BG, WDMlaUIIcons.FURNACE_BG.texPath).padding(new Padding())
+                .child(new IconComponent(WDMlaUIIcons.FURNACE, WDMlaUIIcons.FURNACE.texPath).clip(0f,0f, (float) current / max, 1f).padding(new Padding())));
         return hPanel;
     }
 }

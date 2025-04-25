@@ -52,11 +52,14 @@ No, NEI is no longer required
 
 # Other items to Note:
 - Enchant Screen has been removed
+- NEI ore dictionary search function has been removed (GTNH NEI has this by default)
 
 # Credits
 - [Jade](https://github.com/Snownee/Jade) 
-  - Backported many codes under same license
+  - Backported many codes under the same license
 - [The One Probe](https://github.com/McJtyMods/TheOneProbe)
-  - Backported HUD component codes under [MIT license](https://github.com/McJtyMods/TheOneProbe/blob/1.20/LICENCE)
+  - Backported some HUD component codes under [MIT license](https://github.com/McJtyMods/TheOneProbe/blob/1.20/LICENCE)
+- [Refined Storage 2](https://github.com/refinedmods/refinedstorage2)
+  - Uses some ui icons under [MIT license](https://github.com/refinedmods/refinedstorage2/blob/develop/LICENSE.md)
 
 <!--Full Changelog from GTNH Waila: https://github.com/Quarri6343/Wdmla/compare/2f738bc...master-->

@@ -20,6 +20,10 @@ public final class Identifiers {
     public static final ResourceLocation MOD_NAME = Core("mod_name");
     public static final ResourceLocation BLOCK_FACE = Core("block_face");
 
+    // sprite location
+    public static final ResourceLocation FURNACE_PATH = new ResourceLocation("waila", "textures/sprites.png");
+    public static final ResourceLocation RS2_ICON_PATH = new ResourceLocation("waila", "textures/rs2.png");
+
     // provider Uid
     public static final ResourceLocation DEFAULT_BLOCK = Core("default_block");
     public static final ResourceLocation DEFAULT_ENTITY = Core("default_entity");
