@@ -31,7 +31,7 @@ public enum PluginScanner {
             if (Strings.isNullOrEmpty(uid)) {
                 uid = null;
             }
-            List<String> deps = (List<String>) annotationInfo.get("deps");
+            List<String> deps = (List<String>) annotationInfo.get("dependencies");
             if (!allModsLoaded(deps)) {
                 Waila.log.info(String.format("skipped plugin %s loading: missing dependency", uid));
                 continue;
