@@ -1,5 +1,8 @@
 package com.gtnewhorizons.wdmla.impl.ui.component;
 
+import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import mcp.mobius.waila.utils.WailaExceptionHandler;
+import net.minecraft.util.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
 
 import com.gtnewhorizons.wdmla.api.Identifiers;
@@ -35,5 +38,11 @@ public final class RootComponent extends VPanelComponent {
         tick(fgArea.getX(), fgArea.getY());
 
         GLStateHelper.endDraw();
+    }
+
+    @Override
+    public ITooltip tag(ResourceLocation tag) {
+        WailaExceptionHandler.handleErr(new IllegalArgumentException("RootComponent cannot have tag!"), RootComponent.class.getName(), null);
+        return null;
     }
 }

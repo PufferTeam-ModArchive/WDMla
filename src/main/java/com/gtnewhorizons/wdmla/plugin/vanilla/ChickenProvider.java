@@ -26,7 +26,8 @@ public enum ChickenProvider
             tooltip.child(
                     ThemeHelper.INSTANCE.value(
                             StatCollector.translateToLocal("hud.msg.wdmla.nextegg"),
-                            timePattern.tickFormatter.apply(accessor.getServerData().getInteger("nextEgg"))));
+                            timePattern.tickFormatter.apply(accessor.getServerData().getInteger("nextEgg")))
+                            .tag(VanillaIdentifiers.CHICKEN));
         }
     }
 

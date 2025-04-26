@@ -23,7 +23,7 @@ public enum VillagerProfessionProvider implements IEntityComponentProvider {
             String name = getVillagerName(villager.getProfession());
             tooltip.child(
                     ThemeHelper.INSTANCE
-                            .info(StatCollector.translateToLocal("hud.msg.wdmla.villager.profession." + name)));
+                            .info(StatCollector.translateToLocal("hud.msg.wdmla.villager.profession." + name)).tag(VanillaIdentifiers.VILLAGER_PROFESSION));
         }
     }
 

@@ -24,7 +24,8 @@ public enum PrimedTNTProvider
         tooltip.child(
                 ThemeHelper.INSTANCE.value(
                         StatCollector.translateToLocal("hud.msg.wdmla.fuse"),
-                        timePattern.tickFormatter.apply((int) accessor.getServerData().getByte("Fuse"))));
+                        timePattern.tickFormatter.apply((int) accessor.getServerData().getByte("Fuse")))
+                        .tag(VanillaIdentifiers.PRIMED_TNT));
     }
 
     @Override

@@ -47,9 +47,9 @@ public enum EntityHealthProvider implements IEntityComponentProvider {
                     new HPanelComponent().child(new HealthComponent(1, 1)).text("HP: ")
                             .child(ThemeHelper.INSTANCE.info(FormatUtil.STANDARD.format(livingEntity.getHealth())))
                             .text(" / ")
-                            .child(ThemeHelper.INSTANCE.info(FormatUtil.STANDARD.format(livingEntity.getMaxHealth()))));
+                            .child(ThemeHelper.INSTANCE.info(FormatUtil.STANDARD.format(livingEntity.getMaxHealth()))).tag(Identifiers.ENTITY_HEALTH));
         } else {
-            tooltip.child(new HealthComponent(health, maxhp));
+            tooltip.child(new HealthComponent(health, maxhp).tag(Identifiers.ENTITY_HEALTH));
         }
     }
 }

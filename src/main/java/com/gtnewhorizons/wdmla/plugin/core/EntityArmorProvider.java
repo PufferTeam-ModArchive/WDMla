@@ -20,11 +20,11 @@ public enum EntityArmorProvider implements IEntityComponentProvider {
         float armorValue = ((EntityLiving) accessor.getEntity()).getTotalArmorValue() / 2.0f;
         if (armorValue > 0) {
             if (accessor.getEntity() instanceof EntityPlayer) {
-                tooltip.child(new ArmorComponent(armorValue, 10));
+                tooltip.child(new ArmorComponent(armorValue, 10)).tag(Identifiers.ARMOR);
             } else {
                 // in vanilla Minecraft, armor point past than 20 has no effect
                 // TODO:support https://github.com/GTNewHorizons/OverloadedArmorBar
-                tooltip.child(new ArmorComponent(armorValue, Math.min(armorValue, 10)));
+                tooltip.child(new ArmorComponent(armorValue, Math.min(armorValue, 10))).tag(Identifiers.ARMOR);
             }
         }
     }

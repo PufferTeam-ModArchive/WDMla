@@ -4,7 +4,7 @@ import net.minecraft.util.ResourceLocation;
 
 public class VanillaIdentifiers {
 
-    // provider Uid
+    // provider Uid & component tag
     public static final ResourceLocation SILVERFISH_HEADER = MC("silverfish_header");
     public static final ResourceLocation REDSTONE_WIRE_HEADER = MC("redstone_wire_header");
     public static final ResourceLocation REDSTONE_WIRE = MC("redstone_wire");

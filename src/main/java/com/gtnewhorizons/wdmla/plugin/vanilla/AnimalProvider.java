@@ -34,7 +34,7 @@ public enum AnimalProvider implements IEntityComponentProvider, ITimeFormatConfi
             tooltip.child(
                     ThemeHelper.INSTANCE.value(
                             StatCollector.translateToLocal("hud.msg.wdmla.animal.growth"),
-                            timePattern.tickFormatter.apply(absTimeToGrow)));
+                            timePattern.tickFormatter.apply(absTimeToGrow)).tag(VanillaIdentifiers.ANIMAL));
         }
     }
 
@@ -49,7 +49,7 @@ public enum AnimalProvider implements IEntityComponentProvider, ITimeFormatConfi
             tooltip.child(
                     ThemeHelper.INSTANCE.value(
                             StatCollector.translateToLocal("hud.msg.wdmla.animal.breedcooldown"),
-                            timePattern.tickFormatter.apply(absTimeBreedCooldown)));
+                            timePattern.tickFormatter.apply(absTimeBreedCooldown)).tag(VanillaIdentifiers.ANIMAL));
         }
     }
 

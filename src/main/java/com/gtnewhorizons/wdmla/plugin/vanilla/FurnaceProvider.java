@@ -55,7 +55,7 @@ public enum FurnaceProvider implements IBlockComponentProvider, IServerDataProvi
                     200,
                     accessor.showDetails());
             if (progressComponent != null) {
-                tooltip.child(progressComponent);
+                tooltip.child(progressComponent.tag(VanillaIdentifiers.FURNACE));
             }
         }
     }

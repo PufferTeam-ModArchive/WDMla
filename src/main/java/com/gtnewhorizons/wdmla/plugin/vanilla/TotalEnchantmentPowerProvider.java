@@ -53,7 +53,7 @@ public enum TotalEnchantmentPowerProvider implements IBlockComponentProvider {
         tooltip.child(
                 ThemeHelper.INSTANCE.value(
                         StatCollector.translateToLocal("hud.msg.wdmla.total.enchantment.power"),
-                        FormatUtil.STANDARD.format(power)));
+                        FormatUtil.STANDARD.format(power)).tag(VanillaIdentifiers.TOTAL_ENCHANTMENT_POWER));
     }
 
     @Override

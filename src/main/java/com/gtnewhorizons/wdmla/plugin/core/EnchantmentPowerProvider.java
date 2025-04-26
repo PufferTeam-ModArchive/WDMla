@@ -21,7 +21,8 @@ public enum EnchantmentPowerProvider implements IBlockComponentProvider {
             tooltip.child(
                     ThemeHelper.INSTANCE.value(
                             StatCollector.translateToLocal("hud.msg.wdmla.enchantment.power"),
-                            FormatUtil.STANDARD.format(power)));
+                            FormatUtil.STANDARD.format(power))
+                            .tag(Identifiers.ENCHANTMENT_POWER));
         }
     }
 

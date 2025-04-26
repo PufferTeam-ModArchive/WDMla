@@ -1,5 +1,6 @@
 package com.gtnewhorizons.wdmla.plugin.vanilla;
 
+import com.gtnewhorizons.wdmla.util.FormatUtil;
 import net.minecraft.block.BlockCrops;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.ResourceLocation;
@@ -35,7 +36,8 @@ public enum GrowthRateProvider implements IBlockComponentProvider {
             tooltip.child(
                     ThemeHelper.INSTANCE.value(
                             StatCollector.translateToLocal("hud.msg.wdmla.growth"),
-                            String.format("%.0f %%", growthValue))); // TODO:percentage format
+                            FormatUtil.PERCENTAGE_STANDARD.format(growthValue))
+                            .tag(VanillaIdentifiers.GROWTH_RATE));
         } else {
             tooltip.child(
                     new HPanelComponent()
@@ -43,7 +45,8 @@ public enum GrowthRateProvider implements IBlockComponentProvider {
                                     ThemeHelper.INSTANCE.success(
                                             String.format(
                                                     "%s",
-                                                    StatCollector.translateToLocal("hud.msg.wdmla.mature")))));
+                                                    StatCollector.translateToLocal("hud.msg.wdmla.mature"))))
+                            .tag(VanillaIdentifiers.GROWTH_RATE));
         }
     }
 

@@ -27,7 +27,7 @@ public enum ZombieVillagerProvider
                 tooltip.child(
                         ThemeHelper.INSTANCE.value(
                                 StatCollector.translateToLocal("hud.msg.wdmla.conversion.time"),
-                                timePattern.tickFormatter.apply(conversionTime)));
+                                timePattern.tickFormatter.apply(conversionTime)).tag(VanillaIdentifiers.VILLAGER_PROFESSION));
             }
         }
     }

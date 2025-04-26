@@ -29,14 +29,14 @@ public enum RedstoneStateProvider implements IBlockComponentProvider {
             tooltip.child(
                     new HPanelComponent()
                             .text(String.format("%s: ", StatCollector.translateToLocal("hud.msg.wdmla.state")))
-                            .child(redstoneOn));
+                            .child(redstoneOn).tag(VanillaIdentifiers.REDSTONE_STATE));
         } else if (((block == Blocks.unpowered_repeater) || (block == Blocks.powered_repeater))
                 && PluginsConfig.vanilla.redstoneState.showRepeaterDelay) {
                     int tick = (accessor.getMetadata() >> 2) + 1;
                     tooltip.child(
                             ThemeHelper.INSTANCE.value(
                                     StatCollector.translateToLocal("hud.msg.wdmla.delay"),
-                                    TimeFormattingPattern.ALWAYS_TICK.tickFormatter.apply(tick)));
+                                    TimeFormattingPattern.ALWAYS_TICK.tickFormatter.apply(tick)).tag(VanillaIdentifiers.REDSTONE_STATE));
                 } else
             if (((block == Blocks.unpowered_comparator) || (block == Blocks.powered_comparator))
                     && PluginsConfig.vanilla.redstoneState.showComparatorMode) {
@@ -44,7 +44,8 @@ public enum RedstoneStateProvider implements IBlockComponentProvider {
                                 ? StatCollector.translateToLocal("hud.msg.wdmla.comparator")
                                 : StatCollector.translateToLocal("hud.msg.wdmla.substractor");
                         tooltip.child(
-                                ThemeHelper.INSTANCE.value(StatCollector.translateToLocal("hud.msg.wdmla.mode"), mode));
+                                ThemeHelper.INSTANCE.value(StatCollector.translateToLocal("hud.msg.wdmla.mode"), mode)
+                                        .tag(VanillaIdentifiers.REDSTONE_STATE));
                     }
     }
 

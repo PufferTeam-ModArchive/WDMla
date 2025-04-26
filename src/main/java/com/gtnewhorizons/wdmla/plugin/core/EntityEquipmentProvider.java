@@ -21,7 +21,7 @@ public enum EntityEquipmentProvider implements IEntityComponentProvider {
             return;
         }
 
-        ITooltip itemRow = tooltip.horizontal();
+        ITooltip itemRow = tooltip.horizontal().tag(Identifiers.EQUIPMENT);
         for (int i = 0; i < 5; i++) {
             ItemStack equipment = ((EntityLiving) accessor.getEntity()).getEquipmentInSlot(i);
             if (equipment != null) {

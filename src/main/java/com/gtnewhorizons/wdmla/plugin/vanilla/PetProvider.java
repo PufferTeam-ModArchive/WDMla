@@ -29,7 +29,8 @@ public enum PetProvider implements IEntityComponentProvider, IServerDataProvider
             tooltip.child(
                     ThemeHelper.INSTANCE.value(
                             StatCollector.translateToLocal("hud.msg.wdmla.sitting"),
-                            String.valueOf(pet.isSitting())));
+                            String.valueOf(pet.isSitting()))
+                            .tag(VanillaIdentifiers.PET));
         }
 
         String ownerUUID = accessor.getServerData().getString("OwnerUUID");
@@ -42,7 +43,8 @@ public enum PetProvider implements IEntityComponentProvider, IServerDataProvider
             return;
         }
 
-        tooltip.child(ThemeHelper.INSTANCE.value(StatCollector.translateToLocal("hud.msg.wdmla.owner"), ownerString));
+        tooltip.child(ThemeHelper.INSTANCE.value(StatCollector.translateToLocal("hud.msg.wdmla.owner"), ownerString)
+                .tag(VanillaIdentifiers.PET));
     }
 
     @Override
