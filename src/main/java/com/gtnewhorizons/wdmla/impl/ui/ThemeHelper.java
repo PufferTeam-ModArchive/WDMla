@@ -40,6 +40,8 @@ public class ThemeHelper {
 
     public static final ThemeHelper INSTANCE = new ThemeHelper();
 
+    private static final int ITEM_SIZE = Minecraft.getMinecraft().fontRenderer.FONT_HEIGHT;
+
     private ThemeHelper() {
 
     }
@@ -211,9 +213,8 @@ public class ThemeHelper {
      * Provides an ItemComponent with has size of default text height
      * @param itemStack Base ItemStack to display
      */
-    public IComponent smallItem(ItemStack itemStack) { //TODO: check all ItemComponent references and redirect usage to here
-        int size = Minecraft.getMinecraft().fontRenderer.FONT_HEIGHT;
-        return new ItemComponent(itemStack).doDrawOverlay(false).size(new Size(size, size));
+    public IComponent smallItem(ItemStack itemStack) {
+        return new ItemComponent(itemStack).doDrawOverlay(false).size(new Size(ITEM_SIZE, ITEM_SIZE));
     }
 
     /**
@@ -222,9 +223,8 @@ public class ThemeHelper {
     public IComponent itemStackFullLine(ItemStack stack) {
         String strippedName = DisplayUtil.stripSymbols(DisplayUtil.itemDisplayNameShort(stack));
         TextComponent name = new TextComponent(strippedName);
-        float itemSize = name.getHeight();
         ITooltip hPanel = new HPanelComponent()
-                .child(new ItemComponent(stack).doDrawOverlay(false).size(new Size(itemSize, itemSize)));
+                .child(smallItem(stack));
         String s = String.valueOf(stack.stackSize); // TODO: unit format
         return hPanel.text(s).text(StatCollector.translateToLocal("hud.msg.wdmla.item.count") + StringUtils.EMPTY)
                 .child(name);

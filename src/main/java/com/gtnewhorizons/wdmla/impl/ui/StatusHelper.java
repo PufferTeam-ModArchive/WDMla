@@ -27,18 +27,13 @@ public class StatusHelper {
                 new IconComponent(WDMlaUIIcons.ERROR, WDMlaUIIcons.ERROR.texPath).size(new Size(ICON_SIZE, ICON_SIZE)))
                 .child(
                         ThemeHelper.INSTANCE
-                                .failure(StatCollector.translateToLocal("hud.msg.wdmla.incomplete.structure")))
-                .child(
-                        new IconComponent(WDMlaUIIcons.ERROR, WDMlaUIIcons.ERROR.texPath)
-                                .size(new Size(ICON_SIZE, ICON_SIZE)));
+                                .failure(StatCollector.translateToLocal("hud.msg.wdmla.incomplete.structure")));
     }
 
     public IComponent hasProblem() {
         return new HPanelComponent().child(
                 new IconComponent(WDMlaUIIcons.ERROR, WDMlaUIIcons.ERROR.texPath).size(new Size(ICON_SIZE, ICON_SIZE)))
-                .child(ThemeHelper.INSTANCE.failure(StatCollector.translateToLocal("hud.msg.wdmla.has.problem"))).child(
-                        new IconComponent(WDMlaUIIcons.ERROR, WDMlaUIIcons.ERROR.texPath)
-                                .size(new Size(ICON_SIZE, ICON_SIZE)));
+                .child(ThemeHelper.INSTANCE.failure(StatCollector.translateToLocal("hud.msg.wdmla.has.problem")));
     }
 
     public IComponent runningFine() {
