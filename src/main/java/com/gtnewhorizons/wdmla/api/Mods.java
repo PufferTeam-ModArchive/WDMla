@@ -16,7 +16,7 @@ import mcp.mobius.waila.Waila;
 public enum Mods {
 
     CREATIVEBLOCKS("CreativeBlocks", null),
-    GREGTECH("gregtech", null), // ProcessedVersion of GregTech is always "MC1.7.10"
+    GREGTECH("gregtech", version -> !Loader.isModLoaded("gregapi")), // ProcessedVersion of GregTech is always "MC1.7.10"
     IGUANATWEAKS("IguanaTweaksTConstruct", null),
     TCONSTUCT("TConstruct", null),
     NOTENOUGHITEMS("NotEnoughItems", version -> new DefaultArtifactVersion("2.7.29-GTNH").compareTo(version) <= 0),
@@ -28,12 +28,12 @@ public enum Mods {
      * WDMla works without any external content mod. <br>
      * Not loading old version of mods can solve class name issue, will help greatly at outside GTNH
      */
-    public final Predicate<ArtifactVersion> versionRequirement;
+    public final Predicate<ArtifactVersion> otherRequirement;
     private Boolean loaded;
 
-    Mods(String modID, Predicate<ArtifactVersion> versionRequirement) {
+    Mods(String modID, Predicate<ArtifactVersion> otherRequirement) {
         this.modID = modID;
-        this.versionRequirement = versionRequirement;
+        this.otherRequirement = otherRequirement;
     }
 
     /**
@@ -44,14 +44,14 @@ public enum Mods {
             if (!Loader.isModLoaded(modID)) {
                 this.loaded = false;
             } else {
-                if (versionRequirement != null) {
+                if (otherRequirement != null) {
                     ArtifactVersion version = Loader.instance().getIndexedModList().get(modID).getProcessedVersion();
-                    if (versionRequirement.test(version)) {
+                    if (otherRequirement.test(version)) {
                         this.loaded = true;
                     } else {
                         Waila.log.info(
                                 String.format(
-                                        "Skipped loading %s Compatibility classes due to version incompatibility. Loaded version: %s",
+                                        "Skipped loading %s Compatibility classes due to incompatibility. Loaded version: %s",
                                         modID,
                                         version.getVersionString()));
                         this.loaded = false;
