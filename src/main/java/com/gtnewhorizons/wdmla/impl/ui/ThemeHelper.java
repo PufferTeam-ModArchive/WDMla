@@ -4,6 +4,7 @@ import static mcp.mobius.waila.api.SpecialChars.ITALIC;
 
 import java.util.List;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.item.ItemStack;
@@ -207,7 +208,16 @@ public class ThemeHelper {
     }
 
     /**
-     * Construct a component to display an ItemStack in "(icon) 3x Apple" format
+     * Provides an ItemComponent with has size of default text height
+     * @param itemStack Base ItemStack to display
+     */
+    public IComponent smallItem(ItemStack itemStack) { //TODO: check all ItemComponent references and redirect usage to here
+        int size = Minecraft.getMinecraft().fontRenderer.FONT_HEIGHT;
+        return new ItemComponent(itemStack).doDrawOverlay(false).size(new Size(size, size));
+    }
+
+    /**
+     * Constructs a component to display an ItemStack in "(icon) 3x Apple" format
      */
     public IComponent itemStackFullLine(ItemStack stack) {
         String strippedName = DisplayUtil.stripSymbols(DisplayUtil.itemDisplayNameShort(stack));

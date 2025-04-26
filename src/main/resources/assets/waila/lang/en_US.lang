@@ -127,6 +127,8 @@ hud.msg.wdmla.idle=Idle
 hud.msg.wdmla.working.disabled=Working Disabled
 hud.msg.wdmla.insufficient.energy=Insufficient Energy
 hud.msg.wdmla.insufficient.fuel=Insufficient Fuel
+hud.msg.wdmla.near.water=Near Water
+hud.msg.wdmla.cannot.hoe=Cannot Hoe
 
 # dummy tooltip
 hud.msg.wdmla.cfg.dummy.1=Hover over anything in game
@@ -244,6 +246,7 @@ provider.wdmla.hungeroverhaul.category=Hunger Overhaul
 provider.wdmla.hungeroverhaul.slow.chicken=Slower Chicken Activity
 provider.wdmla.hungeroverhaul.slow.animal=Slower Animal Activity
 provider.wdmla.hungeroverhaul.milk.cooldown=Milk Cooldown
+provider.wdmla.hungeroverhaul.hoe.result=Hoe Result
 
 # options
 

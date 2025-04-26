@@ -6,13 +6,15 @@ import com.gtnewhorizons.wdmla.api.IWDMlaPlugin;
 import com.gtnewhorizons.wdmla.api.Identifiers;
 import com.gtnewhorizons.wdmla.api.WDMlaPlugin;
 import com.gtnewhorizons.wdmla.config.WDMlaConfig;
+import net.minecraft.block.BlockDirt;
+import net.minecraft.block.BlockGrass;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.config.Configuration;
 
-@WDMlaPlugin(uid = "hunger_overhaul", dependencies = "HungerOverhaul")
+@WDMlaPlugin(uid = "hungeroverhaul", dependencies = "HungerOverhaul")
 public class HungerOverhaulPlugin implements IWDMlaPlugin {
 
     @Override
@@ -22,6 +24,9 @@ public class HungerOverhaulPlugin implements IWDMlaPlugin {
 
     @Override
     public void registerClient(IWDMlaClientRegistration registration) {
+        registration.registerBlockComponent(HoeResultProvider.INSTANCE, BlockGrass.class);
+        registration.registerBlockComponent(HoeResultProvider.INSTANCE, BlockDirt.class);
+
         registration.registerEntityComponent(SlowChickenProvider.INSTANCE, EntityChicken.class);
         registration.registerEntityComponent(SlowAnimalProvider.INSTANCE, EntityAnimal.class);
         registration.registerEntityComponent(MilkCooldownProvider.INSTANCE, EntityCow.class);
