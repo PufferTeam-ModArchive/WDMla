@@ -7,8 +7,10 @@ import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
 import com.gtnewhorizons.wdmla.plugin.vanilla.VanillaIdentifiers;
+import com.gtnewhorizons.wdmla.util.FormatUtil;
 import iguanaman.hungeroverhaul.config.IguanaConfig;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.StatCollector;
 
 public enum SlowChickenProvider implements IEntityComponentProvider {
     INSTANCE;
@@ -19,7 +21,10 @@ public enum SlowChickenProvider implements IEntityComponentProvider {
             IComponent chickenComponent = tooltip.getChildWithTag(VanillaIdentifiers.CHICKEN);
             if(chickenComponent instanceof ITooltip chicken) {
                 tooltip.replaceChildWithTag(VanillaIdentifiers.CHICKEN,
-                        chicken.child(ThemeHelper.INSTANCE.warning(String.format("[+RNG x%.0f]", IguanaConfig.eggTimeoutMultiplier))));
+                        chicken.child(
+                                ThemeHelper.INSTANCE.warning(
+                                        StatCollector.translateToLocalFormatted("hud.msg.wdmla.rng.multiplier",
+                                                FormatUtil.STANDARD.format(IguanaConfig.eggTimeoutMultiplier)))));
             }
         }
     }
