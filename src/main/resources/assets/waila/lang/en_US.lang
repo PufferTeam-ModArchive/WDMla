@@ -105,6 +105,7 @@ hud.msg.wdmla.seeing.entity=Seeing Entity
 hud.msg.wdmla.more.tanks=+ %d more tanks
 hud.msg.wdmla.remaining.time=Remaining Time
 hud.msg.wdmla.rng.multiplier=[+RNG x%s]
+hud.msg.wdmla.milk.cooldown=Milk Cooldown
 
 # state
 hud.msg.wdmla.mature=Mature
@@ -239,8 +240,10 @@ provider.wdmla.debug.blast.resistance=Blast Resistance
 provider.wdmla.debug.registry.data=Registry Data
 provider.wdmla.debug.coordinates=Coordinates
 
+provider.wdmla.hungeroverhaul.category=Hunger Overhaul
 provider.wdmla.hungeroverhaul.slow.chicken=Slower Chicken Activity
 provider.wdmla.hungeroverhaul.slow.animal=Slower Animal Activity
+provider.wdmla.hungeroverhaul.milk.cooldown=Milk Cooldown
 
 # options
 
