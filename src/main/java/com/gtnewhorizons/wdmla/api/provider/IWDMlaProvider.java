@@ -62,7 +62,7 @@ public interface IWDMlaProvider {
      */
     default String getLangKey() {
         return "provider.wdmla" + Configuration.CATEGORY_SPLITTER
-                + getUid().getResourceDomain()
+                + getUid().getResourceDomain().replace("_", ".")
                 + Configuration.CATEGORY_SPLITTER
                 + getUid().getResourcePath().replace("_", ".");
     }
