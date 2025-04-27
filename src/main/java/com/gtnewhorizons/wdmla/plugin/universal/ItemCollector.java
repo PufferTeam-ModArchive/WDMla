@@ -5,10 +5,11 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
+import it.unimi.dsi.fastutil.objects.Object2IntLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
-import com.gtnewhorizon.gtnhlib.util.map.ItemStackMap;
 import com.gtnewhorizons.wdmla.api.accessor.Accessor;
 import com.gtnewhorizons.wdmla.api.view.ViewGroup;
 
@@ -18,11 +19,11 @@ public class ItemCollector<T> {
     public static final ItemCollector<?> EMPTY = new ItemCollector<>(null);
 
     /**
-     * ItemStack Lookup system from GTNHLib<br>
-     * We must enable these to render itemstack:<br>
-     * item meta (for most items), item damage (ex. GregTech MetaItems) and item NBT (ex. Tinker's Construct Tools)
+     * ItemStack Lookup<br>
+     * We must distinguish following thing to draw ItemStack properly<br>
+     * Item meta (for most items), item damage (ex. GregTech MetaItems) and item NBT (ex. Tinker's Construct Tools)
      */
-    private final ItemStackMap<Integer> items = new ItemStackMap<>(true);
+    private final Object2IntMap<ItemStack> items = new Object2IntLinkedOpenHashMap<>();
     private final ItemIterator<T> iterator;
     public long version;
     public long lastTimeFinished;
@@ -56,7 +57,18 @@ public class ItemCollector<T> {
         iterator.populate(container, MAX_SIZE * 2).forEach(stack -> {
             count.incrementAndGet();
             if (stack != null) {
-                items.merge(stack, stack.stackSize, Integer::sum);
+                int stackSize = stack.stackSize;
+                ItemStack copyStack = stack.copy();
+                copyStack.stackSize = 1;
+                Object2IntMap.Entry<ItemStack> match = items.object2IntEntrySet().stream()
+                        .filter(entry -> ItemStack.areItemStacksEqual(entry.getKey(), copyStack))
+                        .findFirst().orElse(null);
+                if(match != null) {
+                    match.setValue(match.getIntValue() + stackSize);
+                }
+                else {
+                    items.put(copyStack, stackSize);
+                }
             }
         });
         iterator.afterPopulate(count.get());
@@ -64,7 +76,7 @@ public class ItemCollector<T> {
             updateCollectingProgress(mergedResult.get(0));
             return mergedResult;
         }
-        var partialResult = items.entrySet().stream().limit(MAX_SIZE).map(entry -> {
+        List<ItemStack> partialResult = items.entrySet().stream().limit(MAX_SIZE).map(entry -> {
             entry.getKey().stackSize = entry.getValue();
             return entry.getKey();
         }).collect(Collectors.toList());
