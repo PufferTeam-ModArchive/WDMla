@@ -14,7 +14,6 @@ import mcp.mobius.waila.addons.enderstorage.EnderStorageModule;
 import mcp.mobius.waila.addons.etb.ETBModule;
 import mcp.mobius.waila.addons.exu.ExtraUtilitiesModule;
 import mcp.mobius.waila.addons.gravestone.GravestoneModule;
-import mcp.mobius.waila.addons.harvestcraft.HarvestcraftModule;
 import mcp.mobius.waila.addons.ic2.IC2Module;
 import mcp.mobius.waila.addons.magicalcrops.MagicalCropsModule;
 import mcp.mobius.waila.addons.openblocks.OpenBlocksModule;
@@ -93,9 +92,6 @@ public class ProxyServer {
 
         /* Carpenter's Blocks */
         CarpentersModule.register();
-
-        /* Pam's HarvestCraft */
-        HarvestcraftModule.register();
 
         /* Magical crops */
         MagicalCropsModule.register();

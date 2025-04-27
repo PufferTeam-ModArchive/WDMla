@@ -205,7 +205,7 @@ provider.wdmla.minecraft.redstone.state=Redstone State Related
 provider.wdmla.minecraft.growable.header=Growable Header
 provider.wdmla.minecraft.double.plant.header=Double Plant Header
 provider.wdmla.minecraft.player.head.header=Player Head Header
-provider.wdmla.minecraft.growth.rate=Growth Rate
+provider.wdmla.minecraft.growth.rate=Growth
 provider.wdmla.minecraft.bed=Bed
 provider.wdmla.minecraft.redstone.wire.header=Redstone Wire Header
 provider.wdmla.minecraft.redstone.wire=Redstone Wire
@@ -247,6 +247,9 @@ provider.wdmla.hungeroverhaul.slow.chicken=Slower Chicken Activity
 provider.wdmla.hungeroverhaul.slow.animal=Slower Animal Activity
 provider.wdmla.hungeroverhaul.milk.cooldown=Milk Cooldown
 provider.wdmla.hungeroverhaul.hoe.result=Hoe Result
+
+provider.wdmla.harvestcraft.category=Pam's Harvestcraft
+provider.wdmla.harvestcraft.fruit.growth.rate=Fruit Growth
 
 # options
 

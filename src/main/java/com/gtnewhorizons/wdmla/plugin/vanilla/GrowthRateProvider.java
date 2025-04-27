@@ -31,7 +31,7 @@ public enum GrowthRateProvider implements IBlockComponentProvider {
         }
     }
 
-    private static void appendGrowthRate(ITooltip tooltip, float growthValue) {
+    public void appendGrowthRate(ITooltip tooltip, float growthValue) {
         if (growthValue < 100.0) {
             tooltip.child(
                     ThemeHelper.INSTANCE.value(
