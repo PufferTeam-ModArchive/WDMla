@@ -43,6 +43,9 @@ public class Message0x02TENBTData extends SimpleChannelInboundHandler<Message0x0
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, Message0x02TENBTData msg) throws Exception {
+        if (msg.tag == null) {
+            return;
+        }
         DataAccessorCommon.instance.setNBTData(msg.tag);
         ObjectDataCenter.setServerData(msg.tag);
     }

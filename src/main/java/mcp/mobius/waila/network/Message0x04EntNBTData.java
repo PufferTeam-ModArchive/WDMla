@@ -43,6 +43,9 @@ public class Message0x04EntNBTData extends SimpleChannelInboundHandler<Message0x
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, Message0x04EntNBTData msg) {
+        if (msg.tag == null) {
+            return;
+        }
         DataAccessorCommon.instance.setNBTData(msg.tag);
         ObjectDataCenter.setServerData(msg.tag);
     }
