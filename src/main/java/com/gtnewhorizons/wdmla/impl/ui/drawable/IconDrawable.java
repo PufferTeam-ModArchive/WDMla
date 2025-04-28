@@ -32,16 +32,20 @@ public class IconDrawable implements IDrawable {
             return;
         }
 
+        // we must shrink the texture uv very slightly
+        // to fill gui scale and uv scale difference
+        final float epsilon = 0.1f / 256.0f;
+
         float x = area.getX() + area.getW() * suRatio;
         float y = area.getY() + area.getH() * svRatio;
         float w = area.getW() * twRatio;
         float h = area.getH() * thRatio;
 
-        float fullU = icon.getMaxU() - icon.getMinU();
-        float fullV = icon.getMaxV() - icon.getMinV();
+        float fullU = icon.getMaxU() - epsilon - icon.getMinU();
+        float fullV = icon.getMaxV() - epsilon - icon.getMinV();
 
-        float u0 = icon.getMinU() + fullU * suRatio;
-        float v0 = icon.getMinV() + fullV * svRatio;
+        float u0 = icon.getMinU() + epsilon + fullU * suRatio;
+        float v0 = icon.getMinV() + epsilon + fullV * svRatio;
 
         float tw = fullU * w / area.getW();
         float th = fullV * h / area.getH();
