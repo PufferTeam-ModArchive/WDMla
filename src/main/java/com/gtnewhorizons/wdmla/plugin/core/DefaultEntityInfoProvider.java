@@ -2,6 +2,7 @@ package com.gtnewhorizons.wdmla.plugin.core;
 
 import static mcp.mobius.waila.api.SpecialChars.*;
 
+import com.gtnewhorizons.wdmla.impl.ui.component.HPanelComponent;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.ResourceLocation;
 
@@ -45,9 +46,15 @@ public enum DefaultEntityInfoProvider implements IEntityComponentProvider {
     public void appendTooltip(ITooltip tooltip, EntityAccessor accessor) {
         ITooltip row = tooltip.horizontal();
         if (PluginsConfig.core.defaultEntity.showEntity) {
-            row.child(
-                    new EntityComponent(accessor.getEntity()).padding(new Padding(6, 0, 10, 0)).size(new Size(12, 12))
-                            .tag(Identifiers.ENTITY));
+            if(!PluginsConfig.core.defaultEntity.fancyRenderer && !(accessor.getEntity() instanceof EntityLiving)) {
+                row.child(new HPanelComponent().tag(Identifiers.ENTITY));
+            }
+            else {
+                row.child(
+                        new EntityComponent(accessor.getEntity())
+                                .padding(new Padding(6, 0, 10, 0)).size(new Size(12, 12))
+                                .tag(Identifiers.ENTITY));
+            }
         }
 
         ITooltip row_vertical = row.vertical();

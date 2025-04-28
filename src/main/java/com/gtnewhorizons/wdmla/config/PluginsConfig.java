@@ -43,6 +43,10 @@ public class PluginsConfig {
             @Config.LangKey("option.wdmla.core.show.modname")
             @Config.DefaultBoolean(true)
             public boolean showModName;
+
+            @Config.LangKey("option.wdmla.core.fancy.renderer")
+            @Config.DefaultBoolean(true)
+            public boolean fancyRenderer;
         }
 
         @Config.LangKey("provider.wdmla.core.default.entity")
@@ -59,6 +63,10 @@ public class PluginsConfig {
             @Config.LangKey("option.wdmla.core.show.modname")
             @Config.DefaultBoolean(true)
             public boolean showModName;
+
+            @Config.LangKey("option.wdmla.core.fancy.renderer")
+            @Config.DefaultBoolean(true)
+            public boolean fancyRenderer;
         }
     }
 

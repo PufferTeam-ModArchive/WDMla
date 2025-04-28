@@ -48,7 +48,7 @@ public enum DefaultBlockInfoProvider implements IBlockComponentProvider {
         ITooltip row = tooltip.horizontal();
         ItemStack itemStack = overrideStack != null ? overrideStack : accessor.getItemForm();
         if (PluginsConfig.core.defaultBlock.showIcon) {
-            if (Mods.BLOCKRENDERER6343.isLoaded()) { //TODO:config
+            if (Mods.BLOCKRENDERER6343.isLoaded() && PluginsConfig.core.defaultBlock.fancyRenderer) {
                 row.child(new WorldBlockComponent(
                         accessor.getHitResult().blockX, accessor.getHitResult().blockY, accessor.getHitResult().blockZ)
                         .tag(Identifiers.ITEM_ICON));

@@ -297,6 +297,7 @@ option.wdmla.core.show.blockname=Show Block Name
 option.wdmla.core.show.modname=Show Mod Name
 option.wdmla.core.show.entity=Render Entity
 option.wdmla.core.show.entityname=Show Entity Name
+option.wdmla.core.fancy.renderer=Fancy Renderer
 
 # universal options
 option.wdmla.universal.normal.amount=Normal Amount
