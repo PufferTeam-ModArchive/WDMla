@@ -1,5 +1,6 @@
 package com.gtnewhorizons.wdmla.plugin.core;
 
+import com.gtnewhorizons.wdmla.impl.ui.component.HPanelComponent;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -21,12 +22,16 @@ public enum EntityEquipmentProvider implements IEntityComponentProvider {
             return;
         }
 
-        ITooltip itemRow = tooltip.horizontal().tag(Identifiers.EQUIPMENT);
+        ITooltip itemRow = new HPanelComponent().tag(Identifiers.EQUIPMENT);
         for (int i = 0; i < 5; i++) {
             ItemStack equipment = ((EntityLiving) accessor.getEntity()).getEquipmentInSlot(i);
             if (equipment != null) {
                 itemRow.child(new ItemComponent(equipment).doDrawOverlay(false));
             }
+        }
+
+        if(itemRow.childrenSize() > 0) {
+            tooltip.child(itemRow);
         }
     }
 
