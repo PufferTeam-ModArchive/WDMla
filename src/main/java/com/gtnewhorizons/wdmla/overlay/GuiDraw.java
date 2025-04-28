@@ -3,10 +3,13 @@ package com.gtnewhorizons.wdmla.overlay;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.OpenGlHelper;
+import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.RenderItem;
+import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.client.renderer.texture.TextureMap;
+import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraftforge.fluids.Fluid;
@@ -339,5 +342,27 @@ public final class GuiDraw {
         tessellator.addVertexWithUV(x1, y1, z, u1, v1);
         tessellator.addVertexWithUV(x1, y0, z, u1, v0);
         tessellator.addVertexWithUV(x0, y0, z, u0, v0);
+    }
+
+    //@see GuiInventory#func_147046_a
+    public static void drawNonLivingEntity(int x, int y, int size, float yaw, float pitch, Entity entity)
+    {
+        GL11.glEnable(GL11.GL_COLOR_MATERIAL);
+        GL11.glPushMatrix();
+        GL11.glTranslatef((float)x, (float)y, 50.0F);
+        GL11.glScalef((float)(-size), (float)size, (float)size);
+        GL11.glRotatef(180.0F, 0.0F, 0.0F, 1.0F);
+        GL11.glRotatef(180.0F - yaw, 0.0F, 1.0F, 0.0F);
+        GL11.glRotatef(-pitch, 1.0F, 0.0F, 1.0F);
+
+        GL11.glEnable(GL12.GL_RESCALE_NORMAL);
+        RenderHelper.enableStandardItemLighting();
+
+        RenderManager.instance.playerViewY = 180.0F;
+        RenderManager.instance.renderEntityWithPosYaw(entity, 0.0D, 0.0D, 0.0D, 0.0F, 1.0F);
+
+        GL11.glPopMatrix();
+        RenderHelper.disableStandardItemLighting();
+        GL11.glDisable(GL12.GL_RESCALE_NORMAL);
     }
 }

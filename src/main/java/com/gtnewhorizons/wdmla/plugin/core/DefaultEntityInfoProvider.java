@@ -15,7 +15,6 @@ import com.gtnewhorizons.wdmla.config.General;
 import com.gtnewhorizons.wdmla.config.PluginsConfig;
 import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
 import com.gtnewhorizons.wdmla.impl.ui.component.EntityComponent;
-import com.gtnewhorizons.wdmla.impl.ui.component.HPanelComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.TextComponent;
 import com.gtnewhorizons.wdmla.impl.ui.sizer.Padding;
 import com.gtnewhorizons.wdmla.impl.ui.sizer.Size;
@@ -46,13 +45,9 @@ public enum DefaultEntityInfoProvider implements IEntityComponentProvider {
     public void appendTooltip(ITooltip tooltip, EntityAccessor accessor) {
         ITooltip row = tooltip.horizontal();
         if (PluginsConfig.core.defaultEntity.showEntity) {
-            if (accessor.getEntity() instanceof EntityLiving living) {
-                row.child(
-                        new EntityComponent(living).padding(new Padding(6, 0, 10, 0)).size(new Size(12, 12))
-                                .tag(Identifiers.ENTITY));
-            } else {
-                row.child(new HPanelComponent().tag(Identifiers.ENTITY));
-            }
+            row.child(
+                    new EntityComponent(accessor.getEntity()).padding(new Padding(6, 0, 10, 0)).size(new Size(12, 12))
+                            .tag(Identifiers.ENTITY));
         }
 
         ITooltip row_vertical = row.vertical();
