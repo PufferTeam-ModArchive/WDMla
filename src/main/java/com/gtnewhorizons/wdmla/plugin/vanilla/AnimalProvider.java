@@ -32,9 +32,11 @@ public enum AnimalProvider implements IEntityComponentProvider, ITimeFormatConfi
             int absTimeToGrow = Math.abs(animal.getGrowingAge());
             TimeFormattingPattern timePattern = WDMlaConfig.instance().getTimeFormatter(this);
             tooltip.child(
-                    ThemeHelper.INSTANCE.value(
-                            StatCollector.translateToLocal("hud.msg.wdmla.animal.growth"),
-                            timePattern.tickFormatter.apply(absTimeToGrow)).tag(VanillaIdentifiers.ANIMAL_GROWTH));
+                    ThemeHelper.INSTANCE
+                            .value(
+                                    StatCollector.translateToLocal("hud.msg.wdmla.animal.growth"),
+                                    timePattern.tickFormatter.apply(absTimeToGrow))
+                            .tag(VanillaIdentifiers.ANIMAL_GROWTH));
         }
     }
 
@@ -47,9 +49,11 @@ public enum AnimalProvider implements IEntityComponentProvider, ITimeFormatConfi
             int absTimeBreedCooldown = Math.abs(animal.getGrowingAge());
             TimeFormattingPattern timePattern = WDMlaConfig.instance().getTimeFormatter(this);
             tooltip.child(
-                    ThemeHelper.INSTANCE.value(
-                            StatCollector.translateToLocal("hud.msg.wdmla.animal.breedcooldown"),
-                            timePattern.tickFormatter.apply(absTimeBreedCooldown)).tag(VanillaIdentifiers.ANIMAL_BREED));
+                    ThemeHelper.INSTANCE
+                            .value(
+                                    StatCollector.translateToLocal("hud.msg.wdmla.animal.breedcooldown"),
+                                    timePattern.tickFormatter.apply(absTimeBreedCooldown))
+                            .tag(VanillaIdentifiers.ANIMAL_BREED));
         }
     }
 

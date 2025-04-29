@@ -25,9 +25,11 @@ public enum ZombieVillagerProvider
             if (conversionTime != -1) {
                 TimeFormattingPattern timePattern = WDMlaConfig.instance().getTimeFormatter(this);
                 tooltip.child(
-                        ThemeHelper.INSTANCE.value(
-                                StatCollector.translateToLocal("hud.msg.wdmla.conversion.time"),
-                                timePattern.tickFormatter.apply(conversionTime)).tag(VanillaIdentifiers.VILLAGER_PROFESSION));
+                        ThemeHelper.INSTANCE
+                                .value(
+                                        StatCollector.translateToLocal("hud.msg.wdmla.conversion.time"),
+                                        timePattern.tickFormatter.apply(conversionTime))
+                                .tag(VanillaIdentifiers.VILLAGER_PROFESSION));
             }
         }
     }

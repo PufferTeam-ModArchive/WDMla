@@ -1,6 +1,5 @@
 package com.gtnewhorizons.wdmla.plugin.vanilla;
 
-import com.gtnewhorizons.wdmla.util.FormatUtil;
 import net.minecraft.block.BlockCrops;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.ResourceLocation;
@@ -11,6 +10,7 @@ import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
 import com.gtnewhorizons.wdmla.impl.ui.component.HPanelComponent;
+import com.gtnewhorizons.wdmla.util.FormatUtil;
 
 public enum GrowthRateProvider implements IBlockComponentProvider {
 
@@ -34,14 +34,16 @@ public enum GrowthRateProvider implements IBlockComponentProvider {
     public void appendGrowthRate(ITooltip tooltip, float growthValue) {
         if (growthValue < 100.0) {
             tooltip.child(
-                    ThemeHelper.INSTANCE.value(
-                            StatCollector.translateToLocal("hud.msg.wdmla.growth"),
-                            FormatUtil.PERCENTAGE_STANDARD.format(growthValue))
+                    ThemeHelper.INSTANCE
+                            .value(
+                                    StatCollector.translateToLocal("hud.msg.wdmla.growth"),
+                                    FormatUtil.PERCENTAGE_STANDARD.format(growthValue))
                             .tag(VanillaIdentifiers.GROWTH_RATE));
         } else {
             tooltip.child(
                     new HPanelComponent()
-                            .text(String.format("%s: ", StatCollector.translateToLocal("hud.msg.wdmla.growth"))).child(
+                            .text(String.format("%s: ", StatCollector.translateToLocal("hud.msg.wdmla.growth")))
+                            .child(
                                     ThemeHelper.INSTANCE.success(
                                             String.format(
                                                     "%s",

@@ -62,8 +62,7 @@ public enum StatusEffectProvider implements IEntityComponentProvider, IServerDat
                         .child(
                                 new IconComponent(new PotionIcon(effect), PotionIcon.PATH)
                                         .size(new Size(lineComponent.getHeight(), lineComponent.getHeight())))
-                        .child(lineComponent)
-                        .tag(Identifiers.STATUS_EFFECT);
+                        .child(lineComponent).tag(Identifiers.STATUS_EFFECT);
             }
         }
     }

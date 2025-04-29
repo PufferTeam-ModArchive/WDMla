@@ -1,6 +1,5 @@
 package com.gtnewhorizons.wdmla.plugin.core;
 
-import com.gtnewhorizons.wdmla.impl.ui.component.HPanelComponent;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -9,6 +8,7 @@ import com.gtnewhorizons.wdmla.api.Identifiers;
 import com.gtnewhorizons.wdmla.api.accessor.EntityAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IEntityComponentProvider;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import com.gtnewhorizons.wdmla.impl.ui.component.HPanelComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.ItemComponent;
 
 /* /summon Zombie ~ ~ ~ {Equipment:[{id:276},{id:310},{id:311},{id:312},{id:313}]} */
@@ -30,7 +30,7 @@ public enum EntityEquipmentProvider implements IEntityComponentProvider {
             }
         }
 
-        if(itemRow.childrenSize() > 0) {
+        if (itemRow.childrenSize() > 0) {
             tooltip.child(itemRow);
         }
     }

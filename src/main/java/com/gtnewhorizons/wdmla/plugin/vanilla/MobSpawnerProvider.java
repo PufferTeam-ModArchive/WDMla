@@ -27,8 +27,7 @@ public enum MobSpawnerProvider
             tooltip.child(
                     ThemeHelper.INSTANCE.value(
                             StatCollector.translateToLocal("hud.msg.wdmla.delay"),
-                            timePattern.tickFormatter.apply(delay))
-                            .tag(VanillaIdentifiers.MOB_SPAWNER));
+                            timePattern.tickFormatter.apply(delay)).tag(VanillaIdentifiers.MOB_SPAWNER));
         }
     }
 

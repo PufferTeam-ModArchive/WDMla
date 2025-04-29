@@ -34,9 +34,11 @@ public enum RedstoneStateProvider implements IBlockComponentProvider {
                 && PluginsConfig.vanilla.redstoneState.showRepeaterDelay) {
                     int tick = (accessor.getMetadata() >> 2) + 1;
                     tooltip.child(
-                            ThemeHelper.INSTANCE.value(
-                                    StatCollector.translateToLocal("hud.msg.wdmla.delay"),
-                                    TimeFormattingPattern.ALWAYS_TICK.tickFormatter.apply(tick)).tag(VanillaIdentifiers.REDSTONE_STATE));
+                            ThemeHelper.INSTANCE
+                                    .value(
+                                            StatCollector.translateToLocal("hud.msg.wdmla.delay"),
+                                            TimeFormattingPattern.ALWAYS_TICK.tickFormatter.apply(tick))
+                                    .tag(VanillaIdentifiers.REDSTONE_STATE));
                 } else
             if (((block == Blocks.unpowered_comparator) || (block == Blocks.powered_comparator))
                     && PluginsConfig.vanilla.redstoneState.showComparatorMode) {

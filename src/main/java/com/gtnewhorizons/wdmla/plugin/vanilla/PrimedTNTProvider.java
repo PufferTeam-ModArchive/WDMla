@@ -22,9 +22,10 @@ public enum PrimedTNTProvider
     public void appendTooltip(ITooltip tooltip, EntityAccessor accessor) {
         TimeFormattingPattern timePattern = WDMlaConfig.instance().getTimeFormatter(this);
         tooltip.child(
-                ThemeHelper.INSTANCE.value(
-                        StatCollector.translateToLocal("hud.msg.wdmla.fuse"),
-                        timePattern.tickFormatter.apply((int) accessor.getServerData().getByte("Fuse")))
+                ThemeHelper.INSTANCE
+                        .value(
+                                StatCollector.translateToLocal("hud.msg.wdmla.fuse"),
+                                timePattern.tickFormatter.apply((int) accessor.getServerData().getByte("Fuse")))
                         .tag(VanillaIdentifiers.PRIMED_TNT));
     }
 

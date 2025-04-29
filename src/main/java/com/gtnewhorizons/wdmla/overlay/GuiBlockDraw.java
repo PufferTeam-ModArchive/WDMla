@@ -1,7 +1,7 @@
 package com.gtnewhorizons.wdmla.overlay;
 
-import com.gtnewhorizon.gtnhlib.blockpos.BlockPos;
-import com.gtnewhorizons.wdmla.util.HotSwapUtil;
+import static org.lwjgl.opengl.GL11.*;
+
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
@@ -13,12 +13,14 @@ import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.client.ForgeHooksClient;
+
 import org.joml.Vector3f;
 import org.joml.Vector4i;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
-import static org.lwjgl.opengl.GL11.*;
+import com.gtnewhorizon.gtnhlib.blockpos.BlockPos;
+import com.gtnewhorizons.wdmla.util.HotSwapUtil;
 
 /**
  * drawing 3D Block by calling lower level api.
@@ -36,7 +38,7 @@ public class GuiBlockDraw {
     public static final float ZOOM = 2.3f;
 
     public static void drawWorldBlock(int x, int y, int width, int height, int blockX, int blockY, int blockZ,
-                                      float rotationYaw, float rotationPitch) {
+            float rotationYaw, float rotationPitch) {
         Vector3f center = new Vector3f(blockX + 0.5f, blockY + 0.5f, blockZ + 0.5f);
 
         Minecraft mc = Minecraft.getMinecraft();
@@ -110,7 +112,8 @@ public class GuiBlockDraw {
         glMatrixMode(GL_MODELVIEW);
         glPushMatrix();
         glLoadIdentity();
-        HotSwapUtil.gluLookat(eyePos.x, eyePos.y, eyePos.z, lookAt.x, lookAt.y, lookAt.z, worldUp.x, worldUp.y, worldUp.z);
+        HotSwapUtil
+                .gluLookat(eyePos.x, eyePos.y, eyePos.z, lookAt.x, lookAt.y, lookAt.z, worldUp.x, worldUp.y, worldUp.z);
     }
 
     protected void scissorView(int x, int y, int width, int height) {

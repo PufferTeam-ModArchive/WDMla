@@ -4,7 +4,6 @@ import static mcp.mobius.waila.api.SpecialChars.ITALIC;
 
 import java.util.List;
 
-import com.gtnewhorizons.wdmla.config.PluginsConfig;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -20,6 +19,7 @@ import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.api.ui.MessageType;
 import com.gtnewhorizons.wdmla.config.General;
+import com.gtnewhorizons.wdmla.config.PluginsConfig;
 import com.gtnewhorizons.wdmla.impl.format.TimeFormattingPattern;
 import com.gtnewhorizons.wdmla.impl.ui.component.HPanelComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.IconComponent;
@@ -53,7 +53,7 @@ public class ThemeHelper {
     }
 
     public void overrideTooltipIcon(ITooltip root, ItemStack newItemStack, boolean overrideFancyRenderer) {
-        if(!overrideFancyRenderer && PluginsConfig.core.defaultBlock.fancyRenderer) {
+        if (!overrideFancyRenderer && PluginsConfig.core.defaultBlock.fancyRenderer) {
             return;
         }
 
@@ -221,6 +221,7 @@ public class ThemeHelper {
 
     /**
      * Provides an ItemComponent with has size of default text height
+     * 
      * @param itemStack Base ItemStack to display
      */
     public IComponent smallItem(ItemStack itemStack) {
@@ -233,8 +234,7 @@ public class ThemeHelper {
     public IComponent itemStackFullLine(ItemStack stack) {
         String strippedName = DisplayUtil.stripSymbols(DisplayUtil.itemDisplayNameShort(stack));
         TextComponent name = new TextComponent(strippedName);
-        ITooltip hPanel = new HPanelComponent()
-                .child(smallItem(stack));
+        ITooltip hPanel = new HPanelComponent().child(smallItem(stack));
         String s = String.valueOf(stack.stackSize); // TODO: unit format
         return hPanel.text(s).text(StatCollector.translateToLocal("hud.msg.wdmla.item.count") + StringUtils.EMPTY)
                 .child(name);

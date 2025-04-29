@@ -185,8 +185,7 @@ public class ItemStorageProvider<T extends Accessor> implements IComponentProvid
 
                 if (showName.isTrue()) {
                     if (itemView.description != null) {
-                        elements.child(ThemeHelper.INSTANCE.smallItem(stack))
-                                .child(itemView.description);
+                        elements.child(ThemeHelper.INSTANCE.smallItem(stack)).child(itemView.description);
                     } else {
                         elements.child(ThemeHelper.INSTANCE.itemStackFullLine(stack));
                     }

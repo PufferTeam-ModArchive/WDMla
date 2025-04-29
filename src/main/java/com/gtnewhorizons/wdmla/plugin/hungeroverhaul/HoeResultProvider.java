@@ -1,13 +1,8 @@
 package com.gtnewhorizons.wdmla.plugin.hungeroverhaul;
 
-import com.gtnewhorizons.wdmla.api.Mods;
-import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
-import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
-import com.gtnewhorizons.wdmla.api.ui.ITooltip;
-import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
-import iguanaman.hungeroverhaul.config.IguanaConfig;
-import iguanaman.hungeroverhaul.util.IguanaEventHook;
-import mcp.mobius.waila.utils.WailaExceptionHandler;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -17,14 +12,22 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+import com.gtnewhorizons.wdmla.api.Mods;
+import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
+import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
+import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
+
+import iguanaman.hungeroverhaul.config.IguanaConfig;
+import iguanaman.hungeroverhaul.util.IguanaEventHook;
+import mcp.mobius.waila.utils.WailaExceptionHandler;
 
 /**
  * A small feature for helping new players to understand the hoe mechanic.
  */
-//TODO: request seed drop chance to server
+// TODO: request seed drop chance to server
 public enum HoeResultProvider implements IBlockComponentProvider {
+
     INSTANCE;
 
     private Class<?> mattockClass;
@@ -32,28 +35,18 @@ public enum HoeResultProvider implements IBlockComponentProvider {
 
     @Override
     public void appendTooltip(ITooltip tooltip, BlockAccessor accessor) {
-        if(IguanaConfig.modifyHoeUse && isHoldingHoe(accessor.getPlayer().inventory.getCurrentItem())) {
+        if (IguanaConfig.modifyHoeUse && isHoldingHoe(accessor.getPlayer().inventory.getCurrentItem())) {
             Block block = accessor.getBlock();
-            if((block == Blocks.dirt || block == Blocks.grass)
-                    && isWaterNearby(accessor)) {
-                tooltip.horizontal()
-                        .child(ThemeHelper.INSTANCE.smallItem(new ItemStack(Blocks.farmland)))
-                        .text(StatCollector.translateToLocal("hud.msg.wdmla.near.water"))
-                        .text(": ")
-                        .child(ThemeHelper.INSTANCE.success(
-                                StatCollector.translateToLocal("hud.msg.wdmla.yes")));
-            }
-            else if(block == Blocks.grass && !isWaterNearby(accessor)) {
-                tooltip.horizontal()
-                        .child(ThemeHelper.INSTANCE.smallItem(new ItemStack(Items.wheat_seeds)))
-                        .text(StatCollector.translateToLocal("hud.msg.wdmla.near.water"))
-                        .text(": ")
-                        .child(ThemeHelper.INSTANCE.failure(
-                                StatCollector.translateToLocal("hud.msg.wdmla.no")));
-            }
-            else {
-                tooltip.horizontal()
-                        .text(StatCollector.translateToLocal("hud.msg.wdmla.cannot.hoe"));
+            if ((block == Blocks.dirt || block == Blocks.grass) && isWaterNearby(accessor)) {
+                tooltip.horizontal().child(ThemeHelper.INSTANCE.smallItem(new ItemStack(Blocks.farmland)))
+                        .text(StatCollector.translateToLocal("hud.msg.wdmla.near.water")).text(": ")
+                        .child(ThemeHelper.INSTANCE.success(StatCollector.translateToLocal("hud.msg.wdmla.yes")));
+            } else if (block == Blocks.grass && !isWaterNearby(accessor)) {
+                tooltip.horizontal().child(ThemeHelper.INSTANCE.smallItem(new ItemStack(Items.wheat_seeds)))
+                        .text(StatCollector.translateToLocal("hud.msg.wdmla.near.water")).text(": ")
+                        .child(ThemeHelper.INSTANCE.failure(StatCollector.translateToLocal("hud.msg.wdmla.no")));
+            } else {
+                tooltip.horizontal().text(StatCollector.translateToLocal("hud.msg.wdmla.cannot.hoe"));
             }
         }
     }
@@ -64,16 +57,16 @@ public enum HoeResultProvider implements IBlockComponentProvider {
     }
 
     private boolean isHoldingHoe(ItemStack mainHand) {
-        if(mainHand == null) {
+        if (mainHand == null) {
             return false;
         }
 
-        if(mainHand.getItem() instanceof ItemHoe) {
+        if (mainHand.getItem() instanceof ItemHoe) {
             return true;
         }
 
-        if(Mods.TCONSTUCT.isLoaded()) {
-            if(mattockClass == null) {
+        if (Mods.TCONSTUCT.isLoaded()) {
+            if (mattockClass == null) {
                 try {
                     mattockClass = Class.forName("tconstruct.items.tools.Mattock");
                 } catch (ClassNotFoundException e) {
@@ -89,12 +82,17 @@ public enum HoeResultProvider implements IBlockComponentProvider {
 
     private boolean isWaterNearby(BlockAccessor accessor) {
         try {
-            if(isWaterNearby == null) {
-                isWaterNearby = IguanaEventHook.class.getDeclaredMethod("isWaterNearby", World.class, int.class, int.class, int.class);
+            if (isWaterNearby == null) {
+                isWaterNearby = IguanaEventHook.class
+                        .getDeclaredMethod("isWaterNearby", World.class, int.class, int.class, int.class);
                 isWaterNearby.setAccessible(true);
             }
-            return (boolean) isWaterNearby.invoke(new IguanaEventHook(),
-                    accessor.getWorld(), accessor.getHitResult().blockX, accessor.getHitResult().blockY, accessor.getHitResult().blockZ);
+            return (boolean) isWaterNearby.invoke(
+                    new IguanaEventHook(),
+                    accessor.getWorld(),
+                    accessor.getHitResult().blockX,
+                    accessor.getHitResult().blockY,
+                    accessor.getHitResult().blockZ);
         } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException ignore) {
             return false;
         }

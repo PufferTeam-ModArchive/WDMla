@@ -24,9 +24,10 @@ public enum ChickenProvider
         if (accessor.getServerData().hasKey("nextEgg")) {
             TimeFormattingPattern timePattern = WDMlaConfig.instance().getTimeFormatter(this);
             tooltip.child(
-                    ThemeHelper.INSTANCE.value(
-                            StatCollector.translateToLocal("hud.msg.wdmla.nextegg"),
-                            timePattern.tickFormatter.apply(accessor.getServerData().getInteger("nextEgg")))
+                    ThemeHelper.INSTANCE
+                            .value(
+                                    StatCollector.translateToLocal("hud.msg.wdmla.nextegg"),
+                                    timePattern.tickFormatter.apply(accessor.getServerData().getInteger("nextEgg")))
                             .tag(VanillaIdentifiers.CHICKEN));
         }
     }

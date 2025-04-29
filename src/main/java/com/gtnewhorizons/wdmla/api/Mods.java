@@ -16,12 +16,12 @@ import mcp.mobius.waila.Waila;
 public enum Mods {
 
     CREATIVEBLOCKS("CreativeBlocks", null),
-    GREGTECH("gregtech", version -> !Loader.isModLoaded("gregapi")), // ProcessedVersion of GregTech is always "MC1.7.10"
+    GREGTECH("gregtech", version -> !Loader.isModLoaded("gregapi")), // ProcessedVersion of GregTech is always
+                                                                     // "MC1.7.10"
     IGUANATWEAKS("IguanaTweaksTConstruct", null),
     TCONSTUCT("TConstruct", null),
     NOTENOUGHITEMS("NotEnoughItems", version -> new DefaultArtifactVersion("2.7.29-GTNH").compareTo(version) <= 0),
-    FORGEMULTIPARTS("ForgeMultipart", null),
-    ;
+    FORGEMULTIPARTS("ForgeMultipart", null),;
 
     public final String modID;
 

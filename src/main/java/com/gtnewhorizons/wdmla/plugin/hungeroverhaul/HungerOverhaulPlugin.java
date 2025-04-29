@@ -1,11 +1,5 @@
 package com.gtnewhorizons.wdmla.plugin.hungeroverhaul;
 
-import com.gtnewhorizons.wdmla.api.IWDMlaClientRegistration;
-import com.gtnewhorizons.wdmla.api.IWDMlaCommonRegistration;
-import com.gtnewhorizons.wdmla.api.IWDMlaPlugin;
-import com.gtnewhorizons.wdmla.api.Identifiers;
-import com.gtnewhorizons.wdmla.api.WDMlaPlugin;
-import com.gtnewhorizons.wdmla.config.WDMlaConfig;
 import net.minecraft.block.BlockDirt;
 import net.minecraft.block.BlockGrass;
 import net.minecraft.entity.passive.EntityAnimal;
@@ -13,6 +7,13 @@ import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.config.Configuration;
+
+import com.gtnewhorizons.wdmla.api.IWDMlaClientRegistration;
+import com.gtnewhorizons.wdmla.api.IWDMlaCommonRegistration;
+import com.gtnewhorizons.wdmla.api.IWDMlaPlugin;
+import com.gtnewhorizons.wdmla.api.Identifiers;
+import com.gtnewhorizons.wdmla.api.WDMlaPlugin;
+import com.gtnewhorizons.wdmla.config.WDMlaConfig;
 
 @WDMlaPlugin(uid = "hungeroverhaul", dependencies = "HungerOverhaul")
 public class HungerOverhaulPlugin implements IWDMlaPlugin {
@@ -32,8 +33,7 @@ public class HungerOverhaulPlugin implements IWDMlaPlugin {
         registration.registerEntityComponent(MilkCooldownProvider.INSTANCE, EntityCow.class);
 
         WDMlaConfig.instance()
-                .getCategory(
-                        Identifiers.CONFIG_AUTOGEN + Configuration.CATEGORY_SPLITTER + "hungeroverhaul")
+                .getCategory(Identifiers.CONFIG_AUTOGEN + Configuration.CATEGORY_SPLITTER + "hungeroverhaul")
                 .setLanguageKey("provider.wdmla.hungeroverhaul.category");
     }
 

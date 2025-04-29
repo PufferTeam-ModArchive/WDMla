@@ -5,13 +5,14 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
-import it.unimi.dsi.fastutil.objects.Object2IntLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
 import com.gtnewhorizons.wdmla.api.accessor.Accessor;
 import com.gtnewhorizons.wdmla.api.view.ViewGroup;
+
+import it.unimi.dsi.fastutil.objects.Object2IntLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
 
 public class ItemCollector<T> {
 
@@ -61,12 +62,11 @@ public class ItemCollector<T> {
                 ItemStack copyStack = stack.copy();
                 copyStack.stackSize = 1;
                 Object2IntMap.Entry<ItemStack> match = items.object2IntEntrySet().stream()
-                        .filter(entry -> ItemStack.areItemStacksEqual(entry.getKey(), copyStack))
-                        .findFirst().orElse(null);
-                if(match != null) {
+                        .filter(entry -> ItemStack.areItemStacksEqual(entry.getKey(), copyStack)).findFirst()
+                        .orElse(null);
+                if (match != null) {
                     match.setValue(match.getIntValue() + stackSize);
-                }
-                else {
+                } else {
                     items.put(copyStack, stackSize);
                 }
             }

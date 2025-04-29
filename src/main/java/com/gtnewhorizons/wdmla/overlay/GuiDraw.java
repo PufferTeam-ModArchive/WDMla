@@ -344,13 +344,12 @@ public final class GuiDraw {
         tessellator.addVertexWithUV(x0, y0, z, u0, v0);
     }
 
-    //@see GuiInventory#func_147046_a
-    public static void drawNonLivingEntity(int x, int y, int size, float yaw, float pitch, Entity entity)
-    {
+    // @see GuiInventory#func_147046_a
+    public static void drawNonLivingEntity(int x, int y, int size, float yaw, float pitch, Entity entity) {
         GL11.glEnable(GL11.GL_COLOR_MATERIAL);
         GL11.glPushMatrix();
-        GL11.glTranslatef((float)x, (float)y, 50.0F);
-        GL11.glScalef((float)(-size), (float)size, (float)size);
+        GL11.glTranslatef((float) x, (float) y, 50.0F);
+        GL11.glScalef((float) (-size), (float) size, (float) size);
         GL11.glRotatef(180.0F, 0.0F, 0.0F, 1.0F);
         GL11.glRotatef(180.0F - yaw, 0.0F, 1.0F, 0.0F);
         GL11.glRotatef(-pitch, 1.0F, 0.0F, 1.0F);

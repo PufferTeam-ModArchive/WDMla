@@ -2,7 +2,6 @@ package com.gtnewhorizons.wdmla.plugin.core;
 
 import static mcp.mobius.waila.api.SpecialChars.*;
 
-import com.gtnewhorizons.wdmla.impl.ui.component.BlockComponent;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
@@ -16,6 +15,7 @@ import com.gtnewhorizons.wdmla.api.ui.MessageType;
 import com.gtnewhorizons.wdmla.config.General;
 import com.gtnewhorizons.wdmla.config.PluginsConfig;
 import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
+import com.gtnewhorizons.wdmla.impl.ui.component.BlockComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.ItemComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.TextComponent;
 import com.gtnewhorizons.wdmla.impl.ui.style.TextStyle;
@@ -48,11 +48,12 @@ public enum DefaultBlockInfoProvider implements IBlockComponentProvider {
         ItemStack itemStack = overrideStack != null ? overrideStack : accessor.getItemForm();
         if (PluginsConfig.core.defaultBlock.showIcon) {
             if (PluginsConfig.core.defaultBlock.fancyRenderer) {
-                row.child(new BlockComponent(
-                        accessor.getHitResult().blockX, accessor.getHitResult().blockY, accessor.getHitResult().blockZ)
-                        .tag(Identifiers.ITEM_ICON));
-            }
-            else {
+                row.child(
+                        new BlockComponent(
+                                accessor.getHitResult().blockX,
+                                accessor.getHitResult().blockY,
+                                accessor.getHitResult().blockZ).tag(Identifiers.ITEM_ICON));
+            } else {
                 row.child(new ItemComponent(itemStack).doDrawOverlay(false).tag(Identifiers.ITEM_ICON));
             }
         }

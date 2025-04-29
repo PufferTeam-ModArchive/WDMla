@@ -1,12 +1,14 @@
 package com.gtnewhorizons.wdmla.plugin.harvestcraft;
 
+import net.minecraft.util.ResourceLocation;
+
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.plugin.vanilla.GrowthRateProvider;
-import net.minecraft.util.ResourceLocation;
 
 public enum HarvestcraftFruitGrowthRateProvider implements IBlockComponentProvider {
+
     INSTANCE;
 
     @Override

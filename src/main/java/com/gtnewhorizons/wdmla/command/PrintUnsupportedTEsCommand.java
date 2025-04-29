@@ -53,8 +53,14 @@ public class PrintUnsupportedTEsCommand extends GTNHClientCommand {
                     .count();
             long supportedStorageProvidersCount = WDMlaCommonRegistration.instance().itemStorageProviders.entries()
                     .filter(classCollectionEntry -> classCollectionEntry.getKey().isInstance(block)).count();
-            // TODO: fluid, power
-            if (supportedNonGlobalProviderCount == 0 && supportedStorageProvidersCount == 0) {
+            long supportedFluidProvidersCount = WDMlaCommonRegistration.instance().fluidStorageProviders.entries()
+                    .filter(classCollectionEntry -> classCollectionEntry.getKey().isInstance(block)).count();
+            long supportedProgressProvidersCount = WDMlaCommonRegistration.instance().progressProviders.entries()
+                    .filter(classCollectionEntry -> classCollectionEntry.getKey().isInstance(block)).count();
+            // TODO: power
+            if (supportedNonGlobalProviderCount == 0 && supportedStorageProvidersCount == 0
+                    && supportedFluidProvidersCount == 0
+                    && supportedProgressProvidersCount == 0) {
                 TileEntity te = tileEntityProvider.createNewTileEntity(mpPlayer.worldObj, 0);
                 if (te != null && !BlackList.blackListedTE.contains(te.getClass().getCanonicalName())) {
                     unSupportedTEOutputs.add(te);

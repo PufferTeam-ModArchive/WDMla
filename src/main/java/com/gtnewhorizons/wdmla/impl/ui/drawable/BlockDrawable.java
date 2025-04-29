@@ -1,11 +1,13 @@
 package com.gtnewhorizons.wdmla.impl.ui.drawable;
 
+import net.minecraft.client.Minecraft;
+
 import com.gtnewhorizons.wdmla.api.ui.IDrawable;
 import com.gtnewhorizons.wdmla.api.ui.sizer.IArea;
 import com.gtnewhorizons.wdmla.config.PluginsConfig;
 import com.gtnewhorizons.wdmla.overlay.GuiBlockDraw;
+
 import mcp.mobius.waila.overlay.OverlayConfig;
-import net.minecraft.client.Minecraft;
 
 public class BlockDrawable implements IDrawable {
 
@@ -26,16 +28,20 @@ public class BlockDrawable implements IDrawable {
 
     @Override
     public void draw(IArea area) {
-        //TODO: get RenderPartialTick
+        // TODO: get RenderPartialTick
         rotationPitch += (Minecraft.getMinecraft().theWorld.getTotalWorldTime() - lastTime)
                 * PluginsConfig.core.defaultEntity.rendererRotationSpeed;
-        //custom viewport is unaffected by GLScalef
+        // custom viewport is unaffected by GLScalef
         GuiBlockDraw.drawWorldBlock(
-                (int) ((area.getX() - area.getW() * (SIZE_MULTIPLIER - 1)  / 2) * OverlayConfig.scale),
-                (int)((area.getY() - area.getH() * (SIZE_MULTIPLIER - 1)  / 2) * OverlayConfig.scale),
+                (int) ((area.getX() - area.getW() * (SIZE_MULTIPLIER - 1) / 2) * OverlayConfig.scale),
+                (int) ((area.getY() - area.getH() * (SIZE_MULTIPLIER - 1) / 2) * OverlayConfig.scale),
                 (int) (area.getW() * OverlayConfig.scale * SIZE_MULTIPLIER),
-                (int) (area.getH() * OverlayConfig.scale * SIZE_MULTIPLIER), blockX, blockY, blockZ,
-                30f, rotationPitch);
+                (int) (area.getH() * OverlayConfig.scale * SIZE_MULTIPLIER),
+                blockX,
+                blockY,
+                blockZ,
+                30f,
+                rotationPitch);
         lastTime = Minecraft.getMinecraft().theWorld.getTotalWorldTime();
     }
 }
