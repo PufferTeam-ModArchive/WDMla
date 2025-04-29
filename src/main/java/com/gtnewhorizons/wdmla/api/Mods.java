@@ -20,7 +20,8 @@ public enum Mods {
     IGUANATWEAKS("IguanaTweaksTConstruct", null),
     TCONSTUCT("TConstruct", null),
     NOTENOUGHITEMS("NotEnoughItems", version -> new DefaultArtifactVersion("2.7.29-GTNH").compareTo(version) <= 0),
-    FORGEMULTIPARTS("ForgeMultipart", null);
+    FORGEMULTIPARTS("ForgeMultipart", null),
+    ;
 
     public final String modID;
 

@@ -2,6 +2,7 @@ package com.gtnewhorizons.wdmla.plugin.core;
 
 import static mcp.mobius.waila.api.SpecialChars.*;
 
+import com.gtnewhorizons.wdmla.impl.ui.component.BlockComponent;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
@@ -46,7 +47,14 @@ public enum DefaultBlockInfoProvider implements IBlockComponentProvider {
         ITooltip row = tooltip.horizontal();
         ItemStack itemStack = overrideStack != null ? overrideStack : accessor.getItemForm();
         if (PluginsConfig.core.defaultBlock.showIcon) {
-            row.child(new ItemComponent(itemStack).doDrawOverlay(false).tag(Identifiers.ITEM_ICON));
+            if (PluginsConfig.core.defaultBlock.fancyRenderer) {
+                row.child(new BlockComponent(
+                        accessor.getHitResult().blockX, accessor.getHitResult().blockY, accessor.getHitResult().blockZ)
+                        .tag(Identifiers.ITEM_ICON));
+            }
+            else {
+                row.child(new ItemComponent(itemStack).doDrawOverlay(false).tag(Identifiers.ITEM_ICON));
+            }
         }
 
         ITooltip row_vertical = row.vertical();

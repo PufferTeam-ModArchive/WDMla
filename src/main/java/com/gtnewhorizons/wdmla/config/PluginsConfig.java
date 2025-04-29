@@ -43,6 +43,14 @@ public class PluginsConfig {
             @Config.LangKey("option.wdmla.core.show.modname")
             @Config.DefaultBoolean(true)
             public boolean showModName;
+
+            @Config.LangKey("option.wdmla.core.fancy.renderer")
+            @Config.DefaultBoolean(true)
+            public boolean fancyRenderer;
+
+            @Config.LangKey("option.wdmla.core.renderer.rotation.speed")
+            @Config.DefaultInt(1)
+            public int rendererRotationSpeed;
         }
 
         @Config.LangKey("provider.wdmla.core.default.entity")
@@ -59,6 +67,22 @@ public class PluginsConfig {
             @Config.LangKey("option.wdmla.core.show.modname")
             @Config.DefaultBoolean(true)
             public boolean showModName;
+
+            @Config.LangKey("option.wdmla.core.fancy.renderer")
+            @Config.DefaultBoolean(true)
+            public boolean fancyRenderer;
+
+            @Config.LangKey("option.wdmla.core.renderer.rotation.speed")
+            @Config.DefaultInt(1)
+            public int rendererRotationSpeed;
+
+            @Config.LangKey("option.wdmla.core.entity.icon.auto.scale")
+            @Config.DefaultBoolean(true)
+            public boolean iconAutoScale;
+
+            @Config.LangKey("option.wdmla.core.entity.icon.default.scale")
+            @Config.DefaultFloat(1.2f)
+            public float iconDefaultScale;
         }
     }
 
