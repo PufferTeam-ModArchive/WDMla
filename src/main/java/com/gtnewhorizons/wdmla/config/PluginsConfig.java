@@ -45,8 +45,10 @@ public class PluginsConfig {
             public boolean showModName;
 
             @Config.LangKey("option.wdmla.core.fancy.renderer")
-            @Config.DefaultBoolean(true)
-            public boolean fancyRenderer;
+            @Config.DefaultEnum("ALL")
+            @Config.Comment("None: Always render fake itemStack, ALL: Always render 3D block, \n " +
+                    "FALLBACK: Render 3D block if the block has no Item variant")
+            public Core.fancyRendererMode fancyRenderer;
 
             @Config.LangKey("option.wdmla.core.renderer.rotation.speed")
             @Config.DefaultInt(1)
@@ -86,6 +88,12 @@ public class PluginsConfig {
             @Config.DefaultFloat(1.2f)
             @Config.RangeFloat(min = 0.1f, max = 100f)
             public float iconDefaultScale;
+        }
+
+        public static enum fancyRendererMode {
+            NONE,
+            FALLBACK,
+            ALL
         }
     }
 

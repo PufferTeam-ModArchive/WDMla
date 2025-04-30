@@ -54,7 +54,7 @@ public class ThemeHelper {
     }
 
     public void overrideTooltipIcon(ITooltip root, ItemStack newItemStack, boolean overrideFancyRenderer) {
-        if (!overrideFancyRenderer && PluginsConfig.core.defaultBlock.fancyRenderer) {
+        if (!overrideFancyRenderer && PluginsConfig.core.defaultBlock.fancyRenderer == PluginsConfig.Core.fancyRendererMode.ALL) {
             return;
         }
 
