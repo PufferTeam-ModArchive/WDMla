@@ -4,6 +4,7 @@ import static mcp.mobius.waila.api.SpecialChars.ITALIC;
 
 import java.util.List;
 
+import com.gtnewhorizons.wdmla.impl.ui.component.EntityComponent;
 import com.gtnewhorizons.wdmla.util.FormatUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
@@ -88,6 +89,19 @@ public class ThemeHelper {
                 .child(new TextComponent(newName).style(new TextStyle().color(theme.textColor(MessageType.TITLE))))
                 .tag(Identifiers.ENTITY_NAME);
         root.replaceChildWithTag(Identifiers.ENTITY_NAME, replacedName);
+    }
+
+    public void overrideEntityTooltipIcon(ITooltip root, Entity newEntity) {
+        if (PluginsConfig.core.defaultEntity.showEntity) {
+            if (!PluginsConfig.core.defaultEntity.fancyRenderer && !(newEntity instanceof EntityLiving)) {
+                root.replaceChildWithTag(Identifiers.ENTITY,
+                        new HPanelComponent().tag(Identifiers.ENTITY));
+            } else {
+                root.replaceChildWithTag(Identifiers.ENTITY,
+                        new EntityComponent(newEntity).padding(new Padding(6, 0, 10, 0))
+                                .size(new Size(12, 12)).tag(Identifiers.ENTITY));
+            }
+        }
     }
 
     public void overrideTooltipModName(ITooltip root, ItemStack newItemStack) {
