@@ -4,7 +4,7 @@ import java.lang.reflect.Method;
 
 import com.gtnewhorizons.wdmla.WDMla;
 import com.gtnewhorizons.wdmla.api.Mods;
-import com.gtnewhorizons.wdmla.test.TestMode;
+import com.gtnewhorizons.wdmla.example.TestMode;
 
 import mcp.mobius.waila.Waila;
 import mcp.mobius.waila.addons.agriculture.AgricultureModule;

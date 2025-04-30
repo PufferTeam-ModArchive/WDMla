@@ -1,4 +1,4 @@
-package com.gtnewhorizons.wdmla.test;
+package com.gtnewhorizons.wdmla.example;
 
 import static mcp.mobius.waila.api.SpecialChars.*;
 
@@ -14,7 +14,7 @@ import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
 import com.gtnewhorizons.wdmla.impl.ui.component.TextComponent;
 
-public enum TestHeaderProvider implements IBlockComponentProvider {
+public enum ExampleHeaderProvider implements IBlockComponentProvider {
 
     INSTANCE;
 

@@ -1,4 +1,4 @@
-package com.gtnewhorizons.wdmla.test;
+package com.gtnewhorizons.wdmla.example;
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,7 +16,7 @@ import com.gtnewhorizons.wdmla.api.view.ClientViewGroup;
 import com.gtnewhorizons.wdmla.api.view.FluidView;
 import com.gtnewhorizons.wdmla.api.view.ViewGroup;
 
-public enum TestFluidStorageProvider
+public enum ExampleFluidStorageProvider
         implements IServerExtensionProvider<FluidView.Data>, IClientExtensionProvider<FluidView.Data, FluidView> {
 
     INSTANCE;

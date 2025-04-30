@@ -11,7 +11,7 @@ import net.minecraft.network.NetHandlerPlayServer;
 
 import com.google.common.base.Charsets;
 import com.gtnewhorizons.wdmla.WDMla;
-import com.gtnewhorizons.wdmla.test.TestMode;
+import com.gtnewhorizons.wdmla.example.TestMode;
 
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.network.FMLEmbeddedChannel;

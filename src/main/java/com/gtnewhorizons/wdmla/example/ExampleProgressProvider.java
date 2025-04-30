@@ -1,4 +1,4 @@
-package com.gtnewhorizons.wdmla.test;
+package com.gtnewhorizons.wdmla.example;
 
 import java.util.Arrays;
 import java.util.List;
@@ -17,7 +17,7 @@ import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
 import com.gtnewhorizons.wdmla.impl.ui.component.TextComponent;
 import com.gtnewhorizons.wdmla.impl.ui.style.ProgressStyle;
 
-public enum TestProgressProvider implements IServerExtensionProvider<ProgressView.Data>,
+public enum ExampleProgressProvider implements IServerExtensionProvider<ProgressView.Data>,
         IClientExtensionProvider<ProgressView.Data, ProgressView> {
 
     INSTANCE;

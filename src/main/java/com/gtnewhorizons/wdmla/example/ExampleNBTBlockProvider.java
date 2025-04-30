@@ -1,4 +1,4 @@
-package com.gtnewhorizons.wdmla.test;
+package com.gtnewhorizons.wdmla.example;
 
 import static com.gtnewhorizons.wdmla.impl.ui.component.TooltipComponent.DEFAULT_PROGRESS_DESCRIPTION_PADDING;
 
@@ -27,7 +27,7 @@ import com.gtnewhorizons.wdmla.impl.ui.style.RectStyle;
 
 import mcp.mobius.waila.overlay.DisplayUtil;
 
-public enum TestNBTBlockProvider implements IBlockComponentProvider, IServerDataProvider<BlockAccessor> {
+public enum ExampleNBTBlockProvider implements IBlockComponentProvider, IServerDataProvider<BlockAccessor> {
 
     INSTANCE;
 
