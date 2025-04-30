@@ -112,21 +112,19 @@ public class DisplayUtil {
     /**
      * Gets the first line of item tooltip.<br>
      * Changes from Waila: The name will be formatted automatically!<br>
-     * (strip symbol + fold too long name)
      *
      * @param itemstack ItemStack that has custom tooltip
      * @return formatted display name
      */
     public static @NotNull String itemDisplayNameShortFormatted(@NotNull ItemStack itemstack) {
         List<String> list = itemDisplayNameMultiline(itemstack);
-        //must strip symbols before calculating the actual name length
-        return FormatUtil.formatNameByPixelCount(stripSymbols(list.get(0)));
+        return FormatUtil.formatNameByPixelCount(list.get(0));
     }
 
     /**
      * Gets the first line of item tooltip.<br>
      *
-     * @deprecated This will return full length item name which may collapse your screen.
+     * @deprecated This will return full length item name which may fill the whole screen.
      * @param itemstack ItemStack that has custom tooltip
      * @return display name
      */

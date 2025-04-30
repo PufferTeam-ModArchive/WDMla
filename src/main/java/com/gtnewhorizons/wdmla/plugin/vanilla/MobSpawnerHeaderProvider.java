@@ -26,8 +26,7 @@ public enum MobSpawnerHeaderProvider implements IBlockComponentProvider {
         if (accessor.getTileEntity() instanceof TileEntityMobSpawner spawnerTile) {
             String spawnerName = DisplayUtil.itemDisplayNameShortFormatted(accessor.getItemForm());
             String mobName = spawnerTile.func_145881_a().getEntityNameToSpawn();
-            mobName = FormatUtil.formatNameByPixelCount(
-                    DisplayUtil.stripSymbols(mobName));
+            mobName = FormatUtil.formatNameByPixelCount(mobName);
             ThemeHelper.INSTANCE.overrideTooltipTitle(tooltip, String.format("%s (%s)", spawnerName, mobName));
 
             // @see codechicken.nei.ItemMobSpawner

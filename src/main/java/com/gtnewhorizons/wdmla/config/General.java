@@ -50,6 +50,7 @@ public class General {
 
     @Config.LangKey("option.wdmla.general.maxnamelengthpixel")
     @Config.DefaultInt(150)
+    @Config.RangeInt(min = 1, max = 10000)
     public static int maxNameLengthPixel;
 
     @Config.Comment("Text color for the custom theme. \n" + "See general category for the default text color.")

@@ -66,7 +66,7 @@ public enum DefaultBlockInfoProvider implements IBlockComponentProvider {
             if (accessor.getServerData().hasKey("CustomName")) {
                 String rawName = accessor.getServerData().getString("CustomName");
                 itemName = EnumChatFormatting.ITALIC
-                        + FormatUtil.formatNameByPixelCount(DisplayUtil.stripSymbols(rawName));
+                        + FormatUtil.formatNameByPixelCount(rawName);
             }
             else {
                 itemName = DisplayUtil.itemDisplayNameShortFormatted(itemStack);

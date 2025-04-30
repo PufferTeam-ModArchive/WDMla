@@ -62,12 +62,10 @@ public enum DefaultEntityInfoProvider implements IEntityComponentProvider {
             String name;
             if (accessor.getEntity() instanceof EntityLiving living && living.hasCustomNameTag()
                     && General.customNameOverride) {
-                name = ITALIC + FormatUtil.formatNameByPixelCount(
-                        DisplayUtil.stripSymbols(living.getCustomNameTag()));
+                name = FormatUtil.formatNameByPixelCount(living.getCustomNameTag());
             }
             else {
-                name = FormatUtil.formatNameByPixelCount(
-                        DisplayUtil.stripSymbols(accessor.getEntity().getCommandSenderName()));
+                name = FormatUtil.formatNameByPixelCount(accessor.getEntity().getCommandSenderName());
             }
             row_vertical.child(ThemeHelper.INSTANCE.title(name).tag(Identifiers.ENTITY_NAME));
         }

@@ -9,7 +9,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
 
 import org.apache.commons.lang3.StringUtils;
@@ -66,9 +65,6 @@ public class ThemeHelper {
 
     public void overrideTooltipTitle(ITooltip root, ItemStack newItemStack) {
         String strippedName = DisplayUtil.itemDisplayNameShortFormatted(newItemStack);
-        if(newItemStack.hasDisplayName()) {
-            strippedName = EnumChatFormatting.ITALIC + strippedName;
-        }
         overrideTooltipTitle(root, strippedName);
     }
 
@@ -83,7 +79,7 @@ public class ThemeHelper {
     public void overrideEntityTooltipTitle(ITooltip root, String newName, @Nullable Entity entityMayHaveCustomName) {
         Theme theme = General.currentTheme.get();
         if (entityMayHaveCustomName instanceof EntityLiving living && living.hasCustomNameTag()) {
-            newName = ITALIC + FormatUtil.formatNameByPixelCount(DisplayUtil.stripSymbols(living.getCustomNameTag()));
+            newName = FormatUtil.formatNameByPixelCount(living.getCustomNameTag());
         }
         else {
             newName = FormatUtil.formatNameByPixelCount(newName);
