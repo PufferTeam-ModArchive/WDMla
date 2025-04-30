@@ -35,7 +35,7 @@ public enum FallingBlockHeaderProvider implements IEntityComponentProvider {
                     tooltip,
                     String.format(
                             StatCollector.translateToLocal("hud.msg.wdmla.entity.falling"),
-                            DisplayUtil.itemDisplayNameShort(itemForm)),
+                            DisplayUtil.itemDisplayNameShortFormatted(itemForm)),
                     accessor.getEntity());
         }
     }

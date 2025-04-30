@@ -1,5 +1,9 @@
 package com.gtnewhorizons.wdmla.util;
 
+import com.gtnewhorizons.wdmla.config.General;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.FontRenderer;
+
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
@@ -84,5 +88,24 @@ public class FormatUtil {
         percentFormat.setMaximumFractionDigits(0);
         percentFormat.setRoundingMode(RoundingMode.HALF_UP);
         return percentFormat;
+    }
+
+    public static String formatNameByPixelCount(String rawName) {
+        if (rawName == null) {
+            return null;
+        }
+
+        FontRenderer fontRenderer = Minecraft.getMinecraft().fontRenderer;
+        int maxNameLength = General.maxNameLengthPixel;
+
+        if(fontRenderer.getStringWidth(rawName) <= maxNameLength) {
+            return rawName;
+        }
+
+        while (fontRenderer.getStringWidth(rawName) > maxNameLength) {
+            rawName = rawName.substring(0, rawName.length() - 1);
+        }
+
+        return rawName + "...";
     }
 }

@@ -5,6 +5,7 @@ import static mcp.mobius.waila.api.SpecialChars.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.gtnewhorizons.wdmla.util.FormatUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.entity.RenderItem;
@@ -109,11 +110,27 @@ public class DisplayUtil {
     }
 
     /**
-     * Gets the first line of item tooltip.
-     * 
+     * Gets the first line of item tooltip.<br>
+     * Changes from Waila: The name will be formatted automatically!<br>
+     * (strip symbol + fold too long name)
+     *
+     * @param itemstack ItemStack that has custom tooltip
+     * @return formatted display name
+     */
+    public static @NotNull String itemDisplayNameShortFormatted(@NotNull ItemStack itemstack) {
+        List<String> list = itemDisplayNameMultiline(itemstack);
+        //must strip symbols before calculating the actual name length
+        return FormatUtil.formatNameByPixelCount(stripSymbols(list.get(0)));
+    }
+
+    /**
+     * Gets the first line of item tooltip.<br>
+     *
+     * @deprecated This will return full length item name which may collapse your screen.
      * @param itemstack ItemStack that has custom tooltip
      * @return display name
      */
+    @Deprecated
     public static @NotNull String itemDisplayNameShort(@NotNull ItemStack itemstack) {
         List<String> list = itemDisplayNameMultiline(itemstack);
         return list.get(0);

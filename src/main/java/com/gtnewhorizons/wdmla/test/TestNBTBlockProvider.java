@@ -88,17 +88,17 @@ public enum TestNBTBlockProvider implements IBlockComponentProvider, IServerData
                     .bgStyle(new RectStyle().backgroundColor(0x8000ffff).borderColor(0xff00ffff));
             if (items[0] != null) {
                 itemSection.horizontal().text("In: ", itemPadding).item(items[0], new Padding(), new Size(10, 10))
-                        .text(" " + DisplayUtil.itemDisplayNameShort(items[0]), itemPadding);
+                        .text(" " + DisplayUtil.itemDisplayNameShortFormatted(items[0]), itemPadding);
             }
 
             if (items[2] != null) {
                 itemSection.horizontal().text("Out: ", itemPadding).item(items[2], new Padding(), new Size(10, 10))
-                        .text(" " + DisplayUtil.itemDisplayNameShort(items[2]), itemPadding);
+                        .text(" " + DisplayUtil.itemDisplayNameShortFormatted(items[2]), itemPadding);
             }
 
             if (items[1] != null) {
                 itemSection.horizontal().text("Fuel: ", itemPadding).item(items[1], new Padding(), new Size(10, 10))
-                        .text(" " + DisplayUtil.itemDisplayNameShort(items[1]), itemPadding);
+                        .text(" " + DisplayUtil.itemDisplayNameShortFormatted(items[1]), itemPadding);
             }
             tooltip.child(itemSection);
         }

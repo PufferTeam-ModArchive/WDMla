@@ -1,5 +1,6 @@
 package com.gtnewhorizons.wdmla.plugin.vanilla;
 
+import com.gtnewhorizons.wdmla.util.FormatUtil;
 import net.minecraft.entity.EntityList;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -23,8 +24,10 @@ public enum MobSpawnerHeaderProvider implements IBlockComponentProvider {
     @Override
     public void appendTooltip(ITooltip tooltip, BlockAccessor accessor) {
         if (accessor.getTileEntity() instanceof TileEntityMobSpawner spawnerTile) {
-            String spawnerName = DisplayUtil.itemDisplayNameShort(accessor.getItemForm());
+            String spawnerName = DisplayUtil.itemDisplayNameShortFormatted(accessor.getItemForm());
             String mobName = spawnerTile.func_145881_a().getEntityNameToSpawn();
+            mobName = FormatUtil.formatNameByPixelCount(
+                    DisplayUtil.stripSymbols(mobName));
             ThemeHelper.INSTANCE.overrideTooltipTitle(tooltip, String.format("%s (%s)", spawnerName, mobName));
 
             // @see codechicken.nei.ItemMobSpawner

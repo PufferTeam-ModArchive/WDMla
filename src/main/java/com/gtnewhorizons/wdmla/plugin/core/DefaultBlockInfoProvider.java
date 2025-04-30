@@ -2,7 +2,9 @@ package com.gtnewhorizons.wdmla.plugin.core;
 
 import static mcp.mobius.waila.api.SpecialChars.*;
 
+import com.gtnewhorizons.wdmla.util.FormatUtil;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.ResourceLocation;
 
 import com.gtnewhorizons.wdmla.api.Identifiers;
@@ -60,10 +62,15 @@ public enum DefaultBlockInfoProvider implements IBlockComponentProvider {
 
         ITooltip row_vertical = row.vertical();
         if (PluginsConfig.core.defaultBlock.showBlockName) {
-            if (accessor.getServerData() != null && accessor.getServerData().hasKey("CustomName")) {
-                itemStack.setStackDisplayName(accessor.getServerData().getString("CustomName"));
+            String itemName;
+            if (accessor.getServerData().hasKey("CustomName")) {
+                String rawName = accessor.getServerData().getString("CustomName");
+                itemName = EnumChatFormatting.ITALIC
+                        + FormatUtil.formatNameByPixelCount(DisplayUtil.stripSymbols(rawName));
             }
-            String itemName = DisplayUtil.itemDisplayNameShort(itemStack);
+            else {
+                itemName = DisplayUtil.itemDisplayNameShortFormatted(itemStack);
+            }
             row_vertical.horizontal().tag(Identifiers.ITEM_NAME_ROW)
                     .child(ThemeHelper.INSTANCE.title(itemName).tag(Identifiers.ITEM_NAME));
         }

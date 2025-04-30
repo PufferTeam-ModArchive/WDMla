@@ -114,7 +114,8 @@ public class FluidStorageProvider<T extends Accessor> implements IComponentProvi
                         description = helper.info(StatCollector.translateToLocal("hud.msg.wdmla.empty"));
                     }
                 } else {
-                    String fluidName = DisplayUtil.stripSymbols(view.fluidName);
+                    String fluidName = FormatUtil.formatNameByPixelCount(
+                            DisplayUtil.stripSymbols(view.fluidName));
                     if (accessor.showDetails() && showMode != PluginsConfig.Universal.FluidStorage.Mode.GAUGE) {
                         description = new HPanelComponent().child(helper.info(currentStr)).text(" / ").text(maxStr);
                     } else {

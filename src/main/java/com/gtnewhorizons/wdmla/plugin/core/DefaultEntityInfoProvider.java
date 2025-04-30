@@ -2,6 +2,8 @@ package com.gtnewhorizons.wdmla.plugin.core;
 
 import static mcp.mobius.waila.api.SpecialChars.*;
 
+import com.gtnewhorizons.wdmla.util.FormatUtil;
+import mcp.mobius.waila.overlay.DisplayUtil;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.ResourceLocation;
 
@@ -57,10 +59,15 @@ public enum DefaultEntityInfoProvider implements IEntityComponentProvider {
 
         ITooltip row_vertical = row.vertical();
         if (PluginsConfig.core.defaultEntity.showEntityName) {
-            String name = accessor.getEntity().getCommandSenderName();
+            String name;
             if (accessor.getEntity() instanceof EntityLiving living && living.hasCustomNameTag()
                     && General.customNameOverride) {
-                name = ITALIC + living.getCustomNameTag();
+                name = ITALIC + FormatUtil.formatNameByPixelCount(
+                        DisplayUtil.stripSymbols(living.getCustomNameTag()));
+            }
+            else {
+                name = FormatUtil.formatNameByPixelCount(
+                        DisplayUtil.stripSymbols(accessor.getEntity().getCommandSenderName()));
             }
             row_vertical.child(ThemeHelper.INSTANCE.title(name).tag(Identifiers.ENTITY_NAME));
         }

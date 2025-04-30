@@ -48,6 +48,10 @@ public class General {
     @Config.Comment("Allow renamed object taking place on tooltip title")
     public static boolean customNameOverride;
 
+    @Config.LangKey("option.wdmla.general.maxnamelengthpixel")
+    @Config.DefaultInt(150)
+    public static int maxNameLengthPixel;
+
     @Config.Comment("Text color for the custom theme. \n" + "See general category for the default text color.")
     @Config.LangKey("option.wdmla.textcolor.category")
     public static class TextColor {

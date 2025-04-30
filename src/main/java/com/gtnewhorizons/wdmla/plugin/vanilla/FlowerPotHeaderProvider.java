@@ -19,7 +19,7 @@ public enum FlowerPotHeaderProvider implements IBlockComponentProvider {
     public void appendTooltip(ITooltip tooltip, BlockAccessor accessor) {
         String formattedName = String.format(
                 StatCollector.translateToLocal("hud.msg.wdmla.flower.pot"),
-                DisplayUtil.itemDisplayNameShort(accessor.getItemForm()));
+                DisplayUtil.itemDisplayNameShortFormatted(accessor.getItemForm()));
         ThemeHelper.INSTANCE.overrideTooltipTitle(tooltip, formattedName);
     }
 

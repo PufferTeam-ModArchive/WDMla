@@ -4,10 +4,12 @@ import static mcp.mobius.waila.api.SpecialChars.ITALIC;
 
 import java.util.List;
 
+import com.gtnewhorizons.wdmla.util.FormatUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
 
 import org.apache.commons.lang3.StringUtils;
@@ -63,21 +65,28 @@ public class ThemeHelper {
     }
 
     public void overrideTooltipTitle(ITooltip root, ItemStack newItemStack) {
-        overrideTooltipTitle(root, DisplayUtil.itemDisplayNameShort(newItemStack));
+        String strippedName = DisplayUtil.itemDisplayNameShortFormatted(newItemStack);
+        if(newItemStack.hasDisplayName()) {
+            strippedName = EnumChatFormatting.ITALIC + strippedName;
+        }
+        overrideTooltipTitle(root, strippedName);
     }
 
-    public void overrideTooltipTitle(ITooltip root, String newName) {
+    public void overrideTooltipTitle(ITooltip root, String formattedNewName) {
         Theme theme = General.currentTheme.get();
         IComponent replacedName = new HPanelComponent()
-                .child(new TextComponent(newName).style(new TextStyle().color(theme.textColor(MessageType.TITLE))))
+                .child(new TextComponent(formattedNewName).style(new TextStyle().color(theme.textColor(MessageType.TITLE))))
                 .tag(Identifiers.ITEM_NAME);
         root.replaceChildWithTag(Identifiers.ITEM_NAME, replacedName);
     }
 
-    public void overrideEntityTooltipTitle(ITooltip root, String newName, Entity entity) {
+    public void overrideEntityTooltipTitle(ITooltip root, String newName, @Nullable Entity entityMayHaveCustomName) {
         Theme theme = General.currentTheme.get();
-        if (entity instanceof EntityLiving living && living.hasCustomNameTag()) {
-            newName = ITALIC + living.getCustomNameTag();
+        if (entityMayHaveCustomName instanceof EntityLiving living && living.hasCustomNameTag()) {
+            newName = ITALIC + FormatUtil.formatNameByPixelCount(DisplayUtil.stripSymbols(living.getCustomNameTag()));
+        }
+        else {
+            newName = FormatUtil.formatNameByPixelCount(newName);
         }
         IComponent replacedName = new HPanelComponent()
                 .child(new TextComponent(newName).style(new TextStyle().color(theme.textColor(MessageType.TITLE))))
@@ -180,7 +189,7 @@ public class ThemeHelper {
                                                 String.format(
                                                         "%dx %s",
                                                         inputStack.stackSize,
-                                                        DisplayUtil.itemDisplayNameShort(inputStack))));
+                                                        DisplayUtil.itemDisplayNameShortFormatted(inputStack))));
                     }
                 }
                 for (ItemStack outputStack : output) {
@@ -191,7 +200,7 @@ public class ThemeHelper {
                                                 String.format(
                                                         "%dx %s",
                                                         outputStack.stackSize,
-                                                        DisplayUtil.itemDisplayNameShort(outputStack))));
+                                                        DisplayUtil.itemDisplayNameShortFormatted(outputStack))));
                     }
                 }
             }
@@ -232,7 +241,7 @@ public class ThemeHelper {
      * Constructs a component to display an ItemStack in "(icon) 3x Apple" format
      */
     public IComponent itemStackFullLine(ItemStack stack) {
-        String strippedName = DisplayUtil.stripSymbols(DisplayUtil.itemDisplayNameShort(stack));
+        String strippedName = DisplayUtil.itemDisplayNameShortFormatted(stack);
         TextComponent name = new TextComponent(strippedName);
         ITooltip hPanel = new HPanelComponent().child(smallItem(stack));
         String s = String.valueOf(stack.stackSize); // TODO: unit format
