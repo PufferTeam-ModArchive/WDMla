@@ -33,6 +33,7 @@ import net.minecraft.block.BlockRedstoneWire;
 import net.minecraft.block.BlockSapling;
 import net.minecraft.block.BlockSilverfish;
 import net.minecraft.block.BlockSkull;
+import net.minecraft.block.BlockSnow;
 import net.minecraft.block.BlockStem;
 import net.minecraft.block.BlockStoneSlab;
 import net.minecraft.block.BlockWoodSlab;
@@ -115,6 +116,7 @@ public class VanillaPlugin implements IWDMlaPlugin {
         registration.registerBlockComponent(TotalEnchantmentPowerProvider.INSTANCE, BlockEnchantmentTable.class);
         registration.registerBlockComponent(RedstoneWireProvider.INSTANCE, BlockDaylightDetector.class);
         registration.registerBlockComponent(CauldronProvider.INSTANCE, BlockCauldron.class);
+        registration.registerBlockComponent(SnowLayerProvider.INSTANCE, BlockSnow.class);
 
         registration.registerEntityComponent(PetProvider.INSTANCE, EntityTameable.class);
         registration.registerEntityComponent(AnimalProvider.INSTANCE, EntityAnimal.class);
