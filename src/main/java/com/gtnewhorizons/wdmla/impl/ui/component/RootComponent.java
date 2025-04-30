@@ -23,7 +23,7 @@ public final class RootComponent extends VPanelComponent {
 
     public RootComponent() {
         super();
-        tag(Identifiers.ROOT);
+        tagInternal();
     }
 
     public void renderHUD() {
@@ -45,9 +45,13 @@ public final class RootComponent extends VPanelComponent {
     @Override
     public ITooltip tag(ResourceLocation tag) {
         WailaExceptionHandler.handleErr(
-                new IllegalArgumentException("RootComponent cannot have tag!"),
+                new IllegalArgumentException("RootComponent tag cannot be replaced!"),
                 RootComponent.class.getName(),
                 null);
         return null;
+    }
+
+    private void tagInternal() {
+        super.tag(Identifiers.ROOT);
     }
 }
