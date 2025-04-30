@@ -14,6 +14,7 @@ import net.minecraft.block.BlockDispenser;
 import net.minecraft.block.BlockDoublePlant;
 import net.minecraft.block.BlockDropper;
 import net.minecraft.block.BlockEnchantmentTable;
+import net.minecraft.block.BlockEndPortal;
 import net.minecraft.block.BlockEnderChest;
 import net.minecraft.block.BlockFlowerPot;
 import net.minecraft.block.BlockFurnace;
@@ -118,6 +119,7 @@ public class VanillaPlugin implements IWDMlaPlugin {
         registration.registerBlockComponent(RedstoneWireProvider.INSTANCE, BlockDaylightDetector.class);
         registration.registerBlockComponent(CauldronProvider.INSTANCE, BlockCauldron.class);
         registration.registerBlockComponent(SnowLayerProvider.INSTANCE, BlockSnow.class);
+        registration.registerBlockComponent(EndPortalHeaderProvider.INSTANCE, BlockEndPortal.class);
 
         registration.registerEntityComponent(PetProvider.INSTANCE, EntityTameable.class);
         registration.registerEntityComponent(AnimalProvider.INSTANCE, EntityAnimal.class);

@@ -236,6 +236,7 @@ provider.wdmla.minecraft.minecart.command.block=Minecart with Command Block
 provider.wdmla.minecraft.minecart.furnace=Minecart with Furnace
 provider.wdmla.minecraft.snow.layer=Snow Layer
 provider.wdmla.minecraft.ender.dragon.header=Ender Dragon Header
+provider.wdmla.minecraft.end.portal.header=End Portal Header
 
 provider.wdmla.harvestability.category=Waila Harvestability
 provider.wdmla.harvestability.legacy=Legacy
@@ -406,6 +407,9 @@ option.stevescarts.colorblind=Colorblind mode
 option.stevescarts.shifttoggle=Shift toggle
 option.thaumcraft.aspects=Show aspects
 
+
+# missing block key section
+block.EndPortal.name=End Portal
 
 # missing entity key section
 # vanilla minecart uses special switch case to add lang key
