@@ -6,13 +6,13 @@ import com.gtnewhorizons.wdmla.api.provider.IServerDataProvider;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.impl.ui.StatusHelper;
 import com.pam.harvestcraft.ItemRegistry;
-import com.pam.harvestcraft.TileEntityPamAnimalTrap;
+import com.pam.harvestcraft.TileEntityPamFishTrap;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 
-public enum AnimalTrapProvider implements IBlockComponentProvider, IServerDataProvider<BlockAccessor> {
+public enum FishTrapProvider implements IBlockComponentProvider, IServerDataProvider<BlockAccessor> {
     INSTANCE;
 
     @Override
@@ -23,7 +23,7 @@ public enum AnimalTrapProvider implements IBlockComponentProvider, IServerDataPr
 
         if (!accessor.getServerData().getBoolean("GoodEnvironment")) {
             tooltip.child(StatusHelper.INSTANCE.structureIncomplete());
-            String material = StatCollector.translateToLocal("hud.msg.wdmla.dirt.or.grass");
+            String material = StatCollector.translateToLocal("hud.msg.wdmla.any.fluid");
             tooltip.text(StatCollector.translateToLocalFormatted(
                     "hud.msg.wdmla.must.surround", material));
         }
@@ -37,7 +37,7 @@ public enum AnimalTrapProvider implements IBlockComponentProvider, IServerDataPr
 
     @Override
     public void appendServerData(NBTTagCompound data, BlockAccessor accessor) {
-        if(accessor.getTileEntity() instanceof TileEntityPamAnimalTrap trap) {
+        if(accessor.getTileEntity() instanceof TileEntityPamFishTrap trap) {
             data.setBoolean("GoodEnvironment", trap.countFlowers() >= 5);
             data.setBoolean("IngredientValid", isIngredientValid(trap.getStackInSlot(18)));
         }
@@ -45,16 +45,14 @@ public enum AnimalTrapProvider implements IBlockComponentProvider, IServerDataPr
 
     @Override
     public ResourceLocation getUid() {
-        return HarvestcraftPlugin.path("animal_trap");
+        return HarvestcraftPlugin.path("fish_trap");
     }
 
     private boolean isIngredientValid(ItemStack baitSlotItemStack) {
         if (baitSlotItemStack == null) {
             return false;
         } else {
-            return (baitSlotItemStack.getItem() == ItemRegistry.grainbaitItem
-                    || baitSlotItemStack.getItem() == ItemRegistry.fruitbaitItem
-                    || baitSlotItemStack.getItem() == ItemRegistry.veggiebaitItem);
+            return (baitSlotItemStack.getItem() == ItemRegistry.fishtrapbaitItem);
         }
     }
 }

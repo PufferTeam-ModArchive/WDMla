@@ -106,6 +106,9 @@ hud.msg.wdmla.more.tanks=+ %d more tanks
 hud.msg.wdmla.remaining.time=Remaining Time
 hud.msg.wdmla.rng.multiplier=[+RNG x%s]
 hud.msg.wdmla.milk.cooldown=Milk Cooldown
+hud.msg.wdmla.must.surround=Must be Surrounded by %s
+hud.msg.wdmla.dirt.or.grass=Dirt or Grass Block
+hud.msg.wdmla.any.fluid=Any Fluid
 
 # state
 hud.msg.wdmla.mature=Mature
@@ -251,6 +254,7 @@ provider.wdmla.hungeroverhaul.hoe.result=Hoe Result
 provider.wdmla.harvestcraft.category=Pam's Harvestcraft
 provider.wdmla.harvestcraft.fruit.growth.rate=Fruit Growth
 provider.wdmla.harvestcraft.animal.trap=Animal Trap
+provider.wdmla.harvestcraft.fish.trap=Fish Trap
 
 # options
 

@@ -1,6 +1,8 @@
 package com.gtnewhorizons.wdmla.plugin.harvestcraft;
 
+import com.gtnewhorizons.wdmla.plugin.universal.ItemStorageProvider;
 import com.pam.harvestcraft.BlockPamAnimalTrap;
+import com.pam.harvestcraft.BlockPamFishTrap;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.config.Configuration;
 
@@ -19,12 +21,16 @@ public class HarvestcraftPlugin implements IWDMlaPlugin {
     @Override
     public void register(IWDMlaCommonRegistration registration) {
         registration.registerBlockDataProvider(AnimalTrapProvider.INSTANCE, BlockPamAnimalTrap.class);
+        registration.registerBlockDataProvider(FishTrapProvider.INSTANCE, BlockPamFishTrap.class);
+        registration.registerItemStorage(ItemStorageProvider.Extension.INSTANCE, BlockPamAnimalTrap.class);
+        registration.registerItemStorage(ItemStorageProvider.Extension.INSTANCE, BlockPamFishTrap.class);
     }
 
     @Override
     public void registerClient(IWDMlaClientRegistration registration) {
         registration.registerBlockComponent(HarvestcraftFruitGrowthRateProvider.INSTANCE, BlockPamFruit.class);
         registration.registerBlockComponent(AnimalTrapProvider.INSTANCE, BlockPamAnimalTrap.class);
+        registration.registerBlockComponent(FishTrapProvider.INSTANCE, BlockPamFishTrap.class);
 
         WDMlaConfig.instance()
                 .getCategory(Identifiers.CONFIG_AUTOGEN + Configuration.CATEGORY_SPLITTER + "harvestcraft")
