@@ -30,7 +30,7 @@ public class BlockDrawable implements IDrawable {
     public void draw(IArea area) {
         // TODO: get RenderPartialTick
         rotationPitch += (Minecraft.getMinecraft().theWorld.getTotalWorldTime() - lastTime)
-                * PluginsConfig.core.defaultEntity.rendererRotationSpeed;
+                * PluginsConfig.core.defaultBlock.rendererRotationSpeed;
         // custom viewport is unaffected by GLScalef
         GuiBlockDraw.drawWorldBlock(
                 (int) ((area.getX() - area.getW() * (SIZE_MULTIPLIER - 1) / 2) * OverlayConfig.scale),

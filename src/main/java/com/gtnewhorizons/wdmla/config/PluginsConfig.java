@@ -50,6 +50,7 @@ public class PluginsConfig {
 
             @Config.LangKey("option.wdmla.core.renderer.rotation.speed")
             @Config.DefaultInt(1)
+            @Config.RangeInt(min = 1, max = 10000)
             public int rendererRotationSpeed;
         }
 
@@ -74,6 +75,7 @@ public class PluginsConfig {
 
             @Config.LangKey("option.wdmla.core.renderer.rotation.speed")
             @Config.DefaultInt(1)
+            @Config.RangeInt(min = 1, max = 10000)
             public int rendererRotationSpeed;
 
             @Config.LangKey("option.wdmla.core.entity.icon.auto.scale")
@@ -82,6 +84,7 @@ public class PluginsConfig {
 
             @Config.LangKey("option.wdmla.core.entity.icon.default.scale")
             @Config.DefaultFloat(1.2f)
+            @Config.RangeFloat(min = 0.1f, max = 100f)
             public float iconDefaultScale;
         }
     }
@@ -98,18 +101,22 @@ public class PluginsConfig {
 
             @Config.LangKey("option.wdmla.universal.normal.amount")
             @Config.DefaultInt(9)
+            @Config.RangeInt(min = 0, max = 10000)
             public int normalAmount;
 
             @Config.LangKey("option.wdmla.universal.detailed.amount")
             @Config.DefaultInt(54)
+            @Config.RangeInt(min = 0, max = 10000)
             public int detailedAmount;
 
             @Config.LangKey("option.wdmla.universal.items.per.line")
             @Config.DefaultInt(9)
+            @Config.RangeInt(min = 0, max = 10000)
             public int itemsPerLine;
 
             @Config.LangKey("option.wdmla.universal.show.name.amount")
             @Config.DefaultInt(4)
+            @Config.RangeInt(min = 0, max = 10000)
             public int showNameAmount;
         }
 
@@ -122,6 +129,7 @@ public class PluginsConfig {
 
             @Config.LangKey("option.wdmla.universal.fluid.normal.amount")
             @Config.DefaultInt(4)
+            @Config.RangeInt(min = 0, max = 10000)
             public int normalAmount;
 
             @Config.LangKey("option.wdmla.universal.fluid.detailed")
@@ -194,6 +202,7 @@ public class PluginsConfig {
 
             @Config.LangKey("option.wdmla.vanilla.max.command.length")
             @Config.DefaultInt(40)
+            @Config.RangeInt(min = 0, max = 10000)
             public int maxCommandLength;
         }
     }

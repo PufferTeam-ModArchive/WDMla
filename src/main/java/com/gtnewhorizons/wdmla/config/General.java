@@ -129,6 +129,7 @@ public class General {
 
         @Config.LangKey("option.wdmla.general.breakprogress.fade.speed")
         @Config.DefaultInt(4)
+        @Config.RangeInt(min = 1, max = 10000)
         public int fadeSpeed;
 
         public enum Mode {
