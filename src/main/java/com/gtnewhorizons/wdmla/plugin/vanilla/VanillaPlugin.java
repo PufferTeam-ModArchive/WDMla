@@ -1,5 +1,6 @@
 package com.gtnewhorizons.wdmla.plugin.vanilla;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockAnvil;
 import net.minecraft.block.BlockBeacon;
 import net.minecraft.block.BlockBed;
@@ -136,6 +137,8 @@ public class VanillaPlugin implements IWDMlaPlugin {
         registration.registerEntityComponent(EnderDragonHeaderProvider.INSTANCE, EntityDragonPart.class);
 
         registration.registerItemStorageClient(ItemFrameProvider.INSTANCE);
+
+        registration.registerInteraction(VanillaHarvestToolHandler.INSTANCE, Block.class);
 
         WDMlaConfig.instance().getCategory(
                 Identifiers.CONFIG_AUTOGEN + Configuration.CATEGORY_SPLITTER + VanillaIdentifiers.NAMESPACE_MINECRAFT)

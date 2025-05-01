@@ -12,6 +12,10 @@ public class HarvestabilityIdentifiers {
     public static final ResourceLocation HARVESTABILITY = Harvestability("modern");
     public static final ResourceLocation LEGACY_HARVESTABILITY = Harvestability("legacy");
 
+    // handler uid
+    public static final ResourceLocation BASE_LOGIC = Harvestability("base_logic");
+    public static final ResourceLocation GREGTECH = Harvestability("gregtech");
+
     public static final String NAMESPACE_HARVESTABILITY = "harvestability";
 
     public static ResourceLocation Harvestability(String path) {

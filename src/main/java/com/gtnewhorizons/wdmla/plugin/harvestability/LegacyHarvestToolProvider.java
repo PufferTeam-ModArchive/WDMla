@@ -1,8 +1,13 @@
 package com.gtnewhorizons.wdmla.plugin.harvestability;
 
+
+// RIP until compatibility patch
+/*
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
+import com.gtnewhorizons.wdmla.impl.WDMlaClientRegistration;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -61,10 +66,16 @@ public enum LegacyHarvestToolProvider implements IBlockComponentProvider {
             return;
         }
 
-        Block effectiveBlock = BlockHelper
-                .getEffectiveBlock(accessor.getBlock(), accessor.getItemForm(), accessor.getMetadata());
-        int effectiveMeta = BlockHelper
-                .getEffectiveMeta(accessor.getBlock(), accessor.getItemForm(), accessor.getMetadata());
+        Block effectiveBlock = WDMlaClientRegistration.instance().interactionHandlers.values()
+                .stream().map(
+                        handler -> handler.getEffectiveBlock(
+                                accessor.getBlock(), accessor.getItemForm(), accessor.getMetadata()))
+                .filter(Objects::nonNull).findFirst().orElse(accessor.getBlock());
+        int effectiveMeta = WDMlaClientRegistration.instance().interactionHandlers.values()
+                .stream().map(
+                        handler -> handler.getEffectiveMeta(
+                                accessor.getBlock(), accessor.getItemForm(), accessor.getMetadata()))
+                .filter(Objects::nonNull).findFirst().orElse(accessor.getMetadata());
 
         List<IComponent> strings = getLegacyHarvestability(
                 accessor.getPlayer(),
@@ -252,3 +263,4 @@ public enum LegacyHarvestToolProvider implements IBlockComponentProvider {
         return components;
     }
 }
+*/

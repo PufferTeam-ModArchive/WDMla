@@ -1,0 +1,51 @@
+package com.gtnewhorizons.wdmla.api.provider;
+
+import com.gtnewhorizons.wdmla.api.HarvestabilityInfo;
+import com.gtnewhorizons.wdmla.api.HarvestabilityTestPhase;
+import net.minecraft.block.Block;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.MovingObjectPosition;
+
+//TODO: split with block and entity
+public interface InteractionHandler extends IWDMlaProvider {
+
+    default void testHarvest(HarvestabilityInfo info, HarvestabilityTestPhase phase, EntityPlayer player, Block block, int meta,
+                             MovingObjectPosition position) {
+
+    }
+
+//    default ItemStack testInteraction(EntityPlayer player, Block block, int meta,
+//                                      MovingObjectPosition position) {
+//        return null;
+//    }
+
+    /**
+     * Implement This to fix meta block related issue
+     * @return The correct block used for harvest level and interaction calculation
+     */
+    default Block getEffectiveBlock(Block block, ItemStack itemForm, int meta) {
+        return null;
+    }
+
+    /**
+     * Implement This to fix meta block related issue
+     * @return The correct meta used for harvest level and interaction calculation
+     */
+    default Integer getEffectiveMeta(Block block, ItemStack itemForm, int meta) {
+        return null;
+    }
+
+    /**
+     * interactionHandler will not be registered with config
+     */
+    @Override
+    default boolean isPriorityFixed() {
+        return true;
+    }
+
+    @Override
+    default boolean canPrioritizeInGui() {
+        return false;
+    }
+}

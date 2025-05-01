@@ -16,7 +16,8 @@ import com.gtnewhorizons.wdmla.api.Mods;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
- * We support GregTech 5 tool stats on our side to support non-GTNH GT5-unofficial
+ * We support GregTech 5 tool stats on our side to support non-GTNH GT5-unofficial<br>
+ * TODO: after The Great Renaming, this class no longer works outside GTNH
  */
 public class ProxyGregTech {
 

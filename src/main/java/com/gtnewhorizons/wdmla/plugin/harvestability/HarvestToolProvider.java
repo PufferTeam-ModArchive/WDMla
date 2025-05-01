@@ -4,6 +4,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
+import com.gtnewhorizons.wdmla.api.HarvestabilityInfo;
+import com.gtnewhorizons.wdmla.api.HarvestabilityTestPhase;
+import com.gtnewhorizons.wdmla.api.provider.IComponentProvider;
+import com.gtnewhorizons.wdmla.api.provider.InteractionHandler;
+import com.gtnewhorizons.wdmla.config.WDMlaConfig;
+import com.gtnewhorizons.wdmla.impl.WDMlaClientRegistration;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -66,16 +72,27 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
             return;
         }
 
-        Block effectiveBlock = BlockHelper
-                .getEffectiveBlock(accessor.getBlock(), accessor.getItemForm(), accessor.getMetadata());
-        int effectiveMeta = BlockHelper
-                .getEffectiveMeta(accessor.getBlock(), accessor.getItemForm(), accessor.getMetadata());
+        List<InteractionHandler> handlers = WDMlaClientRegistration.instance().getInterationHandlers(
+                accessor.getBlock(),
+                interactionHandler -> true);
+
+        Block effectiveBlock = handlers
+                .stream().map(
+                        handler -> handler.getEffectiveBlock(
+                                accessor.getBlock(), accessor.getItemForm(), accessor.getMetadata()))
+                .filter(Objects::nonNull).findFirst().orElse(accessor.getBlock());
+        int effectiveMeta = handlers
+                .stream().map(
+                        handler -> handler.getEffectiveMeta(
+                                accessor.getBlock(), accessor.getItemForm(), accessor.getMetadata()))
+                .filter(Objects::nonNull).findFirst().orElse(accessor.getMetadata());
 
         List<IComponent> harvestableDisplay = getHarvestability(
                 accessor.getPlayer(),
                 effectiveBlock,
                 effectiveMeta,
-                accessor.getHitResult());
+                accessor.getHitResult(),
+                handlers);
 
         updateTooltip(tooltip, harvestableDisplay);
     }
@@ -99,19 +116,25 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
      *         element2: harvestability String if the harvest level is greater than 0
      */
     public List<IComponent> getHarvestability(EntityPlayer player, Block block, int meta,
-            MovingObjectPosition position) {
-        if (!player.isCurrentToolAdventureModeExempt(position.blockX, position.blockY, position.blockZ) || BlockHelper
-                .isBlockUnbreakable(block, player.worldObj, position.blockX, position.blockY, position.blockZ)) {
-            return Arrays.asList(
-                    ThemeHelper.INSTANCE.failure(PluginsConfig.harvestability.modern.notCurrentlyHarvestableString));
-        }
-
+            MovingObjectPosition position, List<InteractionHandler> handlers) {
         // needed to stop array index out of bounds exceptions on mob spawners
         // block.getHarvestLevel/getHarvestTool are only 16 elements big
         if (meta >= 16) meta = 0;
 
-        String effectiveTool = BlockHelper
-                .getEffectiveToolOf(player.worldObj, position.blockX, position.blockY, position.blockZ, block, meta);
+        HarvestabilityInfo info = new HarvestabilityInfo();
+        for (InteractionHandler handler : handlers) {
+            if(info.stopFurtherTesting) {
+                break;
+            }
+            handler.testHarvest(info, HarvestabilityTestPhase.EFFECTIVE_TOOL, player, block, meta, position);
+        }
+
+        if(info.stopFurtherTesting) {
+            return info.result;
+        }
+
+        String effectiveTool = info.effectiveTool;
+
         int harvestLevel = getHarvestLevel(block, meta, effectiveTool);
 
         IComponent shearability = BlockHelper.getShearabilityString(player, block, meta, position);

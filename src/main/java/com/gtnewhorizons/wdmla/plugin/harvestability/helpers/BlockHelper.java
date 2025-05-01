@@ -27,36 +27,6 @@ import com.gtnewhorizons.wdmla.plugin.harvestability.proxy.ProxyGregTech;
 
 public class BlockHelper {
 
-    private static final HashMap<String, ItemStack> testTools = new HashMap<>();
-    static {
-        testTools.put(TOOL_PICKAXE, new ItemStack(Items.wooden_pickaxe));
-        testTools.put(TOOL_SHOVEL, new ItemStack(Items.wooden_shovel));
-        testTools.put(TOOL_AXE, new ItemStack(Items.wooden_axe));
-    }
-
-    public static String getEffectiveToolOf(World world, int x, int y, int z, Block block, int metadata) {
-        String effectiveTool = block.getHarvestTool(metadata);
-        if (effectiveTool == null) {
-            float hardness = block.getBlockHardness(world, x, y, z);
-            if (hardness > 0f) {
-                for (Map.Entry<String, ItemStack> testToolEntry : testTools.entrySet()) {
-                    ItemStack testTool = testToolEntry.getValue();
-                    if (testTool != null && testTool.getItem() instanceof ItemTool
-                            && testTool.func_150997_a(block) >= ((ItemTool) testTool.getItem()).func_150913_i()
-                                    .getEfficiencyOnProperMaterial()) {
-                        effectiveTool = testToolEntry.getKey();
-                        break;
-                    }
-                }
-            }
-        }
-        return effectiveTool;
-    }
-
-    public static boolean isBlockUnbreakable(Block block, World world, int x, int y, int z) {
-        return block.getBlockHardness(world, x, y, z) == -1.0f;
-    }
-
     public static IComponent getShearabilityString(EntityPlayer player, Block block, int meta,
             MovingObjectPosition position) {
         boolean isSneaking = player.isSneaking();
@@ -95,19 +65,5 @@ public class BlockHelper {
             }
         }
         return null;
-    }
-
-    public static Block getEffectiveBlock(Block block, ItemStack itemForm, int meta) {
-        return isDisguised(block, itemForm, meta) ? Block.getBlockFromItem(itemForm.getItem()) : block;
-    }
-
-    public static int getEffectiveMeta(Block block, ItemStack itemForm, int meta) {
-        return isDisguised(block, itemForm, meta) ? itemForm.getItemDamage() : meta;
-    }
-
-    public static boolean isDisguised(Block block, ItemStack itemForm, int meta) {
-        return itemForm.getItem() instanceof ItemBlock && !ProxyGregTech.isOreBlock(block, meta)
-                && !ProxyGregTech.isCasing(block)
-                && !ProxyGregTech.isMachine(block);
     }
 }

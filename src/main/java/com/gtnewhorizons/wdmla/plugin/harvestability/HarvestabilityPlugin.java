@@ -19,7 +19,9 @@ public class HarvestabilityPlugin implements IWDMlaPlugin {
     @Override
     public void registerClient(IWDMlaClientRegistration registration) {
         registration.registerBlockComponent(HarvestToolProvider.INSTANCE, Block.class);
-        registration.registerBlockComponent(LegacyHarvestToolProvider.INSTANCE, Block.class);
+//        registration.registerBlockComponent(LegacyHarvestToolProvider.INSTANCE, Block.class);
+        registration.registerInteraction(BaseHarvestLogicHandler.INSTANCE, Block.class);
+        registration.registerInteraction(GregTechHarvestHandler.INSTANCE, Block.class);
 
         WDMlaConfig.instance()
                 .getCategory(

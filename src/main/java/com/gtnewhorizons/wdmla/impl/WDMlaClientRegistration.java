@@ -8,6 +8,7 @@ import java.util.Set;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+import com.gtnewhorizons.wdmla.api.provider.InteractionHandler;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
@@ -52,6 +53,8 @@ public class WDMlaClientRegistration implements IWDMlaClientRegistration {
     public final Map<ResourceLocation, IClientExtensionProvider<ProgressView.Data, ProgressView>> progressProviders = Maps
             .newHashMap();
 
+    public final HierarchyLookup<InteractionHandler> interactionHandlers;
+
     public final Map<Class<Accessor>, AccessorClientHandler<Accessor>> accessorHandlers = Maps.newIdentityHashMap();
 
     private ClientRegistrationSession session;
@@ -59,6 +62,7 @@ public class WDMlaClientRegistration implements IWDMlaClientRegistration {
     WDMlaClientRegistration() {
         blockComponentProviders = new HierarchyLookup<>(Block.class);
         entityComponentProviders = new HierarchyLookup<>(Entity.class);
+        interactionHandlers = new HierarchyLookup<>(Block.class);
         allProviders = new HashSet<>();
     }
 
@@ -101,6 +105,11 @@ public class WDMlaClientRegistration implements IWDMlaClientRegistration {
         return ImmutableSet.copyOf(allProviders);
     }
 
+    public List<InteractionHandler> getInterationHandlers(Block block,
+                                                          Predicate<InteractionHandler> filter) {
+        return interactionHandlers.get(block).stream().filter(filter).collect(Collectors.toList());
+    }
+
     @Override
     public void registerItemStorageClient(IClientExtensionProvider<ItemStack, ItemView> provider) {
         Objects.requireNonNull(provider.getUid());
@@ -117,6 +126,14 @@ public class WDMlaClientRegistration implements IWDMlaClientRegistration {
     public void registerProgressClient(IClientExtensionProvider<ProgressView.Data, ProgressView> provider) {
         Objects.requireNonNull(provider.getUid());
         progressProviders.put(provider.getUid(), provider);
+    }
+
+    @Override
+    public void registerInteraction(InteractionHandler handler, Class<? extends Block> blockClass) {
+        Objects.requireNonNull(handler.getUid());
+        interactionHandlers.register(blockClass, handler);
+        //interaction handlers are not configurable, but we want to sort it with priority
+        WDMlaCommonRegistration.instance().priorities.put(handler);
     }
 
     @Override
@@ -142,6 +159,7 @@ public class WDMlaClientRegistration implements IWDMlaClientRegistration {
                 .serverConnected(isServerConnected()).serverData(getServerData()).showDetails(isShowDetailsPressed());
     }
 
+    @Override
     public EntityAccessor.Builder entityAccessor() {
         Minecraft mc = Minecraft.getMinecraft();
 
@@ -165,6 +183,8 @@ public class WDMlaClientRegistration implements IWDMlaClientRegistration {
         blockComponentProviders.loadComplete(priorities);
         entityComponentProviders.invalidate();
         entityComponentProviders.loadComplete(priorities);
+        interactionHandlers.invalidate();
+        interactionHandlers.loadComplete(priorities);
         session = null;
     }
 
