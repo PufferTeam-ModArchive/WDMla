@@ -34,9 +34,12 @@ public enum TinkersHarvestHandler implements InteractionHandler {
             }
         }
         else if (phase == HarvestabilityTestPhase.IS_HELD_TOOL_EFFECTIVE) {
-            boolean isHoldingTinkersTool = ProxyTinkersConstruct.hasToolTag(player.getHeldItem());
-            boolean isEffective = ProxyTinkersConstruct.isToolEffectiveAgainst(player.getHeldItem(), block, meta, info.effectiveTool);
-            info.isHeldToolEffective = isEffective && (!isHoldingTinkersTool || info.canHarvest);
+            ItemStack tool = player.getHeldItem();
+            if (tool != null) {
+                boolean isHoldingTinkersTool = ProxyTinkersConstruct.hasToolTag(tool);
+                boolean isEffective = ProxyTinkersConstruct.isToolEffectiveAgainst(tool, block, meta, info.effectiveTool);
+                info.isHeldToolEffective = isEffective && (!isHoldingTinkersTool || info.canHarvest);
+            }
         }
     }
 

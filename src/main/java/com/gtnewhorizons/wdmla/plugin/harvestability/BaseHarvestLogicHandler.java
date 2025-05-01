@@ -5,7 +5,6 @@ import com.gtnewhorizons.wdmla.api.HarvestabilityTestPhase;
 import com.gtnewhorizons.wdmla.api.TooltipPosition;
 import com.gtnewhorizons.wdmla.api.provider.InteractionHandler;
 import com.gtnewhorizons.wdmla.plugin.harvestability.helpers.BlockHelper;
-import com.gtnewhorizons.wdmla.plugin.harvestability.proxy.ProxyTinkersConstruct;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -68,8 +67,11 @@ public enum BaseHarvestLogicHandler implements InteractionHandler {
             }
         }
         else if (phase == HarvestabilityTestPhase.IS_HELD_TOOL_EFFECTIVE) {
-            boolean isEffective = ProxyTinkersConstruct.isToolEffectiveAgainst(player.getHeldItem(), block, meta, info.effectiveTool);
-            info.isHeldToolEffective = isEffective && info.canHarvest;
+            ItemStack tool = player.getHeldItem();
+            if (tool != null) {
+                boolean isEffective = isToolEffectiveAgainst(tool, block, meta, info.effectiveTool);
+                info.isHeldToolEffective = isEffective && info.canHarvest;
+            }
         }
     }
 
