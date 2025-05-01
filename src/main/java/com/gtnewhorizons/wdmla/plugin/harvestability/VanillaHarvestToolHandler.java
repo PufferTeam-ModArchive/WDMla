@@ -2,7 +2,7 @@ package com.gtnewhorizons.wdmla.plugin.harvestability;
 
 import com.gtnewhorizons.wdmla.api.HarvestabilityInfo;
 import com.gtnewhorizons.wdmla.api.HarvestabilityTestPhase;
-import com.gtnewhorizons.wdmla.api.provider.InteractionHandler;
+import com.gtnewhorizons.wdmla.api.provider.HarvestHandler;
 import com.gtnewhorizons.wdmla.config.PluginsConfig;
 import com.gtnewhorizons.wdmla.plugin.harvestability.helpers.BlockHelper;
 import com.gtnewhorizons.wdmla.plugin.vanilla.VanillaIdentifiers;
@@ -17,7 +17,7 @@ import net.minecraft.util.ResourceLocation;
 import java.util.HashMap;
 import java.util.Map;
 
-public enum VanillaHarvestToolHandler implements InteractionHandler {
+public enum VanillaHarvestToolHandler implements HarvestHandler {
     INSTANCE;
 
     private static final HashMap<String, ItemStack> testTools = new HashMap<>();

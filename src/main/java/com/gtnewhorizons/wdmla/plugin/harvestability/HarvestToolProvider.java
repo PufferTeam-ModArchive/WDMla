@@ -6,7 +6,7 @@ import java.util.Objects;
 
 import com.gtnewhorizons.wdmla.api.HarvestabilityInfo;
 import com.gtnewhorizons.wdmla.api.HarvestabilityTestPhase;
-import com.gtnewhorizons.wdmla.api.provider.InteractionHandler;
+import com.gtnewhorizons.wdmla.api.provider.HarvestHandler;
 import com.gtnewhorizons.wdmla.impl.WDMlaClientRegistration;
 import mcp.mobius.waila.overlay.DisplayUtil;
 import net.minecraft.block.Block;
@@ -66,7 +66,7 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
             return;
         }
 
-        List<InteractionHandler> handlers = WDMlaClientRegistration.instance().getInterationHandlers(
+        List<HarvestHandler> handlers = WDMlaClientRegistration.instance().getHarvestHandlers(
                 accessor.getBlock(),
                 interactionHandler -> true);
 
@@ -110,7 +110,7 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
      *         element2: harvestability String if the harvest level is greater than 0
      */
     public HarvestabilityInfo getHarvestability(EntityPlayer player, Block block, int meta,
-            MovingObjectPosition position, List<InteractionHandler> handlers) {
+            MovingObjectPosition position, List<HarvestHandler> handlers) {
         // needed to stop array index out of bounds exceptions on mob spawners
         // block.getHarvestLevel/getHarvestTool are only 16 elements big
         if (meta >= 16) meta = 0;
@@ -157,8 +157,8 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
     }
 
     private static boolean fireHarvestTest(HarvestabilityTestPhase phase, EntityPlayer player, Block block, int meta,
-                                           MovingObjectPosition position, List<InteractionHandler> handlers, HarvestabilityInfo info) {
-        for (InteractionHandler handler : handlers) {
+                                           MovingObjectPosition position, List<HarvestHandler> handlers, HarvestabilityInfo info) {
+        for (HarvestHandler handler : handlers) {
             if(info.stopFurtherTesting) {
                 break;
             }

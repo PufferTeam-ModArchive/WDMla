@@ -1,6 +1,6 @@
 package com.gtnewhorizons.wdmla.api;
 
-import com.gtnewhorizons.wdmla.api.provider.InteractionHandler;
+import com.gtnewhorizons.wdmla.api.provider.HarvestHandler;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
@@ -50,7 +50,7 @@ public interface IWDMlaClientRegistration {
 
     void registerProgressClient(IClientExtensionProvider<ProgressView.Data, ProgressView> provider);
 
-    void registerInteraction(InteractionHandler handler, Class<? extends Block> blockClass);
+    void registerHarvest(HarvestHandler handler, Class<? extends Block> blockClass);
 
     /**
      * @return is server validation succeeded on world join

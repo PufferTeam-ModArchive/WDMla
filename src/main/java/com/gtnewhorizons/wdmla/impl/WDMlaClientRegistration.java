@@ -8,7 +8,7 @@ import java.util.Set;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-import com.gtnewhorizons.wdmla.api.provider.InteractionHandler;
+import com.gtnewhorizons.wdmla.api.provider.HarvestHandler;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
@@ -53,7 +53,7 @@ public class WDMlaClientRegistration implements IWDMlaClientRegistration {
     public final Map<ResourceLocation, IClientExtensionProvider<ProgressView.Data, ProgressView>> progressProviders = Maps
             .newHashMap();
 
-    public final HierarchyLookup<InteractionHandler> interactionHandlers;
+    public final HierarchyLookup<HarvestHandler> harvestHandlers;
 
     public final Map<Class<Accessor>, AccessorClientHandler<Accessor>> accessorHandlers = Maps.newIdentityHashMap();
 
@@ -62,7 +62,7 @@ public class WDMlaClientRegistration implements IWDMlaClientRegistration {
     WDMlaClientRegistration() {
         blockComponentProviders = new HierarchyLookup<>(Block.class);
         entityComponentProviders = new HierarchyLookup<>(Entity.class);
-        interactionHandlers = new HierarchyLookup<>(Block.class);
+        harvestHandlers = new HierarchyLookup<>(Block.class);
         allProviders = new HashSet<>();
     }
 
@@ -105,9 +105,9 @@ public class WDMlaClientRegistration implements IWDMlaClientRegistration {
         return ImmutableSet.copyOf(allProviders);
     }
 
-    public List<InteractionHandler> getInterationHandlers(Block block,
-                                                          Predicate<InteractionHandler> filter) {
-        return interactionHandlers.get(block).stream().filter(filter).collect(Collectors.toList());
+    public List<HarvestHandler> getHarvestHandlers(Block block,
+                                                   Predicate<HarvestHandler> filter) {
+        return harvestHandlers.get(block).stream().filter(filter).collect(Collectors.toList());
     }
 
     @Override
@@ -129,10 +129,10 @@ public class WDMlaClientRegistration implements IWDMlaClientRegistration {
     }
 
     @Override
-    public void registerInteraction(InteractionHandler handler, Class<? extends Block> blockClass) {
+    public void registerHarvest(HarvestHandler handler, Class<? extends Block> blockClass) {
         Objects.requireNonNull(handler.getUid());
-        interactionHandlers.register(blockClass, handler);
-        //interaction handlers are not configurable, but we want to sort it with priority
+        harvestHandlers.register(blockClass, handler);
+        //harvest handlers are not configurable, but we want to sort it with priority
         WDMlaCommonRegistration.instance().priorities.put(handler);
     }
 
@@ -183,8 +183,8 @@ public class WDMlaClientRegistration implements IWDMlaClientRegistration {
         blockComponentProviders.loadComplete(priorities);
         entityComponentProviders.invalidate();
         entityComponentProviders.loadComplete(priorities);
-        interactionHandlers.invalidate();
-        interactionHandlers.loadComplete(priorities);
+        harvestHandlers.invalidate();
+        harvestHandlers.loadComplete(priorities);
         session = null;
     }
 

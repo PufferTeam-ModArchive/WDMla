@@ -3,7 +3,7 @@ package com.gtnewhorizons.wdmla.plugin.harvestability;
 import com.gtnewhorizons.wdmla.api.HarvestabilityInfo;
 import com.gtnewhorizons.wdmla.api.HarvestabilityTestPhase;
 import com.gtnewhorizons.wdmla.api.TooltipPosition;
-import com.gtnewhorizons.wdmla.api.provider.InteractionHandler;
+import com.gtnewhorizons.wdmla.api.provider.HarvestHandler;
 import com.gtnewhorizons.wdmla.plugin.harvestability.helpers.BlockHelper;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
@@ -18,7 +18,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Map;
 import java.util.Set;
 
-public enum BaseHarvestLogicHandler implements InteractionHandler {
+public enum BaseHarvestLogicHandler implements HarvestHandler {
     INSTANCE;
 
     @Override

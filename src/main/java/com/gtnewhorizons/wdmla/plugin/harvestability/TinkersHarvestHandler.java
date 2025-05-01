@@ -2,7 +2,7 @@ package com.gtnewhorizons.wdmla.plugin.harvestability;
 
 import com.gtnewhorizons.wdmla.api.HarvestabilityInfo;
 import com.gtnewhorizons.wdmla.api.HarvestabilityTestPhase;
-import com.gtnewhorizons.wdmla.api.provider.InteractionHandler;
+import com.gtnewhorizons.wdmla.api.provider.HarvestHandler;
 import com.gtnewhorizons.wdmla.plugin.harvestability.proxy.ProxyTinkersConstruct;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
 
 import static com.gtnewhorizons.wdmla.plugin.harvestability.VanillaHarvestToolHandler.TOOL_PICKAXE;
 
-public enum TinkersHarvestHandler implements InteractionHandler {
+public enum TinkersHarvestHandler implements HarvestHandler {
     INSTANCE;
 
     @Override

@@ -21,16 +21,16 @@ public class HarvestabilityPlugin implements IWDMlaPlugin {
     public void registerClient(IWDMlaClientRegistration registration) {
         registration.registerBlockComponent(HarvestToolProvider.INSTANCE, Block.class);
 //        registration.registerBlockComponent(LegacyHarvestToolProvider.INSTANCE, Block.class);
-        registration.registerInteraction(BaseHarvestLogicHandler.INSTANCE, Block.class);
-        registration.registerInteraction(VanillaHarvestToolHandler.INSTANCE, Block.class);
+        registration.registerHarvest(BaseHarvestLogicHandler.INSTANCE, Block.class);
+        registration.registerHarvest(VanillaHarvestToolHandler.INSTANCE, Block.class);
         if (Mods.TCONSTUCT.isLoaded()) {
-            registration.registerInteraction(TinkersHarvestHandler.INSTANCE, Block.class);
+            registration.registerHarvest(TinkersHarvestHandler.INSTANCE, Block.class);
         }
         if (Mods.IGUANATWEAKS.isLoaded()) {
-            registration.registerInteraction(IguanaHarvestHandler.INSTANCE, Block.class);
+            registration.registerHarvest(IguanaHarvestHandler.INSTANCE, Block.class);
         }
         if (Mods.GREGTECH.isLoaded()) {
-            registration.registerInteraction(GregTechHarvestHandler.INSTANCE, Block.class);
+            registration.registerHarvest(GregTechHarvestHandler.INSTANCE, Block.class);
         }
 
         WDMlaConfig.instance()

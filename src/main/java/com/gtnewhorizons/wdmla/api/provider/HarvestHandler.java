@@ -7,18 +7,12 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 
-//TODO: split with block and entity
-public interface InteractionHandler extends IWDMlaProvider {
+public interface HarvestHandler extends IWDMlaProvider {
 
     default void testHarvest(HarvestabilityInfo info, HarvestabilityTestPhase phase, EntityPlayer player, Block block, int meta,
                              MovingObjectPosition position) {
 
     }
-
-//    default ItemStack testInteraction(EntityPlayer player, Block block, int meta,
-//                                      MovingObjectPosition position) {
-//        return null;
-//    }
 
     /**
      * Implement This to fix meta block related issue
@@ -37,13 +31,16 @@ public interface InteractionHandler extends IWDMlaProvider {
     }
 
     /**
-     * interactionHandler will not be registered with config
+     * harvestHandler will not be registered with config
      */
     @Override
     default boolean isPriorityFixed() {
         return true;
     }
 
+    /**
+     * harvestHandler will not be registered with config
+     */
     @Override
     default boolean canPrioritizeInGui() {
         return false;

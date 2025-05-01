@@ -2,7 +2,7 @@ package com.gtnewhorizons.wdmla.plugin.harvestability;
 
 import com.gtnewhorizons.wdmla.api.HarvestabilityInfo;
 import com.gtnewhorizons.wdmla.api.HarvestabilityTestPhase;
-import com.gtnewhorizons.wdmla.api.provider.InteractionHandler;
+import com.gtnewhorizons.wdmla.api.provider.HarvestHandler;
 import com.gtnewhorizons.wdmla.plugin.harvestability.proxy.ProxyIguanaTweaks;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
@@ -11,7 +11,7 @@ import net.minecraft.util.ResourceLocation;
 
 import static com.gtnewhorizons.wdmla.plugin.harvestability.VanillaHarvestToolHandler.TOOL_PICKAXE;
 
-public enum IguanaHarvestHandler implements InteractionHandler {
+public enum IguanaHarvestHandler implements HarvestHandler {
     INSTANCE;
 
     @Override
