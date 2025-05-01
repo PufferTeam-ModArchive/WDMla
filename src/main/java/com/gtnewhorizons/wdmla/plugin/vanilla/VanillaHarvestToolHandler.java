@@ -5,7 +5,6 @@ import com.gtnewhorizons.wdmla.api.HarvestabilityTestPhase;
 import com.gtnewhorizons.wdmla.api.provider.InteractionHandler;
 import com.gtnewhorizons.wdmla.config.PluginsConfig;
 import com.gtnewhorizons.wdmla.plugin.harvestability.helpers.BlockHelper;
-import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -57,16 +56,16 @@ public enum VanillaHarvestToolHandler implements InteractionHandler {
             }
         }
         else if (phase == HarvestabilityTestPhase.ADDITIONAL_TOOLS_ICON) {
-            if (BlockHelper.canShear(player, block, meta, position) && PluginsConfig.harvestability.modern.modernShowShearabilityIcon) {
-                String[] parts = PluginsConfig.harvestability.modern.shearabilityItem.split(":");
-                if (parts.length == 2) {
-                    info.additionalToolsIcon.add(GameRegistry.findItemStack(parts[0], parts[1], 1));
+            if (PluginsConfig.harvestability.modern.modernShowShearabilityIcon) {
+                Map.Entry<ItemStack, Boolean> canShear = BlockHelper.getShearability(player, block, meta, position);
+                if (canShear != null) {
+                    info.additionalToolsIcon.add(canShear);
                 }
             }
-            if (BlockHelper.canSilkTouch(player, block, meta, position) && PluginsConfig.harvestability.modern.modernShowSilkTouchabilityIcon) {
-                String[] parts = PluginsConfig.harvestability.modern.silkTouchabilityItem.split(":");
-                if (parts.length == 2) {
-                    info.additionalToolsIcon.add(GameRegistry.findItemStack(parts[0], parts[1], 1));
+            if (PluginsConfig.harvestability.modern.modernShowSilkTouchabilityIcon) {
+                Map.Entry<ItemStack, Boolean> canSilktouch = BlockHelper.getSilktouchAbility(player, block, meta, position);
+                if (canSilktouch != null) {
+                    info.additionalToolsIcon.add(canSilktouch);
                 }
             }
         }

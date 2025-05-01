@@ -1,6 +1,7 @@
 package com.gtnewhorizons.wdmla.plugin.harvestability;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 import com.gtnewhorizons.wdmla.api.HarvestabilityInfo;
@@ -56,6 +57,8 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
     @Override
     public void appendTooltip(ITooltip tooltip, BlockAccessor accessor) {
         if (General.forceLegacy) {
+            tooltip.text("The legacy harvestability support")
+                    .text("will come back in the next version!");
             return;
         }
 
@@ -187,10 +190,12 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
             harvestabilityComponent.child(currentlyHarvestableIcon);
         }
 
-        for (ItemStack additionalTool : info.additionalToolsIcon) {
-            harvestabilityComponent.child(
-                    new ItemComponent(additionalTool).doDrawOverlay(false)
-                            .size(new Size(10, 10)));
+        for (Map.Entry<ItemStack, Boolean> additionalTool : info.additionalToolsIcon) {
+            if (additionalTool.getValue()) { //TODO: config to always show additional tools
+                harvestabilityComponent.child(
+                        new ItemComponent(additionalTool.getKey()).doDrawOverlay(false)
+                                .size(new Size(10, 10)));
+            }
         }
         return harvestabilityComponent;
     }

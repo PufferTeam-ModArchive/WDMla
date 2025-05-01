@@ -4,8 +4,6 @@ import com.gtnewhorizons.wdmla.api.HarvestabilityInfo;
 import com.gtnewhorizons.wdmla.api.HarvestabilityTestPhase;
 import com.gtnewhorizons.wdmla.api.TooltipPosition;
 import com.gtnewhorizons.wdmla.api.provider.InteractionHandler;
-import com.gtnewhorizons.wdmla.config.PluginsConfig;
-import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
 import com.gtnewhorizons.wdmla.plugin.harvestability.helpers.BlockHelper;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,6 +13,8 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Map;
 
 public enum BaseHarvestLogicHandler implements InteractionHandler {
     INSTANCE;
@@ -36,10 +36,10 @@ public enum BaseHarvestLogicHandler implements InteractionHandler {
             info.harvestLevel = getHarvestLevel(block, meta, info.effectiveTool);
         }
         else if (phase == HarvestabilityTestPhase.EFFECTIVE_TOOL_ICON) {
-            boolean canShear = BlockHelper.canShear(player, block, meta, position);
-            boolean canSilkTouch = BlockHelper.canSilkTouch(player, block, meta, position);
+            Map.Entry<ItemStack, Boolean> canShear = BlockHelper.getShearability(player, block, meta, position);
+            Map.Entry<ItemStack, Boolean> canSilkTouch = BlockHelper.getSilktouchAbility(player, block, meta, position);
 
-            if (canInstaBreak(info.harvestLevel, info.effectiveTool, block, canShear, canSilkTouch)) {
+            if (canInstaBreak(info.harvestLevel, info.effectiveTool, block, canShear != null, canSilkTouch != null)) {
                 info.effectiveToolIcon = null;
                 info.canHarvest = true;
                 info.harvestLevel = -1;
