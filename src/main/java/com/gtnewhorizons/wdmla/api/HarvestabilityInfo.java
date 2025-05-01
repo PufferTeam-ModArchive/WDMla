@@ -24,7 +24,7 @@ public class HarvestabilityInfo {
     /**
      * the secondary harvest tool (wrench for hopper, shears for leaves)
      */
-    public List<ItemStack> secondaryToolsIcon = new ArrayList<>();
+    public List<ItemStack> additionalToolsIcon = new ArrayList<>();
 
     public boolean stopFurtherTesting = false;
 

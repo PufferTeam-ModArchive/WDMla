@@ -3,6 +3,9 @@ package com.gtnewhorizons.wdmla.plugin.vanilla;
 import com.gtnewhorizons.wdmla.api.HarvestabilityInfo;
 import com.gtnewhorizons.wdmla.api.HarvestabilityTestPhase;
 import com.gtnewhorizons.wdmla.api.provider.InteractionHandler;
+import com.gtnewhorizons.wdmla.config.PluginsConfig;
+import com.gtnewhorizons.wdmla.plugin.harvestability.helpers.BlockHelper;
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -51,6 +54,20 @@ public enum VanillaHarvestToolHandler implements InteractionHandler {
         else if (phase == HarvestabilityTestPhase.EFFECTIVE_TOOL_ICON) {
             if (info.harvestLevel != -1 && info.effectiveTool != null) {
                 info.effectiveToolIcon = getEffectiveToolIcon(info.effectiveTool, info.harvestLevel);
+            }
+        }
+        else if (phase == HarvestabilityTestPhase.ADDITIONAL_TOOLS_ICON) {
+            if (BlockHelper.canShear(player, block, meta, position) && PluginsConfig.harvestability.modern.modernShowShearabilityIcon) {
+                String[] parts = PluginsConfig.harvestability.modern.shearabilityItem.split(":");
+                if (parts.length == 2) {
+                    info.additionalToolsIcon.add(GameRegistry.findItemStack(parts[0], parts[1], 1));
+                }
+            }
+            if (BlockHelper.canSilkTouch(player, block, meta, position) && PluginsConfig.harvestability.modern.modernShowSilkTouchabilityIcon) {
+                String[] parts = PluginsConfig.harvestability.modern.silkTouchabilityItem.split(":");
+                if (parts.length == 2) {
+                    info.additionalToolsIcon.add(GameRegistry.findItemStack(parts[0], parts[1], 1));
+                }
             }
         }
     }

@@ -121,49 +121,28 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
         if (meta >= 16) meta = 0;
 
         HarvestabilityInfo info = new HarvestabilityInfo();
-        for (InteractionHandler handler : handlers) {
-            if(info.stopFurtherTesting) {
-                break;
-            }
-            handler.testHarvest(info, HarvestabilityTestPhase.EFFECTIVE_TOOL, player, block, meta, position);
-        }
-
-        if(info.stopFurtherTesting) {
+        if (!fireHarvestTest(HarvestabilityTestPhase.EFFECTIVE_TOOL,
+                player, block, meta, position, handlers, info)) {
             return info.result;
         }
 
-        for (InteractionHandler handler : handlers) {
-            if(info.stopFurtherTesting) {
-                break;
-            }
-            handler.testHarvest(info, HarvestabilityTestPhase.HARVEST_LEVEL, player, block, meta, position);
-        }
-
-        if(info.stopFurtherTesting) {
+        if (!fireHarvestTest(HarvestabilityTestPhase.HARVEST_LEVEL,
+                player, block, meta, position, handlers, info)) {
             return info.result;
         }
 
-        for (InteractionHandler handler : handlers) {
-            if(info.stopFurtherTesting) {
-                break;
-            }
-            handler.testHarvest(info, HarvestabilityTestPhase.EFFECTIVE_TOOL_ICON, player, block, meta, position);
+        if (!fireHarvestTest(HarvestabilityTestPhase.EFFECTIVE_TOOL_ICON,
+                player, block, meta, position, handlers, info)) {
+            return info.result;
         }
 
         if (info.effectiveToolIcon == null) {
             info.effectiveToolIcon = new ItemStack(Blocks.iron_bars);
         }
 
-        if(info.stopFurtherTesting) {
+        if (!fireHarvestTest(HarvestabilityTestPhase.ADDITIONAL_TOOLS_ICON,
+                player, block, meta, position, handlers, info)) {
             return info.result;
-        }
-
-        boolean canShear = BlockHelper.canShear(player, block, meta, position);
-        boolean canSilkTouch = BlockHelper.canSilkTouch(player, block, meta, position);
-
-        if (canInstaBreak(info.harvestLevel, info.effectiveTool, block, canShear, canSilkTouch)) {
-            return Arrays.asList(
-                    ThemeHelper.INSTANCE.success(PluginsConfig.harvestability.modern.currentlyHarvestableString));
         }
 
         ItemStack itemHeld = player.getHeldItem();
@@ -182,17 +161,21 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
 
         ITooltip harvestabilityIcon = assembleHarvestabilityIcon(
                 effectiveToolIconComponent,
-                isCurrentlyHarvestable,
-                canShear,
-                canSilkTouch);
+                isCurrentlyHarvestable);
         IComponent harvestLevelText = assembleHarvestLevelText(info.harvestLevel, isCurrentlyHarvestable);
         return Arrays.asList(harvestabilityIcon, harvestLevelText);
     }
 
-    private static boolean canInstaBreak(int harvestLevel, String effectiveTool, Block block, boolean canShear,
-            boolean canSilkTouch) {
-        boolean blockHasEffectiveTools = harvestLevel >= 0 && effectiveTool != null;
-        return block.getMaterial().isToolNotRequired() && !blockHasEffectiveTools && !canShear && !canSilkTouch;
+    private static boolean fireHarvestTest(HarvestabilityTestPhase phase, EntityPlayer player, Block block, int meta,
+                                           MovingObjectPosition position, List<InteractionHandler> handlers, HarvestabilityInfo info) {
+        for (InteractionHandler handler : handlers) {
+            if(info.stopFurtherTesting) {
+                break;
+            }
+            handler.testHarvest(info, phase, player, block, meta, position);
+        }
+
+        return !info.stopFurtherTesting;
     }
 
     private static boolean isHoldingTinkersTool(ItemStack itemHeld) {
@@ -241,7 +224,7 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
     }
 
     private static @NotNull ITooltip assembleHarvestabilityIcon(ITooltip effectiveToolIconComponent,
-            boolean isCurrentlyHarvestable, boolean canShear, boolean canSilkTouch) {
+            boolean isCurrentlyHarvestable) {
         ITooltip harvestabilityComponent = new HPanelComponent().tag(HarvestabilityIdentifiers.HARVESTABILITY_ICON);
         // TODO: resize CHECK text
         IComponent currentlyHarvestableIcon = (isCurrentlyHarvestable
@@ -255,22 +238,6 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
                 harvestabilityComponent.child(effectiveToolIconComponent);
             } else {
                 harvestabilityComponent.child(currentlyHarvestableIcon);
-            }
-        }
-        if (canShear && PluginsConfig.harvestability.modern.modernShowShearabilityIcon) {
-            String[] parts = PluginsConfig.harvestability.modern.shearabilityItem.split(":");
-            if (parts.length == 2) {
-                harvestabilityComponent.child(
-                        new ItemComponent(GameRegistry.findItemStack(parts[0], parts[1], 1)).doDrawOverlay(false)
-                                .size(new Size(10, 10)));
-            }
-        }
-        if (canSilkTouch && PluginsConfig.harvestability.modern.modernShowSilkTouchabilityIcon) {
-            String[] parts = PluginsConfig.harvestability.modern.silkTouchabilityItem.split(":");
-            if (parts.length == 2) {
-                harvestabilityComponent.child(
-                        new ItemComponent(GameRegistry.findItemStack(parts[0], parts[1], 1)).doDrawOverlay(false)
-                                .size(new Size(10, 10)));
             }
         }
         return harvestabilityComponent;

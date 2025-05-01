@@ -6,6 +6,7 @@ import com.gtnewhorizons.wdmla.api.TooltipPosition;
 import com.gtnewhorizons.wdmla.api.provider.InteractionHandler;
 import com.gtnewhorizons.wdmla.config.PluginsConfig;
 import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
+import com.gtnewhorizons.wdmla.plugin.harvestability.helpers.BlockHelper;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.MovingObjectPosition;
@@ -32,6 +33,16 @@ public enum BaseHarvestLogicHandler implements InteractionHandler {
         else if (phase == HarvestabilityTestPhase.HARVEST_LEVEL) {
             info.harvestLevel = getHarvestLevel(block, meta, info.effectiveTool);
         }
+        else if (phase == HarvestabilityTestPhase.EFFECTIVE_TOOL_ICON) {
+            boolean canShear = BlockHelper.canShear(player, block, meta, position);
+            boolean canSilkTouch = BlockHelper.canSilkTouch(player, block, meta, position);
+
+            if (canInstaBreak(info.harvestLevel, info.effectiveTool, block, canShear, canSilkTouch)) {
+                info.result = Arrays.asList(
+                        ThemeHelper.INSTANCE.success(PluginsConfig.harvestability.modern.currentlyHarvestableString));
+                info.stopFurtherTesting = true;
+            }
+        }
     }
 
     @Override
@@ -52,5 +63,11 @@ public enum BaseHarvestLogicHandler implements InteractionHandler {
         int harvestLevel = block.getHarvestLevel(meta);
         if (effectiveTool != null && harvestLevel < 0) harvestLevel = 0;
         return harvestLevel;
+    }
+
+    public boolean canInstaBreak(int harvestLevel, String effectiveTool, Block block, boolean canShear,
+                                         boolean canSilkTouch) {
+        boolean blockHasEffectiveTools = harvestLevel >= 0 && effectiveTool != null;
+        return block.getMaterial().isToolNotRequired() && !blockHasEffectiveTools && !canShear && !canSilkTouch;
     }
 }
