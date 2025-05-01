@@ -1,5 +1,6 @@
 package com.gtnewhorizons.wdmla.plugin.vanilla;
 
+import com.gtnewhorizons.wdmla.api.TooltipPosition;
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
@@ -16,6 +17,11 @@ public enum EndPortalHeaderProvider implements IBlockComponentProvider {
     public void appendTooltip(ITooltip tooltip, BlockAccessor accessor) {
         ThemeHelper.INSTANCE.overrideTooltipTitle(
                 tooltip, StatCollector.translateToLocal("block.EndPortal.name"));
+    }
+
+    @Override
+    public int getDefaultPriority() {
+        return TooltipPosition.HEAD;
     }
 
     @Override

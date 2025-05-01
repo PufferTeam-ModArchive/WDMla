@@ -1,5 +1,6 @@
 package com.gtnewhorizons.wdmla.plugin.vanilla;
 
+import com.gtnewhorizons.wdmla.api.TooltipPosition;
 import com.gtnewhorizons.wdmla.api.accessor.EntityAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IEntityComponentProvider;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
@@ -19,6 +20,11 @@ public enum EnderDragonHeaderProvider implements IEntityComponentProvider {
             ThemeHelper.INSTANCE.overrideEntityTooltipTitle(tooltip, dragon.getCommandSenderName(), dragon);
             ThemeHelper.INSTANCE.overrideEntityTooltipIcon(tooltip, dragon);
         }
+    }
+
+    @Override
+    public int getDefaultPriority() {
+        return TooltipPosition.HEAD;
     }
 
     @Override

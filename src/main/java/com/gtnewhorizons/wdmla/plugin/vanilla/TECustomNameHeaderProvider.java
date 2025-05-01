@@ -1,5 +1,6 @@
 package com.gtnewhorizons.wdmla.plugin.vanilla;
 
+import com.gtnewhorizons.wdmla.api.TooltipPosition;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 
@@ -31,6 +32,11 @@ public enum TECustomNameHeaderProvider implements IServerDataProvider<BlockAcces
         if (nameTag.hasKey("CustomName")) {
             data.setString("CustomName", nameTag.getString("CustomName"));
         }
+    }
+
+    @Override
+    public int getDefaultPriority() {
+        return TooltipPosition.HEAD;
     }
 
     @Override
