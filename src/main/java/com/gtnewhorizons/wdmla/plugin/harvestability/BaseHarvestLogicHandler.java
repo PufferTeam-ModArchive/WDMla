@@ -16,8 +16,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Arrays;
-
 public enum BaseHarvestLogicHandler implements InteractionHandler {
     INSTANCE;
 
@@ -26,8 +24,9 @@ public enum BaseHarvestLogicHandler implements InteractionHandler {
         if (phase == HarvestabilityTestPhase.EFFECTIVE_TOOL) {
             if (!player.isCurrentToolAdventureModeExempt(position.blockX, position.blockY, position.blockZ)
                     || isBlockUnbreakable(block, player.worldObj, position.blockX, position.blockY, position.blockZ)) {
-                info.result = Arrays.asList(
-                        ThemeHelper.INSTANCE.failure(PluginsConfig.harvestability.modern.notCurrentlyHarvestableString));
+                info.effectiveToolIcon = null;
+                info.canHarvest = false;
+                info.harvestLevel = -1;
                 info.stopFurtherTesting = true;
             }
 
@@ -41,8 +40,9 @@ public enum BaseHarvestLogicHandler implements InteractionHandler {
             boolean canSilkTouch = BlockHelper.canSilkTouch(player, block, meta, position);
 
             if (canInstaBreak(info.harvestLevel, info.effectiveTool, block, canShear, canSilkTouch)) {
-                info.result = Arrays.asList(
-                        ThemeHelper.INSTANCE.success(PluginsConfig.harvestability.modern.currentlyHarvestableString));
+                info.effectiveToolIcon = null;
+                info.canHarvest = true;
+                info.harvestLevel = -1;
                 info.stopFurtherTesting = true;
             }
         }

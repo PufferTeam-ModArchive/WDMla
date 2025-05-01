@@ -1,6 +1,5 @@
 package com.gtnewhorizons.wdmla.plugin.harvestability;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -79,26 +78,30 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
                                 accessor.getBlock(), accessor.getItemForm(), accessor.getMetadata()))
                 .filter(Objects::nonNull).findFirst().orElse(accessor.getMetadata());
 
-        List<IComponent> harvestableDisplay = getHarvestability(
+        HarvestabilityInfo info = getHarvestability(
                 accessor.getPlayer(),
                 effectiveBlock,
                 effectiveMeta,
                 accessor.getHitResult(),
                 handlers);
 
-        updateTooltip(tooltip, harvestableDisplay);
+        updateTooltip(tooltip, info);
     }
 
-    private void updateTooltip(ITooltip tooltip, List<IComponent> harvestableDisplay) {
+    private void updateTooltip(ITooltip tooltip, HarvestabilityInfo info) {
         IComponent itemNameRow = tooltip.getChildWithTag(Identifiers.ITEM_NAME_ROW);
         if (!(itemNameRow instanceof ITooltip)) {
             return;
         }
 
-        ((ITooltip) itemNameRow).child(harvestableDisplay.get(0));
-        if (harvestableDisplay.size() > 1 && harvestableDisplay.get(1) != null
+        IComponent harvestabilityIcon = assembleHarvestabilityIcon(info);
+
+        IComponent harvestLevelText = assembleHarvestLevelText(info);
+
+        ((ITooltip) itemNameRow).child(harvestabilityIcon);
+        if (harvestLevelText != null
                 && PluginsConfig.harvestability.modern.modernHarvestLevelNum) {
-            tooltip.child(harvestableDisplay.get(1));
+            tooltip.child(harvestLevelText);
         }
     }
 
@@ -107,7 +110,7 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
      *         <p>
      *         element2: harvestability String if the harvest level is greater than 0
      */
-    public List<IComponent> getHarvestability(EntityPlayer player, Block block, int meta,
+    public HarvestabilityInfo getHarvestability(EntityPlayer player, Block block, int meta,
             MovingObjectPosition position, List<InteractionHandler> handlers) {
         // needed to stop array index out of bounds exceptions on mob spawners
         // block.getHarvestLevel/getHarvestTool are only 16 elements big
@@ -116,42 +119,32 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
         HarvestabilityInfo info = new HarvestabilityInfo();
         if (!fireHarvestTest(HarvestabilityTestPhase.EFFECTIVE_TOOL,
                 player, block, meta, position, handlers, info)) {
-            return info.result;
+            return info;
         }
 
         if (!fireHarvestTest(HarvestabilityTestPhase.HARVEST_LEVEL,
                 player, block, meta, position, handlers, info)) {
-            return info.result;
+            return info;
         }
 
         if (!fireHarvestTest(HarvestabilityTestPhase.EFFECTIVE_TOOL_ICON,
                 player, block, meta, position, handlers, info)) {
-            return info.result;
+            return info;
         }
 
-        if (info.effectiveToolIcon == null) {
+        if (info.effectiveTool != null && info.effectiveToolIcon == null) {
             info.effectiveToolIcon = new ItemStack(Blocks.iron_bars);
         }
 
         if (!fireHarvestTest(HarvestabilityTestPhase.ADDITIONAL_TOOLS_ICON,
                 player, block, meta, position, handlers, info)) {
-            return info.result;
+            return info;
         }
 
-        if (!fireHarvestTest(HarvestabilityTestPhase.CURRENTLY_HARVESTABLE,
-                player, block, meta, position, handlers, info)) {
-            return info.result;
-        }
+        fireHarvestTest(HarvestabilityTestPhase.CURRENTLY_HARVESTABLE,
+                player, block, meta, position, handlers, info);
 
-        // remove durability bar from tool icon
-        ITooltip effectiveToolIconComponent = new ItemComponent(info.effectiveToolIcon).doDrawOverlay(false)
-                .size(new Size(10, 10));
-
-        ITooltip harvestabilityIcon = assembleHarvestabilityIcon(
-                effectiveToolIconComponent,
-                info.canHarvest);
-        IComponent harvestLevelText = assembleHarvestLevelText(info.harvestLevel, info.canHarvest);
-        return Arrays.asList(harvestabilityIcon, harvestLevelText);
+        return info;
     }
 
     private static boolean fireHarvestTest(HarvestabilityTestPhase phase, EntityPlayer player, Block block, int meta,
@@ -166,16 +159,23 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
         return !info.stopFurtherTesting;
     }
 
-    private static @NotNull ITooltip assembleHarvestabilityIcon(ITooltip effectiveToolIconComponent,
-            boolean isCurrentlyHarvestable) {
+    private static @NotNull ITooltip assembleHarvestabilityIcon(HarvestabilityInfo info) {
         ITooltip harvestabilityComponent = new HPanelComponent().tag(HarvestabilityIdentifiers.HARVESTABILITY_ICON);
+
+        if (!PluginsConfig.harvestability.modern.modernCurrentlyHarvestableIcon) {
+            return harvestabilityComponent;
+        }
+
         // TODO: resize CHECK text
-        IComponent currentlyHarvestableIcon = (isCurrentlyHarvestable
+        IComponent currentlyHarvestableIcon = (info.canHarvest
                 ? ThemeHelper.INSTANCE.success(PluginsConfig.harvestability.modern.currentlyHarvestableString)
                 : ThemeHelper.INSTANCE.failure(PluginsConfig.harvestability.modern.notCurrentlyHarvestableString));
 
-        if (PluginsConfig.harvestability.modern.modernCurrentlyHarvestableIcon) {
-            if (effectiveToolIconComponent != null && PluginsConfig.harvestability.modern.modernEffectiveToolIcon) {
+        if (info.effectiveToolIcon != null) {
+            ITooltip effectiveToolIconComponent = new ItemComponent(info.effectiveToolIcon).doDrawOverlay(false)
+                    .size(new Size(10, 10));
+
+            if (PluginsConfig.harvestability.modern.modernEffectiveToolIcon) {
                 effectiveToolIconComponent.child(
                         new HPanelComponent().padding(new Padding().left(5).top(6)).child(currentlyHarvestableIcon));
                 harvestabilityComponent.child(effectiveToolIconComponent);
@@ -183,16 +183,25 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
                 harvestabilityComponent.child(currentlyHarvestableIcon);
             }
         }
+        else {
+            harvestabilityComponent.child(currentlyHarvestableIcon);
+        }
+
+        for (ItemStack additionalTool : info.additionalToolsIcon) {
+            harvestabilityComponent.child(
+                    new ItemComponent(additionalTool).doDrawOverlay(false)
+                            .size(new Size(10, 10)));
+        }
         return harvestabilityComponent;
     }
 
-    private static @Nullable IComponent assembleHarvestLevelText(int harvestLevel, boolean isCurrentlyHarvestable) {
+    private static @Nullable IComponent assembleHarvestLevelText(HarvestabilityInfo info) {
         IComponent harvestLevelText = null;
-        if (harvestLevel >= 1) {
-            String harvestLevelString = StringHelper.stripFormatting(StringHelper.getHarvestLevelName(harvestLevel));
+        if (info.harvestLevel >= 1) {
+            String harvestLevelString = StringHelper.stripFormatting(StringHelper.getHarvestLevelName(info.harvestLevel));
             harvestLevelText = new HPanelComponent().tag(HarvestabilityIdentifiers.HARVESTABILITY_TEXT)
                     .text(String.format("%s: ", StatCollector.translateToLocal("hud.msg.wdmla.harvestlevel"))).child(
-                            isCurrentlyHarvestable ? ThemeHelper.INSTANCE.success(harvestLevelString)
+                            info.canHarvest ? ThemeHelper.INSTANCE.success(harvestLevelString)
                                     : ThemeHelper.INSTANCE.failure(harvestLevelString));
         }
         return harvestLevelText;

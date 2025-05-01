@@ -16,6 +16,9 @@ public class HarvestabilityInfo {
 
     public boolean canHarvest = false;
     public String effectiveTool = null;
+    /**
+     * if -1: hand(no tool)
+     */
     public int harvestLevel = -1;
     /**
      * the primary harvest tool (pickaxe for hopper, shovel for dirt...)
@@ -27,6 +30,4 @@ public class HarvestabilityInfo {
     public List<ItemStack> additionalToolsIcon = new ArrayList<>();
 
     public boolean stopFurtherTesting = false;
-
-    public List<IComponent> result;
 }
