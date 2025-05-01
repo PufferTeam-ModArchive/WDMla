@@ -8,6 +8,7 @@ import com.gtnewhorizons.wdmla.api.HarvestabilityInfo;
 import com.gtnewhorizons.wdmla.api.HarvestabilityTestPhase;
 import com.gtnewhorizons.wdmla.api.provider.InteractionHandler;
 import com.gtnewhorizons.wdmla.impl.WDMlaClientRegistration;
+import mcp.mobius.waila.overlay.DisplayUtil;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -32,7 +33,6 @@ import com.gtnewhorizons.wdmla.impl.ui.component.HPanelComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.ItemComponent;
 import com.gtnewhorizons.wdmla.impl.ui.sizer.Padding;
 import com.gtnewhorizons.wdmla.impl.ui.sizer.Size;
-import com.gtnewhorizons.wdmla.plugin.harvestability.helpers.StringHelper;
 import com.gtnewhorizons.wdmla.plugin.harvestability.proxy.ProxyCreativeBlocks;
 
 public enum HarvestToolProvider implements IBlockComponentProvider {
@@ -130,6 +130,11 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
             return info;
         }
 
+        if (!fireHarvestTest(HarvestabilityTestPhase.HARVEST_LEVEL_NAME,
+                player, block, meta, position, handlers, info)) {
+            return info;
+        }
+
         if (!fireHarvestTest(HarvestabilityTestPhase.EFFECTIVE_TOOL_ICON,
                 player, block, meta, position, handlers, info)) {
             return info;
@@ -203,7 +208,7 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
     private static @Nullable IComponent assembleHarvestLevelText(HarvestabilityInfo info) {
         IComponent harvestLevelText = null;
         if (info.harvestLevel >= 1) {
-            String harvestLevelString = StringHelper.stripFormatting(StringHelper.getHarvestLevelName(info.harvestLevel));
+            String harvestLevelString = DisplayUtil.stripSymbols(info.harvestLevelName);
             harvestLevelText = new HPanelComponent().tag(HarvestabilityIdentifiers.HARVESTABILITY_TEXT)
                     .text(String.format("%s: ", StatCollector.translateToLocal("hud.msg.wdmla.harvestlevel"))).child(
                             info.canHarvest ? ThemeHelper.INSTANCE.success(harvestLevelString)

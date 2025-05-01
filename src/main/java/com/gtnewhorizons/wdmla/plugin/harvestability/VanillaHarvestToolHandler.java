@@ -1,10 +1,11 @@
-package com.gtnewhorizons.wdmla.plugin.vanilla;
+package com.gtnewhorizons.wdmla.plugin.harvestability;
 
 import com.gtnewhorizons.wdmla.api.HarvestabilityInfo;
 import com.gtnewhorizons.wdmla.api.HarvestabilityTestPhase;
 import com.gtnewhorizons.wdmla.api.provider.InteractionHandler;
 import com.gtnewhorizons.wdmla.config.PluginsConfig;
 import com.gtnewhorizons.wdmla.plugin.harvestability.helpers.BlockHelper;
+import com.gtnewhorizons.wdmla.plugin.vanilla.VanillaIdentifiers;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;

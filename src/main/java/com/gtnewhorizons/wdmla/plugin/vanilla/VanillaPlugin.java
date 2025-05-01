@@ -138,8 +138,6 @@ public class VanillaPlugin implements IWDMlaPlugin {
 
         registration.registerItemStorageClient(ItemFrameProvider.INSTANCE);
 
-        registration.registerInteraction(VanillaHarvestToolHandler.INSTANCE, Block.class);
-
         WDMlaConfig.instance().getCategory(
                 Identifiers.CONFIG_AUTOGEN + Configuration.CATEGORY_SPLITTER + VanillaIdentifiers.NAMESPACE_MINECRAFT)
                 .setLanguageKey("provider.wdmla.minecraft.category");

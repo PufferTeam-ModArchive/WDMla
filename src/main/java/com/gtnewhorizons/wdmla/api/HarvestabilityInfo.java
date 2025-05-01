@@ -21,6 +21,9 @@ public class HarvestabilityInfo {
      * if -1: hand(no tool)
      */
     public int harvestLevel = -1;
+
+    public String harvestLevelName = "";
+
     /**
      * the primary harvest tool (pickaxe for hopper, shovel for dirt...)
      */

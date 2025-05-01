@@ -10,6 +10,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
 import org.jetbrains.annotations.NotNull;
@@ -34,6 +35,16 @@ public enum BaseHarvestLogicHandler implements InteractionHandler {
         }
         else if (phase == HarvestabilityTestPhase.HARVEST_LEVEL) {
             info.harvestLevel = getHarvestLevel(block, meta, info.effectiveTool);
+        }
+        else if (phase == HarvestabilityTestPhase.HARVEST_LEVEL_NAME) {
+            String unlocalized = "hud.msg.wdmla.harvestlevel" + (info.harvestLevel + 1);
+
+            if (StatCollector.canTranslate(unlocalized)) {
+                info.harvestLevelName = StatCollector.translateToLocal(unlocalized);
+            }
+            else {
+                info.harvestLevelName = String.valueOf(info.harvestLevel);
+            }
         }
         else if (phase == HarvestabilityTestPhase.EFFECTIVE_TOOL_ICON) {
             Map.Entry<ItemStack, Boolean> canShear = BlockHelper.getShearability(player, block, meta, position);
