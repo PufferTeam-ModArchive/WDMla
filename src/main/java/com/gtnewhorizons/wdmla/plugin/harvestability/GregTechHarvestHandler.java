@@ -1,14 +1,29 @@
 package com.gtnewhorizons.wdmla.plugin.harvestability;
 
+import com.gtnewhorizons.wdmla.api.HarvestabilityInfo;
+import com.gtnewhorizons.wdmla.api.HarvestabilityTestPhase;
+import com.gtnewhorizons.wdmla.api.Mods;
 import com.gtnewhorizons.wdmla.api.provider.InteractionHandler;
 import com.gtnewhorizons.wdmla.plugin.harvestability.proxy.ProxyGregTech;
 import net.minecraft.block.Block;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.ResourceLocation;
 
 public enum GregTechHarvestHandler implements InteractionHandler {
     INSTANCE;
+
+    @Override
+    public void testHarvest(HarvestabilityInfo info, HarvestabilityTestPhase phase,
+                            EntityPlayer player, Block block, int meta, MovingObjectPosition position) {
+        if(phase == HarvestabilityTestPhase.EFFECTIVE_TOOL_ICON) {
+            if (info.harvestLevel != -1 && info.effectiveTool != null && Mods.GREGTECH.isLoaded()) {
+                info.effectiveToolIcon = ProxyGregTech.getEffectiveGregToolIcon(info.effectiveTool, info.harvestLevel);
+            }
+        }
+    }
 
     @Override
     public ResourceLocation getUid() {

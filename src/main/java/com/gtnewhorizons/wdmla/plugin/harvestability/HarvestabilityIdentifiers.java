@@ -15,6 +15,7 @@ public class HarvestabilityIdentifiers {
     // handler uid
     public static final ResourceLocation BASE_LOGIC = Harvestability("base_logic");
     public static final ResourceLocation GREGTECH = Harvestability("gregtech");
+    public static final ResourceLocation TINKERSCONSTRUCT = Harvestability("tinkersconstruct");
 
     public static final String NAMESPACE_HARVESTABILITY = "harvestability";
 

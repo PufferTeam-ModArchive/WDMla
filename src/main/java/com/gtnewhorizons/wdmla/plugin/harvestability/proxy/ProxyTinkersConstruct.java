@@ -136,7 +136,7 @@ public class ProxyTinkersConstruct {
             case 7 -> creativePickaxes.get(tiCConfig.harvestLevel7);
             case 8 -> creativePickaxes.get(tiCConfig.harvestLevel8);
             case 9 -> creativePickaxes.get(tiCConfig.harvestLevel9);
-            default -> new ItemStack(Blocks.iron_bars);
+            default -> null;
         };
     }
 }

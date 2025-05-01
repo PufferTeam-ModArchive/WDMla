@@ -29,6 +29,9 @@ public enum BaseHarvestLogicHandler implements InteractionHandler {
 
             info.effectiveTool = block.getHarvestTool(meta);
         }
+        else if (phase == HarvestabilityTestPhase.HARVEST_LEVEL) {
+            info.harvestLevel = getHarvestLevel(block, meta, info.effectiveTool);
+        }
     }
 
     @Override
@@ -43,5 +46,11 @@ public enum BaseHarvestLogicHandler implements InteractionHandler {
 
     public boolean isBlockUnbreakable(Block block, World world, int x, int y, int z) {
         return block.getBlockHardness(world, x, y, z) == -1.0f;
+    }
+
+    public int getHarvestLevel(Block block, int meta, String effectiveTool) {
+        int harvestLevel = block.getHarvestLevel(meta);
+        if (effectiveTool != null && harvestLevel < 0) harvestLevel = 0;
+        return harvestLevel;
     }
 }

@@ -126,7 +126,7 @@ public class ProxyGregTech {
         return switch (effectiveTool) {
             case "wrench" -> getEffectiveWrenchIcon(harvestLevel);
             case "cutter" -> getEffectiveCutterIcon(harvestLevel);
-            default -> new ItemStack(Blocks.iron_bars);
+            default -> null;
         };
     }
 
@@ -134,14 +134,14 @@ public class ProxyGregTech {
         return switch (num) {
             case 0, 1, 2 -> ironWrench;
             case 3, 4 -> steelWrench; // idk does 4 actually exist though.
-            default -> new ItemStack(Blocks.iron_bars);
+            default -> null;
         };
     }
 
     public static ItemStack getEffectiveCutterIcon(int num) {
         return switch (num) {
             case 0, 1, 2 -> ironWireCutter;
-            default -> new ItemStack(Blocks.iron_bars);
+            default -> null;
         };
     }
 }

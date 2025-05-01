@@ -22,6 +22,7 @@ public class HarvestabilityPlugin implements IWDMlaPlugin {
 //        registration.registerBlockComponent(LegacyHarvestToolProvider.INSTANCE, Block.class);
         registration.registerInteraction(BaseHarvestLogicHandler.INSTANCE, Block.class);
         registration.registerInteraction(GregTechHarvestHandler.INSTANCE, Block.class);
+        registration.registerInteraction(TinkersHarvestHandler.INSTANCE, Block.class);
 
         WDMlaConfig.instance()
                 .getCategory(
