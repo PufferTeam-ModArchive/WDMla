@@ -15,7 +15,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
-import net.minecraftforge.common.ForgeHooks;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -33,14 +32,8 @@ import com.gtnewhorizons.wdmla.impl.ui.component.HPanelComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.ItemComponent;
 import com.gtnewhorizons.wdmla.impl.ui.sizer.Padding;
 import com.gtnewhorizons.wdmla.impl.ui.sizer.Size;
-import com.gtnewhorizons.wdmla.plugin.harvestability.helpers.BlockHelper;
 import com.gtnewhorizons.wdmla.plugin.harvestability.helpers.StringHelper;
-import com.gtnewhorizons.wdmla.plugin.harvestability.helpers.ToolHelper;
 import com.gtnewhorizons.wdmla.plugin.harvestability.proxy.ProxyCreativeBlocks;
-import com.gtnewhorizons.wdmla.plugin.harvestability.proxy.ProxyGregTech;
-import com.gtnewhorizons.wdmla.plugin.harvestability.proxy.ProxyTinkersConstruct;
-
-import cpw.mods.fml.common.registry.GameRegistry;
 
 public enum HarvestToolProvider implements IBlockComponentProvider {
 
@@ -145,15 +138,10 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
             return info.result;
         }
 
-        ItemStack itemHeld = player.getHeldItem();
-
-        boolean isCurrentlyHarvestable = isCurrentlyHarvestable(
-                player,
-                block,
-                meta,
-                itemHeld,
-                info.effectiveTool,
-                info.harvestLevel);
+        if (!fireHarvestTest(HarvestabilityTestPhase.CURRENTLY_HARVESTABLE,
+                player, block, meta, position, handlers, info)) {
+            return info.result;
+        }
 
         // remove durability bar from tool icon
         ITooltip effectiveToolIconComponent = new ItemComponent(info.effectiveToolIcon).doDrawOverlay(false)
@@ -161,8 +149,8 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
 
         ITooltip harvestabilityIcon = assembleHarvestabilityIcon(
                 effectiveToolIconComponent,
-                isCurrentlyHarvestable);
-        IComponent harvestLevelText = assembleHarvestLevelText(info.harvestLevel, isCurrentlyHarvestable);
+                info.canHarvest);
+        IComponent harvestLevelText = assembleHarvestLevelText(info.harvestLevel, info.canHarvest);
         return Arrays.asList(harvestabilityIcon, harvestLevelText);
     }
 
@@ -176,51 +164,6 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
         }
 
         return !info.stopFurtherTesting;
-    }
-
-    private static boolean isHoldingTinkersTool(ItemStack itemHeld) {
-        return itemHeld != null && ProxyTinkersConstruct.hasToolTag(itemHeld);
-    }
-
-    private static boolean isAboveMinHarvestLevel(ItemStack itemHeld, Block block, int meta, int harvestLevel) {
-        return itemHeld != null && ProxyTinkersConstruct.canToolHarvestLevel(itemHeld, block, meta, harvestLevel);
-    }
-
-    private static boolean isHeldToolCorrect(EntityPlayer player, Block block, int meta, ItemStack itemHeld,
-            String effectiveTool, boolean isHoldingTinkersTool) {
-        boolean canHarvest = false;
-        if (itemHeld != null) {
-            if (ProxyGregTech.isMachine(block)) {
-                // GT_MetaGenerated_Tool's getDigSpeed is broken
-                canHarvest = Objects.equals(effectiveTool, ProxyGregTech.TOOL_WRENCH)
-                        && ProxyGregTech.isWrench(itemHeld)
-                        || Objects.equals(effectiveTool, ProxyGregTech.TOOL_WIRE_CUTTER)
-                                && ProxyGregTech.isWireCutter(itemHeld);
-            } else if (ProxyGregTech.isGTTool(itemHeld)) {
-                // GT tool don't care net.minecraft.block.material.Material#isToolNotRequired
-                canHarvest = itemHeld.func_150998_b(block);
-            } else {
-                canHarvest = ToolHelper.canToolHarvestBlock(itemHeld, block, meta)
-                        || (!isHoldingTinkersTool && block.canHarvestBlock(player, meta));
-            }
-        }
-        return canHarvest;
-    }
-
-    private static boolean isCurrentlyHarvestable(EntityPlayer player, Block block, int meta, ItemStack itemHeld,
-            String effectiveTool, int harvestLevel) {
-        boolean isHoldingTinkersTool = isHoldingTinkersTool(itemHeld);
-        boolean isHeldToolCorrect = isHeldToolCorrect(
-                player,
-                block,
-                meta,
-                itemHeld,
-                effectiveTool,
-                isHoldingTinkersTool);
-        boolean isAboveMinHarvestLevel = isAboveMinHarvestLevel(itemHeld, block, meta, harvestLevel);
-        return (isHeldToolCorrect && isAboveMinHarvestLevel)
-                || (!ProxyGregTech.isMachine(block) && !isHoldingTinkersTool
-                        && ForgeHooks.canHarvestBlock(block, player, meta));
     }
 
     private static @NotNull ITooltip assembleHarvestabilityIcon(ITooltip effectiveToolIconComponent,

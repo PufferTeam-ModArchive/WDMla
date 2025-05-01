@@ -1,5 +1,6 @@
 package com.gtnewhorizons.wdmla.plugin.harvestability;
 
+import com.gtnewhorizons.wdmla.api.Mods;
 import net.minecraft.block.Block;
 import net.minecraftforge.common.config.Configuration;
 
@@ -21,8 +22,12 @@ public class HarvestabilityPlugin implements IWDMlaPlugin {
         registration.registerBlockComponent(HarvestToolProvider.INSTANCE, Block.class);
 //        registration.registerBlockComponent(LegacyHarvestToolProvider.INSTANCE, Block.class);
         registration.registerInteraction(BaseHarvestLogicHandler.INSTANCE, Block.class);
-        registration.registerInteraction(GregTechHarvestHandler.INSTANCE, Block.class);
-        registration.registerInteraction(TinkersHarvestHandler.INSTANCE, Block.class);
+        if (Mods.TCONSTUCT.isLoaded()) {
+            registration.registerInteraction(TinkersHarvestHandler.INSTANCE, Block.class);
+        }
+        if (Mods.GREGTECH.isLoaded()) {
+            registration.registerInteraction(GregTechHarvestHandler.INSTANCE, Block.class);
+        }
 
         WDMlaConfig.instance()
                 .getCategory(

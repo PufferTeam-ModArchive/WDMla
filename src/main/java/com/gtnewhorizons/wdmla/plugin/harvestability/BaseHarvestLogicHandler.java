@@ -9,9 +9,12 @@ import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
 import com.gtnewhorizons.wdmla.plugin.harvestability.helpers.BlockHelper;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
+import net.minecraftforge.common.ForgeHooks;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
 
@@ -43,6 +46,14 @@ public enum BaseHarvestLogicHandler implements InteractionHandler {
                 info.stopFurtherTesting = true;
             }
         }
+        else if (phase == HarvestabilityTestPhase.CURRENTLY_HARVESTABLE) {
+            if (player.getHeldItem() == null) {
+                info.canHarvest = ForgeHooks.canHarvestBlock(block, player, meta);
+            }
+            else {
+                info.canHarvest = isCurrentlyHarvestable(player, block, meta, player.getHeldItem(), info.effectiveTool, info.harvestLevel);
+            }
+        }
     }
 
     @Override
@@ -69,5 +80,19 @@ public enum BaseHarvestLogicHandler implements InteractionHandler {
                                          boolean canSilkTouch) {
         boolean blockHasEffectiveTools = harvestLevel >= 0 && effectiveTool != null;
         return block.getMaterial().isToolNotRequired() && !blockHasEffectiveTools && !canShear && !canSilkTouch;
+    }
+
+    //vanilla simplified check handler
+    public boolean isCurrentlyHarvestable(EntityPlayer player, Block block, int meta, @NotNull ItemStack itemHeld,
+                                          String effectiveTool, int harvestLevel) {
+        boolean isHeldToolCorrect = canToolHarvestBlock(itemHeld, block)
+                || block.canHarvestBlock(player, meta);
+        boolean isAboveMinHarvestLevel = ForgeHooks.canToolHarvestBlock(block, meta, itemHeld);
+        return (isHeldToolCorrect && isAboveMinHarvestLevel)
+                || ForgeHooks.canHarvestBlock(block, player, meta);
+    }
+
+    public static boolean canToolHarvestBlock(ItemStack tool, Block block) {
+        return block.getMaterial().isToolNotRequired() || tool.func_150998_b(block); // func_150998_b = canHarvestBlock
     }
 }
