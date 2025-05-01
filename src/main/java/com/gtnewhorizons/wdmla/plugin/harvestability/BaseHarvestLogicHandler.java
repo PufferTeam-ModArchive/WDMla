@@ -16,13 +16,14 @@ import net.minecraftforge.common.ForgeHooks;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
+import java.util.Set;
 
 public enum BaseHarvestLogicHandler implements InteractionHandler {
     INSTANCE;
 
     @Override
     public void testHarvest(HarvestabilityInfo info, HarvestabilityTestPhase phase, EntityPlayer player, Block block, int meta, MovingObjectPosition position) {
-        if (phase == HarvestabilityTestPhase.EFFECTIVE_TOOL) {
+        if (phase == HarvestabilityTestPhase.EFFECTIVE_TOOL_NAME) {
             if (!player.isCurrentToolAdventureModeExempt(position.blockX, position.blockY, position.blockZ)
                     || isBlockUnbreakable(block, player.worldObj, position.blockX, position.blockY, position.blockZ)) {
                 info.effectiveToolIcon = null;
@@ -65,6 +66,9 @@ public enum BaseHarvestLogicHandler implements InteractionHandler {
                 info.canHarvest = isCurrentlyHarvestable(player, block, meta, player.getHeldItem(), info.effectiveTool, info.harvestLevel);
             }
         }
+        else if (phase == HarvestabilityTestPhase.IS_HELD_TOOL_EFFECTIVE) {
+            info.isHeldToolEffective = info.canHarvest && isToolEffectiveAgainst(player.getHeldItem(), block, meta, info.effectiveTool);
+        }
     }
 
     @Override
@@ -105,5 +109,23 @@ public enum BaseHarvestLogicHandler implements InteractionHandler {
 
     public static boolean canToolHarvestBlock(ItemStack tool, Block block) {
         return block.getMaterial().isToolNotRequired() || tool.func_150998_b(block); // func_150998_b = canHarvestBlock
+    }
+
+    public static boolean isToolEffectiveAgainst(ItemStack tool, Block block, int metadata, String effectiveToolClass) {
+        return ForgeHooks.isToolEffective(tool, block, metadata)
+                || (toolHasAnyToolClass(tool) ? isToolOfClass(tool, effectiveToolClass)
+                : tool.getItem().getDigSpeed(tool, block, metadata) > 1.5f);
+    }
+
+    public static boolean isToolOfClass(ItemStack tool, String toolClass) {
+        return getToolClassesOf(tool).contains(toolClass);
+    }
+
+    public static boolean toolHasAnyToolClass(ItemStack tool) {
+        return !getToolClassesOf(tool).isEmpty();
+    }
+
+    public static Set<String> getToolClassesOf(ItemStack tool) {
+        return tool.getItem().getToolClasses(tool);
     }
 }

@@ -35,7 +35,7 @@ public enum VanillaHarvestToolHandler implements InteractionHandler {
     @Override
     public void testHarvest(HarvestabilityInfo info, HarvestabilityTestPhase phase,
                             EntityPlayer player, Block block, int meta, MovingObjectPosition position) {
-        if(phase == HarvestabilityTestPhase.EFFECTIVE_TOOL) {
+        if(phase == HarvestabilityTestPhase.EFFECTIVE_TOOL_NAME) {
             if (info.effectiveTool == null) {
                 float hardness = block.getBlockHardness(player.worldObj, position.blockX, position.blockY, position.blockZ);
                 if (hardness > 0f) {

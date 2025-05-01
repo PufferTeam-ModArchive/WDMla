@@ -1,13 +1,11 @@
 package com.gtnewhorizons.wdmla.api;
 
-import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -40,4 +38,6 @@ public class HarvestabilityInfo {
     public List<Map.Entry<ItemStack, Boolean>> additionalToolsIcon = new ArrayList<>();
 
     public boolean stopFurtherTesting = false;
+
+    public boolean isHeldToolEffective = false;
 }

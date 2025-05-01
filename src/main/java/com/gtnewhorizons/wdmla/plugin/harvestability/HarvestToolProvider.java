@@ -88,10 +88,6 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
                 accessor.getHitResult(),
                 handlers);
 
-        updateTooltip(tooltip, info);
-    }
-
-    private void updateTooltip(ITooltip tooltip, HarvestabilityInfo info) {
         IComponent itemNameRow = tooltip.getChildWithTag(Identifiers.ITEM_NAME_ROW);
         if (!(itemNameRow instanceof ITooltip)) {
             return;
@@ -120,7 +116,7 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
         if (meta >= 16) meta = 0;
 
         HarvestabilityInfo info = new HarvestabilityInfo();
-        if (!fireHarvestTest(HarvestabilityTestPhase.EFFECTIVE_TOOL,
+        if (!fireHarvestTest(HarvestabilityTestPhase.EFFECTIVE_TOOL_NAME,
                 player, block, meta, position, handlers, info)) {
             return info;
         }
@@ -149,7 +145,12 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
             return info;
         }
 
-        fireHarvestTest(HarvestabilityTestPhase.CURRENTLY_HARVESTABLE,
+        if (!fireHarvestTest(HarvestabilityTestPhase.CURRENTLY_HARVESTABLE,
+                player, block, meta, position, handlers, info)) {
+            return info;
+        }
+
+        fireHarvestTest(HarvestabilityTestPhase.IS_HELD_TOOL_EFFECTIVE,
                 player, block, meta, position, handlers, info);
 
         return info;
