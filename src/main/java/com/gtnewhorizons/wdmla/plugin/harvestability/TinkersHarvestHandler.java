@@ -34,8 +34,9 @@ public enum TinkersHarvestHandler implements InteractionHandler {
             }
         }
         else if (phase == HarvestabilityTestPhase.IS_HELD_TOOL_EFFECTIVE) {
-            info.isHeldToolEffective = info.canHarvest
-                    && ProxyTinkersConstruct.isToolEffectiveAgainst(player.getHeldItem(), block, meta, info.effectiveTool);
+            boolean isHoldingTinkersTool = ProxyTinkersConstruct.hasToolTag(player.getHeldItem());
+            boolean isEffective = ProxyTinkersConstruct.isToolEffectiveAgainst(player.getHeldItem(), block, meta, info.effectiveTool);
+            info.isHeldToolEffective = isEffective && (!isHoldingTinkersTool || info.canHarvest);
         }
     }
 
@@ -59,7 +60,5 @@ public enum TinkersHarvestHandler implements InteractionHandler {
         return (isHeldToolCorrect && isAboveMinHarvestLevel)
                 || !isHoldingTinkersTool
                 && ForgeHooks.canHarvestBlock(block, player, meta);
-        //effectiveness check
-//        return isEffective && (!isHoldingTinkersTool || canHarvest);
     }
 }

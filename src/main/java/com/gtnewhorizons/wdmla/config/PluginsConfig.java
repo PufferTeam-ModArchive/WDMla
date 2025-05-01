@@ -314,10 +314,38 @@ public class PluginsConfig {
 
             public final TinkersConstruct tinkersConstruct = new TinkersConstruct();
 
-            @Config.Comment("IDs of the TiC effective pickaxe material corresponding to the harvest level.\n"
-                    + "Note that the default values are tuned for GTNH Iguana tweaks (TiC itself only has the harvest level up to 6)")
-            public static class TinkersConstruct {
+            public final IguanaTweaks iguanaTweaks = new IguanaTweaks();
 
+            @Config.Comment("IDs of the TiC effective pickaxe material corresponding to the harvest level.")
+            public static class TinkersConstruct {
+                @Config.DefaultInt(0)
+                @Config.Comment("default: wood")
+                public int harvestLevel0;
+
+                @Config.DefaultInt(1)
+                @Config.Comment("default: stone")
+                public int harvestLevel1;
+
+                @Config.DefaultInt(2)
+                @Config.Comment("default: iron")
+                public int harvestLevel2;
+
+                @Config.DefaultInt(6)
+                @Config.Comment("default: obsidian")
+                public int harvestLevel3;
+
+                @Config.DefaultInt(10)
+                @Config.Comment("default: cobalt")
+                public int harvestLevel4;
+
+                @Config.DefaultInt(12)
+                @Config.Comment("default: manyullyn")
+                public int harvestLevel5;
+            }
+
+            @Config.Comment("IDs of the IguanaTweaks effective pickaxe material corresponding to the harvest level.\n"
+                    + "It will override TiC config if the mod is loaded")
+            public static final class IguanaTweaks {
                 @Config.DefaultInt(0)
                 @Config.Comment("default: wood")
                 public int harvestLevel0;

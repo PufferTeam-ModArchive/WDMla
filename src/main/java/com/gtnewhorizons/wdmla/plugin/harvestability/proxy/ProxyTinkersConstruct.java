@@ -111,10 +111,6 @@ public class ProxyTinkersConstruct {
             case 3 -> defaultPickaxes.get(tiCConfig.harvestLevel3);
             case 4 -> defaultPickaxes.get(tiCConfig.harvestLevel4);
             case 5 -> defaultPickaxes.get(tiCConfig.harvestLevel5);
-            case 6 -> defaultPickaxes.get(tiCConfig.harvestLevel6);
-            case 7 -> defaultPickaxes.get(tiCConfig.harvestLevel7);
-            case 8 -> defaultPickaxes.get(tiCConfig.harvestLevel8);
-            case 9 -> defaultPickaxes.get(tiCConfig.harvestLevel9);
             default -> null;
         };
     }
