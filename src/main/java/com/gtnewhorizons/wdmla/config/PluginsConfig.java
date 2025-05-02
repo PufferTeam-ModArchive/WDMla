@@ -325,42 +325,52 @@ public class PluginsConfig {
 
         @Config.LangKey("option.wdmla.harvestability.currentlyHarvestable.icon")
         @Config.DefaultBoolean(true)
+        @Config.Comment("Shows the line of Currently Harvestable icons")
         public boolean currentlyHarvestableIcon;
 
         @Config.LangKey("option.wdmla.harvestability.effectivetool.icon")
         @Config.DefaultBoolean(true)
+        @Config.Comment("Shows the Effective Tool icon along with Currently Harvestable icon")
         public boolean effectiveToolIcon;
 
         @Config.LangKey("option.wdmla.harvestability.shearability.icon")
         @Config.DefaultBoolean(true)
+        @Config.Comment("Shows the Shearability icon")
         public boolean showShearabilityIcon;
 
         @Config.LangKey("option.wdmla.harvestability.silktouchability.icon")
         @Config.DefaultBoolean(true)
+        @Config.Comment("Shows the Silktouchabiity icon")
         public boolean showSilkTouchabilityIcon;
 
         @Config.LangKey("option.wdmla.harvestability.oresonly")
         @Config.DefaultBoolean(false)
+        @Config.Comment("Only shows tooltip when the block is ore")
         public boolean oresOnly;
 
         @Config.LangKey("option.wdmla.harvestability.textdetailsonly")
         @Config.DefaultBoolean(false)
+        @Config.Comment("Only shows the text part of the tooltip when pressing details key")
         public boolean textDetailsOnly;
 
         @Config.LangKey("option.wdmla.harvestability.effectivetool.line")
         @Config.DefaultBoolean(false)
+        @Config.Comment("Shows the Effective Tool line")
         public boolean effectiveToolLine;
 
         @Config.LangKey("option.wdmla.harvestability.currentlyharvestable.line")
         @Config.DefaultBoolean(false)
+        @Config.Comment("Shows the Currently Harvestable line")
         public boolean currentlyHarvestableLine;
 
         @Config.LangKey("option.wdmla.harvestability.unharvestableonly")
         @Config.DefaultBoolean(false)
+        @Config.Comment("Only shows tooltip when the block cannot be harvested")
         public boolean unHarvestableOnly;
 
         @Config.LangKey("option.wdmla.harvestability.toolrequiredonly")
         @Config.DefaultBoolean(false)
+        @Config.Comment("Only shows tooltip when a tool is required to harvest")
         public boolean toolRequiredOnly;
     }
 
