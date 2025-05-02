@@ -188,9 +188,16 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
         }
 
         // TODO: resize CHECK text
-        IComponent currentlyHarvestableIcon = (info.canHarvest
-                ? ThemeHelper.INSTANCE.success(PluginsConfig.harvestability.currentlyHarvestableString)
-                : ThemeHelper.INSTANCE.failure(PluginsConfig.harvestability.notCurrentlyHarvestableString));
+        IComponent currentlyHarvestableIcon;
+        if(info.canHarvest) {
+            currentlyHarvestableIcon = !PluginsConfig.harvestability.colorIconWithEffectiveness || info.isHeldToolEffective
+                    || info.effectiveTool == null
+                    ? ThemeHelper.INSTANCE.success(PluginsConfig.harvestability.currentlyHarvestableString)
+                    : ThemeHelper.INSTANCE.info(PluginsConfig.harvestability.currentlyHarvestableString);
+        }
+        else {
+            currentlyHarvestableIcon = ThemeHelper.INSTANCE.failure(PluginsConfig.harvestability.notCurrentlyHarvestableString);
+        }
 
         if (info.effectiveToolIcon != null) {
             ITooltip effectiveToolIconComponent = new ItemComponent(info.effectiveToolIcon).doDrawOverlay(false)

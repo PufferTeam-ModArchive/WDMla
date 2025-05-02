@@ -372,6 +372,11 @@ public class PluginsConfig {
         @Config.DefaultBoolean(false)
         @Config.Comment("Only shows tooltip when a tool is required to harvest")
         public boolean toolRequiredOnly;
+
+        @Config.LangKey("option.wdmla.harvestability.coloriconwitheffectiveness")
+        @Config.DefaultBoolean(false)
+        @Config.Comment("Colors the Currently Harvestable icon with held tool effectiveness")
+        public boolean colorIconWithEffectiveness;
     }
 
     @Config.LangKey("provider.wdmla.debug.category")
