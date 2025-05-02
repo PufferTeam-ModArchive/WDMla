@@ -239,6 +239,11 @@ provider.wdmla.minecraft.ender.dragon.header=Ender Dragon Header
 provider.wdmla.minecraft.end.portal.header=End Portal Header
 
 provider.wdmla.harvestability.category=Waila Harvestability
+provider.wdmla.harvestability.tinkersconstruct=Tinkers Construct
+provider.wdmla.harvestability.iguanatweaks=Iguana Tweaks
+provider.wdmla.harvestability.icon=Icon
+provider.wdmla.harvestability.text=Text
+provider.wdmla.harvestability.condition=Condition
 
 provider.wdmla.debug.category=Debug
 provider.wdmla.debug.hardness=Block Hardness

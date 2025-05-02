@@ -229,6 +229,7 @@ public class PluginsConfig {
         public final Condition condition = new Condition();
 
         @Config.Comment("IDs of the TiC effective pickaxe material corresponding to the harvest level.")
+        @Config.LangKey("provider.wdmla.harvestability.tinkersconstruct")
         public static class TinkersConstruct {
             @Config.DefaultInt(0)
             @Config.Comment("default: wood")
@@ -257,6 +258,7 @@ public class PluginsConfig {
 
         @Config.Comment("IDs of the IguanaTweaks effective pickaxe material corresponding to the harvest level.\n"
                 + "It will override TiC config if the mod is loaded")
+        @Config.LangKey("provider.wdmla.harvestability.iguanatweaks")
         public static final class IguanaTweaks {
             @Config.DefaultInt(0)
             @Config.Comment("default: wood")
@@ -299,6 +301,7 @@ public class PluginsConfig {
             public int harvestLevel9;
         }
 
+        @Config.LangKey("provider.wdmla.harvestability.icon")
         public static final class Icon {
             @Config.LangKey("option.wdmla.harvestability.currentlyHarvestable.icon")
             @Config.DefaultBoolean(true)
@@ -346,6 +349,7 @@ public class PluginsConfig {
             public boolean colorIconWithEffectiveness;
         }
 
+        @Config.LangKey("provider.wdmla.harvestability.text")
         public static final class Text {
             @Config.LangKey("option.wdmla.harvestability.harvestlevelnum")
             @Config.DefaultBoolean(false)
@@ -368,6 +372,7 @@ public class PluginsConfig {
             public boolean currentlyHarvestableLine;
         }
 
+        @Config.LangKey("provider.wdmla.harvestability.condition")
         public static final class Condition {
             @Config.LangKey("option.wdmla.harvestability.oresonly")
             @Config.DefaultBoolean(false)
