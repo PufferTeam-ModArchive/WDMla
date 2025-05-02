@@ -335,18 +335,23 @@ public class PluginsConfig {
 
             @Config.LangKey("option.wdmla.harvestability.shearability.icon")
             @Config.DefaultBoolean(true)
-            @Config.Comment("Shows the Shearability icon")
+            @Config.Comment("Shows the Shearability icon when holding the respective tool")
             public boolean showShearabilityIcon;
 
             @Config.LangKey("option.wdmla.harvestability.silktouchability.icon")
             @Config.DefaultBoolean(true)
-            @Config.Comment("Shows the Silktouchabiity icon")
+            @Config.Comment("Shows the Silktouchabiity icon when holding the respective tool")
             public boolean showSilkTouchabilityIcon;
 
             @Config.LangKey("option.wdmla.harvestability.coloriconwitheffectiveness")
             @Config.DefaultBoolean(false)
             @Config.Comment("Colors the Currently Harvestable icon with held tool effectiveness")
             public boolean colorIconWithEffectiveness;
+
+            @Config.LangKey("option.wdmla.harvestability.always.show.additional.tools")
+            @Config.DefaultBoolean(false)
+            @Config.Comment("Shows additional tools like Silktouchabiity even if you aren't holding the respective tool")
+            public boolean alwaysShowAdditionalTools;
         }
 
         @Config.LangKey("provider.wdmla.harvestability.text")

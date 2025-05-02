@@ -216,7 +216,7 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
         }
 
         for (Map.Entry<ItemStack, Boolean> additionalTool : info.additionalToolsIcon) {
-            if (additionalTool.getValue()) { //TODO: config to always show additional tools
+            if (additionalTool.getValue() || PluginsConfig.harvestability.icon.alwaysShowAdditionalTools) {
                 harvestabilityComponent.child(
                         new ItemComponent(additionalTool.getKey()).doDrawOverlay(false)
                                 .size(new Size(10, 10)));

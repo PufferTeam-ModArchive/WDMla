@@ -354,6 +354,7 @@ option.wdmla.harvestability.shearability.icon=Shearability Icon
 option.wdmla.harvestability.silktouchability.icon=Silk Touchability Icon
 option.wdmla.harvestability.textdetailsonly=Details only: Text
 option.wdmla.harvestability.coloriconwitheffectiveness=Color Icon with Effectiveness
+option.wdmla.harvestability.always.show.additional.tools=Always show additional tools
 
 # debug options
 option.wdmla.debug.entity.registry.data=Show Entity Registry Data
