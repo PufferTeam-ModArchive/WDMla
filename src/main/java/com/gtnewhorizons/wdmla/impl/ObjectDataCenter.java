@@ -1,5 +1,6 @@
 package com.gtnewhorizons.wdmla.impl;
 
+import com.gtnewhorizons.wdmla.api.HarvestabilityInfo;
 import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
@@ -28,6 +29,7 @@ public final class ObjectDataCenter {
      */
     private static int rateLimiter = RATE_LIMIT_MP;
     public static long timeLastUpdate = System.currentTimeMillis();
+    public static HarvestabilityInfo harvestabilityInfo;
     private static Accessor accessor;
     private static AccessorClientHandler<Accessor> clientHandler;
     private static NBTTagCompound serverData = new NBTTagCompound();
@@ -49,6 +51,7 @@ public final class ObjectDataCenter {
         if (!equals(object, lastObject)) {
             lastObject = object;
             serverData = null;
+            harvestabilityInfo = null;
             requestServerData();
         }
     }
@@ -117,5 +120,13 @@ public final class ObjectDataCenter {
         }
 
         return false;
+    }
+
+    public static void setHarvestabilityInfo(HarvestabilityInfo info) {
+        harvestabilityInfo = info;
+    }
+
+    public static boolean canCurrentTargetBeHarvested() {
+        return harvestabilityInfo == null || harvestabilityInfo.canHarvest;
     }
 }

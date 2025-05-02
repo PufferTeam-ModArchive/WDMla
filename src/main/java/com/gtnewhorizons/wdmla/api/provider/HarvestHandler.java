@@ -9,10 +9,8 @@ import net.minecraft.util.MovingObjectPosition;
 
 public interface HarvestHandler extends IWDMlaProvider {
 
-    default void testHarvest(HarvestabilityInfo info, HarvestabilityTestPhase phase, EntityPlayer player, Block block, int meta,
-                             MovingObjectPosition position) {
-
-    }
+    void testHarvest(HarvestabilityInfo info, HarvestabilityTestPhase phase, EntityPlayer player, Block block, int meta,
+                             MovingObjectPosition position);
 
     /**
      * Implement This to fix meta block related issue

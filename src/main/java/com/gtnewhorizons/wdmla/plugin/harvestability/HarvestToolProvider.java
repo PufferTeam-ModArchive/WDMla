@@ -7,6 +7,7 @@ import java.util.Objects;
 import com.gtnewhorizons.wdmla.api.HarvestabilityInfo;
 import com.gtnewhorizons.wdmla.api.HarvestabilityTestPhase;
 import com.gtnewhorizons.wdmla.api.provider.HarvestHandler;
+import com.gtnewhorizons.wdmla.impl.ObjectDataCenter;
 import com.gtnewhorizons.wdmla.impl.WDMlaClientRegistration;
 import com.gtnewhorizons.wdmla.impl.ui.component.VPanelComponent;
 import mcp.mobius.waila.overlay.DisplayUtil;
@@ -64,6 +65,7 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
         }
 
         if (ProxyCreativeBlocks.isCreativeBlock(accessor.getBlock(), accessor.getMetadata())) {
+            ObjectDataCenter.setHarvestabilityInfo(null);
             return;
         }
 
@@ -82,16 +84,18 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
                                 accessor.getBlock(), accessor.getItemForm(), accessor.getMetadata()))
                 .filter(Objects::nonNull).findFirst().orElse(accessor.getMetadata());
 
-        if(PluginsConfig.harvestability.condition.oresOnly && !BlockHelper.isBlockAnOre(effectiveBlock, effectiveMeta)) {
-            return;
-        }
-
         HarvestabilityInfo info = getHarvestability(
                 accessor.getPlayer(),
                 effectiveBlock,
                 effectiveMeta,
                 accessor.getHitResult(),
                 handlers);
+
+        ObjectDataCenter.setHarvestabilityInfo(info);
+
+        if(PluginsConfig.harvestability.condition.oresOnly && !BlockHelper.isBlockAnOre(effectiveBlock, effectiveMeta)) {
+            return;
+        }
 
         if((PluginsConfig.harvestability.condition.unHarvestableOnly && info.canHarvest)
                 || (PluginsConfig.harvestability.condition.toolRequiredOnly && info.effectiveTool == null)) {
