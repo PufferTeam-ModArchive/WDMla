@@ -1,4 +1,4 @@
-package com.gtnewhorizons.wdmla.api;
+package com.gtnewhorizons.wdmla.api.harvestability;
 
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;

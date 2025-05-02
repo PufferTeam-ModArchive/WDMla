@@ -1,6 +1,6 @@
 package com.gtnewhorizons.wdmla.impl;
 
-import com.gtnewhorizons.wdmla.api.HarvestabilityInfo;
+import com.gtnewhorizons.wdmla.api.harvestability.HarvestabilityInfo;
 import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;

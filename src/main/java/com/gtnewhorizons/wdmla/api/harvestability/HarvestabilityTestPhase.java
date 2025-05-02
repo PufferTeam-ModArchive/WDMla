@@ -1,4 +1,4 @@
-package com.gtnewhorizons.wdmla.api;
+package com.gtnewhorizons.wdmla.api.harvestability;
 
 public enum HarvestabilityTestPhase {
     EFFECTIVE_TOOL_NAME,

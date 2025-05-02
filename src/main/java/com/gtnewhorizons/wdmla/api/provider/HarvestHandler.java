@@ -1,7 +1,7 @@
 package com.gtnewhorizons.wdmla.api.provider;
 
-import com.gtnewhorizons.wdmla.api.HarvestabilityInfo;
-import com.gtnewhorizons.wdmla.api.HarvestabilityTestPhase;
+import com.gtnewhorizons.wdmla.api.harvestability.HarvestabilityInfo;
+import com.gtnewhorizons.wdmla.api.harvestability.HarvestabilityTestPhase;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;

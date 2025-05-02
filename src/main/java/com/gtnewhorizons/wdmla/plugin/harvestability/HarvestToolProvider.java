@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-import com.gtnewhorizons.wdmla.api.HarvestabilityInfo;
-import com.gtnewhorizons.wdmla.api.HarvestabilityTestPhase;
+import com.gtnewhorizons.wdmla.api.harvestability.HarvestabilityInfo;
+import com.gtnewhorizons.wdmla.api.harvestability.HarvestabilityTestPhase;
 import com.gtnewhorizons.wdmla.api.provider.HarvestHandler;
 import com.gtnewhorizons.wdmla.impl.ObjectDataCenter;
 import com.gtnewhorizons.wdmla.impl.WDMlaClientRegistration;
@@ -102,7 +102,7 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
             return;
         }
 
-        IComponent itemNameRow = tooltip.getChildWithTag(Identifiers.ITEM_NAME_ROW);
+        IComponent itemNameRow = tooltip.getChildWithTag(Identifiers.TARGET_NAME_ROW);
         if (!(itemNameRow instanceof ITooltip)) {
             return;
         }

@@ -2,6 +2,8 @@ package com.gtnewhorizons.wdmla.plugin.core;
 
 import static mcp.mobius.waila.api.SpecialChars.*;
 
+import com.gtnewhorizons.wdmla.api.ui.IComponent;
+import com.gtnewhorizons.wdmla.impl.ui.component.HPanelComponent;
 import com.gtnewhorizons.wdmla.util.FormatUtil;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
@@ -72,8 +74,23 @@ public enum DefaultBlockInfoProvider implements IBlockComponentProvider {
             else {
                 itemName = DisplayUtil.itemDisplayNameShortFormatted(itemStack);
             }
-            row_vertical.horizontal().tag(Identifiers.ITEM_NAME_ROW)
-                    .child(ThemeHelper.INSTANCE.title(itemName).tag(Identifiers.ITEM_NAME));
+            ITooltip title = row_vertical.horizontal();
+            IComponent nameComponent = ThemeHelper.INSTANCE.title(itemName).tag(Identifiers.ITEM_NAME);
+            title.child(nameComponent)
+                    .child(new HPanelComponent() {
+                        @Override
+                        public void tick(float x, float y) {
+                            if (General.alignIconRightTop) {
+                                IComponent icon = row.getChildWithTag(Identifiers.ITEM_ICON);
+                                IComponent name = title.getChildWithTag(Identifiers.ITEM_NAME);
+                                //align right
+                                x += Math.max(tooltip.getWidth() - (icon != null ? icon.getWidth() : 0)
+                                        - (name != null ? name.getWidth() : 0) - getWidth() -
+                                        General.currentTheme.get().panelStyle.getSpacing() * 2, 0);
+                            }
+                            super.tick(x, y);
+                        }
+                    }.tag(Identifiers.TARGET_NAME_ROW));
         }
         String modName = ModIdentification.nameFromStack(itemStack);
         if (PluginsConfig.core.defaultBlock.showModName) {

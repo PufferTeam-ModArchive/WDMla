@@ -1,7 +1,7 @@
 package com.gtnewhorizons.wdmla.plugin.harvestability;
 
-import com.gtnewhorizons.wdmla.api.HarvestabilityInfo;
-import com.gtnewhorizons.wdmla.api.HarvestabilityTestPhase;
+import com.gtnewhorizons.wdmla.api.harvestability.HarvestabilityInfo;
+import com.gtnewhorizons.wdmla.api.harvestability.HarvestabilityTestPhase;
 import com.gtnewhorizons.wdmla.api.provider.HarvestHandler;
 import com.gtnewhorizons.wdmla.plugin.harvestability.proxy.ProxyIguanaTweaks;
 import net.minecraft.block.Block;

@@ -29,7 +29,8 @@ public enum PetProvider implements IEntityComponentProvider, IServerDataProvider
             tooltip.child(
                     ThemeHelper.INSTANCE.value(
                             StatCollector.translateToLocal("hud.msg.wdmla.sitting"),
-                            String.valueOf(pet.isSitting())).tag(VanillaIdentifiers.PET));
+                            pet.isSitting() ? StatCollector.translateToLocal("hud.msg.wdmla.yes")
+                            : StatCollector.translateToLocal("hud.msg.wdmla.no")).tag(VanillaIdentifiers.PET));
         }
 
         String ownerUUID = accessor.getServerData().getString("OwnerUUID");
