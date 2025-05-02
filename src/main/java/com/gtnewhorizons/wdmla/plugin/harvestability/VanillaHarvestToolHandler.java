@@ -4,7 +4,6 @@ import com.gtnewhorizons.wdmla.api.HarvestabilityInfo;
 import com.gtnewhorizons.wdmla.api.HarvestabilityTestPhase;
 import com.gtnewhorizons.wdmla.api.provider.HarvestHandler;
 import com.gtnewhorizons.wdmla.config.PluginsConfig;
-import com.gtnewhorizons.wdmla.plugin.harvestability.helpers.BlockHelper;
 import com.gtnewhorizons.wdmla.plugin.vanilla.VanillaIdentifiers;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;

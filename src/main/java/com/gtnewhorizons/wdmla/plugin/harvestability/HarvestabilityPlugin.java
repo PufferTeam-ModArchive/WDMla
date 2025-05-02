@@ -20,7 +20,6 @@ public class HarvestabilityPlugin implements IWDMlaPlugin {
     @Override
     public void registerClient(IWDMlaClientRegistration registration) {
         registration.registerBlockComponent(HarvestToolProvider.INSTANCE, Block.class);
-//        registration.registerBlockComponent(LegacyHarvestToolProvider.INSTANCE, Block.class);
         registration.registerHarvest(BaseHarvestLogicHandler.INSTANCE, Block.class);
         registration.registerHarvest(VanillaHarvestToolHandler.INSTANCE, Block.class);
         if (Mods.TCONSTUCT.isLoaded()) {

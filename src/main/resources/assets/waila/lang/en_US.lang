@@ -329,16 +329,14 @@ option.wdmla.vanilla.max.command.length=Max Command Length
 
 # waila harvestability options
 option.wdmla.harvestability.harvestlevelname=Harvest Level Name
-option.wdmla.harvestability.effectivetool=Effective Tool
-option.wdmla.harvestability.currentlyharvestable=Currently Harvestable
+option.wdmla.harvestability.effectivetool.line=Effective Tool Line
+option.wdmla.harvestability.currentlyharvestable.line=Currently Harvestable Line
 option.wdmla.harvestability.oresonly=Ores Only
-option.wdmla.harvestability.minimal=Minimal Mode
 option.wdmla.harvestability.unharvestableonly=Unharvestable Only
 option.wdmla.harvestability.toolrequiredonly=Tool Required Only
 option.wdmla.harvestability.shearability=Shearability
 option.wdmla.harvestability.silktouchability=Silk Touchability
 option.wdmla.harvestability.harvestlevelnum=Harvest Level No.
-option.wdmla.harvestability.minimalseparator.string=Separator String in Minimal Mode
 option.wdmla.harvestability.currentlyharvestable.string=Currently Harvestable String
 option.wdmla.harvestability.notcurrentlyharvestable.string=Not Currently Harvestable String
 option.wdmla.harvestability.shearability.string=Shearability String

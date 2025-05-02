@@ -1,4 +1,4 @@
-package com.gtnewhorizons.wdmla.plugin.harvestability.helpers;
+package com.gtnewhorizons.wdmla.plugin.harvestability;
 
 import java.util.Map;
 import java.util.Random;

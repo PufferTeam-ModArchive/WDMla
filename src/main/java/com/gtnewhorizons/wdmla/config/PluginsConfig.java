@@ -218,48 +218,9 @@ public class PluginsConfig {
     @Config.LangKey("provider.wdmla.harvestability.category")
     public static class Harvestability {
 
-        //TODO:merge with modern
-        public final Legacy legacy = new Legacy();
-
         public final TinkersConstruct tinkersConstruct = new TinkersConstruct();
 
         public final IguanaTweaks iguanaTweaks = new IguanaTweaks();
-
-        @Config.LangKey("provider.wdmla.harvestability.legacy")
-        public static class Legacy {
-
-            @Config.LangKey("option.wdmla.harvestability.effectivetool")
-            @Config.DefaultBoolean(true)
-            public boolean effectiveTool;
-
-            @Config.LangKey("option.wdmla.harvestability.currentlyharvestable")
-            @Config.DefaultBoolean(true)
-            public boolean currentlyHarvestable;
-
-            @Config.LangKey("option.wdmla.harvestability.minimal")
-            @Config.DefaultBoolean(false)
-            public boolean minimal;
-
-            @Config.LangKey("option.wdmla.harvestability.unharvestableonly")
-            @Config.DefaultBoolean(false)
-            public boolean unHarvestableOnly;
-
-            @Config.LangKey("option.wdmla.harvestability.toolrequiredonly")
-            @Config.DefaultBoolean(true)
-            public boolean toolRequiredOnly;
-
-            @Config.LangKey("option.wdmla.harvestability.minimalseparator.string")
-            @Config.DefaultString(" : ")
-            public String minimalSeparatorString;
-
-            @Config.LangKey("option.wdmla.harvestability.shearability.string")
-            @Config.DefaultString("\u2702")
-            public String shearabilityString;
-
-            @Config.LangKey("option.wdmla.harvestability.silktouchability.string")
-            @Config.DefaultString("\u2712")
-            public String silkTouchabilityString;
-        }
 
         @Config.Comment("IDs of the TiC effective pickaxe material corresponding to the harvest level.")
         public static class TinkersConstruct {
@@ -385,6 +346,22 @@ public class PluginsConfig {
         @Config.LangKey("option.wdmla.harvestability.textdetailsonly")
         @Config.DefaultBoolean(false)
         public boolean textDetailsOnly;
+
+        @Config.LangKey("option.wdmla.harvestability.effectivetool.line")
+        @Config.DefaultBoolean(false)
+        public boolean effectiveToolLine;
+
+        @Config.LangKey("option.wdmla.harvestability.currentlyharvestable.line")
+        @Config.DefaultBoolean(false)
+        public boolean currentlyHarvestableLine;
+
+        @Config.LangKey("option.wdmla.harvestability.unharvestableonly")
+        @Config.DefaultBoolean(false)
+        public boolean unHarvestableOnly;
+
+        @Config.LangKey("option.wdmla.harvestability.toolrequiredonly")
+        @Config.DefaultBoolean(false)
+        public boolean toolRequiredOnly;
     }
 
     @Config.LangKey("provider.wdmla.debug.category")

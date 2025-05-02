@@ -8,7 +8,7 @@ import com.gtnewhorizons.wdmla.api.HarvestabilityInfo;
 import com.gtnewhorizons.wdmla.api.HarvestabilityTestPhase;
 import com.gtnewhorizons.wdmla.api.provider.HarvestHandler;
 import com.gtnewhorizons.wdmla.impl.WDMlaClientRegistration;
-import com.gtnewhorizons.wdmla.plugin.harvestability.helpers.BlockHelper;
+import com.gtnewhorizons.wdmla.impl.ui.component.VPanelComponent;
 import mcp.mobius.waila.overlay.DisplayUtil;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
@@ -92,6 +92,11 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
                 effectiveMeta,
                 accessor.getHitResult(),
                 handlers);
+
+        if((PluginsConfig.harvestability.unHarvestableOnly && info.canHarvest)
+                || (PluginsConfig.harvestability.toolRequiredOnly && info.effectiveTool == null)) {
+            return;
+        }
 
         IComponent itemNameRow = tooltip.getChildWithTag(Identifiers.ITEM_NAME_ROW);
         if (!(itemNameRow instanceof ITooltip)) {
@@ -214,17 +219,50 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
     }
 
     private static @Nullable IComponent assembleHarvestabilityText(HarvestabilityInfo info) {
-        IComponent harvestLevelText = null;
+        ITooltip lines = new VPanelComponent();
         if (info.harvestLevel >= 1 &&
                 (PluginsConfig.harvestability.harvestLevelNum || PluginsConfig.harvestability.harvestLevelName)) {
             String harvestLevelString = PluginsConfig.harvestability.harvestLevelName ?
                     DisplayUtil.stripSymbols(info.harvestLevelName)
                     : String.valueOf(info.harvestLevel);
-            harvestLevelText = new HPanelComponent().tag(HarvestabilityIdentifiers.HARVESTABILITY_TEXT)
+            IComponent harvestLevelText = new HPanelComponent().tag(HarvestabilityIdentifiers.HARVESTABILITY_TEXT)
                     .text(String.format("%s: ", StatCollector.translateToLocal("hud.msg.wdmla.harvestlevel"))).child(
                             info.canHarvest ? ThemeHelper.INSTANCE.success(harvestLevelString)
                                     : ThemeHelper.INSTANCE.failure(harvestLevelString));
+            lines.child(harvestLevelText);
         }
-        return harvestLevelText;
+
+        if (PluginsConfig.harvestability.effectiveToolLine && info.effectiveTool != null) {
+            String effectiveToolString;
+            if (StatCollector.canTranslate("hud.msg.wdmla.toolclass." + info.effectiveTool)) {
+                effectiveToolString = StatCollector.translateToLocal("hud.msg.wdmla.toolclass." + info.effectiveTool);
+            }
+            else {
+                effectiveToolString = info.effectiveTool.substring(0, 1).toUpperCase() + info.effectiveTool.substring(1);
+            }
+            ITooltip effectiveToolPanel = new HPanelComponent();
+            effectiveToolPanel.text(StatCollector.translateToLocal("hud.msg.wdmla.effectivetool") + ": ");
+            if (info.isHeldToolEffective) {
+                effectiveToolPanel.child(ThemeHelper.INSTANCE.success(effectiveToolString));
+            } else {
+                effectiveToolPanel.child(ThemeHelper.INSTANCE.failure(effectiveToolString));
+            }
+            lines.child(effectiveToolPanel);
+        }
+
+        if (PluginsConfig.harvestability.currentlyHarvestableLine) {
+            ITooltip currentlyHarvestable = new HPanelComponent();
+            if (info.canHarvest) {
+                String icon = PluginsConfig.harvestability.currentlyHarvestableString;
+                currentlyHarvestable.child(ThemeHelper.INSTANCE.success(icon));
+            } else {
+                String icon = PluginsConfig.harvestability.notCurrentlyHarvestableString;
+                currentlyHarvestable.child(ThemeHelper.INSTANCE.failure(icon));
+            }
+            String suffix = StatCollector.translateToLocal("hud.msg.wdmla.currentlyharvestable");
+            lines.child(currentlyHarvestable.text(suffix));
+        }
+
+        return lines.childrenSize() > 0 ? lines : null;
     }
 }
