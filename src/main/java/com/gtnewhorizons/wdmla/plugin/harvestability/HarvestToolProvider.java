@@ -82,7 +82,7 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
                                 accessor.getBlock(), accessor.getItemForm(), accessor.getMetadata()))
                 .filter(Objects::nonNull).findFirst().orElse(accessor.getMetadata());
 
-        if(PluginsConfig.harvestability.oresOnly && !BlockHelper.isBlockAnOre(effectiveBlock, effectiveMeta)) {
+        if(PluginsConfig.harvestability.condition.oresOnly && !BlockHelper.isBlockAnOre(effectiveBlock, effectiveMeta)) {
             return;
         }
 
@@ -93,8 +93,8 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
                 accessor.getHitResult(),
                 handlers);
 
-        if((PluginsConfig.harvestability.unHarvestableOnly && info.canHarvest)
-                || (PluginsConfig.harvestability.toolRequiredOnly && info.effectiveTool == null)) {
+        if((PluginsConfig.harvestability.condition.unHarvestableOnly && info.canHarvest)
+                || (PluginsConfig.harvestability.condition.toolRequiredOnly && info.effectiveTool == null)) {
             return;
         }
 
@@ -106,7 +106,7 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
         IComponent harvestabilityIcon = assembleHarvestabilityIcon(info);
 
         IComponent harvestabilityText = null;
-        if(!PluginsConfig.harvestability.textDetailsOnly || accessor.showDetails()) {
+        if(!PluginsConfig.harvestability.condition.textDetailsOnly || accessor.showDetails()) {
             harvestabilityText = assembleHarvestabilityText(info);
         }
 
@@ -183,27 +183,27 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
     private static @NotNull ITooltip assembleHarvestabilityIcon(HarvestabilityInfo info) {
         ITooltip harvestabilityComponent = new HPanelComponent().tag(HarvestabilityIdentifiers.HARVESTABILITY_ICON);
 
-        if (!PluginsConfig.harvestability.currentlyHarvestableIcon) {
+        if (!PluginsConfig.harvestability.icon.currentlyHarvestableIcon) {
             return harvestabilityComponent;
         }
 
         // TODO: resize CHECK text
         IComponent currentlyHarvestableIcon;
         if(info.canHarvest) {
-            currentlyHarvestableIcon = !PluginsConfig.harvestability.colorIconWithEffectiveness || info.isHeldToolEffective
+            currentlyHarvestableIcon = !PluginsConfig.harvestability.icon.colorIconWithEffectiveness || info.isHeldToolEffective
                     || info.effectiveTool == null
-                    ? ThemeHelper.INSTANCE.success(PluginsConfig.harvestability.currentlyHarvestableString)
-                    : ThemeHelper.INSTANCE.info(PluginsConfig.harvestability.currentlyHarvestableString);
+                    ? ThemeHelper.INSTANCE.success(PluginsConfig.harvestability.icon.currentlyHarvestableString)
+                    : ThemeHelper.INSTANCE.info(PluginsConfig.harvestability.icon.currentlyHarvestableString);
         }
         else {
-            currentlyHarvestableIcon = ThemeHelper.INSTANCE.failure(PluginsConfig.harvestability.notCurrentlyHarvestableString);
+            currentlyHarvestableIcon = ThemeHelper.INSTANCE.failure(PluginsConfig.harvestability.icon.notCurrentlyHarvestableString);
         }
 
         if (info.effectiveToolIcon != null) {
             ITooltip effectiveToolIconComponent = new ItemComponent(info.effectiveToolIcon).doDrawOverlay(false)
                     .size(new Size(10, 10));
 
-            if (PluginsConfig.harvestability.effectiveToolIcon) {
+            if (PluginsConfig.harvestability.icon.effectiveToolIcon) {
                 effectiveToolIconComponent.child(
                         new HPanelComponent().padding(new Padding().left(5).top(6)).child(currentlyHarvestableIcon));
                 harvestabilityComponent.child(effectiveToolIconComponent);
@@ -228,8 +228,8 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
     private static @Nullable IComponent assembleHarvestabilityText(HarvestabilityInfo info) {
         ITooltip lines = new VPanelComponent();
         if (info.harvestLevel >= 1 &&
-                (PluginsConfig.harvestability.harvestLevelNum || PluginsConfig.harvestability.harvestLevelName)) {
-            String harvestLevelString = PluginsConfig.harvestability.harvestLevelName ?
+                (PluginsConfig.harvestability.text.harvestLevelNum || PluginsConfig.harvestability.text.harvestLevelName)) {
+            String harvestLevelString = PluginsConfig.harvestability.text.harvestLevelName ?
                     DisplayUtil.stripSymbols(info.harvestLevelName)
                     : String.valueOf(info.harvestLevel);
             IComponent harvestLevelText = new HPanelComponent().tag(HarvestabilityIdentifiers.HARVESTABILITY_TEXT)
@@ -239,7 +239,7 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
             lines.child(harvestLevelText);
         }
 
-        if (PluginsConfig.harvestability.effectiveToolLine && info.effectiveTool != null) {
+        if (PluginsConfig.harvestability.text.effectiveToolLine && info.effectiveTool != null) {
             String effectiveToolString;
             if (StatCollector.canTranslate("hud.msg.wdmla.toolclass." + info.effectiveTool)) {
                 effectiveToolString = StatCollector.translateToLocal("hud.msg.wdmla.toolclass." + info.effectiveTool);
@@ -257,13 +257,13 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
             lines.child(effectiveToolPanel);
         }
 
-        if (PluginsConfig.harvestability.currentlyHarvestableLine) {
+        if (PluginsConfig.harvestability.text.currentlyHarvestableLine) {
             ITooltip currentlyHarvestable = new HPanelComponent();
             if (info.canHarvest) {
-                String icon = PluginsConfig.harvestability.currentlyHarvestableString;
+                String icon = PluginsConfig.harvestability.icon.currentlyHarvestableString;
                 currentlyHarvestable.child(ThemeHelper.INSTANCE.success(icon));
             } else {
-                String icon = PluginsConfig.harvestability.notCurrentlyHarvestableString;
+                String icon = PluginsConfig.harvestability.icon.notCurrentlyHarvestableString;
                 currentlyHarvestable.child(ThemeHelper.INSTANCE.failure(icon));
             }
             String suffix = StatCollector.translateToLocal("hud.msg.wdmla.currentlyharvestable");

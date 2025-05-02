@@ -29,7 +29,7 @@ public class BlockHelper {
             boolean isHoldingShears = itemHeld != null && itemHeld.getItem() instanceof ItemShears;
             boolean canShear = isHoldingShears && ((IShearable) block)
                     .isShearable(itemHeld, player.worldObj, position.blockX, position.blockY, position.blockZ);
-            String[] parts = PluginsConfig.harvestability.shearabilityItem.split(":");
+            String[] parts = PluginsConfig.harvestability.icon.shearabilityItem.split(":");
             if (parts.length == 2) {
                 return Maps.immutableEntry(GameRegistry.findItemStack(parts[0], parts[1], 1), canShear);
             }
@@ -44,7 +44,7 @@ public class BlockHelper {
             boolean silkTouchMatters = (itemDropped instanceof ItemBlock && itemDropped != Item.getItemFromBlock(block))
                     || block.quantityDropped(new Random()) <= 0;
             boolean canSilkTouch = silkTouchMatters && EnchantmentHelper.getSilkTouchModifier(player);
-            String[] parts = PluginsConfig.harvestability.silkTouchabilityItem.split(":");
+            String[] parts = PluginsConfig.harvestability.icon.silkTouchabilityItem.split(":");
             if (parts.length == 2) {
                 return Maps.immutableEntry(GameRegistry.findItemStack(parts[0], parts[1], 1), canSilkTouch);
             }

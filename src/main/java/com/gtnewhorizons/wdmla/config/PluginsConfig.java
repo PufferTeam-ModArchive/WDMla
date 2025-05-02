@@ -222,6 +222,12 @@ public class PluginsConfig {
 
         public final IguanaTweaks iguanaTweaks = new IguanaTweaks();
 
+        public final Icon icon = new Icon();
+
+        public final Text text = new Text();
+
+        public final Condition condition = new Condition();
+
         @Config.Comment("IDs of the TiC effective pickaxe material corresponding to the harvest level.")
         public static class TinkersConstruct {
             @Config.DefaultInt(0)
@@ -293,90 +299,96 @@ public class PluginsConfig {
             public int harvestLevel9;
         }
 
-        @Config.LangKey("option.wdmla.harvestability.currentlyharvestable.string")
-        @Config.DefaultString("✔")
-        @Config.Comment("The string below the Harvest Tool icon after the item name")
-        public String currentlyHarvestableString;
+        public static final class Icon {
+            @Config.LangKey("option.wdmla.harvestability.currentlyHarvestable.icon")
+            @Config.DefaultBoolean(true)
+            @Config.Comment("Shows the line of Currently Harvestable icons")
+            public boolean currentlyHarvestableIcon;
 
-        @Config.LangKey("option.wdmla.harvestability.notcurrentlyharvestable.string")
-        @Config.DefaultString("✕")
-        @Config.Comment("The string below the Harvest Tool icon after the item name")
-        public String notCurrentlyHarvestableString;
+            @Config.LangKey("option.wdmla.harvestability.currentlyharvestable.string")
+            @Config.DefaultString("✔")
+            @Config.Comment("The string below the Harvest Tool icon after the item name")
+            public String currentlyHarvestableString;
 
-        @Config.LangKey("option.wdmla.harvestability.shearability.item")
-        @Config.DefaultString("minecraft:shears")
-        @Config.Comment("The icon after an item represents that the item is shearable")
-        public String shearabilityItem;
+            @Config.LangKey("option.wdmla.harvestability.notcurrentlyharvestable.string")
+            @Config.DefaultString("✕")
+            @Config.Comment("The string below the Harvest Tool icon after the item name")
+            public String notCurrentlyHarvestableString;
 
-        @Config.LangKey("option.wdmla.harvestability.silktouchability.item")
-        @Config.DefaultString("minecraft:grass")
-        @Config.Comment("The icon after an item represents that the item can be harvested by silk touch")
-        public String silkTouchabilityItem;
+            @Config.LangKey("option.wdmla.harvestability.shearability.item")
+            @Config.DefaultString("minecraft:shears")
+            @Config.Comment("The icon after an item represents that the item is shearable")
+            public String shearabilityItem;
 
-        @Config.LangKey("option.wdmla.harvestability.harvestlevelnum")
-        @Config.DefaultBoolean(false)
-        @Config.Comment("Shows the Harvest Level number as text")
-        public boolean harvestLevelNum;
+            @Config.LangKey("option.wdmla.harvestability.silktouchability.item")
+            @Config.DefaultString("minecraft:grass")
+            @Config.Comment("The icon after an item represents that the item can be harvested by silk touch")
+            public String silkTouchabilityItem;
 
-        @Config.LangKey("option.wdmla.harvestability.harvestlevelname")
-        @Config.DefaultBoolean(false)
-        @Config.Comment("Shows the Harvest Level name as text, if it is different than number")
-        public boolean harvestLevelName;
+            @Config.LangKey("option.wdmla.harvestability.effectivetool.icon")
+            @Config.DefaultBoolean(true)
+            @Config.Comment("Shows the Effective Tool icon along with Currently Harvestable icon")
+            public boolean effectiveToolIcon;
 
-        @Config.LangKey("option.wdmla.harvestability.currentlyHarvestable.icon")
-        @Config.DefaultBoolean(true)
-        @Config.Comment("Shows the line of Currently Harvestable icons")
-        public boolean currentlyHarvestableIcon;
+            @Config.LangKey("option.wdmla.harvestability.shearability.icon")
+            @Config.DefaultBoolean(true)
+            @Config.Comment("Shows the Shearability icon")
+            public boolean showShearabilityIcon;
 
-        @Config.LangKey("option.wdmla.harvestability.effectivetool.icon")
-        @Config.DefaultBoolean(true)
-        @Config.Comment("Shows the Effective Tool icon along with Currently Harvestable icon")
-        public boolean effectiveToolIcon;
+            @Config.LangKey("option.wdmla.harvestability.silktouchability.icon")
+            @Config.DefaultBoolean(true)
+            @Config.Comment("Shows the Silktouchabiity icon")
+            public boolean showSilkTouchabilityIcon;
 
-        @Config.LangKey("option.wdmla.harvestability.shearability.icon")
-        @Config.DefaultBoolean(true)
-        @Config.Comment("Shows the Shearability icon")
-        public boolean showShearabilityIcon;
+            @Config.LangKey("option.wdmla.harvestability.coloriconwitheffectiveness")
+            @Config.DefaultBoolean(false)
+            @Config.Comment("Colors the Currently Harvestable icon with held tool effectiveness")
+            public boolean colorIconWithEffectiveness;
+        }
 
-        @Config.LangKey("option.wdmla.harvestability.silktouchability.icon")
-        @Config.DefaultBoolean(true)
-        @Config.Comment("Shows the Silktouchabiity icon")
-        public boolean showSilkTouchabilityIcon;
+        public static final class Text {
+            @Config.LangKey("option.wdmla.harvestability.harvestlevelnum")
+            @Config.DefaultBoolean(false)
+            @Config.Comment("Shows the Harvest Level number as text")
+            public boolean harvestLevelNum;
 
-        @Config.LangKey("option.wdmla.harvestability.oresonly")
-        @Config.DefaultBoolean(false)
-        @Config.Comment("Only shows tooltip when the block is ore")
-        public boolean oresOnly;
+            @Config.LangKey("option.wdmla.harvestability.harvestlevelname")
+            @Config.DefaultBoolean(false)
+            @Config.Comment("Shows the Harvest Level name as text, if it is different than number")
+            public boolean harvestLevelName;
 
-        @Config.LangKey("option.wdmla.harvestability.textdetailsonly")
-        @Config.DefaultBoolean(false)
-        @Config.Comment("Only shows the text part of the tooltip when pressing details key")
-        public boolean textDetailsOnly;
+            @Config.LangKey("option.wdmla.harvestability.effectivetool.line")
+            @Config.DefaultBoolean(false)
+            @Config.Comment("Shows the Effective Tool line")
+            public boolean effectiveToolLine;
 
-        @Config.LangKey("option.wdmla.harvestability.effectivetool.line")
-        @Config.DefaultBoolean(false)
-        @Config.Comment("Shows the Effective Tool line")
-        public boolean effectiveToolLine;
+            @Config.LangKey("option.wdmla.harvestability.currentlyharvestable.line")
+            @Config.DefaultBoolean(false)
+            @Config.Comment("Shows the Currently Harvestable line")
+            public boolean currentlyHarvestableLine;
+        }
 
-        @Config.LangKey("option.wdmla.harvestability.currentlyharvestable.line")
-        @Config.DefaultBoolean(false)
-        @Config.Comment("Shows the Currently Harvestable line")
-        public boolean currentlyHarvestableLine;
+        public static final class Condition {
+            @Config.LangKey("option.wdmla.harvestability.oresonly")
+            @Config.DefaultBoolean(false)
+            @Config.Comment("Only shows tooltip when the block is ore")
+            public boolean oresOnly;
 
-        @Config.LangKey("option.wdmla.harvestability.unharvestableonly")
-        @Config.DefaultBoolean(false)
-        @Config.Comment("Only shows tooltip when the block cannot be harvested")
-        public boolean unHarvestableOnly;
+            @Config.LangKey("option.wdmla.harvestability.textdetailsonly")
+            @Config.DefaultBoolean(false)
+            @Config.Comment("Only shows the text part of the tooltip when pressing details key")
+            public boolean textDetailsOnly;
 
-        @Config.LangKey("option.wdmla.harvestability.toolrequiredonly")
-        @Config.DefaultBoolean(false)
-        @Config.Comment("Only shows tooltip when a tool is required to harvest")
-        public boolean toolRequiredOnly;
+            @Config.LangKey("option.wdmla.harvestability.unharvestableonly")
+            @Config.DefaultBoolean(false)
+            @Config.Comment("Only shows tooltip when the block cannot be harvested")
+            public boolean unHarvestableOnly;
 
-        @Config.LangKey("option.wdmla.harvestability.coloriconwitheffectiveness")
-        @Config.DefaultBoolean(false)
-        @Config.Comment("Colors the Currently Harvestable icon with held tool effectiveness")
-        public boolean colorIconWithEffectiveness;
+            @Config.LangKey("option.wdmla.harvestability.toolrequiredonly")
+            @Config.DefaultBoolean(false)
+            @Config.Comment("Only shows tooltip when a tool is required to harvest")
+            public boolean toolRequiredOnly;
+        }
     }
 
     @Config.LangKey("provider.wdmla.debug.category")

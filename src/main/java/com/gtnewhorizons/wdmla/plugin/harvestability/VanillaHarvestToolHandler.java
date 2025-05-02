@@ -56,13 +56,13 @@ public enum VanillaHarvestToolHandler implements HarvestHandler {
             }
         }
         else if (phase == HarvestabilityTestPhase.ADDITIONAL_TOOLS_ICON) {
-            if (PluginsConfig.harvestability.showShearabilityIcon) {
+            if (PluginsConfig.harvestability.icon.showShearabilityIcon) {
                 Map.Entry<ItemStack, Boolean> canShear = BlockHelper.getShearability(player, block, meta, position);
                 if (canShear != null) {
                     info.additionalToolsIcon.add(canShear);
                 }
             }
-            if (PluginsConfig.harvestability.showSilkTouchabilityIcon) {
+            if (PluginsConfig.harvestability.icon.showSilkTouchabilityIcon) {
                 Map.Entry<ItemStack, Boolean> canSilktouch = BlockHelper.getSilktouchAbility(player, block, meta, position);
                 if (canSilktouch != null) {
                     info.additionalToolsIcon.add(canSilktouch);
