@@ -39,7 +39,7 @@ public class ProxyIguanaTweaks {
      * @see ProxyTinkersConstruct#getEffectivePickaxeIcon(int)
      */
     public static ItemStack getEffectivePickaxeIcon(int num) {
-        PluginsConfig.Harvestability.Modern.IguanaTweaks iguanaConfig = PluginsConfig.harvestability.modern.iguanaTweaks;
+        PluginsConfig.Harvestability.IguanaTweaks iguanaConfig = PluginsConfig.harvestability.iguanaTweaks;
         return switch (num) {
             case 0 -> defaultPickaxes.get(iguanaConfig.harvestLevel0);
             case 1 -> defaultPickaxes.get(iguanaConfig.harvestLevel1);

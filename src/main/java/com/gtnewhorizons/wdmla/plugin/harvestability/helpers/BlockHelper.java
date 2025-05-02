@@ -17,22 +17,19 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraftforge.common.IShearable;
 
 import com.gtnewhorizons.wdmla.config.PluginsConfig;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class BlockHelper {
 
     public static Map.Entry<ItemStack, Boolean> getShearability(EntityPlayer player, Block block, int meta,
                                                                 MovingObjectPosition position) {
-        boolean isSneaking = player.isSneaking();
-        boolean showShearability = PluginsConfig.harvestability.legacy.shearability
-                && (!PluginsConfig.harvestability.legacy.shearabilitySneakingOnly || isSneaking);
-
-        if (showShearability && (block instanceof IShearable || block == Blocks.deadbush
+        if ((block instanceof IShearable || block == Blocks.deadbush
                 || (block == Blocks.double_plant && block.getItemDropped(meta, new Random(), 0) == null))) {
             ItemStack itemHeld = player.getHeldItem();
             boolean isHoldingShears = itemHeld != null && itemHeld.getItem() instanceof ItemShears;
             boolean canShear = isHoldingShears && ((IShearable) block)
                     .isShearable(itemHeld, player.worldObj, position.blockX, position.blockY, position.blockZ);
-            String[] parts = PluginsConfig.harvestability.modern.shearabilityItem.split(":");
+            String[] parts = PluginsConfig.harvestability.shearabilityItem.split(":");
             if (parts.length == 2) {
                 return Maps.immutableEntry(GameRegistry.findItemStack(parts[0], parts[1], 1), canShear);
             }
@@ -42,21 +39,36 @@ public class BlockHelper {
 
     public static Map.Entry<ItemStack, Boolean> getSilktouchAbility(EntityPlayer player, Block block, int meta,
                                                                     MovingObjectPosition position) {
-        boolean isSneaking = player.isSneaking();
-        boolean showSilkTouchability = PluginsConfig.harvestability.legacy.silkTouchability
-                && (!PluginsConfig.harvestability.legacy.silkTouchabilitySneakingOnly || isSneaking);
-
-        if (showSilkTouchability && block
-                .canSilkHarvest(player.worldObj, player, position.blockX, position.blockY, position.blockZ, meta)) {
+        if (block.canSilkHarvest(player.worldObj, player, position.blockX, position.blockY, position.blockZ, meta)) {
             Item itemDropped = block.getItemDropped(meta, new Random(), 0);
             boolean silkTouchMatters = (itemDropped instanceof ItemBlock && itemDropped != Item.getItemFromBlock(block))
                     || block.quantityDropped(new Random()) <= 0;
             boolean canSilkTouch = silkTouchMatters && EnchantmentHelper.getSilkTouchModifier(player);
-            String[] parts = PluginsConfig.harvestability.modern.silkTouchabilityItem.split(":");
+            String[] parts = PluginsConfig.harvestability.silkTouchabilityItem.split(":");
             if (parts.length == 2) {
                 return Maps.immutableEntry(GameRegistry.findItemStack(parts[0], parts[1], 1), canSilkTouch);
             }
         }
         return null;
+    }
+
+    public static boolean isBlockAnOre(Block block, int metadata) {
+        return isItemAnOre(new ItemStack(block, 1, metadata));
+    }
+
+    public static boolean isItemAnOre(ItemStack itemStack) {
+        // check the ore dictionary to see if it starts with "ore"
+        int[] oreIDs = OreDictionary.getOreIDs(itemStack);
+        for (int oreID : oreIDs) {
+            if (OreDictionary.getOreName(oreID).startsWith("ore")) return true;
+        }
+
+        // ore in the display name (but not part of another word)
+        if (itemStack.getDisplayName().matches(".*(^|\\s)([oO]re)($|\\s).*")) return true;
+
+        // ore as the start of the unlocalized name
+        if (itemStack.getUnlocalizedName().startsWith("ore")) return true;
+
+        return false;
     }
 }

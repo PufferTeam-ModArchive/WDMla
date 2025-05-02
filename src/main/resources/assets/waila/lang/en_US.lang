@@ -239,8 +239,6 @@ provider.wdmla.minecraft.ender.dragon.header=Ender Dragon Header
 provider.wdmla.minecraft.end.portal.header=End Portal Header
 
 provider.wdmla.harvestability.category=Waila Harvestability
-provider.wdmla.harvestability.legacy=Legacy
-provider.wdmla.harvestability.modern=Modern
 
 provider.wdmla.debug.category=Debug
 provider.wdmla.debug.hardness=Block Hardness
@@ -330,22 +328,16 @@ option.wdmla.vanilla.comparator=Show Comparator Mode
 option.wdmla.vanilla.max.command.length=Max Command Length
 
 # waila harvestability options
-option.wdmla.harvestability.harvestlevel=Harvest Level
+option.wdmla.harvestability.harvestlevelname=Harvest Level Name
 option.wdmla.harvestability.effectivetool=Effective Tool
 option.wdmla.harvestability.currentlyharvestable=Currently Harvestable
 option.wdmla.harvestability.oresonly=Ores Only
-option.wdmla.harvestability.harvestlevel.sneakingonly=Sneak Only: Harvest Level
-option.wdmla.harvestability.effectivetool.sneakingonly=Sneak Only: Effective Tool
-option.wdmla.harvestability.currentlyharvestable.sneakingonly=Sneak Only: Harvestable
 option.wdmla.harvestability.minimal=Minimal Mode
 option.wdmla.harvestability.unharvestableonly=Unharvestable Only
 option.wdmla.harvestability.toolrequiredonly=Tool Required Only
 option.wdmla.harvestability.shearability=Shearability
-option.wdmla.harvestability.shearability.sneakingonly=Sneak Only: Shearability
 option.wdmla.harvestability.silktouchability=Silk Touchability
-option.wdmla.harvestability.silktouchability.sneakingonly=Sneak Only: Silk Touchability
 option.wdmla.harvestability.harvestlevelnum=Harvest Level No.
-option.wdmla.harvestability.harvestlevelnum.sneakingonly=Sneak only: Harvest Level No.
 option.wdmla.harvestability.minimalseparator.string=Separator String in Minimal Mode
 option.wdmla.harvestability.currentlyharvestable.string=Currently Harvestable String
 option.wdmla.harvestability.notcurrentlyharvestable.string=Not Currently Harvestable String
@@ -357,6 +349,7 @@ option.wdmla.harvestability.currentlyHarvestable.icon=Currently Harvestable Icon
 option.wdmla.harvestability.effectivetool.icon=Effective Tool Icon
 option.wdmla.harvestability.shearability.icon=Shearability Icon
 option.wdmla.harvestability.silktouchability.icon=Silk Touchability Icon
+option.wdmla.harvestability.textdetailsonly=Details only: Text
 
 # debug options
 option.wdmla.debug.entity.registry.data=Show Entity Registry Data

@@ -103,7 +103,7 @@ public class ProxyTinkersConstruct {
      * "https://github.com/GTNewHorizons/TinkersConstruct/blob/master/src/main/java/tconstruct/tools/TinkerTools.java#L1771">...</a>
      */
     public static ItemStack getEffectivePickaxeIcon(int num) {
-        PluginsConfig.Harvestability.Modern.TinkersConstruct tiCConfig = PluginsConfig.harvestability.modern.tinkersConstruct;
+        PluginsConfig.Harvestability.TinkersConstruct tiCConfig = PluginsConfig.harvestability.tinkersConstruct;
         return switch (num) {
             case 0 -> defaultPickaxes.get(tiCConfig.harvestLevel0);
             case 1 -> defaultPickaxes.get(tiCConfig.harvestLevel1);
