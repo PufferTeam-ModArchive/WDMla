@@ -13,7 +13,7 @@ public enum HarvestcraftFruitGrowthRateProvider implements IBlockComponentProvid
 
     @Override
     public void appendTooltip(ITooltip tooltip, BlockAccessor accessor) {
-        float growthValue = (accessor.getMetadata() / 2.0F) * 100.0F;
+        float growthValue = accessor.getMetadata() / 2.0F;
         GrowthRateProvider.INSTANCE.appendGrowthRate(tooltip, growthValue);
     }
 
