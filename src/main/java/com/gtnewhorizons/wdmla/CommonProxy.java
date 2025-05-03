@@ -32,7 +32,6 @@ import com.gtnewhorizons.wdmla.impl.WDMlaClientRegistration;
 import com.gtnewhorizons.wdmla.impl.WDMlaCommonRegistration;
 import com.gtnewhorizons.wdmla.impl.lookup.WrappedHierarchyLookup;
 import com.gtnewhorizons.wdmla.plugin.PluginScanner;
-import com.gtnewhorizons.wdmla.plugin.harvestability.MissingHarvestInfo;
 import com.gtnewhorizons.wdmla.plugin.universal.ItemCollector;
 import com.gtnewhorizons.wdmla.plugin.universal.ItemIterator;
 
@@ -52,7 +51,6 @@ public class CommonProxy {
     }
 
     public void init(FMLInitializationEvent event) {
-        MissingHarvestInfo.init();
         FMLCommonHandler.instance().bus().register(this);
     }
 

@@ -1,7 +1,11 @@
 package com.gtnewhorizons.wdmla.plugin.harvestability;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockDragonEgg;
 import net.minecraft.block.BlockLiquid;
+import net.minecraft.block.BlockSnow;
+import net.minecraft.block.BlockSnowBlock;
+import net.minecraft.block.BlockWeb;
 import net.minecraftforge.common.config.Configuration;
 
 import com.gtnewhorizons.wdmla.api.IWDMlaClientRegistration;
@@ -33,6 +37,10 @@ public class HarvestabilityPlugin implements IWDMlaPlugin {
             registration.registerHarvest(GregTechHarvestHandler.INSTANCE, Block.class);
         }
         registration.registerHarvest(LiquidHarvestHandler.INSTANCE, BlockLiquid.class);
+        registration.registerHarvest(VanillaSpecialHarvestHandler.INSTANCE, BlockDragonEgg.class);
+        registration.registerHarvest(VanillaSpecialHarvestHandler.INSTANCE, BlockSnow.class);
+        registration.registerHarvest(VanillaSpecialHarvestHandler.INSTANCE, BlockSnowBlock.class);
+        registration.registerHarvest(VanillaSpecialHarvestHandler.INSTANCE, BlockWeb.class);
 
         WDMlaConfig.instance()
                 .getCategory(
