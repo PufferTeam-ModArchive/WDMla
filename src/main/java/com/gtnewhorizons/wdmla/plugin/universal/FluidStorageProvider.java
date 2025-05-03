@@ -47,8 +47,6 @@ import com.gtnewhorizons.wdmla.impl.ui.sizer.Size;
 import com.gtnewhorizons.wdmla.impl.ui.style.ProgressStyle;
 import com.gtnewhorizons.wdmla.util.FormatUtil;
 
-import mcp.mobius.waila.overlay.DisplayUtil;
-
 public class FluidStorageProvider<T extends Accessor> implements IComponentProvider<T>, IServerDataProvider<T> {
 
     public static ForBlock getBlock() {

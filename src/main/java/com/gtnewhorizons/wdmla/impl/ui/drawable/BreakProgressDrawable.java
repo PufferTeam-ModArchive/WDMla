@@ -1,12 +1,12 @@
 package com.gtnewhorizons.wdmla.impl.ui.drawable;
 
-import com.gtnewhorizons.wdmla.impl.ObjectDataCenter;
 import org.jetbrains.annotations.NotNull;
 
 import com.gtnewhorizons.wdmla.api.ui.ColorPalette;
 import com.gtnewhorizons.wdmla.api.ui.IDrawable;
 import com.gtnewhorizons.wdmla.api.ui.sizer.IArea;
 import com.gtnewhorizons.wdmla.config.General;
+import com.gtnewhorizons.wdmla.impl.ObjectDataCenter;
 import com.gtnewhorizons.wdmla.impl.ui.sizer.Area;
 import com.gtnewhorizons.wdmla.impl.ui.value.Alpha;
 import com.gtnewhorizons.wdmla.impl.ui.value.HUDBlockDamage;
@@ -45,8 +45,8 @@ public enum BreakProgressDrawable implements IDrawable {
             }
         }
 
-        int color = ObjectDataCenter.canCurrentTargetBeHarvested() ?
-                progressAlpha.apply(ColorPalette.BREAK_PROGRESS_DEFAULT)
+        int color = ObjectDataCenter.canCurrentTargetBeHarvested()
+                ? progressAlpha.apply(ColorPalette.BREAK_PROGRESS_DEFAULT)
                 : progressAlpha.apply(ColorPalette.BREAK_PROGRESS_FAILURE);
 
         if (General.breakProgress.position == General.BreakProgress.Position.BOTTOM) {

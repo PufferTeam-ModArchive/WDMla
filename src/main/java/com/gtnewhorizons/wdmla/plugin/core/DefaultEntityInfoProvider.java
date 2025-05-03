@@ -2,8 +2,6 @@ package com.gtnewhorizons.wdmla.plugin.core;
 
 import static mcp.mobius.waila.api.SpecialChars.*;
 
-import com.gtnewhorizons.wdmla.util.FormatUtil;
-import mcp.mobius.waila.overlay.DisplayUtil;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.ResourceLocation;
 
@@ -22,6 +20,7 @@ import com.gtnewhorizons.wdmla.impl.ui.component.TextComponent;
 import com.gtnewhorizons.wdmla.impl.ui.sizer.Padding;
 import com.gtnewhorizons.wdmla.impl.ui.sizer.Size;
 import com.gtnewhorizons.wdmla.impl.ui.style.TextStyle;
+import com.gtnewhorizons.wdmla.util.FormatUtil;
 
 import mcp.mobius.waila.utils.ModIdentification;
 
@@ -63,8 +62,7 @@ public enum DefaultEntityInfoProvider implements IEntityComponentProvider {
             if (accessor.getEntity() instanceof EntityLiving living && living.hasCustomNameTag()
                     && General.customNameOverride) {
                 name = FormatUtil.formatNameByPixelCount(living.getCustomNameTag());
-            }
-            else {
+            } else {
                 name = FormatUtil.formatNameByPixelCount(accessor.getEntity().getCommandSenderName());
             }
             row_vertical.child(ThemeHelper.INSTANCE.title(name).tag(Identifiers.ENTITY_NAME));

@@ -3,14 +3,6 @@ package com.gtnewhorizons.wdmla.plugin.harvestability;
 import java.util.List;
 import java.util.Objects;
 
-import com.gtnewhorizons.wdmla.api.harvestability.HarvestabilityInfo;
-import com.gtnewhorizons.wdmla.api.harvestability.HarvestabilityInfoImpl;
-import com.gtnewhorizons.wdmla.api.harvestability.HarvestabilityTestPhase;
-import com.gtnewhorizons.wdmla.api.provider.HarvestHandler;
-import com.gtnewhorizons.wdmla.impl.ObjectDataCenter;
-import com.gtnewhorizons.wdmla.impl.WDMlaClientRegistration;
-import com.gtnewhorizons.wdmla.impl.ui.component.VPanelComponent;
-import mcp.mobius.waila.overlay.DisplayUtil;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -24,17 +16,26 @@ import org.jetbrains.annotations.Nullable;
 import com.gtnewhorizons.wdmla.api.Identifiers;
 import com.gtnewhorizons.wdmla.api.TooltipPosition;
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
+import com.gtnewhorizons.wdmla.api.harvestability.HarvestabilityInfo;
+import com.gtnewhorizons.wdmla.api.harvestability.HarvestabilityInfoImpl;
+import com.gtnewhorizons.wdmla.api.harvestability.HarvestabilityTestPhase;
+import com.gtnewhorizons.wdmla.api.provider.HarvestHandler;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
 import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.config.General;
 import com.gtnewhorizons.wdmla.config.PluginsConfig;
+import com.gtnewhorizons.wdmla.impl.ObjectDataCenter;
+import com.gtnewhorizons.wdmla.impl.WDMlaClientRegistration;
 import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
 import com.gtnewhorizons.wdmla.impl.ui.component.HPanelComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.ItemComponent;
+import com.gtnewhorizons.wdmla.impl.ui.component.VPanelComponent;
 import com.gtnewhorizons.wdmla.impl.ui.sizer.Padding;
 import com.gtnewhorizons.wdmla.impl.ui.sizer.Size;
 import com.gtnewhorizons.wdmla.plugin.harvestability.proxy.ProxyCreativeBlocks;
+
+import mcp.mobius.waila.overlay.DisplayUtil;
 
 public enum HarvestToolProvider implements IBlockComponentProvider {
 
@@ -58,8 +59,7 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
     @Override
     public void appendTooltip(ITooltip tooltip, BlockAccessor accessor) {
         if (General.forceLegacy) {
-            tooltip.text("The legacy harvestability support")
-                    .text("will come back in the next version!");
+            tooltip.text("The legacy harvestability support").text("will come back in the next version!");
             return;
         }
 
@@ -68,19 +68,18 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
             return;
         }
 
-        List<HarvestHandler> handlers = WDMlaClientRegistration.instance().getHarvestHandlers(
-                accessor.getBlock(),
-                interactionHandler -> true);
+        List<HarvestHandler> handlers = WDMlaClientRegistration.instance()
+                .getHarvestHandlers(accessor.getBlock(), interactionHandler -> true);
 
-        Block effectiveBlock = handlers
-                .stream().map(
-                        handler -> handler.getEffectiveBlock(
-                                accessor.getBlock(), accessor.getItemForm(), accessor.getMetadata()))
+        Block effectiveBlock = handlers.stream()
+                .map(
+                        handler -> handler
+                                .getEffectiveBlock(accessor.getBlock(), accessor.getItemForm(), accessor.getMetadata()))
                 .filter(Objects::nonNull).findFirst().orElse(accessor.getBlock());
-        int effectiveMeta = handlers
-                .stream().map(
-                        handler -> handler.getEffectiveMeta(
-                                accessor.getBlock(), accessor.getItemForm(), accessor.getMetadata()))
+        int effectiveMeta = handlers.stream()
+                .map(
+                        handler -> handler
+                                .getEffectiveMeta(accessor.getBlock(), accessor.getItemForm(), accessor.getMetadata()))
                 .filter(Objects::nonNull).findFirst().orElse(accessor.getMetadata());
 
         HarvestabilityInfo info = getHarvestability(
@@ -92,11 +91,12 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
 
         ObjectDataCenter.setHarvestabilityInfo(info);
 
-        if(PluginsConfig.harvestability.condition.oresOnly && !BlockHelper.isBlockAnOre(effectiveBlock, effectiveMeta)) {
+        if (PluginsConfig.harvestability.condition.oresOnly
+                && !BlockHelper.isBlockAnOre(effectiveBlock, effectiveMeta)) {
             return;
         }
 
-        if((PluginsConfig.harvestability.condition.unHarvestableOnly && info.isCurrentlyHarvestable())
+        if ((PluginsConfig.harvestability.condition.unHarvestableOnly && info.isCurrentlyHarvestable())
                 || (PluginsConfig.harvestability.condition.toolRequiredOnly && !info.getEffectiveTool().isValid())) {
             return;
         }
@@ -109,7 +109,7 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
         IComponent harvestabilityIcon = assembleHarvestabilityIcon(info);
 
         IComponent harvestabilityText = null;
-        if(!PluginsConfig.harvestability.condition.textDetailsOnly || accessor.showDetails()) {
+        if (!PluginsConfig.harvestability.condition.textDetailsOnly || accessor.showDetails()) {
             harvestabilityText = assembleHarvestabilityText(info);
         }
 
@@ -131,36 +131,52 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
         if (meta >= 16) meta = 0;
 
         HarvestabilityInfo info = new HarvestabilityInfoImpl();
-        if (!fireHarvestTest(HarvestabilityTestPhase.EFFECTIVE_TOOL_NAME,
-                player, block, meta, position, handlers, info)) {
+        if (!fireHarvestTest(
+                HarvestabilityTestPhase.EFFECTIVE_TOOL_NAME,
+                player,
+                block,
+                meta,
+                position,
+                handlers,
+                info)) {
             return info;
         }
 
-        if (!fireHarvestTest(HarvestabilityTestPhase.HARVEST_LEVEL,
-                player, block, meta, position, handlers, info)) {
+        if (!fireHarvestTest(HarvestabilityTestPhase.HARVEST_LEVEL, player, block, meta, position, handlers, info)) {
             return info;
         }
 
-        if (!fireHarvestTest(HarvestabilityTestPhase.ADDITIONAL_TOOLS_ICON,
-                player, block, meta, position, handlers, info)) {
+        if (!fireHarvestTest(
+                HarvestabilityTestPhase.ADDITIONAL_TOOLS_ICON,
+                player,
+                block,
+                meta,
+                position,
+                handlers,
+                info)) {
             return info;
         }
 
-        if (!fireHarvestTest(HarvestabilityTestPhase.CURRENTLY_HARVESTABLE,
-                player, block, meta, position, handlers, info)) {
+        if (!fireHarvestTest(
+                HarvestabilityTestPhase.CURRENTLY_HARVESTABLE,
+                player,
+                block,
+                meta,
+                position,
+                handlers,
+                info)) {
             return info;
         }
 
-        fireHarvestTest(HarvestabilityTestPhase.IS_HELD_TOOL_EFFECTIVE,
-                player, block, meta, position, handlers, info);
+        fireHarvestTest(HarvestabilityTestPhase.IS_HELD_TOOL_EFFECTIVE, player, block, meta, position, handlers, info);
 
         return info;
     }
 
     private static boolean fireHarvestTest(HarvestabilityTestPhase phase, EntityPlayer player, Block block, int meta,
-                                           MovingObjectPosition position, List<HarvestHandler> handlers, HarvestabilityInfo info) {
+            MovingObjectPosition position, List<HarvestHandler> handlers, HarvestabilityInfo info) {
         for (HarvestHandler handler : handlers) {
-            if(!handler.testHarvest(info, phase, player, block, meta, position)) {
+            if (!handler.testHarvest(info, phase, player, block, meta, position)) {
                 return false;
             }
         }
@@ -177,14 +193,15 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
 
         // TODO: resize CHECK text
         IComponent currentlyHarvestableIcon;
-        if(info.isCurrentlyHarvestable()) {
-            currentlyHarvestableIcon = !PluginsConfig.harvestability.icon.colorIconWithEffectiveness || info.isHeldToolEffective()
+        if (info.isCurrentlyHarvestable()) {
+            currentlyHarvestableIcon = !PluginsConfig.harvestability.icon.colorIconWithEffectiveness
+                    || info.isHeldToolEffective()
                     || !info.getEffectiveTool().isValid()
-                    ? ThemeHelper.INSTANCE.success(PluginsConfig.harvestability.icon.currentlyHarvestableString)
-                    : ThemeHelper.INSTANCE.info(PluginsConfig.harvestability.icon.currentlyHarvestableString);
-        }
-        else {
-            currentlyHarvestableIcon = ThemeHelper.INSTANCE.failure(PluginsConfig.harvestability.icon.notCurrentlyHarvestableString);
+                            ? ThemeHelper.INSTANCE.success(PluginsConfig.harvestability.icon.currentlyHarvestableString)
+                            : ThemeHelper.INSTANCE.info(PluginsConfig.harvestability.icon.currentlyHarvestableString);
+        } else {
+            currentlyHarvestableIcon = ThemeHelper.INSTANCE
+                    .failure(PluginsConfig.harvestability.icon.notCurrentlyHarvestableString);
         }
 
         ItemStack effectiveToolIcon = info.getEffectiveTool().getIcon(info.getHarvestLevel());
@@ -199,16 +216,14 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
             } else {
                 harvestabilityComponent.child(currentlyHarvestableIcon);
             }
-        }
-        else {
+        } else {
             harvestabilityComponent.child(currentlyHarvestableIcon);
         }
 
         for (HarvestabilityInfo.AdditionalToolInfo additionalTool : info.getAdditionalToolsInfo()) {
             if (additionalTool.isHolding || PluginsConfig.harvestability.icon.alwaysShowAdditionalTools) {
-                harvestabilityComponent.child(
-                        new ItemComponent(additionalTool.icon).doDrawOverlay(false)
-                                .size(new Size(10, 10)));
+                harvestabilityComponent
+                        .child(new ItemComponent(additionalTool.icon).doDrawOverlay(false).size(new Size(10, 10)));
             }
         }
         return harvestabilityComponent;
@@ -216,10 +231,10 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
 
     private static @Nullable IComponent assembleHarvestabilityText(HarvestabilityInfo info) {
         ITooltip lines = new VPanelComponent();
-        if (info.getHarvestLevel().isToolRequired() &&
-                (PluginsConfig.harvestability.text.harvestLevelNum || PluginsConfig.harvestability.text.harvestLevelName)) {
-            String harvestLevelString = PluginsConfig.harvestability.text.harvestLevelName ?
-                    DisplayUtil.stripSymbols(info.getHarvestLevel().getName())
+        if (info.getHarvestLevel().isToolRequired() && (PluginsConfig.harvestability.text.harvestLevelNum
+                || PluginsConfig.harvestability.text.harvestLevelName)) {
+            String harvestLevelString = PluginsConfig.harvestability.text.harvestLevelName
+                    ? DisplayUtil.stripSymbols(info.getHarvestLevel().getName())
                     : String.valueOf(info.getHarvestLevel().getDisplayNum());
             IComponent harvestLevelText = new HPanelComponent().tag(HarvestabilityIdentifiers.HARVESTABILITY_TEXT)
                     .text(String.format("%s: ", StatCollector.translateToLocal("hud.msg.wdmla.harvestlevel"))).child(

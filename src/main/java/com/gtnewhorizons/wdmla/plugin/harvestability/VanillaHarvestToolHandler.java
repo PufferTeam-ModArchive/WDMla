@@ -1,10 +1,9 @@
 package com.gtnewhorizons.wdmla.plugin.harvestability;
 
-import com.gtnewhorizons.wdmla.api.harvestability.EffectiveTool;
-import com.gtnewhorizons.wdmla.api.harvestability.HarvestabilityInfo;
-import com.gtnewhorizons.wdmla.api.harvestability.HarvestabilityTestPhase;
-import com.gtnewhorizons.wdmla.api.provider.HarvestHandler;
-import com.gtnewhorizons.wdmla.config.PluginsConfig;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -13,26 +12,33 @@ import net.minecraft.item.ItemTool;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.ResourceLocation;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import com.gtnewhorizons.wdmla.api.harvestability.EffectiveTool;
+import com.gtnewhorizons.wdmla.api.harvestability.HarvestabilityInfo;
+import com.gtnewhorizons.wdmla.api.harvestability.HarvestabilityTestPhase;
+import com.gtnewhorizons.wdmla.api.provider.HarvestHandler;
+import com.gtnewhorizons.wdmla.config.PluginsConfig;
 
 public enum VanillaHarvestToolHandler implements HarvestHandler {
+
     INSTANCE;
 
     private static final HashMap<EffectiveTool, ItemStack> testTools = new HashMap<>();
 
-    public static final EffectiveTool TOOL_PICKAXE = new EffectiveTool("pickaxe",
+    public static final EffectiveTool TOOL_PICKAXE = new EffectiveTool(
+            "pickaxe",
             Arrays.asList(
                     new ItemStack(Items.wooden_pickaxe),
                     new ItemStack(Items.stone_pickaxe),
                     new ItemStack(Items.iron_pickaxe),
                     new ItemStack(Items.diamond_pickaxe)));
-    public static final EffectiveTool TOOL_SHOVEL = new EffectiveTool("shovel",
+    public static final EffectiveTool TOOL_SHOVEL = new EffectiveTool(
+            "shovel",
             Arrays.asList(new ItemStack(Items.wooden_shovel)));
-    public static final EffectiveTool TOOL_AXE = new EffectiveTool("axe",
+    public static final EffectiveTool TOOL_AXE = new EffectiveTool(
+            "axe",
             Arrays.asList(new ItemStack(Items.wooden_axe)));
-    public static final EffectiveTool TOOL_SWORD = new EffectiveTool("sword",
+    public static final EffectiveTool TOOL_SWORD = new EffectiveTool(
+            "sword",
             Arrays.asList(new ItemStack(Items.wooden_sword)));
 
     static {
@@ -42,23 +48,23 @@ public enum VanillaHarvestToolHandler implements HarvestHandler {
     }
 
     @Override
-    public boolean testHarvest(HarvestabilityInfo info, HarvestabilityTestPhase phase,
-                               EntityPlayer player, Block block, int meta, MovingObjectPosition position) {
+    public boolean testHarvest(HarvestabilityInfo info, HarvestabilityTestPhase phase, EntityPlayer player, Block block,
+            int meta, MovingObjectPosition position) {
         if (phase == HarvestabilityTestPhase.EFFECTIVE_TOOL_NAME) {
             if (!info.getEffectiveTool().isValid()) {
-                float hardness = block.getBlockHardness(player.worldObj, position.blockX, position.blockY, position.blockZ);
+                float hardness = block
+                        .getBlockHardness(player.worldObj, position.blockX, position.blockY, position.blockZ);
                 if (hardness > 0f) {
                     for (Map.Entry<EffectiveTool, ItemStack> testToolEntry : testTools.entrySet()) {
                         ItemStack testTool = testToolEntry.getValue();
-                        if (testTool.func_150997_a(block) >= ((ItemTool) testTool.getItem()).func_150913_i()
-                                .getEfficiencyOnProperMaterial()) {
+                        if (testTool.func_150997_a(block)
+                                >= ((ItemTool) testTool.getItem()).func_150913_i().getEfficiencyOnProperMaterial()) {
                             info.setEffectiveTool(testToolEntry.getKey());
                             break;
                         }
                     }
                 }
-            }
-            else {
+            } else {
                 for (Map.Entry<EffectiveTool, ItemStack> testTool : testTools.entrySet()) {
                     if (info.getEffectiveTool().isSameTool(testTool.getKey())) {
                         info.setEffectiveTool(testTool.getKey());
@@ -68,16 +74,17 @@ public enum VanillaHarvestToolHandler implements HarvestHandler {
                     info.setEffectiveTool(TOOL_SWORD);
                 }
             }
-        }
-        else if (phase == HarvestabilityTestPhase.ADDITIONAL_TOOLS_ICON) {
+        } else if (phase == HarvestabilityTestPhase.ADDITIONAL_TOOLS_ICON) {
             if (PluginsConfig.harvestability.icon.showShearabilityIcon) {
-                HarvestabilityInfo.AdditionalToolInfo canShear = BlockHelper.getShearability(player, block, meta, position);
+                HarvestabilityInfo.AdditionalToolInfo canShear = BlockHelper
+                        .getShearability(player, block, meta, position);
                 if (canShear != null) {
                     info.registerAdditionalToolInfo(canShear);
                 }
             }
             if (PluginsConfig.harvestability.icon.showSilkTouchabilityIcon) {
-                HarvestabilityInfo.AdditionalToolInfo canSilktouch = BlockHelper.getSilktouchAbility(player, block, meta, position);
+                HarvestabilityInfo.AdditionalToolInfo canSilktouch = BlockHelper
+                        .getSilktouchAbility(player, block, meta, position);
                 if (canSilktouch != null) {
                     info.registerAdditionalToolInfo(canSilktouch);
                 }

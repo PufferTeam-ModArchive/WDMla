@@ -5,7 +5,6 @@ import static mcp.mobius.waila.api.SpecialChars.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.gtnewhorizons.wdmla.util.FormatUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.entity.RenderItem;
@@ -17,6 +16,7 @@ import org.lwjgl.opengl.GL11;
 
 import com.gtnewhorizons.wdmla.api.ui.sizer.IArea;
 import com.gtnewhorizons.wdmla.overlay.GuiDraw;
+import com.gtnewhorizons.wdmla.util.FormatUtil;
 
 import mcp.mobius.waila.utils.WailaExceptionHandler;
 

@@ -1,9 +1,9 @@
 package com.gtnewhorizons.wdmla.api.harvestability;
 
+import java.util.List;
+
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
-
-import java.util.List;
 
 public class HarvestLevel {
 
@@ -32,8 +32,7 @@ public class HarvestLevel {
 
         if (StatCollector.canTranslate(unlocalized)) {
             return StatCollector.translateToLocal(unlocalized);
-        }
-        else {
+        } else {
             return String.valueOf(value);
         }
     }

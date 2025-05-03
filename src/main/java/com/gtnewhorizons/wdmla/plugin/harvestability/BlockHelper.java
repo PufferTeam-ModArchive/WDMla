@@ -2,8 +2,6 @@ package com.gtnewhorizons.wdmla.plugin.harvestability;
 
 import java.util.Random;
 
-import com.gtnewhorizons.wdmla.api.harvestability.HarvestabilityInfo;
-import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,14 +12,17 @@ import net.minecraft.item.ItemShears;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraftforge.common.IShearable;
-
-import com.gtnewhorizons.wdmla.config.PluginsConfig;
 import net.minecraftforge.oredict.OreDictionary;
+
+import com.gtnewhorizons.wdmla.api.harvestability.HarvestabilityInfo;
+import com.gtnewhorizons.wdmla.config.PluginsConfig;
+
+import cpw.mods.fml.common.registry.GameRegistry;
 
 public class BlockHelper {
 
     public static HarvestabilityInfo.AdditionalToolInfo getShearability(EntityPlayer player, Block block, int meta,
-                                                                        MovingObjectPosition position) {
+            MovingObjectPosition position) {
         if ((block instanceof IShearable || block == Blocks.deadbush
                 || (block == Blocks.double_plant && block.getItemDropped(meta, new Random(), 0) == null))) {
             ItemStack itemHeld = player.getHeldItem();
@@ -30,14 +31,16 @@ public class BlockHelper {
                     .isShearable(itemHeld, player.worldObj, position.blockX, position.blockY, position.blockZ);
             String[] parts = PluginsConfig.harvestability.icon.shearabilityItem.split(":");
             if (parts.length == 2) {
-                return new HarvestabilityInfo.AdditionalToolInfo(GameRegistry.findItemStack(parts[0], parts[1], 1), canShear);
+                return new HarvestabilityInfo.AdditionalToolInfo(
+                        GameRegistry.findItemStack(parts[0], parts[1], 1),
+                        canShear);
             }
         }
         return null;
     }
 
     public static HarvestabilityInfo.AdditionalToolInfo getSilktouchAbility(EntityPlayer player, Block block, int meta,
-                                                                                MovingObjectPosition position) {
+            MovingObjectPosition position) {
         if (block.canSilkHarvest(player.worldObj, player, position.blockX, position.blockY, position.blockZ, meta)) {
             Item itemDropped = block.getItemDropped(meta, new Random(), 0);
             boolean silkTouchMatters = (itemDropped instanceof ItemBlock && itemDropped != Item.getItemFromBlock(block))
@@ -45,7 +48,9 @@ public class BlockHelper {
             boolean canSilkTouch = silkTouchMatters && EnchantmentHelper.getSilkTouchModifier(player);
             String[] parts = PluginsConfig.harvestability.icon.silkTouchabilityItem.split(":");
             if (parts.length == 2) {
-                return new HarvestabilityInfo.AdditionalToolInfo(GameRegistry.findItemStack(parts[0], parts[1], 1), canSilkTouch);
+                return new HarvestabilityInfo.AdditionalToolInfo(
+                        GameRegistry.findItemStack(parts[0], parts[1], 1),
+                        canSilkTouch);
             }
         }
         return null;

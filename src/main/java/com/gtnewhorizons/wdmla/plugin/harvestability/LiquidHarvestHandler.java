@@ -1,10 +1,7 @@
 package com.gtnewhorizons.wdmla.plugin.harvestability;
 
-import com.gtnewhorizons.wdmla.api.TooltipPosition;
-import com.gtnewhorizons.wdmla.api.harvestability.EffectiveTool;
-import com.gtnewhorizons.wdmla.api.harvestability.HarvestabilityInfo;
-import com.gtnewhorizons.wdmla.api.harvestability.HarvestabilityTestPhase;
-import com.gtnewhorizons.wdmla.api.provider.HarvestHandler;
+import java.util.Arrays;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLiquid;
 import net.minecraft.block.BlockStaticLiquid;
@@ -15,39 +12,42 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.ResourceLocation;
 
-import java.util.Arrays;
+import com.gtnewhorizons.wdmla.api.TooltipPosition;
+import com.gtnewhorizons.wdmla.api.harvestability.EffectiveTool;
+import com.gtnewhorizons.wdmla.api.harvestability.HarvestabilityInfo;
+import com.gtnewhorizons.wdmla.api.harvestability.HarvestabilityTestPhase;
+import com.gtnewhorizons.wdmla.api.provider.HarvestHandler;
 
 // liquid has very special behavior so we override it at the very end
 public enum LiquidHarvestHandler implements HarvestHandler {
+
     INSTANCE;
 
-    public static final EffectiveTool BUCKET = new EffectiveTool("bucket",
-            Arrays.asList(new ItemStack(Items.bucket)));
+    public static final EffectiveTool BUCKET = new EffectiveTool("bucket", Arrays.asList(new ItemStack(Items.bucket)));
 
     @Override
-    public boolean testHarvest(HarvestabilityInfo info, HarvestabilityTestPhase phase, EntityPlayer player, Block block, int meta, MovingObjectPosition position) {
+    public boolean testHarvest(HarvestabilityInfo info, HarvestabilityTestPhase phase, EntityPlayer player, Block block,
+            int meta, MovingObjectPosition position) {
         if (phase == HarvestabilityTestPhase.EFFECTIVE_TOOL_NAME) {
             if (isStaticWaterOrLava(block)) {
                 info.setEffectiveTool(BUCKET);
             }
-            //flowing liquids and mod fluids
+            // flowing liquids and mod fluids
             else if (block instanceof BlockLiquid) {
                 info.setEffectiveTool(EffectiveTool.CANNOT_HARVEST);
             }
-        }
-        else if (phase == HarvestabilityTestPhase.CURRENTLY_HARVESTABLE) {
+        } else if (phase == HarvestabilityTestPhase.CURRENTLY_HARVESTABLE) {
             if (isStaticWaterOrLava(block)) {
-                info.setCurrentlyHarvestable(player.getHeldItem() != null && player.getHeldItem().getItem() == Items.bucket);
-            }
-            else if (block instanceof BlockLiquid) {
+                info.setCurrentlyHarvestable(
+                        player.getHeldItem() != null && player.getHeldItem().getItem() == Items.bucket);
+            } else if (block instanceof BlockLiquid) {
                 info.setCurrentlyHarvestable(false);
             }
-        }
-        else if (phase == HarvestabilityTestPhase.IS_HELD_TOOL_EFFECTIVE) {
+        } else if (phase == HarvestabilityTestPhase.IS_HELD_TOOL_EFFECTIVE) {
             if (isStaticWaterOrLava(block)) {
-                info.setHeldToolEffective(player.getHeldItem() != null && player.getHeldItem().getItem() == Items.bucket);
-            }
-            else if (block instanceof BlockLiquid) {
+                info.setHeldToolEffective(
+                        player.getHeldItem() != null && player.getHeldItem().getItem() == Items.bucket);
+            } else if (block instanceof BlockLiquid) {
                 info.setHeldToolEffective(false);
             }
         }

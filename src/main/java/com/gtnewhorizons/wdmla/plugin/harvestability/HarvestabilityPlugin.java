@@ -1,6 +1,5 @@
 package com.gtnewhorizons.wdmla.plugin.harvestability;
 
-import com.gtnewhorizons.wdmla.api.Mods;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLiquid;
 import net.minecraftforge.common.config.Configuration;
@@ -8,6 +7,7 @@ import net.minecraftforge.common.config.Configuration;
 import com.gtnewhorizons.wdmla.api.IWDMlaClientRegistration;
 import com.gtnewhorizons.wdmla.api.IWDMlaPlugin;
 import com.gtnewhorizons.wdmla.api.Identifiers;
+import com.gtnewhorizons.wdmla.api.Mods;
 import com.gtnewhorizons.wdmla.api.WDMlaPlugin;
 import com.gtnewhorizons.wdmla.config.WDMlaConfig;
 

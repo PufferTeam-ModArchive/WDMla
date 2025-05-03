@@ -27,10 +27,12 @@ public enum PetProvider implements IEntityComponentProvider, IServerDataProvider
         if (accessor.getEntity() instanceof EntityTameable pet && pet.isTamed()
                 && PluginsConfig.vanilla.pet.showPetSit) {
             tooltip.child(
-                    ThemeHelper.INSTANCE.value(
-                            StatCollector.translateToLocal("hud.msg.wdmla.sitting"),
-                            pet.isSitting() ? StatCollector.translateToLocal("hud.msg.wdmla.yes")
-                            : StatCollector.translateToLocal("hud.msg.wdmla.no")).tag(VanillaIdentifiers.PET));
+                    ThemeHelper.INSTANCE
+                            .value(
+                                    StatCollector.translateToLocal("hud.msg.wdmla.sitting"),
+                                    pet.isSitting() ? StatCollector.translateToLocal("hud.msg.wdmla.yes")
+                                            : StatCollector.translateToLocal("hud.msg.wdmla.no"))
+                            .tag(VanillaIdentifiers.PET));
         }
 
         String ownerUUID = accessor.getServerData().getString("OwnerUUID");

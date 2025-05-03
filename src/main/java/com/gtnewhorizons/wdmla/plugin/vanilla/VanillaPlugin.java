@@ -1,6 +1,5 @@
 package com.gtnewhorizons.wdmla.plugin.vanilla;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockAnvil;
 import net.minecraft.block.BlockBeacon;
 import net.minecraft.block.BlockBed;

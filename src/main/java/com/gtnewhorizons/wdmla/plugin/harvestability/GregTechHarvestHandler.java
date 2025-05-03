@@ -1,12 +1,5 @@
 package com.gtnewhorizons.wdmla.plugin.harvestability;
 
-import com.gtnewhorizons.wdmla.api.harvestability.EffectiveTool;
-import com.gtnewhorizons.wdmla.api.harvestability.HarvestLevel;
-import com.gtnewhorizons.wdmla.api.harvestability.HarvestabilityInfo;
-import com.gtnewhorizons.wdmla.api.harvestability.HarvestabilityTestPhase;
-import com.gtnewhorizons.wdmla.api.provider.HarvestHandler;
-import com.gtnewhorizons.wdmla.plugin.harvestability.proxy.ProxyGregTech;
-import com.gtnewhorizons.wdmla.plugin.harvestability.proxy.ProxyTinkersConstruct;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
@@ -14,26 +7,40 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.ForgeHooks;
+
 import org.jetbrains.annotations.NotNull;
 
+import com.gtnewhorizons.wdmla.api.harvestability.EffectiveTool;
+import com.gtnewhorizons.wdmla.api.harvestability.HarvestLevel;
+import com.gtnewhorizons.wdmla.api.harvestability.HarvestabilityInfo;
+import com.gtnewhorizons.wdmla.api.harvestability.HarvestabilityTestPhase;
+import com.gtnewhorizons.wdmla.api.provider.HarvestHandler;
+import com.gtnewhorizons.wdmla.plugin.harvestability.proxy.ProxyGregTech;
+import com.gtnewhorizons.wdmla.plugin.harvestability.proxy.ProxyTinkersConstruct;
+
 public enum GregTechHarvestHandler implements HarvestHandler {
+
     INSTANCE;
 
     @Override
-    public boolean testHarvest(HarvestabilityInfo info, HarvestabilityTestPhase phase,
-                               EntityPlayer player, Block block, int meta, MovingObjectPosition position) {
+    public boolean testHarvest(HarvestabilityInfo info, HarvestabilityTestPhase phase, EntityPlayer player, Block block,
+            int meta, MovingObjectPosition position) {
         if (phase == HarvestabilityTestPhase.EFFECTIVE_TOOL_NAME) {
-            if(info.getEffectiveTool().isSameTool(ProxyGregTech.toolWrench)) {
+            if (info.getEffectiveTool().isSameTool(ProxyGregTech.toolWrench)) {
                 info.setEffectiveTool(ProxyGregTech.toolWrench);
-            }
-            else if (info.getEffectiveTool().isSameTool(ProxyGregTech.toolWireCutter)) {
+            } else if (info.getEffectiveTool().isSameTool(ProxyGregTech.toolWireCutter)) {
                 info.setEffectiveTool(ProxyGregTech.toolWireCutter);
             }
-        }
-        else if (phase == HarvestabilityTestPhase.CURRENTLY_HARVESTABLE) {
+        } else if (phase == HarvestabilityTestPhase.CURRENTLY_HARVESTABLE) {
             if (player.getHeldItem() != null) {
                 info.setCurrentlyHarvestable(
-                        isCurrentlyHarvestable(player, block, meta, player.getHeldItem(), info.getEffectiveTool(), info.getHarvestLevel()));
+                        isCurrentlyHarvestable(
+                                player,
+                                block,
+                                meta,
+                                player.getHeldItem(),
+                                info.getEffectiveTool(),
+                                info.getHarvestLevel()));
             }
         }
 
@@ -68,7 +75,7 @@ public enum GregTechHarvestHandler implements HarvestHandler {
 
     // run full check
     public boolean isCurrentlyHarvestable(EntityPlayer player, Block block, int meta, @NotNull ItemStack itemHeld,
-                                          EffectiveTool effectiveTool, HarvestLevel harvestLevel) {
+            EffectiveTool effectiveTool, HarvestLevel harvestLevel) {
         boolean isHoldingTinkersTool = ProxyTinkersConstruct.hasToolTag(itemHeld);
         boolean isHeldToolCorrect = isHeldToolCorrect(
                 player,
@@ -80,17 +87,15 @@ public enum GregTechHarvestHandler implements HarvestHandler {
         boolean isAboveMinHarvestLevel = ProxyTinkersConstruct.canToolHarvestLevel(itemHeld, block, meta, harvestLevel);
         return (isHeldToolCorrect && isAboveMinHarvestLevel)
                 || (!ProxyGregTech.isMachine(block) && !isHoldingTinkersTool
-                && ForgeHooks.canHarvestBlock(block, player, meta));
+                        && ForgeHooks.canHarvestBlock(block, player, meta));
     }
 
     public static boolean isHeldToolCorrect(EntityPlayer player, Block block, int meta, @NotNull ItemStack itemHeld,
-                                            EffectiveTool effectiveTool, boolean isHoldingTinkersTool) {
+            EffectiveTool effectiveTool, boolean isHoldingTinkersTool) {
         if (ProxyGregTech.isMachine(block)) {
             // GT_MetaGenerated_Tool's getDigSpeed is broken
-            return effectiveTool.isSameTool(ProxyGregTech.toolWrench)
-                    && ProxyGregTech.isWrench(itemHeld)
-                    || effectiveTool.isSameTool(ProxyGregTech.toolWireCutter)
-                    && ProxyGregTech.isWireCutter(itemHeld);
+            return effectiveTool.isSameTool(ProxyGregTech.toolWrench) && ProxyGregTech.isWrench(itemHeld)
+                    || effectiveTool.isSameTool(ProxyGregTech.toolWireCutter) && ProxyGregTech.isWireCutter(itemHeld);
         } else if (ProxyGregTech.isGTTool(itemHeld)) {
             // GT tool don't care net.minecraft.block.material.Material#isToolNotRequired
             return itemHeld.func_150998_b(block);

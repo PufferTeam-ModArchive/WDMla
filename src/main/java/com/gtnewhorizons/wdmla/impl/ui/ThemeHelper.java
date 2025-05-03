@@ -4,8 +4,6 @@ import static mcp.mobius.waila.api.SpecialChars.ITALIC;
 
 import java.util.List;
 
-import com.gtnewhorizons.wdmla.impl.ui.component.EntityComponent;
-import com.gtnewhorizons.wdmla.util.FormatUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -23,6 +21,7 @@ import com.gtnewhorizons.wdmla.api.ui.MessageType;
 import com.gtnewhorizons.wdmla.config.General;
 import com.gtnewhorizons.wdmla.config.PluginsConfig;
 import com.gtnewhorizons.wdmla.impl.format.TimeFormattingPattern;
+import com.gtnewhorizons.wdmla.impl.ui.component.EntityComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.HPanelComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.IconComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.ItemComponent;
@@ -32,6 +31,7 @@ import com.gtnewhorizons.wdmla.impl.ui.sizer.Padding;
 import com.gtnewhorizons.wdmla.impl.ui.sizer.Size;
 import com.gtnewhorizons.wdmla.impl.ui.style.TextStyle;
 import com.gtnewhorizons.wdmla.overlay.WDMlaUIIcons;
+import com.gtnewhorizons.wdmla.util.FormatUtil;
 
 import mcp.mobius.waila.overlay.DisplayUtil;
 import mcp.mobius.waila.utils.ModIdentification;
@@ -55,7 +55,8 @@ public class ThemeHelper {
     }
 
     public void overrideTooltipIcon(ITooltip root, ItemStack newItemStack, boolean overrideFancyRenderer) {
-        if (!overrideFancyRenderer && PluginsConfig.core.defaultBlock.fancyRenderer == PluginsConfig.Core.fancyRendererMode.ALL) {
+        if (!overrideFancyRenderer
+                && PluginsConfig.core.defaultBlock.fancyRenderer == PluginsConfig.Core.fancyRendererMode.ALL) {
             return;
         }
 
@@ -71,8 +72,8 @@ public class ThemeHelper {
 
     public void overrideTooltipTitle(ITooltip root, String formattedNewName) {
         Theme theme = General.currentTheme.get();
-        IComponent replacedName = new HPanelComponent()
-                .child(new TextComponent(formattedNewName).style(new TextStyle().color(theme.textColor(MessageType.TITLE))))
+        IComponent replacedName = new HPanelComponent().child(
+                new TextComponent(formattedNewName).style(new TextStyle().color(theme.textColor(MessageType.TITLE))))
                 .tag(Identifiers.ITEM_NAME);
         root.replaceChildWithTag(Identifiers.ITEM_NAME, replacedName);
     }
@@ -81,8 +82,7 @@ public class ThemeHelper {
         Theme theme = General.currentTheme.get();
         if (entityMayHaveCustomName instanceof EntityLiving living && living.hasCustomNameTag()) {
             newName = FormatUtil.formatNameByPixelCount(living.getCustomNameTag());
-        }
-        else {
+        } else {
             newName = FormatUtil.formatNameByPixelCount(newName);
         }
         IComponent replacedName = new HPanelComponent()
@@ -94,12 +94,12 @@ public class ThemeHelper {
     public void overrideEntityTooltipIcon(ITooltip root, Entity newEntity) {
         if (PluginsConfig.core.defaultEntity.showEntity) {
             if (!PluginsConfig.core.defaultEntity.fancyRenderer && !(newEntity instanceof EntityLiving)) {
-                root.replaceChildWithTag(Identifiers.ENTITY,
-                        new HPanelComponent().tag(Identifiers.ENTITY));
+                root.replaceChildWithTag(Identifiers.ENTITY, new HPanelComponent().tag(Identifiers.ENTITY));
             } else {
-                root.replaceChildWithTag(Identifiers.ENTITY,
-                        new EntityComponent(newEntity).padding(new Padding(6, 0, 10, 0))
-                                .size(new Size(12, 12)).tag(Identifiers.ENTITY));
+                root.replaceChildWithTag(
+                        Identifiers.ENTITY,
+                        new EntityComponent(newEntity).padding(new Padding(6, 0, 10, 0)).size(new Size(12, 12))
+                                .tag(Identifiers.ENTITY));
             }
         }
     }

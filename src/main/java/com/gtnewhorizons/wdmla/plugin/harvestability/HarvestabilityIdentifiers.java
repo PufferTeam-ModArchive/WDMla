@@ -10,7 +10,7 @@ public class HarvestabilityIdentifiers {
 
     // provider Uid
     public static final ResourceLocation HARVESTABILITY = Harvestability("modern");
-//    public static final ResourceLocation LEGACY_HARVESTABILITY = Harvestability("legacy");
+    // public static final ResourceLocation LEGACY_HARVESTABILITY = Harvestability("legacy");
 
     // handler uid
     public static final ResourceLocation BASE_LOGIC = Harvestability("base_logic");

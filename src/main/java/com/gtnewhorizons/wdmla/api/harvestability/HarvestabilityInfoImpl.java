@@ -1,12 +1,13 @@
 package com.gtnewhorizons.wdmla.api.harvestability;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import org.jetbrains.annotations.NotNull;
+
 public class HarvestabilityInfoImpl implements HarvestabilityInfo {
+
     /**
      * the primary harvest tool (pickaxe for hopper, shovel for dirt...)
      */

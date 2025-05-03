@@ -1,14 +1,16 @@
 package com.gtnewhorizons.wdmla.api.harvestability;
 
-import joptsimple.internal.Strings;
+import java.util.List;
+import java.util.Objects;
+
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
+
 import org.jetbrains.annotations.Nullable;
 
-import java.util.List;
-import java.util.Objects;
+import joptsimple.internal.Strings;
 
 public class EffectiveTool {
 
@@ -51,8 +53,7 @@ public class EffectiveTool {
     public ItemStack getIcon(HarvestLevel harvestLevel) {
         if (!harvestLevel.isToolRequired() || !isValid()) {
             return null;
-        }
-        else {
+        } else {
             ItemStack icon = harvestLevel.getIconFromList(iconList);
             if (icon == null && !isSameTool(CANNOT_HARVEST)) {
                 icon = new ItemStack(Blocks.iron_bars);
@@ -64,11 +65,9 @@ public class EffectiveTool {
     public String getLocalizedName() {
         if (StatCollector.canTranslate("hud.msg.wdmla.toolclass." + value)) {
             return StatCollector.translateToLocal("hud.msg.wdmla.toolclass." + value);
-        }
-        else if (isValid()) {
+        } else if (isValid()) {
             return value.substring(0, 1).toUpperCase() + value.substring(1);
-        }
-        else {
+        } else {
             return null;
         }
     }

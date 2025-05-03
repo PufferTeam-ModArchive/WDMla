@@ -1,14 +1,15 @@
 package com.gtnewhorizons.wdmla.util;
 
-import com.gtnewhorizons.wdmla.config.General;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
-
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
 import java.util.Locale;
+
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.FontRenderer;
+
+import com.gtnewhorizons.wdmla.config.General;
 
 /**
  * For unifying formatting.
@@ -98,7 +99,7 @@ public class FormatUtil {
         FontRenderer fontRenderer = Minecraft.getMinecraft().fontRenderer;
         int maxNameLength = General.maxNameLengthPixel;
 
-        if(fontRenderer.getStringWidth(rawName) <= maxNameLength) {
+        if (fontRenderer.getStringWidth(rawName) <= maxNameLength) {
             return rawName;
         }
 

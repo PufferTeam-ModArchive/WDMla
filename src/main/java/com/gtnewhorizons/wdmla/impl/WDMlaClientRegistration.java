@@ -8,7 +8,6 @@ import java.util.Set;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-import com.gtnewhorizons.wdmla.api.provider.HarvestHandler;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
@@ -28,6 +27,7 @@ import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessorImpl;
 import com.gtnewhorizons.wdmla.api.accessor.EntityAccessor;
 import com.gtnewhorizons.wdmla.api.accessor.EntityAccessorImpl;
+import com.gtnewhorizons.wdmla.api.provider.HarvestHandler;
 import com.gtnewhorizons.wdmla.api.provider.IClientExtensionProvider;
 import com.gtnewhorizons.wdmla.api.provider.IComponentProvider;
 import com.gtnewhorizons.wdmla.api.view.FluidView;
@@ -105,8 +105,7 @@ public class WDMlaClientRegistration implements IWDMlaClientRegistration {
         return ImmutableSet.copyOf(allProviders);
     }
 
-    public List<HarvestHandler> getHarvestHandlers(Block block,
-                                                   Predicate<HarvestHandler> filter) {
+    public List<HarvestHandler> getHarvestHandlers(Block block, Predicate<HarvestHandler> filter) {
         return harvestHandlers.get(block).stream().filter(filter).collect(Collectors.toList());
     }
 
@@ -132,7 +131,7 @@ public class WDMlaClientRegistration implements IWDMlaClientRegistration {
     public void registerHarvest(HarvestHandler handler, Class<? extends Block> blockClass) {
         Objects.requireNonNull(handler.getUid());
         harvestHandlers.register(blockClass, handler);
-        //harvest handlers are not configurable, but we want to sort it with priority
+        // harvest handlers are not configurable, but we want to sort it with priority
         WDMlaCommonRegistration.instance().priorities.put(handler);
     }
 

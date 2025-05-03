@@ -1,16 +1,15 @@
 package com.gtnewhorizons.wdmla.plugin.harvestability.proxy;
 
-import com.gtnewhorizons.wdmla.api.harvestability.EffectiveTool;
-import com.gtnewhorizons.wdmla.api.harvestability.HarvestLevel;
-import com.gtnewhorizons.wdmla.config.PluginsConfig;
-import net.minecraft.item.ItemStack;
-import tconstruct.library.util.HarvestLevels;
+import static com.gtnewhorizons.wdmla.plugin.harvestability.proxy.ProxyTinkersConstruct.defaultPickaxes;
 
 import java.lang.reflect.Method;
 import java.util.Arrays;
-import java.util.HashMap;
 
-import static com.gtnewhorizons.wdmla.plugin.harvestability.proxy.ProxyTinkersConstruct.defaultPickaxes;
+import com.gtnewhorizons.wdmla.api.harvestability.EffectiveTool;
+import com.gtnewhorizons.wdmla.api.harvestability.HarvestLevel;
+import com.gtnewhorizons.wdmla.config.PluginsConfig;
+
+import tconstruct.library.util.HarvestLevels;
 
 public class ProxyIguanaTweaks {
 
@@ -36,7 +35,8 @@ public class ProxyIguanaTweaks {
      */
     public static void initPickaxeTool() {
         PluginsConfig.Harvestability.IguanaTweaks iguanaConfig = PluginsConfig.harvestability.iguanaTweaks;
-        pickaxe = new EffectiveTool("pickaxe",
+        pickaxe = new EffectiveTool(
+                "pickaxe",
                 Arrays.asList(
                         defaultPickaxes.get(iguanaConfig.harvestLevel0),
                         defaultPickaxes.get(iguanaConfig.harvestLevel1),
@@ -47,8 +47,7 @@ public class ProxyIguanaTweaks {
                         defaultPickaxes.get(iguanaConfig.harvestLevel6),
                         defaultPickaxes.get(iguanaConfig.harvestLevel7),
                         defaultPickaxes.get(iguanaConfig.harvestLevel8),
-                        defaultPickaxes.get(iguanaConfig.harvestLevel9)
-                ));
+                        defaultPickaxes.get(iguanaConfig.harvestLevel9)));
     }
 
     public static class IguanaHarvestLevel extends HarvestLevel {

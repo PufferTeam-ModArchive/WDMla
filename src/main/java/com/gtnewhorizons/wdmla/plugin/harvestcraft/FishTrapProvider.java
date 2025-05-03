@@ -1,5 +1,10 @@
 package com.gtnewhorizons.wdmla.plugin.harvestcraft;
 
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.StatCollector;
+
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
 import com.gtnewhorizons.wdmla.api.provider.IServerDataProvider;
@@ -7,37 +12,31 @@ import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.impl.ui.StatusHelper;
 import com.pam.harvestcraft.ItemRegistry;
 import com.pam.harvestcraft.TileEntityPamFishTrap;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.StatCollector;
 
 public enum FishTrapProvider implements IBlockComponentProvider, IServerDataProvider<BlockAccessor> {
+
     INSTANCE;
 
     @Override
     public void appendTooltip(ITooltip tooltip, BlockAccessor accessor) {
-        if(!accessor.getServerData().hasKey("GoodEnvironment")) {
+        if (!accessor.getServerData().hasKey("GoodEnvironment")) {
             return;
         }
 
         if (!accessor.getServerData().getBoolean("GoodEnvironment")) {
             tooltip.child(StatusHelper.INSTANCE.structureIncomplete());
             String material = StatCollector.translateToLocal("hud.msg.wdmla.any.fluid");
-            tooltip.text(StatCollector.translateToLocalFormatted(
-                    "hud.msg.wdmla.must.surround", material));
-        }
-        else if (!accessor.getServerData().getBoolean("IngredientValid")){
+            tooltip.text(StatCollector.translateToLocalFormatted("hud.msg.wdmla.must.surround", material));
+        } else if (!accessor.getServerData().getBoolean("IngredientValid")) {
             tooltip.child(StatusHelper.INSTANCE.idle());
-        }
-        else {
+        } else {
             tooltip.child(StatusHelper.INSTANCE.runningFine());
         }
     }
 
     @Override
     public void appendServerData(NBTTagCompound data, BlockAccessor accessor) {
-        if(accessor.getTileEntity() instanceof TileEntityPamFishTrap trap) {
+        if (accessor.getTileEntity() instanceof TileEntityPamFishTrap trap) {
             data.setBoolean("GoodEnvironment", trap.countFlowers() >= 5);
             data.setBoolean("IngredientValid", isIngredientValid(trap.getStackInSlot(18)));
         }

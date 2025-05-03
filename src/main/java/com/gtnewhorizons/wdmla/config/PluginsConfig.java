@@ -46,8 +46,8 @@ public class PluginsConfig {
 
             @Config.LangKey("option.wdmla.core.fancy.renderer")
             @Config.DefaultEnum("ALL")
-            @Config.Comment("None: Always render fake itemStack, ALL: Always render 3D block, \n " +
-                    "FALLBACK: Render 3D block if the block has no Item variant")
+            @Config.Comment("None: Always render fake itemStack, ALL: Always render 3D block, \n "
+                    + "FALLBACK: Render 3D block if the block has no Item variant")
             public Core.fancyRendererMode fancyRenderer;
 
             @Config.LangKey("option.wdmla.core.renderer.rotation.speed")
@@ -231,6 +231,7 @@ public class PluginsConfig {
         @Config.Comment("IDs of the TiC effective pickaxe material corresponding to the harvest level.")
         @Config.LangKey("provider.wdmla.harvestability.tinkersconstruct")
         public static class TinkersConstruct {
+
             @Config.DefaultInt(0)
             @Config.Comment("default: wood")
             @Config.RangeInt(min = 1, max = 100)
@@ -266,6 +267,7 @@ public class PluginsConfig {
                 + "It will override TiC config if the mod is loaded")
         @Config.LangKey("provider.wdmla.harvestability.iguanatweaks")
         public static final class IguanaTweaks {
+
             @Config.DefaultInt(0)
             @Config.Comment("default: wood")
             @Config.RangeInt(min = 1, max = 100)
@@ -319,6 +321,7 @@ public class PluginsConfig {
 
         @Config.LangKey("provider.wdmla.harvestability.icon")
         public static final class Icon {
+
             @Config.LangKey("option.wdmla.harvestability.currentlyHarvestable.icon")
             @Config.DefaultBoolean(true)
             @Config.Comment("Shows the line of Currently Harvestable icons")
@@ -372,6 +375,7 @@ public class PluginsConfig {
 
         @Config.LangKey("provider.wdmla.harvestability.text")
         public static final class Text {
+
             @Config.LangKey("option.wdmla.harvestability.harvestlevelnum")
             @Config.DefaultBoolean(false)
             @Config.Comment("Shows the Harvest Level number as text")
@@ -395,6 +399,7 @@ public class PluginsConfig {
 
         @Config.LangKey("provider.wdmla.harvestability.condition")
         public static final class Condition {
+
             @Config.LangKey("option.wdmla.harvestability.oresonly")
             @Config.DefaultBoolean(false)
             @Config.Comment("Only shows tooltip when the block is ore")

@@ -1,13 +1,14 @@
 package com.gtnewhorizons.wdmla.plugin.vanilla;
 
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.boss.EntityDragonPart;
+import net.minecraft.util.ResourceLocation;
+
 import com.gtnewhorizons.wdmla.api.TooltipPosition;
 import com.gtnewhorizons.wdmla.api.accessor.EntityAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IEntityComponentProvider;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.boss.EntityDragonPart;
-import net.minecraft.util.ResourceLocation;
 
 public enum EnderDragonHeaderProvider implements IEntityComponentProvider {
 

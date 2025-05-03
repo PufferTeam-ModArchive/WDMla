@@ -5,16 +5,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import com.gtnewhorizons.wdmla.api.harvestability.EffectiveTool;
-import com.gtnewhorizons.wdmla.api.harvestability.HarvestLevel;
-import com.gtnewhorizons.wdmla.plugin.harvestability.BaseHarvestLogicHandler;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.ForgeHooks;
 
 import com.gtnewhorizons.wdmla.api.Mods;
+import com.gtnewhorizons.wdmla.api.harvestability.EffectiveTool;
+import com.gtnewhorizons.wdmla.api.harvestability.HarvestLevel;
 import com.gtnewhorizons.wdmla.config.PluginsConfig;
+import com.gtnewhorizons.wdmla.plugin.harvestability.BaseHarvestLogicHandler;
 
 import tconstruct.library.TConstructRegistry;
 import tconstruct.library.crafting.ToolBuilder;
@@ -52,15 +52,15 @@ public class ProxyTinkersConstruct {
      */
     public static void initPickaxeTool() {
         PluginsConfig.Harvestability.TinkersConstruct tiCConfig = PluginsConfig.harvestability.tinkersConstruct;
-        pickaxe = new EffectiveTool("pickaxe",
+        pickaxe = new EffectiveTool(
+                "pickaxe",
                 Arrays.asList(
                         defaultPickaxes.get(tiCConfig.harvestLevel0),
                         defaultPickaxes.get(tiCConfig.harvestLevel1),
                         defaultPickaxes.get(tiCConfig.harvestLevel2),
                         defaultPickaxes.get(tiCConfig.harvestLevel3),
                         defaultPickaxes.get(tiCConfig.harvestLevel4),
-                        defaultPickaxes.get(tiCConfig.harvestLevel5)
-                ));
+                        defaultPickaxes.get(tiCConfig.harvestLevel5)));
     }
 
     public static boolean hasToolTag(ItemStack itemStack) {
@@ -81,7 +81,8 @@ public class ProxyTinkersConstruct {
         return new HarvestLevel(toolTag.getInteger("HarvestLevel2"));
     }
 
-    public static boolean isToolEffectiveAgainst(ItemStack tool, Block block, int metadata, EffectiveTool effectiveTool) {
+    public static boolean isToolEffectiveAgainst(ItemStack tool, Block block, int metadata,
+            EffectiveTool effectiveTool) {
         if (Mods.TCONSTUCT.isLoaded() && tool.getItem() instanceof HarvestTool harvestTool) {
             EffectiveTool firstType = null;
             try {
@@ -99,8 +100,8 @@ public class ProxyTinkersConstruct {
                 }
             }
 
-            return (firstType != null && effectiveTool.isSameTool(firstType)) ||
-                    (secondType != null && effectiveTool.isSameTool(secondType));
+            return (firstType != null && effectiveTool.isSameTool(firstType))
+                    || (secondType != null && effectiveTool.isSameTool(secondType));
         }
         return BaseHarvestLogicHandler.isToolEffectiveAgainst(tool, block, metadata, effectiveTool);
     }
@@ -119,6 +120,7 @@ public class ProxyTinkersConstruct {
 
     /**
      * build TCon Pickaxe for WDMla harvest tool display
+     * 
      * @param materialID id of pickaxe head and binding material
      * @return a pickaxe with wood tool rod
      */

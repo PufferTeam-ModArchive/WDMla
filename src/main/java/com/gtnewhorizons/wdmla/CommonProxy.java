@@ -26,6 +26,8 @@ import com.gtnewhorizons.wdmla.api.view.FluidView;
 import com.gtnewhorizons.wdmla.api.view.ViewGroup;
 import com.gtnewhorizons.wdmla.config.PluginsConfig;
 import com.gtnewhorizons.wdmla.config.WDMlaConfig;
+import com.gtnewhorizons.wdmla.example.ExamplePlugin;
+import com.gtnewhorizons.wdmla.example.TestMode;
 import com.gtnewhorizons.wdmla.impl.WDMlaClientRegistration;
 import com.gtnewhorizons.wdmla.impl.WDMlaCommonRegistration;
 import com.gtnewhorizons.wdmla.impl.lookup.WrappedHierarchyLookup;
@@ -33,8 +35,6 @@ import com.gtnewhorizons.wdmla.plugin.PluginScanner;
 import com.gtnewhorizons.wdmla.plugin.harvestability.MissingHarvestInfo;
 import com.gtnewhorizons.wdmla.plugin.universal.ItemCollector;
 import com.gtnewhorizons.wdmla.plugin.universal.ItemIterator;
-import com.gtnewhorizons.wdmla.example.TestMode;
-import com.gtnewhorizons.wdmla.example.ExamplePlugin;
 
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
