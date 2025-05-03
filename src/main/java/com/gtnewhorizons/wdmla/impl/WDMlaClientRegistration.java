@@ -8,6 +8,7 @@ import java.util.Set;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+import com.gtnewhorizons.wdmla.api.provider.HarvestHandler;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
@@ -52,6 +53,8 @@ public class WDMlaClientRegistration implements IWDMlaClientRegistration {
     public final Map<ResourceLocation, IClientExtensionProvider<ProgressView.Data, ProgressView>> progressProviders = Maps
             .newHashMap();
 
+    public final HierarchyLookup<HarvestHandler> harvestHandlers;
+
     public final Map<Class<Accessor>, AccessorClientHandler<Accessor>> accessorHandlers = Maps.newIdentityHashMap();
 
     private ClientRegistrationSession session;
@@ -59,6 +62,7 @@ public class WDMlaClientRegistration implements IWDMlaClientRegistration {
     WDMlaClientRegistration() {
         blockComponentProviders = new HierarchyLookup<>(Block.class);
         entityComponentProviders = new HierarchyLookup<>(Entity.class);
+        harvestHandlers = new HierarchyLookup<>(Block.class);
         allProviders = new HashSet<>();
     }
 
@@ -101,6 +105,11 @@ public class WDMlaClientRegistration implements IWDMlaClientRegistration {
         return ImmutableSet.copyOf(allProviders);
     }
 
+    public List<HarvestHandler> getHarvestHandlers(Block block,
+                                                   Predicate<HarvestHandler> filter) {
+        return harvestHandlers.get(block).stream().filter(filter).collect(Collectors.toList());
+    }
+
     @Override
     public void registerItemStorageClient(IClientExtensionProvider<ItemStack, ItemView> provider) {
         Objects.requireNonNull(provider.getUid());
@@ -117,6 +126,14 @@ public class WDMlaClientRegistration implements IWDMlaClientRegistration {
     public void registerProgressClient(IClientExtensionProvider<ProgressView.Data, ProgressView> provider) {
         Objects.requireNonNull(provider.getUid());
         progressProviders.put(provider.getUid(), provider);
+    }
+
+    @Override
+    public void registerHarvest(HarvestHandler handler, Class<? extends Block> blockClass) {
+        Objects.requireNonNull(handler.getUid());
+        harvestHandlers.register(blockClass, handler);
+        //harvest handlers are not configurable, but we want to sort it with priority
+        WDMlaCommonRegistration.instance().priorities.put(handler);
     }
 
     @Override
@@ -142,6 +159,7 @@ public class WDMlaClientRegistration implements IWDMlaClientRegistration {
                 .serverConnected(isServerConnected()).serverData(getServerData()).showDetails(isShowDetailsPressed());
     }
 
+    @Override
     public EntityAccessor.Builder entityAccessor() {
         Minecraft mc = Minecraft.getMinecraft();
 
@@ -165,6 +183,8 @@ public class WDMlaClientRegistration implements IWDMlaClientRegistration {
         blockComponentProviders.loadComplete(priorities);
         entityComponentProviders.invalidate();
         entityComponentProviders.loadComplete(priorities);
+        harvestHandlers.invalidate();
+        harvestHandlers.loadComplete(priorities);
         session = null;
     }
 

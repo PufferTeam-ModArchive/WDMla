@@ -1,4 +1,4 @@
-package com.gtnewhorizons.wdmla.test;
+package com.gtnewhorizons.wdmla.example;
 
 import java.util.Random;
 
@@ -12,7 +12,7 @@ import com.gtnewhorizons.wdmla.api.provider.IServerDataProvider;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.impl.ui.component.TextComponent;
 
-public enum TestEntityProvider implements IEntityComponentProvider, IServerDataProvider<EntityAccessor> {
+public enum ExampleEntityProvider implements IEntityComponentProvider, IServerDataProvider<EntityAccessor> {
 
     INSTANCE;
 

@@ -218,146 +218,111 @@ public class PluginsConfig {
     @Config.LangKey("provider.wdmla.harvestability.category")
     public static class Harvestability {
 
-        public final Legacy legacy = new Legacy();
-        public final Modern modern = new Modern();
+        public final TinkersConstruct tinkersConstruct = new TinkersConstruct();
 
-        @Config.LangKey("provider.wdmla.harvestability.legacy")
-        public static class Legacy {
+        public final IguanaTweaks iguanaTweaks = new IguanaTweaks();
 
-            @Config.LangKey("option.wdmla.harvestability.harvestlevel")
-            @Config.DefaultBoolean(true)
-            public boolean harvestLevel;
+        public final Icon icon = new Icon();
 
-            @Config.LangKey("option.wdmla.harvestability.harvestlevelnum")
-            @Config.DefaultBoolean(false)
-            public boolean harvestLevelNum;
+        public final Text text = new Text();
 
-            @Config.LangKey("option.wdmla.harvestability.effectivetool")
-            @Config.DefaultBoolean(true)
-            public boolean effectiveTool;
+        public final Condition condition = new Condition();
 
-            @Config.LangKey("option.wdmla.harvestability.currentlyharvestable")
-            @Config.DefaultBoolean(true)
-            public boolean currentlyHarvestable;
+        @Config.Comment("IDs of the TiC effective pickaxe material corresponding to the harvest level.")
+        @Config.LangKey("provider.wdmla.harvestability.tinkersconstruct")
+        public static class TinkersConstruct {
+            @Config.DefaultInt(0)
+            @Config.Comment("default: wood")
+            @Config.RangeInt(min = 1, max = 100)
+            public int harvestLevel0;
 
-            @Config.LangKey("option.wdmla.harvestability.harvestlevel.sneakingonly")
-            @Config.DefaultBoolean(false)
-            public boolean harvestLevelSneakingOnly;
+            @Config.DefaultInt(1)
+            @Config.Comment("default: stone")
+            @Config.RangeInt(min = 1, max = 100)
+            public int harvestLevel1;
 
-            @Config.LangKey("option.wdmla.harvestability.harvestlevelnum.sneakingonly")
-            @Config.DefaultBoolean(false)
-            public boolean harvestLevelNumSneakingOnly;
+            @Config.DefaultInt(2)
+            @Config.Comment("default: iron")
+            @Config.RangeInt(min = 1, max = 100)
+            public int harvestLevel2;
 
-            @Config.LangKey("option.wdmla.harvestability.effectivetool.sneakingonly")
-            @Config.DefaultBoolean(false)
-            public boolean effectiveToolSneakingOnly;
+            @Config.DefaultInt(6)
+            @Config.Comment("default: obsidian")
+            @Config.RangeInt(min = 1, max = 100)
+            public int harvestLevel3;
 
-            @Config.LangKey("option.wdmla.harvestability.currentlyharvestable.sneakingonly")
-            @Config.DefaultBoolean(false)
-            public boolean currentlyHarvestableSneakingOnly;
+            @Config.DefaultInt(10)
+            @Config.Comment("default: cobalt")
+            @Config.RangeInt(min = 1, max = 100)
+            public int harvestLevel4;
 
-            @Config.LangKey("option.wdmla.harvestability.oresonly")
-            @Config.DefaultBoolean(false)
-            public boolean oresOnly;
-
-            @Config.LangKey("option.wdmla.harvestability.minimal")
-            @Config.DefaultBoolean(false)
-            public boolean minimal;
-
-            @Config.LangKey("option.wdmla.harvestability.unharvestableonly")
-            @Config.DefaultBoolean(false)
-            public boolean unHarvestableOnly;
-
-            @Config.LangKey("option.wdmla.harvestability.toolrequiredonly")
-            @Config.DefaultBoolean(true)
-            public boolean toolRequiredOnly;
-
-            @Config.LangKey("option.wdmla.harvestability.shearability")
-            @Config.DefaultBoolean(true)
-            public boolean shearability;
-
-            @Config.LangKey("option.wdmla.harvestability.shearability.sneakingonly")
-            @Config.DefaultBoolean(false)
-            public boolean shearabilitySneakingOnly;
-
-            @Config.LangKey("option.wdmla.harvestability.silktouchability")
-            @Config.DefaultBoolean(true)
-            public boolean silkTouchability;
-
-            @Config.LangKey("option.wdmla.harvestability.silktouchability.sneakingonly")
-            @Config.DefaultBoolean(false)
-            public boolean silkTouchabilitySneakingOnly;
-
-            @Config.LangKey("option.wdmla.harvestability.minimalseparator.string")
-            @Config.DefaultString(" : ")
-            public String minimalSeparatorString;
-
-            @Config.LangKey("option.wdmla.harvestability.currentlyharvestable.string")
-            @Config.DefaultString("\u2714")
-            public String currentlyHarvestableString;
-
-            @Config.LangKey("option.wdmla.harvestability.notcurrentlyharvestable.string")
-            @Config.DefaultString("\u2718")
-            public String notcurrentlyHarvestableString;
-
-            @Config.LangKey("option.wdmla.harvestability.shearability.string")
-            @Config.DefaultString("\u2702")
-            public String shearabilityString;
-
-            @Config.LangKey("option.wdmla.harvestability.silktouchability.string")
-            @Config.DefaultString("\u2712")
-            public String silkTouchabilityString;
+            @Config.DefaultInt(12)
+            @Config.Comment("default: manyullyn")
+            @Config.RangeInt(min = 1, max = 100)
+            public int harvestLevel5;
         }
 
-        @Config.LangKey("provider.wdmla.harvestability.modern")
-        public static class Modern {
+        @Config.Comment("IDs of the IguanaTweaks effective pickaxe material corresponding to the harvest level.\n"
+                + "It will override TiC config if the mod is loaded")
+        @Config.LangKey("provider.wdmla.harvestability.iguanatweaks")
+        public static final class IguanaTweaks {
+            @Config.DefaultInt(0)
+            @Config.Comment("default: wood")
+            @Config.RangeInt(min = 1, max = 100)
+            public int harvestLevel0;
 
-            public final TinkersConstruct tinkersConstruct = new TinkersConstruct();
+            @Config.DefaultInt(13)
+            @Config.Comment("default: copper")
+            @Config.RangeInt(min = 1, max = 100)
+            public int harvestLevel1;
 
-            @Config.Comment("IDs of the TiC effective pickaxe material corresponding to the harvest level.\n"
-                    + "Note that the default values are tuned for GTNH Iguana tweaks (TiC itself only has the harvest level up to 6)")
-            public static class TinkersConstruct {
+            @Config.DefaultInt(2)
+            @Config.Comment("default: iron")
+            @Config.RangeInt(min = 1, max = 100)
+            public int harvestLevel2;
 
-                @Config.DefaultInt(0)
-                @Config.Comment("default: wood")
-                public int harvestLevel0;
+            @Config.DefaultInt(14)
+            @Config.Comment("default: tin")
+            @Config.RangeInt(min = 1, max = 100)
+            public int harvestLevel3;
 
-                @Config.DefaultInt(13)
-                @Config.Comment("default: copper")
-                public int harvestLevel1;
+            @Config.DefaultInt(16)
+            @Config.Comment("default: redstone")
+            @Config.RangeInt(min = 1, max = 100)
+            public int harvestLevel4;
 
-                @Config.DefaultInt(2)
-                @Config.Comment("default: iron")
-                public int harvestLevel2;
+            @Config.DefaultInt(6)
+            @Config.Comment("default: obsidian")
+            @Config.RangeInt(min = 1, max = 100)
+            public int harvestLevel5;
 
-                @Config.DefaultInt(14)
-                @Config.Comment("default: tin")
-                public int harvestLevel3;
+            @Config.DefaultInt(11)
+            @Config.Comment("default: ardite")
+            @Config.RangeInt(min = 1, max = 100)
+            public int harvestLevel6;
 
-                @Config.DefaultInt(16)
-                @Config.Comment("default: redstone")
-                public int harvestLevel4;
+            @Config.DefaultInt(10)
+            @Config.Comment("default: cobalt")
+            @Config.RangeInt(min = 1, max = 100)
+            public int harvestLevel7;
 
-                @Config.DefaultInt(6)
-                @Config.Comment("default: obsidian")
-                public int harvestLevel5;
+            @Config.DefaultInt(12)
+            @Config.Comment("default: manyullyn")
+            @Config.RangeInt(min = 1, max = 100)
+            public int harvestLevel8;
 
-                @Config.DefaultInt(11)
-                @Config.Comment("default: ardite")
-                public int harvestLevel6;
+            @Config.DefaultInt(12)
+            @Config.Comment("default: manyullynplus")
+            @Config.RangeInt(min = 1, max = 100)
+            public int harvestLevel9;
+        }
 
-                @Config.DefaultInt(10)
-                @Config.Comment("default: cobalt")
-                public int harvestLevel7;
-
-                @Config.DefaultInt(12)
-                @Config.Comment("default: manyullyn")
-                public int harvestLevel8;
-
-                @Config.DefaultInt(12)
-                @Config.Comment("default: manyullynplus")
-                public int harvestLevel9;
-            }
+        @Config.LangKey("provider.wdmla.harvestability.icon")
+        public static final class Icon {
+            @Config.LangKey("option.wdmla.harvestability.currentlyHarvestable.icon")
+            @Config.DefaultBoolean(true)
+            @Config.Comment("Shows the line of Currently Harvestable icons")
+            public boolean currentlyHarvestableIcon;
 
             @Config.LangKey("option.wdmla.harvestability.currentlyharvestable.string")
             @Config.DefaultString("✔")
@@ -379,26 +344,76 @@ public class PluginsConfig {
             @Config.Comment("The icon after an item represents that the item can be harvested by silk touch")
             public String silkTouchabilityItem;
 
-            @Config.LangKey("option.wdmla.harvestability.harvestlevelnum")
-            @Config.DefaultBoolean(false)
-            @Config.Comment("Shows the Harvest Level number text without enabling legacy mode")
-            public boolean modernHarvestLevelNum;
-
-            @Config.LangKey("option.wdmla.harvestability.currentlyHarvestable.icon")
-            @Config.DefaultBoolean(true)
-            public boolean modernCurrentlyHarvestableIcon;
-
             @Config.LangKey("option.wdmla.harvestability.effectivetool.icon")
             @Config.DefaultBoolean(true)
-            public boolean modernEffectiveToolIcon;
+            @Config.Comment("Shows the Effective Tool icon along with Currently Harvestable icon")
+            public boolean effectiveToolIcon;
 
             @Config.LangKey("option.wdmla.harvestability.shearability.icon")
             @Config.DefaultBoolean(true)
-            public boolean modernShowShearabilityIcon;
+            @Config.Comment("Shows the Shearability icon when holding the respective tool")
+            public boolean showShearabilityIcon;
 
             @Config.LangKey("option.wdmla.harvestability.silktouchability.icon")
             @Config.DefaultBoolean(true)
-            public boolean modernShowSilkTouchabilityIcon;
+            @Config.Comment("Shows the Silktouchabiity icon when holding the respective tool")
+            public boolean showSilkTouchabilityIcon;
+
+            @Config.LangKey("option.wdmla.harvestability.coloriconwitheffectiveness")
+            @Config.DefaultBoolean(false)
+            @Config.Comment("Colors the Currently Harvestable icon with held tool effectiveness")
+            public boolean colorIconWithEffectiveness;
+
+            @Config.LangKey("option.wdmla.harvestability.always.show.additional.tools")
+            @Config.DefaultBoolean(false)
+            @Config.Comment("Shows additional tools like Silktouchabiity even if you aren't holding the respective tool")
+            public boolean alwaysShowAdditionalTools;
+        }
+
+        @Config.LangKey("provider.wdmla.harvestability.text")
+        public static final class Text {
+            @Config.LangKey("option.wdmla.harvestability.harvestlevelnum")
+            @Config.DefaultBoolean(false)
+            @Config.Comment("Shows the Harvest Level number as text")
+            public boolean harvestLevelNum;
+
+            @Config.LangKey("option.wdmla.harvestability.harvestlevelname")
+            @Config.DefaultBoolean(false)
+            @Config.Comment("Shows the Harvest Level name as text, if it is different than number")
+            public boolean harvestLevelName;
+
+            @Config.LangKey("option.wdmla.harvestability.effectivetool.line")
+            @Config.DefaultBoolean(false)
+            @Config.Comment("Shows the Effective Tool line")
+            public boolean effectiveToolLine;
+
+            @Config.LangKey("option.wdmla.harvestability.currentlyharvestable.line")
+            @Config.DefaultBoolean(false)
+            @Config.Comment("Shows the Currently Harvestable line")
+            public boolean currentlyHarvestableLine;
+        }
+
+        @Config.LangKey("provider.wdmla.harvestability.condition")
+        public static final class Condition {
+            @Config.LangKey("option.wdmla.harvestability.oresonly")
+            @Config.DefaultBoolean(false)
+            @Config.Comment("Only shows tooltip when the block is ore")
+            public boolean oresOnly;
+
+            @Config.LangKey("option.wdmla.harvestability.textdetailsonly")
+            @Config.DefaultBoolean(false)
+            @Config.Comment("Only shows the text part of the tooltip when pressing details key")
+            public boolean textDetailsOnly;
+
+            @Config.LangKey("option.wdmla.harvestability.unharvestableonly")
+            @Config.DefaultBoolean(false)
+            @Config.Comment("Only shows tooltip when the block cannot be harvested")
+            public boolean unHarvestableOnly;
+
+            @Config.LangKey("option.wdmla.harvestability.toolrequiredonly")
+            @Config.DefaultBoolean(false)
+            @Config.Comment("Only shows tooltip when a tool is required to harvest")
+            public boolean toolRequiredOnly;
         }
     }
 

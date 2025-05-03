@@ -1,4 +1,4 @@
-package com.gtnewhorizons.wdmla.test;
+package com.gtnewhorizons.wdmla.example;
 
 import java.util.Arrays;
 import java.util.List;
@@ -21,7 +21,7 @@ import com.gtnewhorizons.wdmla.api.view.ItemView;
 import com.gtnewhorizons.wdmla.api.view.ViewGroup;
 import com.gtnewhorizons.wdmla.impl.ui.component.TextComponent;
 
-public enum TestItemStorageProvider
+public enum ExampleItemStorageProvider
         implements IServerExtensionProvider<ItemStack>, IClientExtensionProvider<ItemStack, ItemView> {
 
     INSTANCE;

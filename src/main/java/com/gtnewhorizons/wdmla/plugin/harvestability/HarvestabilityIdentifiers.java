@@ -10,7 +10,15 @@ public class HarvestabilityIdentifiers {
 
     // provider Uid
     public static final ResourceLocation HARVESTABILITY = Harvestability("modern");
-    public static final ResourceLocation LEGACY_HARVESTABILITY = Harvestability("legacy");
+//    public static final ResourceLocation LEGACY_HARVESTABILITY = Harvestability("legacy");
+
+    // handler uid
+    public static final ResourceLocation BASE_LOGIC = Harvestability("base_logic");
+    public static final ResourceLocation VANILLA = Harvestability("vanilla");
+    public static final ResourceLocation LIQUID = Harvestability("liquid");
+    public static final ResourceLocation GREGTECH = Harvestability("gregtech");
+    public static final ResourceLocation TINKERSCONSTRUCT = Harvestability("tinkersconstruct");
+    public static final ResourceLocation IGUANATWEAKS = Harvestability("iguanatweaks");
 
     public static final String NAMESPACE_HARVESTABILITY = "harvestability";
 

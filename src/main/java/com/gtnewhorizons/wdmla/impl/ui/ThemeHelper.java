@@ -251,7 +251,7 @@ public class ThemeHelper {
      * Constructs a component to display an ItemStack in "(icon) 3x Apple" format
      */
     public IComponent itemStackFullLine(ItemStack stack) {
-        String strippedName = DisplayUtil.itemDisplayNameShortFormatted(stack);
+        String strippedName = DisplayUtil.stripSymbols(DisplayUtil.itemDisplayNameShortFormatted(stack));
         TextComponent name = new TextComponent(strippedName);
         ITooltip hPanel = new HPanelComponent().child(smallItem(stack));
         String s = String.valueOf(stack.stackSize); // TODO: unit format

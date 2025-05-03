@@ -33,8 +33,8 @@ import com.gtnewhorizons.wdmla.plugin.PluginScanner;
 import com.gtnewhorizons.wdmla.plugin.harvestability.MissingHarvestInfo;
 import com.gtnewhorizons.wdmla.plugin.universal.ItemCollector;
 import com.gtnewhorizons.wdmla.plugin.universal.ItemIterator;
-import com.gtnewhorizons.wdmla.test.TestMode;
-import com.gtnewhorizons.wdmla.test.TestPlugin;
+import com.gtnewhorizons.wdmla.example.TestMode;
+import com.gtnewhorizons.wdmla.example.ExamplePlugin;
 
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -91,7 +91,7 @@ public class CommonProxy {
             plugin.register(registration);
         }
         if (WDMla.isDevEnv() && (WDMla.testMode == TestMode.WDMla || WDMla.testMode == TestMode.PACKET)) {
-            new TestPlugin().register(registration);
+            new ExamplePlugin().register(registration);
         }
     }
 
@@ -100,7 +100,7 @@ public class CommonProxy {
             plugin.registerClient(registration);
         }
         if (WDMla.isDevEnv() && (WDMla.testMode == TestMode.WDMla || WDMla.testMode == TestMode.PACKET)) {
-            new TestPlugin().registerClient(registration);
+            new ExamplePlugin().registerClient(registration);
         }
     }
 

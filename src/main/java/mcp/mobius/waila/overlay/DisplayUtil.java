@@ -111,7 +111,7 @@ public class DisplayUtil {
 
     /**
      * Gets the first line of item tooltip.<br>
-     * Changes from Waila: The name will be formatted automatically!<br>
+     * Changes from Waila: The name will be formatted(stripped) automatically!<br>
      *
      * @param itemstack ItemStack that has custom tooltip
      * @return formatted display name
@@ -124,7 +124,7 @@ public class DisplayUtil {
     /**
      * Gets the first line of item tooltip.<br>
      *
-     * @deprecated This will return full length item name which may fill the whole screen.
+     * @deprecated This will return full length item name which may fill the whole screen in certain situation.
      * @param itemstack ItemStack that has custom tooltip
      * @return display name
      */

@@ -1,4 +1,4 @@
-package com.gtnewhorizons.wdmla.test;
+package com.gtnewhorizons.wdmla.example;
 
 import static com.gtnewhorizons.wdmla.impl.ui.component.TooltipComponent.DEFAULT_PROGRESS_DESCRIPTION_PADDING;
 
@@ -26,7 +26,7 @@ import com.gtnewhorizons.wdmla.impl.ui.component.VPanelComponent;
 import com.gtnewhorizons.wdmla.impl.ui.sizer.Padding;
 import com.gtnewhorizons.wdmla.impl.ui.style.ProgressStyle;
 
-public enum TestThemeBlockProvider implements IBlockComponentProvider {
+public enum ExampleThemeBlockProvider implements IBlockComponentProvider {
 
     INSTANCE;
 

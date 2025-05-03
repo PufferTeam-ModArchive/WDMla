@@ -13,12 +13,12 @@ public final class Identifiers {
     public static final ResourceLocation ROOT = Core("root");
 
     public static final ResourceLocation ITEM_ICON = Core("item_icon");
-    public static final ResourceLocation ITEM_NAME_ROW = Core("item_name_row");
     public static final ResourceLocation ITEM_NAME = Core("item_name");
     public static final ResourceLocation ENTITY = Core("entity");
     public static final ResourceLocation ENTITY_NAME = Core("entity_name");
     public static final ResourceLocation MOD_NAME = Core("mod_name");
     public static final ResourceLocation BLOCK_FACE = Core("block_face");
+    public static final ResourceLocation TARGET_NAME_ROW = Core("target_name_row");
 
     // sprite location
     public static final ResourceLocation FURNACE_PATH = new ResourceLocation("waila", "textures/sprites.png");

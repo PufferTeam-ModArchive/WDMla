@@ -20,19 +20,19 @@ public enum GrowthRateProvider implements IBlockComponentProvider {
     public void appendTooltip(ITooltip tooltip, BlockAccessor accessor) {
         boolean iscrop = BlockCrops.class.isInstance(accessor.getBlock()); // Done to cover all inheriting mods
         if (iscrop || accessor.getBlock() == Blocks.melon_stem || accessor.getBlock() == Blocks.pumpkin_stem) {
-            float growthValue = (accessor.getMetadata() / 7.0F) * 100.0F;
+            float growthValue = (accessor.getMetadata() / 7.0F);
             appendGrowthRate(tooltip, growthValue);
         } else if (accessor.getBlock() == Blocks.cocoa) {
-            float growthValue = ((accessor.getMetadata() >> 2) / 2.0F) * 100.0F;
+            float growthValue = ((accessor.getMetadata() >> 2) / 2.0F);
             appendGrowthRate(tooltip, growthValue);
         } else if (accessor.getBlock() == Blocks.nether_wart) {
-            float growthValue = (accessor.getMetadata() / 3.0F) * 100.0F;
+            float growthValue = (accessor.getMetadata() / 3.0F);
             appendGrowthRate(tooltip, growthValue);
         }
     }
 
     public void appendGrowthRate(ITooltip tooltip, float growthValue) {
-        if (growthValue < 100.0) {
+        if (growthValue < 1) {
             tooltip.child(
                     ThemeHelper.INSTANCE
                             .value(

@@ -1,5 +1,6 @@
 package com.gtnewhorizons.wdmla.impl.ui.drawable;
 
+import com.gtnewhorizons.wdmla.impl.ObjectDataCenter;
 import org.jetbrains.annotations.NotNull;
 
 import com.gtnewhorizons.wdmla.api.ui.ColorPalette;
@@ -44,7 +45,9 @@ public enum BreakProgressDrawable implements IDrawable {
             }
         }
 
-        int color = progressAlpha.apply(ColorPalette.BREAK_PROGRESS_DEFAULT); // TODO: change color with harvestability
+        int color = ObjectDataCenter.canCurrentTargetBeHarvested() ?
+                progressAlpha.apply(ColorPalette.BREAK_PROGRESS_DEFAULT)
+                : progressAlpha.apply(ColorPalette.BREAK_PROGRESS_FAILURE);
 
         if (General.breakProgress.position == General.BreakProgress.Position.BOTTOM) {
             area = new Area(area.getX(), area.getEY(), area.getW(), area.getH());
