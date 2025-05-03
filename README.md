@@ -1,30 +1,40 @@
 # WDMla
 **What DreamMaster looks at** is what you look at<br>
-Still in alpha, api is subject to change
+The current state of the mod:<br>
+![buggy](image/buggy.png)
 
 # Main Features
 - Allows rich non-text expression like item, entity, progress bar
-- Backported many code features from Jade including new and fast registration system
-- Backported powerful component system from The One Probe, makes layout creation more flexible
-- Better config screen and options
-- Rewritten internal tooltips includes WailaHarvestability, Wawla (WailaPlugins is planned)
-- Achieved almost full backward compatibility by keeping legacy Waila api
+- 3D block and entity icons!
 
-# Required Dependencies
-- [GTNHLib](https://github.com/GTNewHorizons/GTNHLib/releases/latest)  
-No, NEI is no longer required
+![smeltery.gif](image/smeltery.gif)
+
+- Backported many code features from Jade mod including new and fast registration system
+- 2D layout codebase makes layout creation more flexible (was using ones from The One Probe, slowly rewriting to original)
+- Better config screen and options
+- Now includes features from WailaHarvestability and Wawla (both are reimplemented, WailaPlugins is planned)
+
+![water.png](image/water.png)
+
+- Achieved almost full backward compatibility by keeping legacy Waila api
 
 # Supported mods
 - almost every mods that Waila supports
 - almost every mods that supports Waila
 - And more...?
 
-# Permanent Incompatibilities
+# Install step
+Remove
+
 - Waila (bundled)
 - Waila Harvestability (bundled)
 
+from your mods folder, than throw [GTNHLib](https://github.com/GTNewHorizons/GTNHLib/releases/latest) and this mod into it<br>
+Your Waila config will be applied to WDMla automatically.<br>
+No, NEI is no longer required
+
 # Partial Incompatibilities
-- Wawla -> required to disable some configs of overlapped features
+- Wawla -> required to disable most configs due to feature overlapping
   - wawla.harvest.showTool
   - wawla.harvest.showHarvest
   - wawla.harvest.showTier
@@ -62,4 +72,4 @@ No, NEI is no longer required
 - [Refined Storage 2](https://github.com/refinedmods/refinedstorage2)
   - Uses some ui icons under [MIT license](https://github.com/refinedmods/refinedstorage2/blob/develop/LICENSE.md)
 
-<!--Full Changelog from GTNH Waila: https://github.com/Quarri6343/Wdmla/compare/2f738bc...master-->
+How far did we progress?: https://github.com/Quarri6343/Wdmla/compare/2f738bc...master
