@@ -120,6 +120,7 @@ public class VanillaPlugin implements IWDMlaPlugin {
         registration.registerBlockComponent(CauldronProvider.INSTANCE, BlockCauldron.class);
         registration.registerBlockComponent(SnowLayerProvider.INSTANCE, BlockSnow.class);
         registration.registerBlockComponent(EndPortalHeaderProvider.INSTANCE, BlockEndPortal.class);
+        registration.registerBlockComponent(HopperProvider.INSTANCE, BlockHopper.class);
 
         registration.registerEntityComponent(PetProvider.INSTANCE, EntityTameable.class);
         registration.registerEntityComponent(AnimalProvider.INSTANCE, EntityAnimal.class);
@@ -150,6 +151,7 @@ public class VanillaPlugin implements IWDMlaPlugin {
         registration.registerBlockDataProvider(JukeboxProvider.INSTANCE, BlockJukebox.class);
         registration.registerBlockDataProvider(MobSpawnerProvider.INSTANCE, BlockMobSpawner.class);
         registration.registerBlockDataProvider(NoteBlockProvider.INSTANCE, BlockNote.class);
+        registration.registerBlockDataProvider(HopperProvider.INSTANCE, BlockHopper.class);
 
         registration.registerBlockDataProvider(TECustomNameHeaderProvider.INSTANCE, BlockChest.class);
         registration.registerBlockDataProvider(TECustomNameHeaderProvider.INSTANCE, BlockFurnace.class);

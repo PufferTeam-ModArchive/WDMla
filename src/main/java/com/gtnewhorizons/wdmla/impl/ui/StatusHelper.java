@@ -70,4 +70,10 @@ public class StatusHelper {
                                 .size(new Size(ICON_SIZE, ICON_SIZE)))
                 .child(ThemeHelper.INSTANCE.warning(StatCollector.translateToLocal("hud.msg.wdmla.insufficient.fuel")));
     }
+
+    public IComponent locked() {
+        return new HPanelComponent().child(
+                        new IconComponent(WDMlaUIIcons.LOCK, WDMlaUIIcons.LOCK.texPath).size(new Size(ICON_SIZE / 1.2f, ICON_SIZE)))
+                .child(ThemeHelper.INSTANCE.info(StatCollector.translateToLocal("hud.msg.wdmla.locked")));
+    }
 }

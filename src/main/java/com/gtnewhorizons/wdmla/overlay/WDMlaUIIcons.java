@@ -1,10 +1,9 @@
 package com.gtnewhorizons.wdmla.overlay;
 
-import static com.gtnewhorizons.wdmla.api.Identifiers.FURNACE_PATH;
-import static com.gtnewhorizons.wdmla.api.Identifiers.RS2_ICON_PATH;
-
 import net.minecraft.util.IIcon;
 import net.minecraft.util.ResourceLocation;
+
+import static com.gtnewhorizons.wdmla.api.Identifiers.*;
 
 public enum WDMlaUIIcons implements IIcon {
 
@@ -17,7 +16,11 @@ public enum WDMlaUIIcons implements IIcon {
     PAUSE(15, 15, 12, 12, 42, 42, RS2_ICON_PATH),
     SET(29, 15, 12, 12, 42, 42, RS2_ICON_PATH),
     START(2, 29, 10, 12, 42, 42, RS2_ICON_PATH),
-    WARNING(15, 29, 10, 10, 42, 42, RS2_ICON_PATH),;
+    WARNING(15, 29, 10, 10, 42, 42, RS2_ICON_PATH),
+    LOCK(0,0,10, 12, 10, 12, LOCK_PATH),
+    // spotless:off
+    ;
+    // spotless:on
 
     public final int texWidth;
     public final int texHeight;

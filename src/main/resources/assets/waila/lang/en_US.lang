@@ -134,6 +134,7 @@ hud.msg.wdmla.insufficient.energy=Insufficient Energy
 hud.msg.wdmla.insufficient.fuel=Insufficient Fuel
 hud.msg.wdmla.near.water=Near Water
 hud.msg.wdmla.cannot.hoe=Cannot Hoe
+hud.msg.wdmla.locked=Locked
 
 # dummy tooltip
 hud.msg.wdmla.cfg.dummy.1=Hover over anything in game

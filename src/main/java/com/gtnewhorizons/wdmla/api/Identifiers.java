@@ -23,6 +23,7 @@ public final class Identifiers {
     // sprite location
     public static final ResourceLocation FURNACE_PATH = new ResourceLocation("waila", "textures/sprites.png");
     public static final ResourceLocation RS2_ICON_PATH = new ResourceLocation("waila", "textures/rs2.png");
+    public static final ResourceLocation LOCK_PATH = new ResourceLocation("waila", "textures/lock.png");
 
     // provider Uid
     public static final ResourceLocation DEFAULT_BLOCK = Core("default_block");
