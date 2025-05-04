@@ -4,7 +4,14 @@ import com.gtnewhorizons.wdmla.api.IWDMlaClientRegistration;
 import com.gtnewhorizons.wdmla.api.IWDMlaCommonRegistration;
 import com.gtnewhorizons.wdmla.api.IWDMlaPlugin;
 import com.gtnewhorizons.wdmla.api.WDMlaPlugin;
+import com.gtnewhorizons.wdmla.plugin.universal.ItemStorageProvider;
+import com.gtnewhorizons.wdmla.plugin.vanilla.FurnaceProvider;
+import com.gtnewhorizons.wdmla.plugin.vanilla.HopperProvider;
+import com.gtnewhorizons.wdmla.plugin.vanilla.RedstoneStateProvider;
 import mods.natura.blocks.crops.CropBlock;
+import mods.natura.blocks.overrides.NetherLever;
+import mods.natura.blocks.tech.BlazeHopper;
+import mods.natura.blocks.tech.NetherrackFurnaceBlock;
 import mods.natura.blocks.trees.NLeaves;
 import mods.natura.blocks.trees.NLeavesDark;
 import mods.natura.blocks.trees.NLeavesNocolor;
@@ -16,7 +23,7 @@ public class NaturaPlugin implements IWDMlaPlugin {
 
     @Override
     public void register(IWDMlaCommonRegistration registration) {
-
+        registration.registerBlockDataProvider(FurnaceProvider.INSTANCE, NetherrackFurnaceBlock.class);
     }
 
     @Override
@@ -27,6 +34,7 @@ public class NaturaPlugin implements IWDMlaPlugin {
         registration.registerBlockComponent(NaturaLeavesProvider.INSTANCE, NLeavesNocolor.class);
         registration.registerBlockComponent(NaturaLeavesProvider.INSTANCE, NLeavesDark.class);
         registration.registerBlockComponent(NaturaLeavesProvider.INSTANCE, OverworldLeaves.class);
+        registration.registerBlockComponent(FurnaceProvider.INSTANCE, NetherrackFurnaceBlock.class);
     }
 
     public static ResourceLocation path(String path) {

@@ -1,7 +1,9 @@
 package com.gtnewhorizons.wdmla.plugin.vanilla;
 
 import net.minecraft.block.Block;
-import net.minecraft.init.Blocks;
+import net.minecraft.block.BlockLever;
+import net.minecraft.block.BlockRedstoneComparator;
+import net.minecraft.block.BlockRedstoneRepeater;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 
@@ -22,7 +24,7 @@ public enum RedstoneStateProvider implements IBlockComponentProvider {
     public void appendTooltip(ITooltip tooltip, BlockAccessor accessor) {
         Block block = accessor.getBlock();
 
-        if (block == Blocks.lever && PluginsConfig.vanilla.redstoneState.showLeverState) {
+        if (block instanceof BlockLever && PluginsConfig.vanilla.redstoneState.showLeverState) {
             IComponent redstoneOn = (accessor.getMetadata() & 8) == 0
                     ? ThemeHelper.INSTANCE.failure(StatCollector.translateToLocal("hud.msg.wdmla.off"))
                     : ThemeHelper.INSTANCE.success(StatCollector.translateToLocal("hud.msg.wdmla.on"));
@@ -30,7 +32,7 @@ public enum RedstoneStateProvider implements IBlockComponentProvider {
                     new HPanelComponent()
                             .text(String.format("%s: ", StatCollector.translateToLocal("hud.msg.wdmla.state")))
                             .child(redstoneOn).tag(VanillaIdentifiers.REDSTONE_STATE));
-        } else if (((block == Blocks.unpowered_repeater) || (block == Blocks.powered_repeater))
+        } else if (block instanceof BlockRedstoneRepeater
                 && PluginsConfig.vanilla.redstoneState.showRepeaterDelay) {
                     int tick = (accessor.getMetadata() >> 2) + 1;
                     tooltip.child(
@@ -40,7 +42,7 @@ public enum RedstoneStateProvider implements IBlockComponentProvider {
                                             TimeFormattingPattern.ALWAYS_TICK.tickFormatter.apply(tick))
                                     .tag(VanillaIdentifiers.REDSTONE_STATE));
                 } else
-            if (((block == Blocks.unpowered_comparator) || (block == Blocks.powered_comparator))
+            if ((block instanceof BlockRedstoneComparator)
                     && PluginsConfig.vanilla.redstoneState.showComparatorMode) {
                         String mode = ((accessor.getMetadata() >> 2) & 1) == 0
                                 ? StatCollector.translateToLocal("hud.msg.wdmla.comparator")
