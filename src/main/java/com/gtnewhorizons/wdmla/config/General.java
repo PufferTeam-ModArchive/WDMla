@@ -58,6 +58,12 @@ public class General {
     @Config.Comment("Always put harvest / interaction icons at the right top corner of default block info")
     public static boolean alignIconRightTop;
 
+    @Config.LangKey("option.wdmla.general.override.waila.tooltips")
+    @Config.DefaultBoolean(true)
+    @Config.Comment("Overrides Waila addons tooltips if it is already supported by WDMla")
+    @Config.RequiresMcRestart
+    public static boolean overrideWailaTooltips;
+
     @Config.Comment("Text color for the custom theme. \n" + "See general category for the default text color.")
     @Config.LangKey("option.wdmla.textcolor.category")
     public static class TextColor {

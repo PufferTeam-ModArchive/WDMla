@@ -7,7 +7,7 @@ dependencies {
     compileOnly('com.github.GTNewHorizons:HungerOverhaul:1.1.0-GTNH:dev')
     compileOnly('com.github.GTNewHorizons:harvestcraft:1.3.1-GTNH:dev')
     compileOnly("com.github.GTNewHorizons:TinkersConstruct:1.13.21-GTNH:dev")
-//    compileOnly("com.github.GTNewHorizons:Natura:2.8.7:dev")
+    compileOnly("com.github.GTNewHorizons:Natura:2.8.7:dev")
     compileOnly("com.github.GTNewHorizons:ironchest:6.1.2:dev")
 //    compileOnly fileTree(dir: 'run/mods', include: ['blockrenderer*.jar'])
 

@@ -276,6 +276,7 @@ option.wdmla.general.previewincfg=Preview in Config
 option.wdmla.general.customnameoverride=Custom Name Override
 option.wdmla.general.maxnamelengthpixel=Max Name Length (Pixel)
 option.wdmla.general.align.icon.right.top=Align Icons at Right Top Corner
+option.wdmla.general.override.waila.tooltips=Override Waila Tooltips
 
 option.wdmla.textcolor.category=Text Colors
 option.wdmla.general.textcolor.info=Information
