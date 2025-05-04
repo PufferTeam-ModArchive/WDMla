@@ -8,6 +8,7 @@ import com.gtnewhorizons.wdmla.plugin.universal.ItemStorageProvider;
 import com.gtnewhorizons.wdmla.plugin.vanilla.FurnaceProvider;
 import com.gtnewhorizons.wdmla.plugin.vanilla.HopperProvider;
 import com.gtnewhorizons.wdmla.plugin.vanilla.RedstoneStateProvider;
+import mods.natura.blocks.crops.BerryBush;
 import mods.natura.blocks.crops.CropBlock;
 import mods.natura.blocks.overrides.NetherLever;
 import mods.natura.blocks.tech.BlazeHopper;
@@ -35,6 +36,7 @@ public class NaturaPlugin implements IWDMlaPlugin {
         registration.registerBlockComponent(NaturaLeavesProvider.INSTANCE, NLeavesDark.class);
         registration.registerBlockComponent(NaturaLeavesProvider.INSTANCE, OverworldLeaves.class);
         registration.registerBlockComponent(FurnaceProvider.INSTANCE, NetherrackFurnaceBlock.class);
+        registration.registerBlockComponent(BerryBushProvider.INSTANCE, BerryBush.class);
     }
 
     public static ResourceLocation path(String path) {
