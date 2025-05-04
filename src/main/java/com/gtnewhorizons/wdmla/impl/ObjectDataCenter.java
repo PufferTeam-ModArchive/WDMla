@@ -106,7 +106,7 @@ public final class ObjectDataCenter {
     /**
      * @return is ray cast result from different frames targeting the same object or not
      */
-    private static boolean equals(MovingObjectPosition mop1, MovingObjectPosition mop2) {
+    public static boolean equals(MovingObjectPosition mop1, MovingObjectPosition mop2) {
         if (mop1 != null && mop1.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK
                 && mop2 != null
                 && mop2.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK) {

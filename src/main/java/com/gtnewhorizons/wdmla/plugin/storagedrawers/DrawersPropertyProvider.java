@@ -1,0 +1,100 @@
+package com.gtnewhorizons.wdmla.plugin.storagedrawers;
+
+import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
+import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
+import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import com.gtnewhorizons.wdmla.impl.ObjectDataCenter;
+import com.gtnewhorizons.wdmla.impl.ui.StatusHelper;
+import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
+import com.gtnewhorizons.wdmla.impl.ui.component.HPanelComponent;
+import com.gtnewhorizons.wdmla.impl.ui.component.IconComponent;
+import com.gtnewhorizons.wdmla.impl.ui.component.VPanelComponent;
+import com.gtnewhorizons.wdmla.impl.ui.sizer.Size;
+import com.gtnewhorizons.wdmla.overlay.WDMlaUIIcons;
+import com.jaquadro.minecraft.storagedrawers.api.storage.attribute.LockAttribute;
+import com.jaquadro.minecraft.storagedrawers.block.tile.TileEntityDrawers;
+import com.jaquadro.minecraft.storagedrawers.core.ModItems;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.StatCollector;
+
+import static com.gtnewhorizons.wdmla.impl.ui.StatusHelper.ICON_SIZE;
+
+public enum DrawersPropertyProvider implements IBlockComponentProvider {
+    INSTANCE;
+
+    private BooleanHighlightTracker isLockedTracker;
+    private BooleanHighlightTracker isVoidTracker;
+    private BooleanHighlightTracker hasOwnerTracker;
+    private MovingObjectPosition lastPos;
+
+    @Override
+    public void appendTooltip(ITooltip tooltip, BlockAccessor accessor) {
+        if (!(accessor.getTileEntity() instanceof TileEntityDrawers drawers)) {
+            return;
+        }
+
+        boolean isLocked = drawers.isLocked(LockAttribute.LOCK_POPULATED);
+        boolean isVoid = drawers.isVoid();
+        boolean hasOwner = drawers.getOwner() != null;
+
+        if (!ObjectDataCenter.equals(accessor.getHitResult(), lastPos)) {
+            isLockedTracker = new BooleanHighlightTracker(isLocked);
+            isVoidTracker = new BooleanHighlightTracker(isVoid);
+            hasOwnerTracker = new BooleanHighlightTracker(hasOwner);
+        }
+        lastPos = accessor.getHitResult();
+
+        ITooltip panel = new HPanelComponent();
+        ITooltip detailedPanel = new VPanelComponent();
+        //TODO: add "X Locked" if isLocked is no longer enabled
+        if (isLockedTracker.update(isLocked) && isLocked) {
+            detailedPanel.child(StatusHelper.INSTANCE.locked());
+        }
+        else if (isLocked){
+            panel.child(new HPanelComponent().child(
+                    new IconComponent(WDMlaUIIcons.LOCK, WDMlaUIIcons.LOCK.texPath).size(new Size(ICON_SIZE, ICON_SIZE))));
+        }
+
+        if (isVoidTracker.update(isVoid) && isVoid) {
+            detailedPanel.child(StatusHelper.INSTANCE.voidOverflow());
+        }
+        else if (isVoid){
+            panel.child(new HPanelComponent().child(
+                    new IconComponent(WDMlaUIIcons.VOID, WDMlaUIIcons.VOID.texPath).size(new Size(ICON_SIZE, ICON_SIZE))));
+        }
+
+        if (hasOwnerTracker.update(hasOwner) && hasOwner) {
+            detailedPanel.child(new HPanelComponent().child(
+                            ThemeHelper.INSTANCE.smallItem(new ItemStack(ModItems.personalKey, 1)))
+                    .child(ThemeHelper.INSTANCE.info(StatCollector.translateToLocal("hud.msg.wdmla.access.protected"))));
+        }
+        else if (hasOwner){
+            panel.child(new HPanelComponent().child(
+                    ThemeHelper.INSTANCE.smallItem(new ItemStack(ModItems.personalKey, 1))));
+        }
+
+        if (panel.childrenSize() > 0) {
+            tooltip.child(panel);
+        }
+        if (detailedPanel.childrenSize() > 0) {
+            tooltip.child(detailedPanel);
+        }
+
+        // unused?
+        if (drawers.isSorting()) {
+            tooltip.text("sorting");
+        }
+    }
+
+    @Override
+    public ResourceLocation getUid() {
+        return StorageDrawersPlugin.path("property");
+    }
+
+    @Override
+    public int getDefaultPriority() {
+        return DrawersContentProvider.INSTANCE.getDefaultPriority() + 100;
+    }
+}

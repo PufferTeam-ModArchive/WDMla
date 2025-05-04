@@ -12,7 +12,8 @@ public class StorageDrawersPlugin  implements IWDMlaPlugin {
 
     @Override
     public void registerClient(IWDMlaClientRegistration registration) {
-        registration.registerBlockComponent(DrawersProvider.INSTANCE, BlockDrawers.class);
+        registration.registerBlockComponent(DrawersContentProvider.INSTANCE, BlockDrawers.class);
+        registration.registerBlockComponent(DrawersPropertyProvider.INSTANCE, BlockDrawers.class);
     }
 
     public static ResourceLocation path(String path) {

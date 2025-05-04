@@ -77,6 +77,10 @@ public class StatusHelper {
                 .child(ThemeHelper.INSTANCE.info(StatCollector.translateToLocal("hud.msg.wdmla.locked")));
     }
 
+    /**
+     * Indicates the input item/fluid is voided on overflow.
+     * This concept is shared between multiple storage mods (drawers, barrels, super chests...)
+     */
     public IComponent voidOverflow() {
         return new HPanelComponent().child(
                         new IconComponent(WDMlaUIIcons.VOID, WDMlaUIIcons.VOID.texPath).size(new Size(ICON_SIZE, ICON_SIZE)))
