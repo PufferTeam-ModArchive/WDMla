@@ -10,7 +10,8 @@ import cpw.mods.fml.common.versioning.DefaultArtifactVersion;
 import mcp.mobius.waila.Waila;
 
 /**
- * Mods list that WDMla has integration
+ * Mods list that WDMla has special integration<br>
+ * If you want to control the dependency on plugins, see {@link WDMlaPlugin}
  */
 @ApiStatus.Internal
 public enum Mods {

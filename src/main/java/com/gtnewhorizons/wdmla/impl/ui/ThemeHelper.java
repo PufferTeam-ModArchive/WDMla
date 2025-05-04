@@ -4,6 +4,7 @@ import static mcp.mobius.waila.api.SpecialChars.ITALIC;
 
 import java.util.List;
 
+import com.gtnewhorizons.wdmla.plugin.vanilla.VanillaIdentifiers;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -257,5 +258,28 @@ public class ThemeHelper {
         String s = String.valueOf(stack.stackSize); // TODO: unit format
         return hPanel.text(s).text(StatCollector.translateToLocal("hud.msg.wdmla.item.count") + StringUtils.EMPTY)
                 .child(name);
+    }
+
+    /**
+     * display any crop's growth value with percentage
+     * @param growthValue growth value (0 ~ 1)
+     */
+    public IComponent growthValue(float growthValue) {
+        if (growthValue < 1) {
+            return ThemeHelper.INSTANCE
+                    .value(
+                            StatCollector.translateToLocal("hud.msg.wdmla.growth"),
+                            FormatUtil.PERCENTAGE_STANDARD.format(growthValue))
+                    .tag(VanillaIdentifiers.GROWTH_RATE);
+        } else {
+            return new HPanelComponent()
+                    .text(String.format("%s: ", StatCollector.translateToLocal("hud.msg.wdmla.growth")))
+                    .child(
+                            ThemeHelper.INSTANCE.success(
+                                    String.format(
+                                            "%s",
+                                            StatCollector.translateToLocal("hud.msg.wdmla.mature"))))
+                    .tag(VanillaIdentifiers.GROWTH_RATE);
+        }
     }
 }
