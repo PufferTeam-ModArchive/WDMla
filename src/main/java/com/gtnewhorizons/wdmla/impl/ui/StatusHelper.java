@@ -16,7 +16,7 @@ public class StatusHelper {
 
     public static final StatusHelper INSTANCE = new StatusHelper();
 
-    private static final int ICON_SIZE = Minecraft.getMinecraft().fontRenderer.FONT_HEIGHT;
+    public static final int ICON_SIZE = Minecraft.getMinecraft().fontRenderer.FONT_HEIGHT;
 
     private StatusHelper() {
 
@@ -73,7 +73,13 @@ public class StatusHelper {
 
     public IComponent locked() {
         return new HPanelComponent().child(
-                        new IconComponent(WDMlaUIIcons.LOCK, WDMlaUIIcons.LOCK.texPath).size(new Size(ICON_SIZE / 1.2f, ICON_SIZE)))
+                        new IconComponent(WDMlaUIIcons.LOCK, WDMlaUIIcons.LOCK.texPath).size(new Size(ICON_SIZE, ICON_SIZE)))
                 .child(ThemeHelper.INSTANCE.info(StatCollector.translateToLocal("hud.msg.wdmla.locked")));
+    }
+
+    public IComponent voidOverflow() {
+        return new HPanelComponent().child(
+                        new IconComponent(WDMlaUIIcons.VOID, WDMlaUIIcons.VOID.texPath).size(new Size(ICON_SIZE, ICON_SIZE)))
+                .child(ThemeHelper.INSTANCE.info(StatCollector.translateToLocal("hud.msg.wdmla.void.overflow")));
     }
 }

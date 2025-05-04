@@ -18,6 +18,7 @@ public enum WDMlaUIIcons implements IIcon {
     START(2, 29, 10, 12, 42, 42, RS2_ICON_PATH),
     WARNING(15, 29, 10, 10, 42, 42, RS2_ICON_PATH),
     LOCK(0,0,10, 12, 10, 12, LOCK_PATH),
+    VOID(0,0,16, 16, 16, 16, VOID_PATH)
     // spotless:off
     ;
     // spotless:on

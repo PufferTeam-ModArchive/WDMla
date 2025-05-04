@@ -135,6 +135,9 @@ hud.msg.wdmla.insufficient.fuel=Insufficient Fuel
 hud.msg.wdmla.near.water=Near Water
 hud.msg.wdmla.cannot.hoe=Cannot Hoe
 hud.msg.wdmla.locked=Locked
+hud.msg.wdmla.no.access=No Access
+hud.msg.wdmla.access.protected=Access Protected
+hud.msg.wdmla.void.overflow=Void Overflow
 
 # dummy tooltip
 hud.msg.wdmla.cfg.dummy.1=Hover over anything in game
@@ -269,6 +272,8 @@ provider.wdmla.natura.berry.bush=Berry Bush
 provider.wdmla.natura.crop.header=Crop Header
 provider.wdmla.natura.growth.rate=Growth Rate
 provider.wdmla.natura.leaves=Leaves
+
+provider.wdmla.storagedrawers.drawers=Drawers Content
 
 # options
 
