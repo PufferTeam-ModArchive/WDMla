@@ -244,7 +244,7 @@ public class ThemeHelper {
      * 
      * @param itemStack Base ItemStack to display
      */
-    public IComponent smallItem(ItemStack itemStack) {
+    public ITooltip smallItem(ItemStack itemStack) {
         return new ItemComponent(itemStack).doDrawOverlay(false).size(new Size(ITEM_SIZE, ITEM_SIZE));
     }
 
