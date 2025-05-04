@@ -63,6 +63,10 @@ public class ProgressProvider<T extends Accessor> implements IComponentProvider<
             return;
         }
 
+        append(tooltip, groups);
+    }
+
+    public static void append(ITooltip tooltip, List<ClientViewGroup<ProgressView>> groups) {
         boolean renderGroup = groups.size() > 1 || groups.get(0).shouldRenderGroup();
         ClientViewGroup.tooltip(tooltip, groups, renderGroup, (theTooltip, group) -> {
             if (renderGroup && group.title != null) {

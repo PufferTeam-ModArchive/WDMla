@@ -22,6 +22,8 @@ public enum PluginScanner {
 
     public final List<IWDMlaPlugin> results = Lists.newArrayList();
 
+    public final List<String> blackListedRegistrationMethods = Lists.newArrayList();
+
     @SuppressWarnings("unchecked")
     public void scan(FMLPreInitializationEvent event) {
         Set<ASMData> datas = event.getAsmData().getAll(WDMlaPlugin.class.getName());
@@ -35,6 +37,10 @@ public enum PluginScanner {
             if (!allModsLoaded(deps)) {
                 Waila.log.info(String.format("skipped plugin %s loading: missing dependency", uid));
                 continue;
+            }
+            String overridingMethod = (String) annotationInfo.get("overridingRegistrationMethodName");
+            if (!Strings.isNullOrEmpty(overridingMethod)) {
+                blackListedRegistrationMethods.add(overridingMethod);
             }
 
             try {

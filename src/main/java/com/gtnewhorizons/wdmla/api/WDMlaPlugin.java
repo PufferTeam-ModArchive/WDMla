@@ -24,4 +24,10 @@ public @interface WDMlaPlugin {
      * Mod ID dependencies of the plugin
      */
     String[] dependencies() default {};
+
+    /**
+     * If the config is enabled, WDMla will disable this registration method provided by IMC message from the mod,<br>
+     * to avoid duplicated Waila tooltips implementation registered.
+     */
+    String overridingRegistrationMethodName() default "";
 }

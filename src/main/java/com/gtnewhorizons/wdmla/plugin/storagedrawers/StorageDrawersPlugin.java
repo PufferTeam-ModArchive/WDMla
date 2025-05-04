@@ -6,7 +6,8 @@ import com.gtnewhorizons.wdmla.api.WDMlaPlugin;
 import com.jaquadro.minecraft.storagedrawers.block.BlockDrawers;
 import net.minecraft.util.ResourceLocation;
 
-@WDMlaPlugin(uid = "StorageDrawers", dependencies = "StorageDrawers")
+@WDMlaPlugin(uid = "StorageDrawers", dependencies = "StorageDrawers",
+        overridingRegistrationMethodName = "com.jaquadro.minecraft.storagedrawers.integration.Waila.registerProvider")
 public class StorageDrawersPlugin  implements IWDMlaPlugin {
 
     @Override

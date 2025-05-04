@@ -111,6 +111,7 @@ hud.msg.wdmla.milk.cooldown=Milk Cooldown
 hud.msg.wdmla.must.surround=Must be Surrounded by %s
 hud.msg.wdmla.dirt.or.grass=Dirt or Grass Block
 hud.msg.wdmla.any.fluid=Any Fluid
+hud.msg.wdmla.stack.limit=Stack Limit
 
 # state
 hud.msg.wdmla.mature=Mature

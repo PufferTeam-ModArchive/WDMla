@@ -17,14 +17,13 @@ import mcp.mobius.waila.Waila;
 public enum Mods {
 
     CREATIVEBLOCKS("CreativeBlocks", null),
-    GREGTECH("gregtech", version -> !Loader.isModLoaded("gregapi")), // ProcessedVersion of GregTech is always
-                                                                     // "MC1.7.10"
+    // ProcessedVersion of GregTech is always "MC1.7.10"
+    GREGTECH("gregtech", version -> !Loader.isModLoaded("gregapi")),
     IGUANATWEAKS("IguanaTweaksTConstruct", null),
     TCONSTUCT("TConstruct", null),
     NOTENOUGHITEMS("NotEnoughItems",
             version -> new DefaultArtifactVersion("2.7.29-GTNH").compareTo(version) <= 0),
     FORGEMULTIPARTS("ForgeMultipart", null),
-    NATURA("Natura", null, "mods.natura.plugins.waila.WailaRegistrar.wailaCallback")
 
     //spotless: off
     ;
@@ -38,22 +37,10 @@ public enum Mods {
      */
     public final Predicate<ArtifactVersion> otherRequirement;
     private Boolean loaded;
-    /**
-     * If the config is enabled, WDMla will disable this registration method provided by IMC message from the mod,<br>
-     * to avoid duplicated tooltips implementation registered.
-     */
-    public final String blacklistRegistrationMethodName;
 
     Mods(String modID, Predicate<ArtifactVersion> otherRequirement) {
         this.modID = modID;
         this.otherRequirement = otherRequirement;
-        this.blacklistRegistrationMethodName = null;
-    }
-
-    Mods(String modID, Predicate<ArtifactVersion> otherRequirement, String blacklistRegistrationMethodName) {
-        this.modID = modID;
-        this.otherRequirement = otherRequirement;
-        this.blacklistRegistrationMethodName = blacklistRegistrationMethodName;
     }
 
     /**

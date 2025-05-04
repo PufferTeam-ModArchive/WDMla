@@ -2,8 +2,8 @@ package mcp.mobius.waila;
 
 import java.lang.reflect.Field;
 
-import com.gtnewhorizons.wdmla.api.Mods;
 import com.gtnewhorizons.wdmla.config.General;
+import com.gtnewhorizons.wdmla.plugin.PluginScanner;
 import net.minecraftforge.common.MinecraftForge;
 
 import org.apache.logging.log4j.LogManager;
@@ -113,7 +113,7 @@ public class Waila {
                                 imcMessage.getSender(),
                                 imcMessage.getStringValue()));
                 if (General.overrideWailaTooltips &&
-                        isRegistrationMethodBlacklisted(imcMessage.getSender(), imcMessage.getStringValue())) {
+                        isRegistrationMethodBlacklisted(imcMessage.getStringValue())) {
                     continue;
                 }
                 ModuleRegistrar.instance().addIMCRequest(imcMessage.getStringValue(), imcMessage.getSender());
@@ -121,14 +121,12 @@ public class Waila {
         }
     }
 
-    private boolean isRegistrationMethodBlacklisted(String sender, String method) {
-        for (Mods mod : Mods.values()) {
-            if (mod.modID.equals(sender)
-                    && mod.blacklistRegistrationMethodName != null && mod.blacklistRegistrationMethodName.equals(method)) {
+    private boolean isRegistrationMethodBlacklisted(String method) {
+        for (String blackListedRegistrationMethod : PluginScanner.INSTANCE.blackListedRegistrationMethods) {
+            if (blackListedRegistrationMethod.equals(method)) {
                 return true;
             }
         }
-
         return false;
     }
 }

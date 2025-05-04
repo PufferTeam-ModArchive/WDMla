@@ -14,7 +14,8 @@ import mods.natura.blocks.trees.NLeavesNocolor;
 import mods.natura.blocks.trees.OverworldLeaves;
 import net.minecraft.util.ResourceLocation;
 
-@WDMlaPlugin(uid = "Natura", dependencies = "Natura")
+@WDMlaPlugin(uid = "Natura", dependencies = "Natura",
+        overridingRegistrationMethodName = "mods.natura.plugins.waila.WailaRegistrar.wailaCallback")
 public class NaturaPlugin implements IWDMlaPlugin {
 
     @Override
