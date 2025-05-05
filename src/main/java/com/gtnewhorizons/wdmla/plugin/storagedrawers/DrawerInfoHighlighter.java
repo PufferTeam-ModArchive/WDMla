@@ -15,6 +15,8 @@ import com.gtnewhorizons.wdmla.impl.ui.sizer.Size;
 import com.gtnewhorizons.wdmla.impl.ui.style.PanelStyle;
 import com.gtnewhorizons.wdmla.impl.ui.style.RectStyle;
 import com.gtnewhorizons.wdmla.impl.ui.style.TextStyle;
+import com.gtnewhorizons.wdmla.util.Color;
+import com.gtnewhorizons.wdmla.util.FormatUtil;
 import com.jaquadro.minecraft.storagedrawers.api.storage.IDrawer;
 import mcp.mobius.waila.overlay.DisplayUtil;
 import net.minecraft.item.ItemStack;
@@ -42,83 +44,47 @@ public class DrawerInfoHighlighter {
         stackTracker = new HighlightTracker.ItemStack(stack);
     }
 
-    //TODO:item amount format
-    //TODO:time based highlight fade
     public IComponent update(IDrawer drawer) {
         ItemStack stack = drawer.getStoredItemPrototype();
         if (stack == null || stack.getItem() == null) {
             return updateEmpty();
         }
 
-        boolean highlightStacks = stackTracker.update(stack);
         int stackCount = drawer.getStoredItemCount() / drawer.getStoredItemStackSize();
         int remainder = drawer.getStoredItemCount() - (stackCount * drawer.getStoredItemStackSize());
+
+        boolean highlightStacks = stackTracker.update(stack);
         boolean highlightStackCount = stackCountTracker.update(stackCount) || highlightStacks;
         boolean highlightRemainder = remainderTracker.update(remainder) || highlightStacks;
 
+        String stackCountStr = FormatUtil.STANDARD.format(stackCount);
+        String remainderStr = FormatUtil.STANDARD.format(remainder);
         String displayName = DisplayUtil.stripSymbols(
                 DisplayUtil.itemDisplayNameShortFormatted(drawer.getStoredItemPrototype()));
+
+        float stackInterpolation = stackTracker.getInterpolation();
+
+        IComponent displayNameComponent = getHighlightComponent(displayName, highlightStacks, stackInterpolation);
+        IComponent stackCountComponent = getHighlightComponent(stackCountStr, highlightStackCount, stackCountTracker.getInterpolation());
+        IComponent remainderComponent= getHighlightComponent(remainderStr, highlightRemainder, remainderTracker.getInterpolation());
+
         ITooltip itemLine = new HPanelComponent();
-        if (highlightStacks) {
-            itemLine.child(ThemeHelper.INSTANCE.info(displayName + " ["));
-        }
-        else {
-            itemLine.text(displayName + " [");
-        }
+        itemLine.child(displayNameComponent);
+        itemLine.child(getHighlightComponent(" [", highlightStacks, stackInterpolation));
 
         if (stackCount > 0 && remainder > 0) {
-            if (highlightStackCount) {
-                itemLine.child(ThemeHelper.INSTANCE.info(String.valueOf(stackCount)));
-            }
-            else {
-                itemLine.text(String.valueOf(stackCount));
-            }
-            if (highlightStacks) {
-                itemLine.child(ThemeHelper.INSTANCE.info("x" + drawer.getStoredItemStackSize() + " + "));
-            }
-            else {
-                itemLine.text("x" + drawer.getStoredItemStackSize() + " + ");
-            }
-            if (highlightRemainder) {
-                itemLine.child(ThemeHelper.INSTANCE.info(String.valueOf(remainder)));
-            }
-            else {
-                itemLine.text(String.valueOf(remainder));
-            }
-            if (highlightStacks) {
-                itemLine.child(ThemeHelper.INSTANCE.info("]"));
-            }
-            else {
-                itemLine.text("]");
-            }
+            itemLine.child(stackCountComponent);
+            itemLine.child(getHighlightComponent("x" + drawer.getStoredItemStackSize() + " + ", highlightStacks, stackInterpolation));
+            itemLine.child(remainderComponent);
+            itemLine.child(getHighlightComponent("]", highlightStacks, stackInterpolation));
         }
         else if (stackCount > 0) {
-            if (highlightStackCount) {
-                itemLine.child(ThemeHelper.INSTANCE.info(String.valueOf(stackCount)));
-            }
-            else {
-                itemLine.text(String.valueOf(stackCount));
-            }
-            if (highlightStacks) {
-                itemLine.child(ThemeHelper.INSTANCE.info("x" + drawer.getStoredItemStackSize() + "]"));
-            }
-            else {
-                itemLine.text("x" + drawer.getStoredItemStackSize() + "]");
-            }
+            itemLine.child(stackCountComponent);
+            itemLine.child(getHighlightComponent("x" + drawer.getStoredItemStackSize() + "]", highlightStacks, stackInterpolation));
         }
         else {
-            if (highlightRemainder) {
-                itemLine.child(ThemeHelper.INSTANCE.info(String.valueOf(remainder)));
-            }
-            else {
-                itemLine.text(String.valueOf(remainder));
-            }
-            if (highlightStacks) {
-                itemLine.child(ThemeHelper.INSTANCE.info("]"));
-            }
-            else {
-                itemLine.text("]");
-            }
+            itemLine.child(remainderComponent);
+            itemLine.child(getHighlightComponent("]", highlightStacks, stackInterpolation));
         }
         return itemLine;
     }
@@ -128,17 +94,26 @@ public class DrawerInfoHighlighter {
         stackCountTracker.update(0);
         remainderTracker.update(0);
         Theme theme = General.currentTheme.get();
+        float stackInterpolation = stackTracker.getInterpolation();
         return new HPanelComponent().style(new PanelStyle().alignment(ComponentAlignment.CENTER))
                 .child(new RectComponent()
-                        .style(new RectStyle().backgroundColor(highlightStacks ?
-                                theme.textColor(MessageType.INFO) : theme.textColor(MessageType.NORMAL)))
+                        .style(new RectStyle().backgroundColor(getInterpolationColor(stackInterpolation)))
                         .size(new Size(25, 1)))
-                .child(new TextComponent(StatCollector.translateToLocal("hud.msg.wdmla.empty")).scale(0.6f)
-                        .style(new TextStyle().color(highlightStacks ?
-                                theme.textColor(MessageType.INFO) : theme.textColor(MessageType.NORMAL))))
+                .child(getHighlightComponent(StatCollector.translateToLocal("hud.msg.wdmla.empty"),
+                        highlightStacks, stackInterpolation))
                 .child(new RectComponent()
-                        .style(new RectStyle().backgroundColor(highlightStacks ?
-                                theme.textColor(MessageType.INFO) : theme.textColor(MessageType.NORMAL)))
+                        .style(new RectStyle().backgroundColor(getInterpolationColor(stackInterpolation)))
                         .size(new Size(25, 1)));
+    }
+
+    private IComponent getHighlightComponent(String text, boolean doHighlight, float interpolation) {
+        return new TextComponent(text)
+                .style(doHighlight ? new TextStyle().color(getInterpolationColor(interpolation))
+                        : new TextStyle().color(General.currentTheme.get().textColors._default));
+    }
+
+    private int getInterpolationColor(float interpolation) {
+        return Color.setInterporation(General.currentTheme.get().textColors.info, General.currentTheme.get().textColors._default,
+                interpolation > 0.75f ? (interpolation - 0.75f) * 4 : 0f);
     }
 }

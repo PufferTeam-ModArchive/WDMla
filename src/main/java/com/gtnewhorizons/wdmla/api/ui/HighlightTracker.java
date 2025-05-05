@@ -1,5 +1,7 @@
 package com.gtnewhorizons.wdmla.api.ui;
 
+import net.minecraft.util.MathHelper;
+
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Objects;
@@ -7,7 +9,7 @@ import java.util.Objects;
 public class HighlightTracker<T> {
 
     private T currentValue;
-    private Instant lastUpdate = Instant.MIN;
+    private Instant lastUpdate = Instant.now().minus(DETAILED_DURATION);
     private static final Duration DETAILED_DURATION = Duration.ofMillis(1500);
 
     public HighlightTracker(T initValue) {
@@ -39,6 +41,12 @@ public class HighlightTracker<T> {
 
     public boolean isSame(T object1, T object2) {
         return Objects.equals(object1, object2);
+    }
+
+    public float getInterpolation() {
+        long elapsedMillis = Duration.between(lastUpdate, Instant.now()).toMillis();
+        long totalMillis = DETAILED_DURATION.toMillis();
+        return MathHelper.clamp_float((float)elapsedMillis / totalMillis, 0f, 1f);
     }
 
     public static class ItemStack extends HighlightTracker<net.minecraft.item.ItemStack> {

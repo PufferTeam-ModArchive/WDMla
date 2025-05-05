@@ -75,7 +75,6 @@ public enum DrawersContentProvider implements IBlockComponentProvider {
             }
 
             IComponent itemLine = tracker[i].update(drawer);
-            // Grass [1x64 + 22]
             tooltip.horizontal().child(ThemeHelper.INSTANCE.smallItem(stack)).child(itemLine);
         }
 
