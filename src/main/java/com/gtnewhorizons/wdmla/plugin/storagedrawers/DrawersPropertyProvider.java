@@ -3,6 +3,7 @@ package com.gtnewhorizons.wdmla.plugin.storagedrawers;
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
 import com.gtnewhorizons.wdmla.api.ui.HighlightState;
+import com.gtnewhorizons.wdmla.api.ui.HighlightTracker;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.impl.ObjectDataCenter;
 import com.gtnewhorizons.wdmla.impl.ui.StatusHelper;
@@ -26,9 +27,9 @@ import static com.gtnewhorizons.wdmla.impl.ui.StatusHelper.ICON_SIZE;
 public enum DrawersPropertyProvider implements IBlockComponentProvider {
     INSTANCE;
 
-    private BooleanHighlightTracker isLockedTracker;
-    private BooleanHighlightTracker isVoidTracker;
-    private BooleanHighlightTracker hasOwnerTracker;
+    private HighlightTracker<Boolean> isLockedTracker;
+    private HighlightTracker<Boolean> isVoidTracker;
+    private HighlightTracker<Boolean> hasOwnerTracker;
     private MovingObjectPosition lastPos;
 
     @Override
@@ -42,9 +43,9 @@ public enum DrawersPropertyProvider implements IBlockComponentProvider {
         boolean hasOwner = drawers.getOwner() != null;
 
         if (!ObjectDataCenter.equals(accessor.getHitResult(), lastPos)) {
-            isLockedTracker = new BooleanHighlightTracker(isLocked);
-            isVoidTracker = new BooleanHighlightTracker(isVoid);
-            hasOwnerTracker = new BooleanHighlightTracker(hasOwner);
+            isLockedTracker = new HighlightTracker<>(isLocked);
+            isVoidTracker = new HighlightTracker<>(isVoid);
+            hasOwnerTracker = new HighlightTracker<>(hasOwner);
         }
         lastPos = accessor.getHitResult();
 
