@@ -1,6 +1,5 @@
 package com.gtnewhorizons.wdmla.plugin.storagedrawers;
 
-import com.gtnewhorizons.wdmla.api.Identifiers;
 import com.gtnewhorizons.wdmla.api.accessor.Accessor;
 import com.gtnewhorizons.wdmla.api.provider.IClientExtensionProvider;
 import com.gtnewhorizons.wdmla.api.provider.IServerExtensionProvider;

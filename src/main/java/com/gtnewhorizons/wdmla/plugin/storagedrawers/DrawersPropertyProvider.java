@@ -38,6 +38,11 @@ public enum DrawersPropertyProvider implements IBlockComponentProvider {
             return;
         }
 
+        if (drawers.isSealed()) {
+            tooltip.child(ThemeHelper.INSTANCE.info(StatCollector.translateToLocal("hud.msg.wdmla.sealed")));
+            return;
+        }
+
         boolean isLocked = drawers.isLocked(LockAttribute.LOCK_POPULATED);
         boolean isVoid = drawers.isVoid();
         boolean hasOwner = drawers.getOwner() != null;

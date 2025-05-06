@@ -49,7 +49,7 @@ public enum DrawersContentProvider implements IBlockComponentProvider {
             }
 
             IDrawer drawer = drawerTile.getDrawer(i);
-            if (!ObjectDataCenter.equals(accessor.getHitResult(), lastPos)) {
+            if (!ObjectDataCenter.equals(accessor.getHitResult(), lastPos) || tracker[i] == null) {
                 tracker[i] = new DrawerInfoHighlighter(drawer);
             }
 
