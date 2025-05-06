@@ -5,9 +5,7 @@ import com.gtnewhorizons.wdmla.api.ui.ComponentAlignment;
 import com.gtnewhorizons.wdmla.api.ui.HighlightTracker;
 import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
-import com.gtnewhorizons.wdmla.api.ui.MessageType;
 import com.gtnewhorizons.wdmla.config.General;
-import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
 import com.gtnewhorizons.wdmla.impl.ui.component.HPanelComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.RectComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.TextComponent;
@@ -93,7 +91,6 @@ public class DrawerInfoHighlighter {
         boolean highlightStacks = stackTracker.update(null);
         stackCountTracker.update(0);
         remainderTracker.update(0);
-        Theme theme = General.currentTheme.get();
         float stackInterpolation = stackTracker.getInterpolation();
         return new HPanelComponent().style(new PanelStyle().alignment(ComponentAlignment.CENTER))
                 .child(new RectComponent()

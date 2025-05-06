@@ -40,6 +40,7 @@ import net.minecraft.block.BlockStoneSlab;
 import net.minecraft.block.BlockWoodSlab;
 import net.minecraft.entity.EntityMinecartCommandBlock;
 import net.minecraft.entity.boss.EntityDragonPart;
+import net.minecraft.entity.item.EntityEnderCrystal;
 import net.minecraft.entity.item.EntityFallingBlock;
 import net.minecraft.entity.item.EntityItemFrame;
 import net.minecraft.entity.item.EntityMinecartChest;
@@ -135,6 +136,8 @@ public class VanillaPlugin implements IWDMlaPlugin {
         registration.registerEntityComponent(MinecartCommandBlockProvider.INSTANCE, EntityMinecartCommandBlock.class);
         registration.registerEntityComponent(MinecartFurnaceProvider.INSTANCE, EntityMinecartFurnace.class);
         registration.registerEntityComponent(EnderDragonHeaderProvider.INSTANCE, EntityDragonPart.class);
+
+        registration.hideEntity(EntityEnderCrystal.class);
 
         registration.registerItemStorageClient(ItemFrameProvider.INSTANCE);
 

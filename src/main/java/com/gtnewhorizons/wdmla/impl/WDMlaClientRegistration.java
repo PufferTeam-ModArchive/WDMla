@@ -8,6 +8,7 @@ import java.util.Set;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+import com.google.common.collect.Sets;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
@@ -45,6 +46,9 @@ public class WDMlaClientRegistration implements IWDMlaClientRegistration {
     public final HierarchyLookup<IComponentProvider<BlockAccessor>> blockComponentProviders;
     public final HierarchyLookup<IComponentProvider<EntityAccessor>> entityComponentProviders;
     private final Set<IComponentProvider<?>> allProviders;
+
+    public final Set<Class<? extends Block>> hideBlocks = Sets.newHashSet();
+    public final Set<Class<? extends Entity>> hideEntities = Sets.newHashSet();
 
     public final Map<ResourceLocation, IClientExtensionProvider<ItemStack, ItemView>> itemStorageProviders = Maps
             .newHashMap();
@@ -103,6 +107,18 @@ public class WDMlaClientRegistration implements IWDMlaClientRegistration {
 
     public ImmutableSet<IComponentProvider<?>> getAllProvidersWithoutInfo() {
         return ImmutableSet.copyOf(allProviders);
+    }
+
+    @Override
+    public void hideBlock(Class<? extends Block> block) {
+        Objects.requireNonNull(block);
+        hideBlocks.add(block);
+    }
+
+    @Override
+    public void hideEntity(Class<? extends Entity> entity) {
+        Objects.requireNonNull(entity);
+        hideEntities.add(entity);
     }
 
     public List<HarvestHandler> getHarvestHandlers(Block block, Predicate<HarvestHandler> filter) {

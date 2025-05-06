@@ -5,6 +5,7 @@ import static mcp.mobius.waila.api.SpecialChars.ITALIC;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -131,16 +132,19 @@ public class WDMlaTickHandler {
 
         if (target.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK) {
             Block block = world.getBlock(target.blockX, target.blockY, target.blockZ);
-            TileEntity tileEntity = world.getTileEntity(target.blockX, target.blockY, target.blockZ);
-            int metadata = world.getBlockMetadata(target.blockX, target.blockY, target.blockZ);
-            ItemStack itemForm = RayTracing.instance().getIdentifierStack();
-            accessor = WDMlaClientRegistration.instance().blockAccessor().block(block).tileEntity(tileEntity)
-                    .meta(metadata).hit(target).itemForm(itemForm).requireVerification().build();
+            if (!WDMlaClientRegistration.instance().hideBlocks.contains(block.getClass())) {
+                TileEntity tileEntity = world.getTileEntity(target.blockX, target.blockY, target.blockZ);
+                int metadata = world.getBlockMetadata(target.blockX, target.blockY, target.blockZ);
+                ItemStack itemForm = RayTracing.instance().getIdentifierStack();
+                accessor = WDMlaClientRegistration.instance().blockAccessor().block(block).tileEntity(tileEntity)
+                        .meta(metadata).hit(target).itemForm(itemForm).requireVerification().build();
+            }
         } else if (target.typeOfHit == MovingObjectPosition.MovingObjectType.ENTITY) {
-            /* off */
-            accessor = WDMlaClientRegistration.instance().entityAccessor().hit(target).entity(target.entityHit)
-                    .requireVerification().build();
-            /* on */
+            Entity entity = target.entityHit;
+            if (!WDMlaClientRegistration.instance().hideEntities.contains(entity.getClass())) {
+                accessor = WDMlaClientRegistration.instance().entityAccessor().hit(target).entity(entity)
+                        .requireVerification().build();
+            }
         }
 
         ObjectDataCenter.set(accessor);

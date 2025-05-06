@@ -44,6 +44,10 @@ public interface IWDMlaClientRegistration {
      */
     void registerEntityComponent(IComponentProvider<EntityAccessor> provider, Class<? extends Entity> entityClass);
 
+    void hideBlock(Class<? extends Block> block);
+
+    void hideEntity(Class<? extends Entity> entity);
+
     void registerItemStorageClient(IClientExtensionProvider<ItemStack, ItemView> provider);
 
     void registerFluidStorageClient(IClientExtensionProvider<FluidView.Data, FluidView> provider);
