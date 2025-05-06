@@ -269,12 +269,15 @@ provider.wdmla.harvestcraft.fruit.growth.rate=Fruit Growth
 provider.wdmla.harvestcraft.animal.trap=Animal Trap
 provider.wdmla.harvestcraft.fish.trap=Fish Trap
 
+provider.wdmla.natura.category=Natura
 provider.wdmla.natura.berry.bush=Berry Bush
 provider.wdmla.natura.crop.header=Crop Header
 provider.wdmla.natura.growth.rate=Growth Rate
 provider.wdmla.natura.leaves=Leaves
 
-provider.wdmla.storagedrawers.drawers=Drawers Content
+provider.wdmla.storagedrawers.category=Storage Drawers
+provider.wdmla.storagedrawers.content=Drawer Content
+provider.wdmla.storagedrawers.property=Drawers Property
 
 # options
 
