@@ -96,8 +96,8 @@ public class DrawerInfoHighlighter {
                 .child(new RectComponent()
                         .style(new RectStyle().backgroundColor(getInterpolationColor(stackInterpolation)))
                         .size(new Size(25, 1)))
-                .child(getHighlightComponent(StatCollector.translateToLocal("hud.msg.wdmla.empty"),
-                        highlightStacks, stackInterpolation))
+                .child(((TextComponent) getHighlightComponent(StatCollector.translateToLocal("hud.msg.wdmla.empty"),
+                        highlightStacks, stackInterpolation)).scale(0.6f))
                 .child(new RectComponent()
                         .style(new RectStyle().backgroundColor(getInterpolationColor(stackInterpolation)))
                         .size(new Size(25, 1)));

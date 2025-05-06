@@ -92,7 +92,7 @@ public class ThemeHelper {
         root.replaceChildWithTag(Identifiers.ENTITY_NAME, replacedName);
     }
 
-    public void overrideEntityTooltipIcon(ITooltip root, Entity newEntity) {
+    public void overrideEntityTooltipIcon(ITooltip root,@Nullable Entity newEntity) {
         if (PluginsConfig.core.defaultEntity.showEntity) {
             if (!PluginsConfig.core.defaultEntity.fancyRenderer && !(newEntity instanceof EntityLiving)) {
                 root.replaceChildWithTag(Identifiers.ENTITY, new HPanelComponent().tag(Identifiers.ENTITY));
