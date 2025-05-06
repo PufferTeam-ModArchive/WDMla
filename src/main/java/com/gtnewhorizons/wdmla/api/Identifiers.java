@@ -48,18 +48,19 @@ public final class Identifiers {
     public static final ResourceLocation REGISTRY_DATA = Debug("registry_data");
     public static final ResourceLocation COORDINATES = Debug("coordinates");
 
-    public static final ResourceLocation TEST_HEAD = Test("head");
-    public static final ResourceLocation TEST_NBT_BLOCK = Test("nbt_block");
-    public static final ResourceLocation TEST_ENTITY = Test("entity");
-    public static final ResourceLocation TEST_THEME_BLOCK = Test("theme_block");
-    public static final ResourceLocation TEST_ITEM_STORAGE = Test("item_storage");
-    public static final ResourceLocation TEST_FLUID_STORAGE = Test("fluid_storage");
-    public static final ResourceLocation TEST_PROGRESS = Test("progress");
+    public static final ResourceLocation EXAMPLE_HEAD = Example("head");
+    public static final ResourceLocation EXAMPLE_NBT_BLOCK = Example("nbt_block");
+    public static final ResourceLocation EXAMPLE_ENTITY = Example("entity");
+    public static final ResourceLocation EXAMPLE_THEME_BLOCK = Example("theme_block");
+    public static final ResourceLocation EXAMPLE_ITEM_STORAGE = Example("item_storage");
+    public static final ResourceLocation EXAMPLE_FLUID_STORAGE = Example("fluid_storage");
+    public static final ResourceLocation EXAMPLE_PROGRESS = Example("progress");
+    public static final ResourceLocation EXAMPLE_HARVEST = Example("harvest");
 
     public static final String NAMESPACE_CORE = "core";
     public static final String NAMESPACE_UNIVERSAL = "universal";
     public static final String NAMESPACE_DEBUG = "debug";
-    public static final String NAMESPACE_TEST = "test";
+    public static final String NAMESPACE_EXAMPLE = "example";
 
     public static final String CONFIG_AUTOGEN = "plugins_autogen";
 
@@ -75,7 +76,7 @@ public final class Identifiers {
         return new ResourceLocation(NAMESPACE_DEBUG, path);
     }
 
-    public static ResourceLocation Test(String path) {
-        return new ResourceLocation(NAMESPACE_TEST, path);
+    public static ResourceLocation Example(String path) {
+        return new ResourceLocation(NAMESPACE_EXAMPLE, path);
     }
 }

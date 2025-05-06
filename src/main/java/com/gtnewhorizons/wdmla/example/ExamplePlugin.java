@@ -2,6 +2,7 @@ package com.gtnewhorizons.wdmla.example;
 
 import net.minecraft.block.BlockCommandBlock;
 import net.minecraft.block.BlockDispenser;
+import net.minecraft.block.BlockHay;
 import net.minecraft.block.BlockSign;
 import net.minecraft.block.BlockSkull;
 import net.minecraft.block.BlockStoneSlab;
@@ -33,5 +34,6 @@ public class ExamplePlugin implements IWDMlaPlugin {
         registration.registerItemStorageClient(ExampleItemStorageProvider.INSTANCE);
         registration.registerFluidStorageClient(ExampleFluidStorageProvider.INSTANCE);
         registration.registerProgressClient(ExampleProgressProvider.INSTANCE);
+        registration.registerHarvest(ExampleHarvestHandler.INSTANCE, BlockHay.class);
     }
 }

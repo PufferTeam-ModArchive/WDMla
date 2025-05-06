@@ -29,6 +29,6 @@ public enum ExampleEntityProvider implements IEntityComponentProvider, IServerDa
 
     @Override
     public ResourceLocation getUid() {
-        return Identifiers.TEST_ENTITY;
+        return Identifiers.EXAMPLE_ENTITY;
     }
 }

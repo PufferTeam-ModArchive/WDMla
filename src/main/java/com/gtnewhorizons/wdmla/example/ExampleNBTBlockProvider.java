@@ -33,7 +33,7 @@ public enum ExampleNBTBlockProvider implements IBlockComponentProvider, IServerD
 
     @Override
     public ResourceLocation getUid() {
-        return Identifiers.TEST_NBT_BLOCK;
+        return Identifiers.EXAMPLE_NBT_BLOCK;
     }
 
     @Override

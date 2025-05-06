@@ -81,6 +81,6 @@ public enum ExampleItemStorageProvider
 
     @Override
     public ResourceLocation getUid() {
-        return Identifiers.TEST_ITEM_STORAGE;
+        return Identifiers.EXAMPLE_ITEM_STORAGE;
     }
 }

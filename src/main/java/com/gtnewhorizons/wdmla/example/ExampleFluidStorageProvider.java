@@ -47,6 +47,6 @@ public enum ExampleFluidStorageProvider
 
     @Override
     public ResourceLocation getUid() {
-        return Identifiers.TEST_FLUID_STORAGE;
+        return Identifiers.EXAMPLE_FLUID_STORAGE;
     }
 }

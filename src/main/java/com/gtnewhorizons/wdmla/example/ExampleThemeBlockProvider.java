@@ -32,7 +32,7 @@ public enum ExampleThemeBlockProvider implements IBlockComponentProvider {
 
     @Override
     public ResourceLocation getUid() {
-        return Identifiers.TEST_THEME_BLOCK;
+        return Identifiers.EXAMPLE_THEME_BLOCK;
     }
 
     @Override

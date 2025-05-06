@@ -24,7 +24,7 @@ public enum ExampleProgressProvider implements IServerExtensionProvider<Progress
 
     @Override
     public ResourceLocation getUid() {
-        return Identifiers.TEST_PROGRESS;
+        return Identifiers.EXAMPLE_PROGRESS;
     }
 
     @Override

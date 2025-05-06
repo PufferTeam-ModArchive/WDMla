@@ -20,7 +20,7 @@ public enum ExampleHeaderProvider implements IBlockComponentProvider {
 
     @Override
     public ResourceLocation getUid() {
-        return Identifiers.TEST_HEAD;
+        return Identifiers.EXAMPLE_HEAD;
     }
 
     @Override
