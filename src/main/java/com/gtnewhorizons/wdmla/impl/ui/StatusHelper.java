@@ -1,14 +1,13 @@
 package com.gtnewhorizons.wdmla.impl.ui;
 
-import com.gtnewhorizons.wdmla.api.ui.HighlightState;
-import com.gtnewhorizons.wdmla.config.PluginsConfig;
-import com.gtnewhorizons.wdmla.impl.ui.sizer.Padding;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.StatCollector;
 
+import com.gtnewhorizons.wdmla.api.ui.HighlightState;
 import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.HPanelComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.IconComponent;
+import com.gtnewhorizons.wdmla.impl.ui.sizer.Padding;
 import com.gtnewhorizons.wdmla.impl.ui.sizer.Size;
 import com.gtnewhorizons.wdmla.overlay.WDMlaUIIcons;
 
@@ -82,19 +81,26 @@ public class StatusHelper {
         switch (highlightState) {
             case ACTIVATING -> {
                 return new HPanelComponent().child(
-                                new IconComponent(WDMlaUIIcons.LOCK, WDMlaUIIcons.LOCK.texPath).size(new Size(ICON_SIZE, ICON_SIZE)))
-                        .child(ThemeHelper.INSTANCE.success(StatCollector.translateToLocal("hud.msg.wdmla.locked") + "!"));
+                        new IconComponent(WDMlaUIIcons.LOCK, WDMlaUIIcons.LOCK.texPath)
+                                .size(new Size(ICON_SIZE, ICON_SIZE)))
+                        .child(
+                                ThemeHelper.INSTANCE
+                                        .success(StatCollector.translateToLocal("hud.msg.wdmla.locked") + "!"));
             }
             case ACTIVE -> {
-                return new HPanelComponent().child(
-                                new IconComponent(WDMlaUIIcons.LOCK, WDMlaUIIcons.LOCK.texPath).size(new Size(ICON_SIZE, ICON_SIZE)))
+                return new HPanelComponent()
+                        .child(
+                                new IconComponent(WDMlaUIIcons.LOCK, WDMlaUIIcons.LOCK.texPath)
+                                        .size(new Size(ICON_SIZE, ICON_SIZE)))
                         .child(ThemeHelper.INSTANCE.info(StatCollector.translateToLocal("hud.msg.wdmla.locked")));
             }
             case DEACTIVATING -> {
-                return new HPanelComponent().child(
-                                new IconComponent(WDMlaUIIcons.LOCK, WDMlaUIIcons.LOCK.texPath).size(new Size(ICON_SIZE, ICON_SIZE))
-                                        .child(new HPanelComponent().padding(new Padding(2,0,1.5f,0))
-                                        .child(ThemeHelper.INSTANCE.failure("✕"))))
+                return new HPanelComponent()
+                        .child(
+                                new IconComponent(WDMlaUIIcons.LOCK, WDMlaUIIcons.LOCK.texPath)
+                                        .size(new Size(ICON_SIZE, ICON_SIZE)).child(
+                                                new HPanelComponent().padding(new Padding(2, 0, 1.5f, 0))
+                                                        .child(ThemeHelper.INSTANCE.failure("✕"))))
                         .child(ThemeHelper.INSTANCE.failure(StatCollector.translateToLocal("hud.msg.wdmla.locked")));
             }
             default -> {
@@ -104,8 +110,8 @@ public class StatusHelper {
     }
 
     /**
-     * Indicates the input item/fluid is voided on overflow.
-     * This concept is shared between multiple storage mods (drawers, barrels, super chests...)
+     * Indicates the input item/fluid is voided on overflow. This concept is shared between multiple storage mods
+     * (drawers, barrels, super chests...)
      */
     public IComponent voidOverflow() {
         return voidOverflow(HighlightState.ACTIVE);
@@ -114,21 +120,32 @@ public class StatusHelper {
     public IComponent voidOverflow(HighlightState highlightState) {
         switch (highlightState) {
             case ACTIVATING -> {
-                return new HPanelComponent().child(
-                                new IconComponent(WDMlaUIIcons.VOID, WDMlaUIIcons.VOID.texPath).size(new Size(ICON_SIZE, ICON_SIZE)))
-                        .child(ThemeHelper.INSTANCE.success(StatCollector.translateToLocal("hud.msg.wdmla.void.overflow") + "!"));
+                return new HPanelComponent()
+                        .child(
+                                new IconComponent(WDMlaUIIcons.VOID, WDMlaUIIcons.VOID.texPath)
+                                        .size(new Size(ICON_SIZE, ICON_SIZE)))
+                        .child(
+                                ThemeHelper.INSTANCE
+                                        .success(StatCollector.translateToLocal("hud.msg.wdmla.void.overflow") + "!"));
             }
             case ACTIVE -> {
                 return new HPanelComponent().child(
-                                new IconComponent(WDMlaUIIcons.VOID, WDMlaUIIcons.VOID.texPath).size(new Size(ICON_SIZE, ICON_SIZE)))
-                        .child(ThemeHelper.INSTANCE.info(StatCollector.translateToLocal("hud.msg.wdmla.void.overflow")));
+                        new IconComponent(WDMlaUIIcons.VOID, WDMlaUIIcons.VOID.texPath)
+                                .size(new Size(ICON_SIZE, ICON_SIZE)))
+                        .child(
+                                ThemeHelper.INSTANCE
+                                        .info(StatCollector.translateToLocal("hud.msg.wdmla.void.overflow")));
             }
             case DEACTIVATING -> {
-                return new HPanelComponent().child(
-                                new IconComponent(WDMlaUIIcons.VOID, WDMlaUIIcons.VOID.texPath).size(new Size(ICON_SIZE, ICON_SIZE))
-                                        .child(new HPanelComponent().padding(new Padding(2,0,1.5f,0))
-                                                .child(ThemeHelper.INSTANCE.failure("✕"))))
-                        .child(ThemeHelper.INSTANCE.failure(StatCollector.translateToLocal("hud.msg.wdmla.void.overflow")));
+                return new HPanelComponent()
+                        .child(
+                                new IconComponent(WDMlaUIIcons.VOID, WDMlaUIIcons.VOID.texPath)
+                                        .size(new Size(ICON_SIZE, ICON_SIZE)).child(
+                                                new HPanelComponent().padding(new Padding(2, 0, 1.5f, 0))
+                                                        .child(ThemeHelper.INSTANCE.failure("✕"))))
+                        .child(
+                                ThemeHelper.INSTANCE
+                                        .failure(StatCollector.translateToLocal("hud.msg.wdmla.void.overflow")));
             }
             default -> {
                 return new HPanelComponent();

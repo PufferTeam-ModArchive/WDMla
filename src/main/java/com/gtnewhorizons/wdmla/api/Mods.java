@@ -21,13 +21,12 @@ public enum Mods {
     GREGTECH("gregtech", version -> !Loader.isModLoaded("gregapi")),
     IGUANATWEAKS("IguanaTweaksTConstruct", null),
     TCONSTUCT("TConstruct", null),
-    NOTENOUGHITEMS("NotEnoughItems",
-            version -> new DefaultArtifactVersion("2.7.29-GTNH").compareTo(version) <= 0),
+    NOTENOUGHITEMS("NotEnoughItems", version -> new DefaultArtifactVersion("2.7.29-GTNH").compareTo(version) <= 0),
     FORGEMULTIPARTS("ForgeMultipart", null),
 
-    //spotless: off
+    // spotless: off
     ;
-    //spotless: on
+    // spotless: on
 
     public final String modID;
 

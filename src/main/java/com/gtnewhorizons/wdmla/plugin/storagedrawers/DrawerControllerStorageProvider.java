@@ -1,5 +1,14 @@
 package com.gtnewhorizons.wdmla.plugin.storagedrawers;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
+
+import org.jetbrains.annotations.Nullable;
+
 import com.gtnewhorizons.wdmla.api.accessor.Accessor;
 import com.gtnewhorizons.wdmla.api.provider.IClientExtensionProvider;
 import com.gtnewhorizons.wdmla.api.provider.IServerExtensionProvider;
@@ -8,15 +17,10 @@ import com.gtnewhorizons.wdmla.api.view.ItemView;
 import com.gtnewhorizons.wdmla.api.view.ViewGroup;
 import com.jaquadro.minecraft.storagedrawers.api.storage.IDrawer;
 import com.jaquadro.minecraft.storagedrawers.block.tile.TileEntityController;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+public enum DrawerControllerStorageProvider
+        implements IServerExtensionProvider<ItemStack>, IClientExtensionProvider<ItemStack, ItemView> {
 
-public enum DrawerControllerStorageProvider implements IServerExtensionProvider<ItemStack>, IClientExtensionProvider<ItemStack, ItemView> {
     INSTANCE;
 
     @Override

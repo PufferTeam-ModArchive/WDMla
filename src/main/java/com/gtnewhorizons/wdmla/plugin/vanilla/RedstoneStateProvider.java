@@ -32,25 +32,23 @@ public enum RedstoneStateProvider implements IBlockComponentProvider {
                     new HPanelComponent()
                             .text(String.format("%s: ", StatCollector.translateToLocal("hud.msg.wdmla.state")))
                             .child(redstoneOn).tag(VanillaIdentifiers.REDSTONE_STATE));
-        } else if (block instanceof BlockRedstoneRepeater
-                && PluginsConfig.vanilla.redstoneState.showRepeaterDelay) {
-                    int tick = (accessor.getMetadata() >> 2) + 1;
-                    tooltip.child(
-                            ThemeHelper.INSTANCE
-                                    .value(
-                                            StatCollector.translateToLocal("hud.msg.wdmla.delay"),
-                                            TimeFormattingPattern.ALWAYS_TICK.tickFormatter.apply(tick))
-                                    .tag(VanillaIdentifiers.REDSTONE_STATE));
-                } else
-            if ((block instanceof BlockRedstoneComparator)
-                    && PluginsConfig.vanilla.redstoneState.showComparatorMode) {
-                        String mode = ((accessor.getMetadata() >> 2) & 1) == 0
-                                ? StatCollector.translateToLocal("hud.msg.wdmla.comparator")
-                                : StatCollector.translateToLocal("hud.msg.wdmla.substractor");
-                        tooltip.child(
-                                ThemeHelper.INSTANCE.value(StatCollector.translateToLocal("hud.msg.wdmla.mode"), mode)
-                                        .tag(VanillaIdentifiers.REDSTONE_STATE));
-                    }
+        } else if (block instanceof BlockRedstoneRepeater && PluginsConfig.vanilla.redstoneState.showRepeaterDelay) {
+            int tick = (accessor.getMetadata() >> 2) + 1;
+            tooltip.child(
+                    ThemeHelper.INSTANCE
+                            .value(
+                                    StatCollector.translateToLocal("hud.msg.wdmla.delay"),
+                                    TimeFormattingPattern.ALWAYS_TICK.tickFormatter.apply(tick))
+                            .tag(VanillaIdentifiers.REDSTONE_STATE));
+        } else
+            if ((block instanceof BlockRedstoneComparator) && PluginsConfig.vanilla.redstoneState.showComparatorMode) {
+                String mode = ((accessor.getMetadata() >> 2) & 1) == 0
+                        ? StatCollector.translateToLocal("hud.msg.wdmla.comparator")
+                        : StatCollector.translateToLocal("hud.msg.wdmla.substractor");
+                tooltip.child(
+                        ThemeHelper.INSTANCE.value(StatCollector.translateToLocal("hud.msg.wdmla.mode"), mode)
+                                .tag(VanillaIdentifiers.REDSTONE_STATE));
+            }
     }
 
     @Override

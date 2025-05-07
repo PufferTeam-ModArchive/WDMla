@@ -4,7 +4,6 @@ import static mcp.mobius.waila.api.SpecialChars.ITALIC;
 
 import java.util.List;
 
-import com.gtnewhorizons.wdmla.plugin.vanilla.VanillaIdentifiers;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -32,6 +31,7 @@ import com.gtnewhorizons.wdmla.impl.ui.sizer.Padding;
 import com.gtnewhorizons.wdmla.impl.ui.sizer.Size;
 import com.gtnewhorizons.wdmla.impl.ui.style.TextStyle;
 import com.gtnewhorizons.wdmla.overlay.WDMlaUIIcons;
+import com.gtnewhorizons.wdmla.plugin.vanilla.VanillaIdentifiers;
 import com.gtnewhorizons.wdmla.util.FormatUtil;
 
 import mcp.mobius.waila.overlay.DisplayUtil;
@@ -92,7 +92,7 @@ public class ThemeHelper {
         root.replaceChildWithTag(Identifiers.ENTITY_NAME, replacedName);
     }
 
-    public void overrideEntityTooltipIcon(ITooltip root,@Nullable Entity newEntity) {
+    public void overrideEntityTooltipIcon(ITooltip root, @Nullable Entity newEntity) {
         if (PluginsConfig.core.defaultEntity.showEntity) {
             if (!PluginsConfig.core.defaultEntity.fancyRenderer && !(newEntity instanceof EntityLiving)) {
                 root.replaceChildWithTag(Identifiers.ENTITY, new HPanelComponent().tag(Identifiers.ENTITY));
@@ -262,23 +262,20 @@ public class ThemeHelper {
 
     /**
      * display any crop's growth value with percentage
+     * 
      * @param growthValue growth value (0 ~ 1)
      */
     public IComponent growthValue(float growthValue) {
         if (growthValue < 1) {
-            return ThemeHelper.INSTANCE
-                    .value(
-                            StatCollector.translateToLocal("hud.msg.wdmla.growth"),
-                            FormatUtil.PERCENTAGE_STANDARD.format(growthValue))
-                    .tag(VanillaIdentifiers.GROWTH_RATE);
+            return ThemeHelper.INSTANCE.value(
+                    StatCollector.translateToLocal("hud.msg.wdmla.growth"),
+                    FormatUtil.PERCENTAGE_STANDARD.format(growthValue)).tag(VanillaIdentifiers.GROWTH_RATE);
         } else {
             return new HPanelComponent()
                     .text(String.format("%s: ", StatCollector.translateToLocal("hud.msg.wdmla.growth")))
                     .child(
                             ThemeHelper.INSTANCE.success(
-                                    String.format(
-                                            "%s",
-                                            StatCollector.translateToLocal("hud.msg.wdmla.mature"))))
+                                    String.format("%s", StatCollector.translateToLocal("hud.msg.wdmla.mature"))))
                     .tag(VanillaIdentifiers.GROWTH_RATE);
         }
     }

@@ -2,8 +2,6 @@ package mcp.mobius.waila;
 
 import java.lang.reflect.Field;
 
-import com.gtnewhorizons.wdmla.config.General;
-import com.gtnewhorizons.wdmla.plugin.PluginScanner;
 import net.minecraftforge.common.MinecraftForge;
 
 import org.apache.logging.log4j.LogManager;
@@ -11,6 +9,8 @@ import org.apache.logging.log4j.Logger;
 
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
+import com.gtnewhorizons.wdmla.config.General;
+import com.gtnewhorizons.wdmla.plugin.PluginScanner;
 
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.FMLModContainer;
@@ -112,8 +112,7 @@ public class Waila {
                                 "Receiving registration request from [ %s ] for method %s",
                                 imcMessage.getSender(),
                                 imcMessage.getStringValue()));
-                if (General.overrideWailaTooltips &&
-                        isRegistrationMethodBlacklisted(imcMessage.getStringValue())) {
+                if (General.overrideWailaTooltips && isRegistrationMethodBlacklisted(imcMessage.getStringValue())) {
                     continue;
                 }
                 ModuleRegistrar.instance().addIMCRequest(imcMessage.getStringValue(), imcMessage.getSender());

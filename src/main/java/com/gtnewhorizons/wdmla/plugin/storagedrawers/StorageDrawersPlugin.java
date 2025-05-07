@@ -1,5 +1,8 @@
 package com.gtnewhorizons.wdmla.plugin.storagedrawers;
 
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.config.Configuration;
+
 import com.gtnewhorizons.wdmla.api.IWDMlaClientRegistration;
 import com.gtnewhorizons.wdmla.api.IWDMlaCommonRegistration;
 import com.gtnewhorizons.wdmla.api.IWDMlaPlugin;
@@ -12,12 +15,12 @@ import com.jaquadro.minecraft.storagedrawers.block.BlockController;
 import com.jaquadro.minecraft.storagedrawers.block.BlockDrawers;
 import com.jaquadro.minecraft.storagedrawers.block.BlockDrawersCustom;
 import com.jaquadro.minecraft.storagedrawers.block.BlockFramingTable;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.common.config.Configuration;
 
-@WDMlaPlugin(uid = "StorageDrawers", dependencies = "StorageDrawers",
+@WDMlaPlugin(
+        uid = "StorageDrawers",
+        dependencies = "StorageDrawers",
         overridingRegistrationMethodName = "com.jaquadro.minecraft.storagedrawers.integration.Waila.registerProvider")
-public class StorageDrawersPlugin  implements IWDMlaPlugin {
+public class StorageDrawersPlugin implements IWDMlaPlugin {
 
     @Override
     public void register(IWDMlaCommonRegistration registration) {
@@ -34,8 +37,8 @@ public class StorageDrawersPlugin  implements IWDMlaPlugin {
 
         registration.registerItemStorageClient(DrawerControllerStorageProvider.INSTANCE);
 
-        WDMlaConfig.instance().getCategory(
-                        Identifiers.CONFIG_AUTOGEN + Configuration.CATEGORY_SPLITTER + "storagedrawers")
+        WDMlaConfig.instance()
+                .getCategory(Identifiers.CONFIG_AUTOGEN + Configuration.CATEGORY_SPLITTER + "storagedrawers")
                 .setLanguageKey("provider.wdmla.storagedrawers.category");
     }
 

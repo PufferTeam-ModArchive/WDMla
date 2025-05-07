@@ -1,10 +1,10 @@
 package com.gtnewhorizons.wdmla.api.ui;
 
-import net.minecraft.util.MathHelper;
-
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Objects;
+
+import net.minecraft.util.MathHelper;
 
 public class HighlightTracker<T> {
 
@@ -26,13 +26,13 @@ public class HighlightTracker<T> {
 
     /**
      * updates the current value with the new value
+     * 
      * @return does the value require highlight?
      */
     public boolean update(T newValue) {
         if (isSame(currentValue, newValue)) {
             return isRecentlyUpdated();
-        }
-        else {
+        } else {
             currentValue = newValue;
             resetTimer();
             return true;
@@ -46,7 +46,7 @@ public class HighlightTracker<T> {
     public float getInterpolation() {
         long elapsedMillis = Duration.between(lastUpdate, Instant.now()).toMillis();
         long totalMillis = DETAILED_DURATION.toMillis();
-        return MathHelper.clamp_float((float)elapsedMillis / totalMillis, 0f, 1f);
+        return MathHelper.clamp_float((float) elapsedMillis / totalMillis, 0f, 1f);
     }
 
     public static class ItemStack extends HighlightTracker<net.minecraft.item.ItemStack> {

@@ -28,10 +28,10 @@ public class Color {
         int g2 = (colorEnd >> 8) & 0xFF;
         int b2 = colorEnd & 0xFF;
 
-        int a = MathHelper.clamp_int(a1 + (int)((a2 - a1) * interporation), 0, 255);
-        int r = MathHelper.clamp_int(r1 + (int)((r2 - r1) * interporation), 0, 255);
-        int g = MathHelper.clamp_int(g1 + (int)((g2 - g1) * interporation), 0, 255);
-        int b = MathHelper.clamp_int(b1 + (int)((b2 - b1) * interporation), 0, 255);
+        int a = MathHelper.clamp_int(a1 + (int) ((a2 - a1) * interporation), 0, 255);
+        int r = MathHelper.clamp_int(r1 + (int) ((r2 - r1) * interporation), 0, 255);
+        int g = MathHelper.clamp_int(g1 + (int) ((g2 - g1) * interporation), 0, 255);
+        int b = MathHelper.clamp_int(b1 + (int) ((b2 - b1) * interporation), 0, 255);
 
         return (a << 24) | (r << 16) | (g << 8) | b;
     }

@@ -1,5 +1,12 @@
 package com.gtnewhorizons.wdmla.plugin.storagedrawers;
 
+import static com.gtnewhorizons.wdmla.impl.ui.StatusHelper.ICON_SIZE;
+
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.StatCollector;
+
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
 import com.gtnewhorizons.wdmla.api.ui.HighlightState;
@@ -17,14 +24,9 @@ import com.gtnewhorizons.wdmla.overlay.WDMlaUIIcons;
 import com.jaquadro.minecraft.storagedrawers.api.storage.attribute.LockAttribute;
 import com.jaquadro.minecraft.storagedrawers.block.tile.TileEntityDrawers;
 import com.jaquadro.minecraft.storagedrawers.core.ModItems;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.StatCollector;
-
-import static com.gtnewhorizons.wdmla.impl.ui.StatusHelper.ICON_SIZE;
 
 public enum DrawersPropertyProvider implements IBlockComponentProvider {
+
     INSTANCE;
 
     private HighlightTracker<Boolean> isLockedTracker;
@@ -59,46 +61,52 @@ public enum DrawersPropertyProvider implements IBlockComponentProvider {
         if (isLockedTracker.update(isLocked)) {
             if (isLocked) {
                 detailedPanel.child(StatusHelper.INSTANCE.locked(HighlightState.ACTIVATING));
-            }
-            else {
+            } else {
                 detailedPanel.child(StatusHelper.INSTANCE.locked(HighlightState.DEACTIVATING));
             }
-        }
-        else if (isLocked){
-            panel.child(new HPanelComponent().child(
-                    new IconComponent(WDMlaUIIcons.LOCK, WDMlaUIIcons.LOCK.texPath).size(new Size(ICON_SIZE, ICON_SIZE))));
+        } else if (isLocked) {
+            panel.child(
+                    new HPanelComponent().child(
+                            new IconComponent(WDMlaUIIcons.LOCK, WDMlaUIIcons.LOCK.texPath)
+                                    .size(new Size(ICON_SIZE, ICON_SIZE))));
         }
 
         if (isVoidTracker.update(isVoid)) {
             if (isVoid) {
                 detailedPanel.child(StatusHelper.INSTANCE.voidOverflow(HighlightState.ACTIVATING));
-            }
-            else {
+            } else {
                 detailedPanel.child(StatusHelper.INSTANCE.voidOverflow(HighlightState.DEACTIVATING));
             }
-        }
-        else if (isVoid){
-            panel.child(new HPanelComponent().child(
-                    new IconComponent(WDMlaUIIcons.VOID, WDMlaUIIcons.VOID.texPath).size(new Size(ICON_SIZE, ICON_SIZE))));
+        } else if (isVoid) {
+            panel.child(
+                    new HPanelComponent().child(
+                            new IconComponent(WDMlaUIIcons.VOID, WDMlaUIIcons.VOID.texPath)
+                                    .size(new Size(ICON_SIZE, ICON_SIZE))));
         }
 
         if (hasOwnerTracker.update(hasOwner)) {
             if (hasOwner) {
-                detailedPanel.child(new HPanelComponent().child(
-                                ThemeHelper.INSTANCE.smallItem(new ItemStack(ModItems.personalKey, 1)))
-                        .child(ThemeHelper.INSTANCE.success(StatCollector.translateToLocal("hud.msg.wdmla.access.protected") + "!")));
+                detailedPanel.child(
+                        new HPanelComponent()
+                                .child(ThemeHelper.INSTANCE.smallItem(new ItemStack(ModItems.personalKey, 1))).child(
+                                        ThemeHelper.INSTANCE.success(
+                                                StatCollector.translateToLocal("hud.msg.wdmla.access.protected")
+                                                        + "!")));
+            } else {
+                detailedPanel.child(
+                        new HPanelComponent()
+                                .child(
+                                        ThemeHelper.INSTANCE.smallItem(new ItemStack(ModItems.personalKey, 1)).child(
+                                                new HPanelComponent().padding(new Padding(2, 0, 1.5f, 0))
+                                                        .child(ThemeHelper.INSTANCE.failure("✕"))))
+                                .child(
+                                        ThemeHelper.INSTANCE.failure(
+                                                StatCollector.translateToLocal("hud.msg.wdmla.access.protected"))));
             }
-            else {
-                detailedPanel.child(new HPanelComponent().child(
-                                ThemeHelper.INSTANCE.smallItem(new ItemStack(ModItems.personalKey, 1))
-                                        .child(new HPanelComponent().padding(new Padding(2,0,1.5f,0))
-                                                .child(ThemeHelper.INSTANCE.failure("✕"))))
-                        .child(ThemeHelper.INSTANCE.failure(StatCollector.translateToLocal("hud.msg.wdmla.access.protected"))));
-            }
-        }
-        else if (hasOwner){
-            panel.child(new HPanelComponent().child(
-                    ThemeHelper.INSTANCE.smallItem(new ItemStack(ModItems.personalKey, 1))));
+        } else if (hasOwner) {
+            panel.child(
+                    new HPanelComponent()
+                            .child(ThemeHelper.INSTANCE.smallItem(new ItemStack(ModItems.personalKey, 1))));
         }
 
         if (panel.childrenSize() > 0) {
