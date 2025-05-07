@@ -280,6 +280,9 @@ provider.wdmla.storagedrawers.category=Storage Drawers
 provider.wdmla.storagedrawers.content=Drawer Content
 provider.wdmla.storagedrawers.property=Drawers Property
 
+provider.wdmla.forestry.category=Forestry
+provider.wdmla.forestry.tool.harvest=Tool Harvest
+
 # options
 
 # general options
