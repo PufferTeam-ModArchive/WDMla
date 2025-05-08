@@ -112,6 +112,7 @@ hud.msg.wdmla.must.surround=Must be Surrounded by %s
 hud.msg.wdmla.dirt.or.grass=Dirt or Grass Block
 hud.msg.wdmla.any.fluid=Any Fluid
 hud.msg.wdmla.stack.limit=Stack Limit
+hud.msg.wdmla.cut.from=Cut from
 
 # state
 hud.msg.wdmla.mature=Mature
@@ -282,6 +283,8 @@ provider.wdmla.storagedrawers.property=Drawers Property
 
 provider.wdmla.forestry.category=Forestry
 provider.wdmla.forestry.tool.harvest=Tool Harvest
+
+provider.wdmla.architecturecraft.category=ArchitectureCraft
 
 # options
 

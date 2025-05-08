@@ -9,6 +9,7 @@ import forestry.apiculture.blocks.BlockBeehives;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.config.Configuration;
 
+//TODO: finish supporting rest of tile entities
 @WDMlaPlugin(uid = "forestry", dependencies = "Forestry")
 public class ForestryPlugin implements IWDMlaPlugin {
 

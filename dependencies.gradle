@@ -9,8 +9,9 @@ dependencies {
     compileOnly("com.github.GTNewHorizons:TinkersConstruct:1.13.21-GTNH:dev") {transitive = false}
     compileOnly("com.github.GTNewHorizons:Natura:2.8.7:dev") {transitive = false}
     compileOnly("com.github.GTNewHorizons:ironchest:6.1.2:dev") {transitive = false}
-    compileOnly("com.github.GTNewHorizons:StorageDrawers:2.1.0-GTNH:dev")
-    compileOnly("com.github.GTNewHorizons:ForestryMC:4.10.7:dev")
+    compileOnly("com.github.GTNewHorizons:StorageDrawers:2.1.0-GTNH:dev") {transitive = false}
+    compileOnly("com.github.GTNewHorizons:ForestryMC:4.10.7:dev") {transitive = false}
+    compileOnly("com.github.GTNewHorizons:ArchitectureCraft:1.10.2:dev") {transitive = false}
 //    compileOnly fileTree(dir: 'run/mods', include: ['blockrenderer*.jar'])
 
 //    api("com.github.GTNewHorizons:Angelica:1.0.0-beta39:dev")
