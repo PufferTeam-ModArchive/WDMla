@@ -285,6 +285,7 @@ provider.wdmla.forestry.category=Forestry
 provider.wdmla.forestry.tool.harvest=Tool Harvest
 
 provider.wdmla.architecturecraft.category=ArchitectureCraft
+provider.wdmla.architecturecraft.block.shape=Shaped Block
 
 # options
 
