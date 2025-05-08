@@ -1,5 +1,8 @@
 package com.gtnewhorizons.wdmla.plugin.architecturecraft;
 
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.config.Configuration;
+
 import com.gtnewhorizons.wdmla.api.IWDMlaClientRegistration;
 import com.gtnewhorizons.wdmla.api.IWDMlaCommonRegistration;
 import com.gtnewhorizons.wdmla.api.IWDMlaPlugin;
@@ -7,12 +10,11 @@ import com.gtnewhorizons.wdmla.api.Identifiers;
 import com.gtnewhorizons.wdmla.api.WDMlaPlugin;
 import com.gtnewhorizons.wdmla.config.WDMlaConfig;
 import com.gtnewhorizons.wdmla.plugin.universal.ItemStorageProvider;
+
 import gcewing.architecture.common.block.BlockSawbench;
 import gcewing.architecture.common.block.BlockShape;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.common.config.Configuration;
 
-//TODO: display chisel and hammer interaction
+// TODO: display chisel and hammer interaction
 @WDMlaPlugin(uid = "architecturecraft", dependencies = "ArchitectureCraft")
 public class ArchitectureCraftPlugin implements IWDMlaPlugin {
 
