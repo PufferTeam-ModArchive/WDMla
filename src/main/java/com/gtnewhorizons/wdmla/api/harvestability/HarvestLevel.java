@@ -1,53 +1,35 @@
 package com.gtnewhorizons.wdmla.api.harvestability;
 
-import java.util.List;
-
+import com.gtnewhorizons.wdmla.impl.harvestability.HarvestLevelImpl;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.StatCollector;
+import org.jetbrains.annotations.Nullable;
 
-public class HarvestLevel {
+import java.util.List;
+import java.util.function.Function;
 
-    public static final HarvestLevel NO_TOOL = new HarvestLevel(-1);
+public interface HarvestLevel {
 
-    protected final int value;
+    HarvestLevel NO_TOOL = HarvestLevel.of(-1);
 
-    public HarvestLevel(int level) {
-        this.value = level;
+    static HarvestLevel of(int level) {
+        return fromNameRule(level, null);
     }
 
-    public HarvestLevel(HarvestLevel level) {
-        this.value = level.value;
+    static HarvestLevel fromNameRule(int level, @Nullable Function<Integer, String> nameSupplier) {
+        return new HarvestLevelImpl(level, nameSupplier);
     }
 
-    public boolean isToolRequired() {
-        return value != -1;
+    static HarvestLevel newNameRule(HarvestLevel prevLevel, Function<Integer, String> nameSupplier) {
+        return new HarvestLevelImpl(prevLevel, nameSupplier);
     }
 
-    public String getDisplayNum() {
-        return isToolRequired() ? String.valueOf(value) : null;
-    }
+    boolean isToolRequired();
 
-    public String getName() {
-        String unlocalized = "hud.msg.wdmla.harvestlevel" + (value + 1);
+    String getDisplayNum();
 
-        if (StatCollector.canTranslate(unlocalized)) {
-            return StatCollector.translateToLocal(unlocalized);
-        } else {
-            return String.valueOf(value);
-        }
-    }
+    String getName();
 
-    public ItemStack getIconFromList(List<ItemStack> iconList) {
-        if (iconList == null || iconList.isEmpty()) {
-            return null;
-        }
-        if (iconList.size() <= value) {
-            return iconList.get(iconList.size() - 1);
-        }
-        return iconList.get(value);
-    }
+    ItemStack getIconFromList(List<ItemStack> iconList);
 
-    public boolean doesSatisfy(HarvestLevel otherHarvestLevel) {
-        return value >= otherHarvestLevel.value;
-    }
+    boolean doesSatisfy(HarvestLevel otherHarvestLevel);
 }

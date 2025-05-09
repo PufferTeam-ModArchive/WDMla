@@ -6,10 +6,7 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 
 import com.gtnewhorizons.wdmla.api.harvestability.EffectiveTool;
-import com.gtnewhorizons.wdmla.api.harvestability.HarvestLevel;
 import com.gtnewhorizons.wdmla.config.PluginsConfig;
-
-import tconstruct.library.util.HarvestLevels;
 
 public class ProxyIguanaTweaks {
 
@@ -35,7 +32,7 @@ public class ProxyIguanaTweaks {
      */
     public static void initPickaxeTool() {
         PluginsConfig.Harvestability.IguanaTweaks iguanaConfig = PluginsConfig.harvestability.iguanaTweaks;
-        pickaxe = new EffectiveTool(
+        pickaxe = EffectiveTool.of(
                 "pickaxe",
                 Arrays.asList(
                         defaultPickaxes.get(iguanaConfig.harvestLevel0),
@@ -50,23 +47,15 @@ public class ProxyIguanaTweaks {
                         defaultPickaxes.get(iguanaConfig.harvestLevel9)));
     }
 
-    public static class IguanaHarvestLevel extends HarvestLevel {
+    public static String getHarvestLevelName(int level) {
+        String harvestLevelName = "<Unknown>";
 
-        public IguanaHarvestLevel(HarvestLevel vanillaLevel) {
-            super(vanillaLevel);
+        try {
+            harvestLevelName = (String) proxyGetHarvestLevelName.invoke(null, level);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
-        @Override
-        public String getName() {
-            String harvestLevelName = "<Unknown>";
-
-            try {
-                harvestLevelName = (String) proxyGetHarvestLevelName.invoke(null, value);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-            return harvestLevelName;
-        }
+        return harvestLevelName;
     }
 }

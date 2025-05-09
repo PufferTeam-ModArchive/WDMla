@@ -23,7 +23,7 @@ public enum LiquidHarvestHandler implements HarvestHandler {
 
     INSTANCE;
 
-    public static final EffectiveTool BUCKET = new EffectiveTool("bucket", Arrays.asList(new ItemStack(Items.bucket)));
+    public static final EffectiveTool BUCKET = EffectiveTool.of("bucket", Arrays.asList(new ItemStack(Items.bucket)));
 
     @Override
     public boolean testHarvest(HarvestabilityInfo info, HarvestabilityTestPhase phase, EntityPlayer player, Block block,

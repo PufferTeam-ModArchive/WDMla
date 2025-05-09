@@ -20,7 +20,6 @@ import tconstruct.library.TConstructRegistry;
 import tconstruct.library.crafting.ToolBuilder;
 import tconstruct.library.tools.DualHarvestTool;
 import tconstruct.library.tools.HarvestTool;
-import tconstruct.library.util.HarvestLevels;
 import tconstruct.tools.TinkerTools;
 
 public class ProxyTinkersConstruct {
@@ -52,7 +51,7 @@ public class ProxyTinkersConstruct {
      */
     public static void initPickaxeTool() {
         PluginsConfig.Harvestability.TinkersConstruct tiCConfig = PluginsConfig.harvestability.tinkersConstruct;
-        pickaxe = new EffectiveTool(
+        pickaxe = EffectiveTool.of(
                 "pickaxe",
                 Arrays.asList(
                         defaultPickaxes.get(tiCConfig.harvestLevel0),
@@ -74,11 +73,11 @@ public class ProxyTinkersConstruct {
     }
 
     public static HarvestLevel getPrimaryHarvestLevel(NBTTagCompound toolTag) {
-        return new HarvestLevel(toolTag.getInteger("HarvestLevel"));
+        return HarvestLevel.of(toolTag.getInteger("HarvestLevel"));
     }
 
     public static HarvestLevel getSecondaryHarvestLevel(NBTTagCompound toolTag) {
-        return new HarvestLevel(toolTag.getInteger("HarvestLevel2"));
+        return HarvestLevel.of(toolTag.getInteger("HarvestLevel2"));
     }
 
     public static boolean isToolEffectiveAgainst(ItemStack tool, Block block, int metadata,
@@ -86,7 +85,7 @@ public class ProxyTinkersConstruct {
         if (Mods.TCONSTUCT.isLoaded() && tool.getItem() instanceof HarvestTool harvestTool) {
             EffectiveTool firstType = null;
             try {
-                firstType = new EffectiveTool((String) getHarvestType.invoke(harvestTool), null);
+                firstType = EffectiveTool.of((String) getHarvestType.invoke(harvestTool), null);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -94,7 +93,7 @@ public class ProxyTinkersConstruct {
             EffectiveTool secondType = null;
             if (harvestTool instanceof DualHarvestTool) {
                 try {
-                    secondType = new EffectiveTool((String) getSecondHarvestType.invoke(harvestTool), null);
+                    secondType = EffectiveTool.of((String) getSecondHarvestType.invoke(harvestTool), null);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -137,17 +136,5 @@ public class ProxyTinkersConstruct {
         }
 
         return tool;
-    }
-
-    public static class TiCHarvestLevel extends HarvestLevel {
-
-        public TiCHarvestLevel(HarvestLevel vanillaLevel) {
-            super(vanillaLevel);
-        }
-
-        @Override
-        public String getName() {
-            return HarvestLevels.getHarvestLevelName(value);
-        }
     }
 }

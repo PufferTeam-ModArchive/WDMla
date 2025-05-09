@@ -29,7 +29,7 @@ public enum BaseHarvestLogicHandler implements HarvestHandler {
                     || isBlockUnbreakable(block, player.worldObj, position.blockX, position.blockY, position.blockZ)) {
                 info.setEffectiveTool(EffectiveTool.CANNOT_HARVEST);
             } else {
-                info.setEffectiveTool(new EffectiveTool(block.getHarvestTool(meta), null));
+                info.setEffectiveTool(EffectiveTool.of(block.getHarvestTool(meta), null));
             }
         } else if (phase == HarvestabilityTestPhase.HARVEST_LEVEL) {
             info.setHarvestLevel(info.getEffectiveTool().getHarvestLevel(block, meta));

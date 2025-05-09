@@ -1,5 +1,6 @@
 package com.gtnewhorizons.wdmla.plugin.harvestability;
 
+import com.gtnewhorizons.wdmla.api.harvestability.HarvestLevel;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -9,11 +10,11 @@ import net.minecraftforge.common.ForgeHooks;
 
 import org.jetbrains.annotations.NotNull;
 
-import com.gtnewhorizons.wdmla.api.harvestability.HarvestLevel;
 import com.gtnewhorizons.wdmla.api.harvestability.HarvestabilityInfo;
 import com.gtnewhorizons.wdmla.api.harvestability.HarvestabilityTestPhase;
 import com.gtnewhorizons.wdmla.api.provider.HarvestHandler;
 import com.gtnewhorizons.wdmla.plugin.harvestability.proxy.ProxyTinkersConstruct;
+import tconstruct.library.util.HarvestLevels;
 
 public enum TinkersHarvestHandler implements HarvestHandler {
 
@@ -28,7 +29,7 @@ public enum TinkersHarvestHandler implements HarvestHandler {
                 info.setEffectiveTool(ProxyTinkersConstruct.pickaxe);
             }
         } else if (phase == HarvestabilityTestPhase.HARVEST_LEVEL) {
-            info.setHarvestLevel(new ProxyTinkersConstruct.TiCHarvestLevel(info.getHarvestLevel()));
+            info.setHarvestLevel(HarvestLevel.newNameRule(info.getHarvestLevel(), HarvestLevels::getHarvestLevelName));
         } else if (phase == HarvestabilityTestPhase.CURRENTLY_HARVESTABLE) {
             if (player.getHeldItem() != null) {
                 info.setCurrentlyHarvestable(

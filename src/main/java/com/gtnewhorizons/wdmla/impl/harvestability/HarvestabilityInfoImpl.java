@@ -1,9 +1,12 @@
-package com.gtnewhorizons.wdmla.api.harvestability;
+package com.gtnewhorizons.wdmla.impl.harvestability;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import com.gtnewhorizons.wdmla.api.harvestability.EffectiveTool;
+import com.gtnewhorizons.wdmla.api.harvestability.HarvestLevel;
+import com.gtnewhorizons.wdmla.api.harvestability.HarvestabilityInfo;
 import org.jetbrains.annotations.NotNull;
 
 public class HarvestabilityInfoImpl implements HarvestabilityInfo {

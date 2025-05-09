@@ -17,7 +17,7 @@ import com.gtnewhorizons.wdmla.api.Identifiers;
 import com.gtnewhorizons.wdmla.api.TooltipPosition;
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.harvestability.HarvestabilityInfo;
-import com.gtnewhorizons.wdmla.api.harvestability.HarvestabilityInfoImpl;
+import com.gtnewhorizons.wdmla.impl.harvestability.HarvestabilityInfoImpl;
 import com.gtnewhorizons.wdmla.api.harvestability.HarvestabilityTestPhase;
 import com.gtnewhorizons.wdmla.api.provider.HarvestHandler;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;

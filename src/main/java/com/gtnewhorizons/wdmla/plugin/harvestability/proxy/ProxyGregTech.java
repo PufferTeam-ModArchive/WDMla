@@ -8,11 +8,11 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.concurrent.ConcurrentHashMap;
 
+import com.gtnewhorizons.wdmla.api.harvestability.EffectiveTool;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 
 import com.gtnewhorizons.wdmla.api.Mods;
-import com.gtnewhorizons.wdmla.api.harvestability.EffectiveTool;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -63,10 +63,10 @@ public class ProxyGregTech {
             iconIronWireCutter = (ItemStack) getToolWithStatsMethod
                     .invoke(metaTool01, wireCutterID, 1, ironMaterial, ironMaterial, null);
 
-            toolWrench = new EffectiveTool(
+            toolWrench = EffectiveTool.of(
                     "wrench",
                     Arrays.asList(iconIronWrench, iconIronWrench, iconIronWrench, iconSteelWrench, iconSteelWrench));
-            toolWireCutter = new EffectiveTool(
+            toolWireCutter = EffectiveTool.of(
                     "cutter",
                     Arrays.asList(iconIronWireCutter, iconIronWireCutter, iconIronWireCutter));
 

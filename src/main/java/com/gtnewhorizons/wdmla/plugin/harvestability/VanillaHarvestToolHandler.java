@@ -24,20 +24,20 @@ public enum VanillaHarvestToolHandler implements HarvestHandler {
 
     private static final HashMap<EffectiveTool, ItemStack> testTools = new HashMap<>();
 
-    public static final EffectiveTool TOOL_PICKAXE = new EffectiveTool(
+    public static final EffectiveTool TOOL_PICKAXE = EffectiveTool.of(
             "pickaxe",
             Arrays.asList(
                     new ItemStack(Items.wooden_pickaxe),
                     new ItemStack(Items.stone_pickaxe),
                     new ItemStack(Items.iron_pickaxe),
                     new ItemStack(Items.diamond_pickaxe)));
-    public static final EffectiveTool TOOL_SHOVEL = new EffectiveTool(
+    public static final EffectiveTool TOOL_SHOVEL = EffectiveTool.of(
             "shovel",
             Arrays.asList(new ItemStack(Items.wooden_shovel)));
-    public static final EffectiveTool TOOL_AXE = new EffectiveTool(
+    public static final EffectiveTool TOOL_AXE = EffectiveTool.of(
             "axe",
             Arrays.asList(new ItemStack(Items.wooden_axe)));
-    public static final EffectiveTool TOOL_SWORD = new EffectiveTool(
+    public static final EffectiveTool TOOL_SWORD = EffectiveTool.of(
             "sword",
             Arrays.asList(new ItemStack(Items.wooden_sword)));
 
