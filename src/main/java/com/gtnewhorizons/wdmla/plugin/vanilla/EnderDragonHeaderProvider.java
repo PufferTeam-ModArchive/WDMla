@@ -9,7 +9,7 @@ import com.gtnewhorizons.wdmla.api.TooltipPosition;
 import com.gtnewhorizons.wdmla.api.accessor.EntityAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IEntityComponentProvider;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
-import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
+import com.gtnewhorizons.wdmla.api.ui.ThemeHelper;
 
 public enum EnderDragonHeaderProvider implements IEntityComponentProvider {
 
@@ -19,8 +19,8 @@ public enum EnderDragonHeaderProvider implements IEntityComponentProvider {
     public void appendTooltip(ITooltip tooltip, EntityAccessor accessor) {
         if (accessor.getEntity() instanceof EntityDragonPart dragonPart) {
             Entity dragon = (Entity) dragonPart.entityDragonObj;
-            ThemeHelper.INSTANCE.overrideEntityTooltipTitle(tooltip, dragon.getCommandSenderName(), dragon);
-            ThemeHelper.INSTANCE.overrideEntityTooltipIcon(tooltip, dragon);
+            ThemeHelper.instance().overrideEntityTooltipTitle(tooltip, dragon.getCommandSenderName(), dragon);
+            ThemeHelper.instance().overrideEntityTooltipIcon(tooltip, dragon);
         }
     }
 

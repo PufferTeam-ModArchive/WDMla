@@ -15,7 +15,7 @@ import com.gtnewhorizons.wdmla.api.provider.IEntityComponentProvider;
 import com.gtnewhorizons.wdmla.api.provider.IServerDataProvider;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.api.config.PluginsConfig;
-import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
+import com.gtnewhorizons.wdmla.api.ui.ThemeHelper;
 
 import joptsimple.internal.Strings;
 
@@ -28,7 +28,7 @@ public enum PetProvider implements IEntityComponentProvider, IServerDataProvider
         if (accessor.getEntity() instanceof EntityTameable pet && pet.isTamed()
                 && PluginsConfig.vanilla.pet.showPetSit) {
             tooltip.child(
-                    ThemeHelper.INSTANCE
+                    ThemeHelper.instance()
                             .value(
                                     StatCollector.translateToLocal("hud.msg.wdmla.sitting"),
                                     pet.isSitting() ? StatCollector.translateToLocal("hud.msg.wdmla.yes")
@@ -47,7 +47,7 @@ public enum PetProvider implements IEntityComponentProvider, IServerDataProvider
         }
 
         tooltip.child(
-                ThemeHelper.INSTANCE.value(StatCollector.translateToLocal("hud.msg.wdmla.owner"), ownerString)
+                ThemeHelper.instance().value(StatCollector.translateToLocal("hud.msg.wdmla.owner"), ownerString)
                         .tag(VanillaIDs.PET));
     }
 

@@ -17,7 +17,7 @@ import com.gtnewhorizons.wdmla.api.provider.IEntityComponentProvider;
 import com.gtnewhorizons.wdmla.api.provider.IToggleableProvider;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.api.config.PluginsConfig;
-import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
+import com.gtnewhorizons.wdmla.api.ui.ThemeHelper;
 
 import cpw.mods.fml.common.registry.GameData;
 import mcp.mobius.waila.api.impl.ConfigHandler;
@@ -57,14 +57,14 @@ public class RegistryDataProvider implements IToggleableProvider {
                                 registryName));
             } else {
                 tooltip.child(
-                        ThemeHelper.INSTANCE.value(
+                        ThemeHelper.instance().value(
                                 StatCollector.translateToLocal("hud.msg.wdmla.block.id"),
                                 String.valueOf(blockID)));
                 tooltip.child(
-                        ThemeHelper.INSTANCE
+                        ThemeHelper.instance()
                                 .value(StatCollector.translateToLocal("hud.msg.wdmla.metadata"), String.valueOf(meta)));
                 tooltip.child(
-                        ThemeHelper.INSTANCE
+                        ThemeHelper.instance()
                                 .value(StatCollector.translateToLocal("hud.msg.wdmla.registry.name"), registryName));
             }
         }
@@ -94,15 +94,15 @@ public class RegistryDataProvider implements IToggleableProvider {
                                 registryName));
             } else {
                 tooltip.child(
-                        ThemeHelper.INSTANCE.value(
+                        ThemeHelper.instance().value(
                                 StatCollector.translateToLocal("hud.msg.wdmla.registry.id"),
                                 String.valueOf(registryID)));
                 tooltip.child(
-                        ThemeHelper.INSTANCE.value(
+                        ThemeHelper.instance().value(
                                 StatCollector.translateToLocal("hud.msg.wdmla.entity.id"),
                                 String.valueOf(entityID)));
                 tooltip.child(
-                        ThemeHelper.INSTANCE
+                        ThemeHelper.instance()
                                 .value(StatCollector.translateToLocal("hud.msg.wdmla.registry.name"), registryName));
             }
         }

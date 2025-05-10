@@ -10,7 +10,7 @@ import com.gtnewhorizons.wdmla.api.TooltipPosition;
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
-import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
+import com.gtnewhorizons.wdmla.api.ui.ThemeHelper;
 
 public enum CustomMetaDataHeaderProvider implements IBlockComponentProvider {
 
@@ -33,8 +33,8 @@ public enum CustomMetaDataHeaderProvider implements IBlockComponentProvider {
         }
 
         if (newItemStack != null) {
-            ThemeHelper.INSTANCE.overrideTooltipTitle(tooltip, newItemStack);
-            ThemeHelper.INSTANCE.overrideTooltipIcon(tooltip, newItemStack, false);
+            ThemeHelper.instance().overrideTooltipTitle(tooltip, newItemStack);
+            ThemeHelper.instance().overrideTooltipIcon(tooltip, newItemStack, false);
         }
     }
 

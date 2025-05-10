@@ -7,7 +7,7 @@ import net.minecraft.util.ResourceLocation;
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
-import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
+import com.gtnewhorizons.wdmla.api.ui.ThemeHelper;
 
 import mods.natura.blocks.crops.CropBlock;
 
@@ -18,7 +18,7 @@ public enum NaturaCropHeaderProvider implements IBlockComponentProvider {
     @Override
     public void appendTooltip(ITooltip tooltip, BlockAccessor accessor) {
         if (accessor.getBlock() instanceof CropBlock cropBlock) {
-            ThemeHelper.INSTANCE.overrideTooltipHeader(
+            ThemeHelper.instance().overrideTooltipHeader(
                     tooltip,
                     new ItemStack(
                             cropBlock.getCropItem(accessor.getMetadata()),

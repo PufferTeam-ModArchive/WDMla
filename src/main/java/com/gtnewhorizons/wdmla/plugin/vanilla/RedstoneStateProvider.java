@@ -14,7 +14,7 @@ import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.api.config.PluginsConfig;
 import com.gtnewhorizons.wdmla.api.format.TimeFormattingPattern;
-import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
+import com.gtnewhorizons.wdmla.api.ui.ThemeHelper;
 import com.gtnewhorizons.wdmla.impl.ui.component.HPanelComponent;
 
 public enum RedstoneStateProvider implements IBlockComponentProvider {
@@ -27,8 +27,8 @@ public enum RedstoneStateProvider implements IBlockComponentProvider {
 
         if (block instanceof BlockLever && PluginsConfig.vanilla.redstoneState.showLeverState) {
             IComponent redstoneOn = (accessor.getMetadata() & 8) == 0
-                    ? ThemeHelper.INSTANCE.failure(StatCollector.translateToLocal("hud.msg.wdmla.off"))
-                    : ThemeHelper.INSTANCE.success(StatCollector.translateToLocal("hud.msg.wdmla.on"));
+                    ? ThemeHelper.instance().failure(StatCollector.translateToLocal("hud.msg.wdmla.off"))
+                    : ThemeHelper.instance().success(StatCollector.translateToLocal("hud.msg.wdmla.on"));
             tooltip.child(
                     new HPanelComponent()
                             .text(String.format("%s: ", StatCollector.translateToLocal("hud.msg.wdmla.state")))
@@ -36,7 +36,7 @@ public enum RedstoneStateProvider implements IBlockComponentProvider {
         } else if (block instanceof BlockRedstoneRepeater && PluginsConfig.vanilla.redstoneState.showRepeaterDelay) {
             int tick = (accessor.getMetadata() >> 2) + 1;
             tooltip.child(
-                    ThemeHelper.INSTANCE
+                    ThemeHelper.instance()
                             .value(
                                     StatCollector.translateToLocal("hud.msg.wdmla.delay"),
                                     TimeFormattingPattern.ALWAYS_TICK.tickFormatter.format(tick))
@@ -47,7 +47,7 @@ public enum RedstoneStateProvider implements IBlockComponentProvider {
                         ? StatCollector.translateToLocal("hud.msg.wdmla.comparator")
                         : StatCollector.translateToLocal("hud.msg.wdmla.substractor");
                 tooltip.child(
-                        ThemeHelper.INSTANCE.value(StatCollector.translateToLocal("hud.msg.wdmla.mode"), mode)
+                        ThemeHelper.instance().value(StatCollector.translateToLocal("hud.msg.wdmla.mode"), mode)
                                 .tag(VanillaIDs.REDSTONE_STATE));
             }
     }

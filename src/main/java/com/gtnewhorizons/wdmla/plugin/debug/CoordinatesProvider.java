@@ -12,7 +12,7 @@ import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
 import com.gtnewhorizons.wdmla.api.provider.IEntityComponentProvider;
 import com.gtnewhorizons.wdmla.api.provider.IToggleableProvider;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
-import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
+import com.gtnewhorizons.wdmla.api.ui.ThemeHelper;
 import com.gtnewhorizons.wdmla.util.FormatUtil;
 
 import mcp.mobius.waila.api.SpecialChars;
@@ -35,7 +35,7 @@ public class CoordinatesProvider implements IToggleableProvider {
         public void appendTooltip(ITooltip tooltip, BlockAccessor accessor) {
             if (!accessor.showDetails()) {
                 tooltip.child(
-                        ThemeHelper.INSTANCE.value(
+                        ThemeHelper.instance().value(
                                 StatCollector.translateToLocal("hud.msg.wdmla.seeing.block"),
                                 StatCollector.translateToLocalFormatted(
                                         "hud.msg.wdmla.coordinates",
@@ -51,7 +51,7 @@ public class CoordinatesProvider implements IToggleableProvider {
             } else {
                 Vec3 hitVec = accessor.getHitResult().hitVec;
                 tooltip.child(
-                        ThemeHelper.INSTANCE.value(
+                        ThemeHelper.instance().value(
                                 StatCollector.translateToLocal("hud.msg.wdmla.seeing"),
                                 StatCollector.translateToLocalFormatted(
                                         "hud.msg.wdmla.coordinates",
@@ -73,7 +73,7 @@ public class CoordinatesProvider implements IToggleableProvider {
         public void appendTooltip(ITooltip tooltip, EntityAccessor accessor) {
             if (!accessor.showDetails()) {
                 tooltip.child(
-                        ThemeHelper.INSTANCE.value(
+                        ThemeHelper.instance().value(
                                 StatCollector.translateToLocal("hud.msg.wdmla.seeing.entity"),
                                 String.format(
                                         "%s:%s:%s",
@@ -89,7 +89,7 @@ public class CoordinatesProvider implements IToggleableProvider {
             } else {
                 Vec3 hitVec = accessor.getHitResult().hitVec;
                 tooltip.child(
-                        ThemeHelper.INSTANCE.value(
+                        ThemeHelper.instance().value(
                                 StatCollector.translateToLocal("hud.msg.wdmla.seeing"),
                                 String.format(
                                         "%s:%s:%s",

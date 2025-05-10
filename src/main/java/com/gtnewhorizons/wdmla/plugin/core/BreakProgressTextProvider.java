@@ -10,7 +10,7 @@ import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.api.config.General;
-import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
+import com.gtnewhorizons.wdmla.api.ui.ThemeHelper;
 import com.gtnewhorizons.wdmla.util.FormatUtil;
 
 public enum BreakProgressTextProvider implements IBlockComponentProvider {
@@ -25,7 +25,7 @@ public enum BreakProgressTextProvider implements IBlockComponentProvider {
         }
 
         tooltip.child(
-                ThemeHelper.INSTANCE.value(
+                ThemeHelper.instance().value(
                         StatCollector.translateToLocal("hud.msg.wdmla.progress"),
                         FormatUtil.PERCENTAGE_STANDARD.format(breakProgress)));
     }

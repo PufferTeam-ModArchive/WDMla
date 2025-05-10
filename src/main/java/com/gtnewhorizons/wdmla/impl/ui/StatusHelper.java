@@ -1,5 +1,6 @@
 package com.gtnewhorizons.wdmla.impl.ui;
 
+import com.gtnewhorizons.wdmla.api.ui.ThemeHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.StatCollector;
 
@@ -28,32 +29,32 @@ public class StatusHelper {
         return new HPanelComponent().child(
                 new IconComponent(WDMlaUIIcons.ERROR, WDMlaUIIcons.ERROR.texPath).size(new Size(ICON_SIZE, ICON_SIZE)))
                 .child(
-                        ThemeHelper.INSTANCE
+                        ThemeHelper.instance()
                                 .failure(StatCollector.translateToLocal("hud.msg.wdmla.incomplete.structure")));
     }
 
     public IComponent hasProblem() {
         return new HPanelComponent().child(
                 new IconComponent(WDMlaUIIcons.ERROR, WDMlaUIIcons.ERROR.texPath).size(new Size(ICON_SIZE, ICON_SIZE)))
-                .child(ThemeHelper.INSTANCE.failure(StatCollector.translateToLocal("hud.msg.wdmla.has.problem")));
+                .child(ThemeHelper.instance().failure(StatCollector.translateToLocal("hud.msg.wdmla.has.problem")));
     }
 
     public IComponent runningFine() {
         return new HPanelComponent().child(
                 new IconComponent(WDMlaUIIcons.START, WDMlaUIIcons.START.texPath).size(new Size(ICON_SIZE, ICON_SIZE)))
-                .child(ThemeHelper.INSTANCE.success(StatCollector.translateToLocal("hud.msg.wdmla.running.fine")));
+                .child(ThemeHelper.instance().success(StatCollector.translateToLocal("hud.msg.wdmla.running.fine")));
     }
 
     public IComponent idle() {
         return new HPanelComponent().child(
                 new IconComponent(WDMlaUIIcons.IDLE, WDMlaUIIcons.IDLE.texPath).size(new Size(ICON_SIZE, ICON_SIZE)))
-                .child(ThemeHelper.INSTANCE.info(StatCollector.translateToLocal("hud.msg.wdmla.idle")));
+                .child(ThemeHelper.instance().info(StatCollector.translateToLocal("hud.msg.wdmla.idle")));
     }
 
     public IComponent workingDisabled() {
         return new HPanelComponent().child(
                 new IconComponent(WDMlaUIIcons.PAUSE, WDMlaUIIcons.PAUSE.texPath).size(new Size(ICON_SIZE, ICON_SIZE)))
-                .child(ThemeHelper.INSTANCE.info(StatCollector.translateToLocal("hud.msg.wdmla.working.disabled")));
+                .child(ThemeHelper.instance().info(StatCollector.translateToLocal("hud.msg.wdmla.working.disabled")));
     }
 
     public IComponent insufficientEnergy() {
@@ -61,7 +62,7 @@ public class StatusHelper {
                 new IconComponent(WDMlaUIIcons.WARNING, WDMlaUIIcons.WARNING.texPath)
                         .size(new Size(ICON_SIZE, ICON_SIZE)))
                 .child(
-                        ThemeHelper.INSTANCE
+                        ThemeHelper.instance()
                                 .warning(StatCollector.translateToLocal("hud.msg.wdmla.insufficient.energy")));
     }
 
@@ -70,7 +71,7 @@ public class StatusHelper {
                 .child(
                         new IconComponent(WDMlaUIIcons.WARNING, WDMlaUIIcons.WARNING.texPath)
                                 .size(new Size(ICON_SIZE, ICON_SIZE)))
-                .child(ThemeHelper.INSTANCE.warning(StatCollector.translateToLocal("hud.msg.wdmla.insufficient.fuel")));
+                .child(ThemeHelper.instance().warning(StatCollector.translateToLocal("hud.msg.wdmla.insufficient.fuel")));
     }
 
     public IComponent locked() {
@@ -84,7 +85,7 @@ public class StatusHelper {
                         new IconComponent(WDMlaUIIcons.LOCK, WDMlaUIIcons.LOCK.texPath)
                                 .size(new Size(ICON_SIZE, ICON_SIZE)))
                         .child(
-                                ThemeHelper.INSTANCE
+                                ThemeHelper.instance()
                                         .success(StatCollector.translateToLocal("hud.msg.wdmla.locked") + "!"));
             }
             case ACTIVE -> {
@@ -92,7 +93,7 @@ public class StatusHelper {
                         .child(
                                 new IconComponent(WDMlaUIIcons.LOCK, WDMlaUIIcons.LOCK.texPath)
                                         .size(new Size(ICON_SIZE, ICON_SIZE)))
-                        .child(ThemeHelper.INSTANCE.info(StatCollector.translateToLocal("hud.msg.wdmla.locked")));
+                        .child(ThemeHelper.instance().info(StatCollector.translateToLocal("hud.msg.wdmla.locked")));
             }
             case DEACTIVATING -> {
                 return new HPanelComponent()
@@ -100,8 +101,8 @@ public class StatusHelper {
                                 new IconComponent(WDMlaUIIcons.LOCK, WDMlaUIIcons.LOCK.texPath)
                                         .size(new Size(ICON_SIZE, ICON_SIZE)).child(
                                                 new HPanelComponent().padding(new Padding(2, 0, 1.5f, 0))
-                                                        .child(ThemeHelper.INSTANCE.failure("✕"))))
-                        .child(ThemeHelper.INSTANCE.failure(StatCollector.translateToLocal("hud.msg.wdmla.locked")));
+                                                        .child(ThemeHelper.instance().failure("✕"))))
+                        .child(ThemeHelper.instance().failure(StatCollector.translateToLocal("hud.msg.wdmla.locked")));
             }
             default -> {
                 return new HPanelComponent();
@@ -125,7 +126,7 @@ public class StatusHelper {
                                 new IconComponent(WDMlaUIIcons.VOID, WDMlaUIIcons.VOID.texPath)
                                         .size(new Size(ICON_SIZE, ICON_SIZE)))
                         .child(
-                                ThemeHelper.INSTANCE
+                                ThemeHelper.instance()
                                         .success(StatCollector.translateToLocal("hud.msg.wdmla.void.overflow") + "!"));
             }
             case ACTIVE -> {
@@ -133,7 +134,7 @@ public class StatusHelper {
                         new IconComponent(WDMlaUIIcons.VOID, WDMlaUIIcons.VOID.texPath)
                                 .size(new Size(ICON_SIZE, ICON_SIZE)))
                         .child(
-                                ThemeHelper.INSTANCE
+                                ThemeHelper.instance()
                                         .info(StatCollector.translateToLocal("hud.msg.wdmla.void.overflow")));
             }
             case DEACTIVATING -> {
@@ -142,9 +143,9 @@ public class StatusHelper {
                                 new IconComponent(WDMlaUIIcons.VOID, WDMlaUIIcons.VOID.texPath)
                                         .size(new Size(ICON_SIZE, ICON_SIZE)).child(
                                                 new HPanelComponent().padding(new Padding(2, 0, 1.5f, 0))
-                                                        .child(ThemeHelper.INSTANCE.failure("✕"))))
+                                                        .child(ThemeHelper.instance().failure("✕"))))
                         .child(
-                                ThemeHelper.INSTANCE
+                                ThemeHelper.instance()
                                         .failure(StatCollector.translateToLocal("hud.msg.wdmla.void.overflow")));
             }
             default -> {

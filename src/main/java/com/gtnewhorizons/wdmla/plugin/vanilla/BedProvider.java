@@ -8,7 +8,7 @@ import net.minecraft.util.StatCollector;
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
-import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
+import com.gtnewhorizons.wdmla.api.ui.ThemeHelper;
 
 public enum BedProvider implements IBlockComponentProvider {
 
@@ -38,7 +38,7 @@ public enum BedProvider implements IBlockComponentProvider {
 
     private void appendCannotSleep(ITooltip tooltip) {
         tooltip.horizontal().text(String.format("%s: ", StatCollector.translateToLocal("hud.msg.wdmla.cansleep")))
-                .child(ThemeHelper.INSTANCE.failure(StatCollector.translateToLocal("hud.msg.wdmla.no")))
+                .child(ThemeHelper.instance().failure(StatCollector.translateToLocal("hud.msg.wdmla.no")))
                 .tag(VanillaIDs.BED);
     }
 

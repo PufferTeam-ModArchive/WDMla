@@ -16,7 +16,7 @@ import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.api.ui.MessageType;
 import com.gtnewhorizons.wdmla.api.config.General;
 import com.gtnewhorizons.wdmla.api.config.PluginsConfig;
-import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
+import com.gtnewhorizons.wdmla.api.ui.ThemeHelper;
 import com.gtnewhorizons.wdmla.impl.ui.component.BlockComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.HPanelComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.ItemComponent;
@@ -74,7 +74,7 @@ public enum DefaultBlockInfoProvider implements IBlockComponentProvider {
                 itemName = DisplayUtil.itemDisplayNameShortFormatted(itemStack);
             }
             ITooltip title = row_vertical.horizontal();
-            IComponent nameComponent = ThemeHelper.INSTANCE.title(itemName).tag(WDMlaIDs.ITEM_NAME);
+            IComponent nameComponent = ThemeHelper.instance().title(itemName).tag(WDMlaIDs.ITEM_NAME);
             title.child(nameComponent).child(new HPanelComponent() {
 
                 @Override

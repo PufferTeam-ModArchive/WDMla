@@ -8,7 +8,7 @@ import com.gtnewhorizons.wdmla.api.TooltipPosition;
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
-import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
+import com.gtnewhorizons.wdmla.api.ui.ThemeHelper;
 import com.gtnewhorizons.wdmla.util.FormatUtil;
 
 public enum HardnessProvider implements IBlockComponentProvider {
@@ -23,7 +23,7 @@ public enum HardnessProvider implements IBlockComponentProvider {
                 accessor.getHitResult().blockY,
                 accessor.getHitResult().blockZ);
         tooltip.child(
-                ThemeHelper.INSTANCE.value(
+                ThemeHelper.instance().value(
                         StatCollector.translateToLocal("hud.msg.wdmla.hardness"),
                         FormatUtil.STANDARD.format(hardness)));
     }

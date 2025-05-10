@@ -8,7 +8,7 @@ import com.gtnewhorizons.wdmla.api.TooltipPosition;
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
-import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
+import com.gtnewhorizons.wdmla.api.ui.ThemeHelper;
 
 public enum DroppedItemHeaderProvider implements IBlockComponentProvider {
 
@@ -20,8 +20,8 @@ public enum DroppedItemHeaderProvider implements IBlockComponentProvider {
                 accessor.getBlock(),
                 1,
                 accessor.getBlock().damageDropped(accessor.getMetadata()));
-        ThemeHelper.INSTANCE.overrideTooltipIcon(tooltip, newStack, false);
-        ThemeHelper.INSTANCE.overrideTooltipTitle(tooltip, newStack);
+        ThemeHelper.instance().overrideTooltipIcon(tooltip, newStack, false);
+        ThemeHelper.instance().overrideTooltipTitle(tooltip, newStack);
     }
 
     @Override

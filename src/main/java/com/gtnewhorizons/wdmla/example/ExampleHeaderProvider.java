@@ -11,7 +11,7 @@ import com.gtnewhorizons.wdmla.api.TooltipPosition;
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
-import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
+import com.gtnewhorizons.wdmla.api.ui.ThemeHelper;
 import com.gtnewhorizons.wdmla.impl.ui.component.TextComponent;
 
 public enum ExampleHeaderProvider implements IBlockComponentProvider {
@@ -30,8 +30,8 @@ public enum ExampleHeaderProvider implements IBlockComponentProvider {
 
     @Override
     public void appendTooltip(ITooltip tooltip, BlockAccessor accessor) {
-        ThemeHelper.INSTANCE.overrideTooltipIcon(tooltip, new ItemStack(Blocks.lit_furnace), true);
-        ThemeHelper.INSTANCE.overrideTooltipTitle(tooltip, "Furnace");
+        ThemeHelper.instance().overrideTooltipIcon(tooltip, new ItemStack(Blocks.lit_furnace), true);
+        ThemeHelper.instance().overrideTooltipTitle(tooltip, "Furnace");
         tooltip.replaceChildWithTag(
                 WDMlaIDs.MOD_NAME,
                 new TextComponent(BLUE + ITALIC + "WDMla").tag(WDMlaIDs.MOD_NAME));

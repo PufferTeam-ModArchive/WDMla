@@ -74,7 +74,7 @@ import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
 import com.gtnewhorizons.wdmla.api.provider.IEntityComponentProvider;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.api.config.WDMlaConfig;
-import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
+import com.gtnewhorizons.wdmla.api.ui.ThemeHelper;
 import com.gtnewhorizons.wdmla.plugin.universal.ItemStorageProvider;
 
 /**
@@ -195,7 +195,7 @@ public class VanillaPlugin implements IWDMlaPlugin {
 
         @Override
         public void appendTooltip(ITooltip tooltip, BlockAccessor accessor) {
-            ThemeHelper.INSTANCE.overrideTooltipIcon(tooltip, new ItemStack(Items.redstone), false);
+            ThemeHelper.instance().overrideTooltipIcon(tooltip, new ItemStack(Items.redstone), false);
         }
 
         @Override
@@ -216,7 +216,7 @@ public class VanillaPlugin implements IWDMlaPlugin {
         @Override
         public void appendTooltip(ITooltip tooltip, BlockAccessor accessor) {
             tooltip.child(
-                    ThemeHelper.INSTANCE.value(
+                    ThemeHelper.instance().value(
                             StatCollector.translateToLocal("hud.msg.wdmla.power"),
                             String.format("%s", accessor.getMetadata())));
         }
@@ -235,7 +235,7 @@ public class VanillaPlugin implements IWDMlaPlugin {
         public void appendTooltip(ITooltip tooltip, BlockAccessor accessor) {
             // override lit redstone
             ItemStack redstoneOre = new ItemStack(Blocks.redstone_ore);
-            ThemeHelper.INSTANCE.overrideTooltipHeader(tooltip, redstoneOre);
+            ThemeHelper.instance().overrideTooltipHeader(tooltip, redstoneOre);
         }
 
         @Override
@@ -256,7 +256,7 @@ public class VanillaPlugin implements IWDMlaPlugin {
         @Override
         public void appendTooltip(ITooltip tooltip, EntityAccessor accessor) {
             if (accessor.getEntity() instanceof EntityZombie zombie && zombie.isVillager()) {
-                ThemeHelper.INSTANCE.overrideEntityTooltipTitle(
+                ThemeHelper.instance().overrideEntityTooltipTitle(
                         tooltip,
                         StatCollector.translateToLocal("entity.zombievillager.name"),
                         accessor.getEntity());

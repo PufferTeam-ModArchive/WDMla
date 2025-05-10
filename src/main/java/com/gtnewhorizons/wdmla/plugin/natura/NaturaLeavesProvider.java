@@ -7,7 +7,7 @@ import net.minecraft.util.ResourceLocation;
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
-import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
+import com.gtnewhorizons.wdmla.api.ui.ThemeHelper;
 
 import mods.natura.common.NContent;
 
@@ -20,7 +20,7 @@ public enum NaturaLeavesProvider implements IBlockComponentProvider {
         if ((accessor.getBlock() == NContent.floraLeaves || accessor.getBlock() == NContent.floraLeavesNoColor
                 || accessor.getBlock() == NContent.rareLeaves
                 || accessor.getBlock() == NContent.darkLeaves) && accessor.getMetadata() > 3) {
-            ThemeHelper.INSTANCE
+            ThemeHelper.instance()
                     .overrideTooltipTitle(tooltip, new ItemStack(accessor.getBlock(), 1, accessor.getMetadata() % 4));
         }
     }

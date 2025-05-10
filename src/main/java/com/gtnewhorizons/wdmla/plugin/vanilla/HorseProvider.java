@@ -11,7 +11,7 @@ import org.apache.commons.lang3.StringUtils;
 import com.gtnewhorizons.wdmla.api.accessor.EntityAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IEntityComponentProvider;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
-import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
+import com.gtnewhorizons.wdmla.api.ui.ThemeHelper;
 import com.gtnewhorizons.wdmla.util.FormatUtil;
 
 public enum HorseProvider implements IEntityComponentProvider {
@@ -26,7 +26,7 @@ public enum HorseProvider implements IEntityComponentProvider {
         if (accessor.getEntity() instanceof EntityHorse horse) {
             double jumpStrength = horse.getHorseJumpStrength();
             tooltip.child(
-                    ThemeHelper.INSTANCE.value(
+                    ThemeHelper.instance().value(
                             StatCollector.translateToLocal("hud.msg.wdmla.jumpStrength"),
                             FormatUtil.STANDARD.format(getJumpHeight(jumpStrength)) + StringUtils.SPACE
                                     + StatCollector.translateToLocal("hud.msg.wdmla.blocks")));
@@ -36,7 +36,7 @@ public enum HorseProvider implements IEntityComponentProvider {
 
             double movementSpeed = horse.getEntityAttribute(SharedMonsterAttributes.movementSpeed).getAttributeValue();
             tooltip.child(
-                    ThemeHelper.INSTANCE.value(
+                    ThemeHelper.instance().value(
                             StatCollector.translateToLocal("hud.msg.wdmla.speed"),
                             FormatUtil.STANDARD.format(movementSpeed * SPEED_UNIT_TO_BLOCKS_PER_SECOND_RATE)
                                     + StringUtils.SPACE

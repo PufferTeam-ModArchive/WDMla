@@ -9,7 +9,7 @@ import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.accessor.EntityAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IComponentProvider;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
-import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
+import com.gtnewhorizons.wdmla.api.ui.ThemeHelper;
 
 public class HideFancyIconProvider<T extends Accessor> implements IComponentProvider<T> {
 
@@ -24,9 +24,9 @@ public class HideFancyIconProvider<T extends Accessor> implements IComponentProv
     @Override
     public void appendTooltip(ITooltip tooltip, T accessor) {
         if (accessor instanceof BlockAccessor blockAccessor) {
-            ThemeHelper.INSTANCE.overrideTooltipIcon(tooltip, blockAccessor.getItemForm(), true);
+            ThemeHelper.instance().overrideTooltipIcon(tooltip, blockAccessor.getItemForm(), true);
         } else if (accessor instanceof EntityAccessor) {
-            ThemeHelper.INSTANCE.overrideEntityTooltipIcon(tooltip, null);
+            ThemeHelper.instance().overrideEntityTooltipIcon(tooltip, null);
         }
     }
 

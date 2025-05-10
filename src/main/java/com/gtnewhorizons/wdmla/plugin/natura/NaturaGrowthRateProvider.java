@@ -6,7 +6,7 @@ import net.minecraft.util.ResourceLocation;
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
-import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
+import com.gtnewhorizons.wdmla.api.ui.ThemeHelper;
 
 import mods.natura.blocks.crops.CropBlock;
 
@@ -20,7 +20,7 @@ public enum NaturaGrowthRateProvider implements IBlockComponentProvider {
             float startMeta = cropBlock.getStartGrowth(accessor.getMetadata());
             float maxMeta = cropBlock.getMaxGrowth(accessor.getMetadata()) - startMeta;
             float growthValue = ((accessor.getMetadata() - startMeta) / maxMeta);
-            tooltip.child(ThemeHelper.INSTANCE.growthValue(growthValue));
+            tooltip.child(ThemeHelper.instance().growthValue(growthValue));
         }
     }
 

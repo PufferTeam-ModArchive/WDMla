@@ -43,7 +43,7 @@ import com.gtnewhorizons.wdmla.api.config.General;
 import com.gtnewhorizons.wdmla.api.config.PluginsConfig;
 import com.gtnewhorizons.wdmla.impl.WDMlaClientRegistration;
 import com.gtnewhorizons.wdmla.impl.WDMlaCommonRegistration;
-import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
+import com.gtnewhorizons.wdmla.api.ui.ThemeHelper;
 import com.gtnewhorizons.wdmla.impl.ui.component.HPanelComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.ItemComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.RectComponent;
@@ -185,9 +185,9 @@ public class ItemStorageProvider<T extends Accessor> implements IComponentProvid
 
                 if (showName.isTrue()) {
                     if (itemView.description != null) {
-                        elements.child(ThemeHelper.INSTANCE.smallItem(stack)).child(itemView.description);
+                        elements.child(ThemeHelper.instance().smallItem(stack)).child(itemView.description);
                     } else {
-                        elements.child(ThemeHelper.INSTANCE.itemStackFullLine(stack));
+                        elements.child(ThemeHelper.instance().itemStackFullLine(stack));
                     }
                 } else if (itemView.amountText != null) {
                     elements.child(new ItemComponent(stack).stackSizeOverride(itemView.amountText));

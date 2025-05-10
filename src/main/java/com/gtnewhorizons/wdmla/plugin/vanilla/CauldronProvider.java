@@ -14,7 +14,7 @@ import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.api.view.ClientViewGroup;
 import com.gtnewhorizons.wdmla.api.view.FluidView;
-import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
+import com.gtnewhorizons.wdmla.api.ui.ThemeHelper;
 import com.gtnewhorizons.wdmla.plugin.universal.FluidStorageProvider;
 
 public enum CauldronProvider implements IBlockComponentProvider {
@@ -28,7 +28,7 @@ public enum CauldronProvider implements IBlockComponentProvider {
         if (fluidView == null) {
             return;
         }
-        fluidView.description = ThemeHelper.INSTANCE.info(
+        fluidView.description = ThemeHelper.instance().info(
                 accessor.getMetadata() == 0 ? StatCollector.translateToLocal("hud.msg.wdmla.empty")
                         : String.format("%d / 3", accessor.getMetadata()));
         List<ClientViewGroup<FluidView>> viewList = Arrays.asList(new ClientViewGroup<>(Arrays.asList(fluidView)));

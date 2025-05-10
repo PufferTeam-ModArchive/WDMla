@@ -4,6 +4,7 @@ import static mcp.mobius.waila.api.SpecialChars.ITALIC;
 
 import java.util.List;
 
+import com.gtnewhorizons.wdmla.api.ui.ThemeHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -40,21 +41,21 @@ import mcp.mobius.waila.utils.ModIdentification;
 /**
  * Use this class to unify common layout settings
  */
-public class ThemeHelper {
-
-    public static final ThemeHelper INSTANCE = new ThemeHelper();
+public class ThemeHelperImpl implements ThemeHelper {
 
     private static final int ITEM_SIZE = Minecraft.getMinecraft().fontRenderer.FONT_HEIGHT;
 
-    private ThemeHelper() {
+    public static final ThemeHelperImpl _instance = new ThemeHelperImpl();
 
-    }
+    private ThemeHelperImpl() {}
 
     @Deprecated
+    @Override
     public void overrideTooltipIcon(ITooltip root, ItemStack newItemStack) {
         overrideTooltipIcon(root, newItemStack, false);
     }
 
+    @Override
     public void overrideTooltipIcon(ITooltip root, ItemStack newItemStack, boolean overrideFancyRenderer) {
         if (!overrideFancyRenderer
                 && PluginsConfig.core.defaultBlock.fancyRenderer == PluginsConfig.Core.fancyRendererMode.ALL) {
@@ -66,11 +67,13 @@ public class ThemeHelper {
                 new ItemComponent(newItemStack).doDrawOverlay(false).tag(WDMlaIDs.ITEM_ICON));
     }
 
+    @Override
     public void overrideTooltipTitle(ITooltip root, ItemStack newItemStack) {
         String strippedName = DisplayUtil.itemDisplayNameShortFormatted(newItemStack);
         overrideTooltipTitle(root, strippedName);
     }
 
+    @Override
     public void overrideTooltipTitle(ITooltip root, String formattedNewName) {
         Theme theme = General.currentTheme.get();
         IComponent replacedName = new HPanelComponent().child(
@@ -79,6 +82,7 @@ public class ThemeHelper {
         root.replaceChildWithTag(WDMlaIDs.ITEM_NAME, replacedName);
     }
 
+    @Override
     public void overrideEntityTooltipTitle(ITooltip root, String newName, @Nullable Entity entityMayHaveCustomName) {
         Theme theme = General.currentTheme.get();
         if (entityMayHaveCustomName instanceof EntityLiving living && living.hasCustomNameTag()) {
@@ -92,6 +96,7 @@ public class ThemeHelper {
         root.replaceChildWithTag(WDMlaIDs.ENTITY_NAME, replacedName);
     }
 
+    @Override
     public void overrideEntityTooltipIcon(ITooltip root, @Nullable Entity newEntity) {
         if (PluginsConfig.core.defaultEntity.showEntity) {
             if (!PluginsConfig.core.defaultEntity.fancyRenderer && !(newEntity instanceof EntityLiving)) {
@@ -105,10 +110,12 @@ public class ThemeHelper {
         }
     }
 
+    @Override
     public void overrideTooltipModName(ITooltip root, ItemStack newItemStack) {
         overrideTooltipModName(root, ModIdentification.nameFromStack(newItemStack));
     }
 
+    @Override
     public void overrideTooltipModName(ITooltip root, String newName) {
         Theme theme = General.currentTheme.get();
         IComponent replacedModName = new TextComponent(ITALIC + newName)
@@ -116,60 +123,58 @@ public class ThemeHelper {
         root.replaceChildWithTag(WDMlaIDs.MOD_NAME, replacedModName);
     }
 
+    @Override
     public void overrideTooltipHeader(ITooltip root, ItemStack newItemStack) {
         overrideTooltipIcon(root, newItemStack, false);
         overrideTooltipTitle(root, newItemStack);
         overrideTooltipModName(root, newItemStack);
     }
 
+    @Override
     public IComponent info(String content) {
         return color(content, MessageType.INFO);
     }
 
+    @Override
     public IComponent title(String content) {
         return color(content, MessageType.TITLE);
     }
 
+    @Override
     public IComponent success(String content) {
         return color(content, MessageType.SUCCESS);
     }
 
+    @Override
     public IComponent warning(String content) {
         return color(content, MessageType.WARNING);
     }
 
+    @Override
     public IComponent danger(String content) {
         return color(content, MessageType.DANGER);
     }
 
+    @Override
     public IComponent failure(String content) {
         return color(content, MessageType.FAILURE);
     }
 
+    @Override
     public IComponent color(String content, MessageType type) {
         Theme theme = General.currentTheme.get();
         return new TextComponent(content).style(new TextStyle().color(theme.textColor(type)));
     }
 
+    @Override
     public IComponent furnaceLikeProgress(List<ItemStack> input, List<ItemStack> output, int currentProgress,
-            int maxProgress, boolean showDetails) {
+                                          int maxProgress, boolean showDetails) {
         return furnaceLikeProgress(input, output, currentProgress, maxProgress, showDetails, null);
     }
 
-    /**
-     * Provides Minecraft furnace progress arrow and item display.
-     * 
-     * @param input             the items on the left side of arrow
-     * @param output            the items on the right side of arrow
-     * @param currentProgress   ticks elapsed
-     * @param maxProgress       the length of ticks to fill the arrow
-     * @param showDetails       is Show Details button pressed or not (for controlling legacy text)
-     * @param legacyProcessText The text displayed instead of arrow and ItemStacks in legacy mode. If null, it will be
-     *                          auto generated.
-     * @return built component
-     */
+    @Override
     public IComponent furnaceLikeProgress(List<ItemStack> input, List<ItemStack> output, int currentProgress,
-            int maxProgress, boolean showDetails, @Nullable IComponent legacyProcessText) {
+                                          int maxProgress, boolean showDetails, @Nullable IComponent legacyProcessText) {
         if (!General.forceLegacy) {
             HPanelComponent hPanel = new HPanelComponent();
             for (ItemStack inputStack : input) {
@@ -196,7 +201,7 @@ public class ThemeHelper {
                     if (inputStack != null) {
                         vPanel.horizontal()
                                 .text(String.format("%s: ", StatCollector.translateToLocal("hud.msg.wdmla.in"))).child(
-                                        ThemeHelper.INSTANCE.info(
+                                        ThemeHelper.instance().info(
                                                 String.format(
                                                         "%dx %s",
                                                         inputStack.stackSize,
@@ -207,7 +212,7 @@ public class ThemeHelper {
                     if (outputStack != null) {
                         vPanel.horizontal()
                                 .text(String.format("%s: ", StatCollector.translateToLocal("hud.msg.wdmla.out"))).child(
-                                        ThemeHelper.INSTANCE.info(
+                                        ThemeHelper.instance().info(
                                                 String.format(
                                                         "%dx %s",
                                                         outputStack.stackSize,
@@ -217,7 +222,7 @@ public class ThemeHelper {
             }
 
             if (currentProgress != 0 && maxProgress != 0 && legacyProcessText == null) {
-                legacyProcessText = ThemeHelper.INSTANCE.value(
+                legacyProcessText = ThemeHelper.instance().value(
                         StatCollector.translateToLocal("hud.msg.wdmla.progress"),
                         TimeFormattingPattern.ALWAYS_TICK.tickFormatter.format(currentProgress) + " / "
                                 + TimeFormattingPattern.ALWAYS_TICK.tickFormatter.format(maxProgress));
@@ -235,22 +240,17 @@ public class ThemeHelper {
         }
     }
 
+    @Override
     public IComponent value(String entry, String value) {
         return new HPanelComponent().text(String.format("%s: ", entry)).child(info(value));
     }
 
-    /**
-     * Provides an ItemComponent with has size of default text height
-     * 
-     * @param itemStack Base ItemStack to display
-     */
+    @Override
     public ITooltip smallItem(ItemStack itemStack) {
         return new ItemComponent(itemStack).doDrawOverlay(false).size(new Size(ITEM_SIZE, ITEM_SIZE));
     }
 
-    /**
-     * Constructs a component to display an ItemStack in "(icon) 3x Apple" format
-     */
+    @Override
     public IComponent itemStackFullLine(ItemStack stack) {
         String strippedName = DisplayUtil.stripSymbols(DisplayUtil.itemDisplayNameShortFormatted(stack));
         TextComponent name = new TextComponent(strippedName);
@@ -260,21 +260,17 @@ public class ThemeHelper {
                 .child(name);
     }
 
-    /**
-     * display any crop's growth value with percentage
-     * 
-     * @param growthValue growth value (0 ~ 1)
-     */
+    @Override
     public IComponent growthValue(float growthValue) {
         if (growthValue < 1) {
-            return ThemeHelper.INSTANCE.value(
+            return ThemeHelper.instance().value(
                     StatCollector.translateToLocal("hud.msg.wdmla.growth"),
                     FormatUtil.PERCENTAGE_STANDARD.format(growthValue)).tag(VanillaIDs.GROWTH_RATE);
         } else {
             return new HPanelComponent()
                     .text(String.format("%s: ", StatCollector.translateToLocal("hud.msg.wdmla.growth")))
                     .child(
-                            ThemeHelper.INSTANCE.success(
+                            ThemeHelper.instance().success(
                                     String.format("%s", StatCollector.translateToLocal("hud.msg.wdmla.mature"))))
                     .tag(VanillaIDs.GROWTH_RATE);
         }

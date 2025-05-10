@@ -14,7 +14,7 @@ import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
 import com.gtnewhorizons.wdmla.api.provider.IServerDataProvider;
 import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
-import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
+import com.gtnewhorizons.wdmla.api.ui.ThemeHelper;
 
 public enum FurnaceProvider implements IBlockComponentProvider, IServerDataProvider<BlockAccessor> {
 
@@ -49,7 +49,7 @@ public enum FurnaceProvider implements IBlockComponentProvider, IServerDataProvi
         }
 
         if (!allEmpty) {
-            IComponent progressComponent = ThemeHelper.INSTANCE.furnaceLikeProgress(
+            IComponent progressComponent = ThemeHelper.instance().furnaceLikeProgress(
                     Arrays.asList(items[0], items[1]),
                     Arrays.asList(items[2]),
                     cookTime,

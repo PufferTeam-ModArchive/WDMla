@@ -12,7 +12,7 @@ import com.gtnewhorizons.wdmla.api.TooltipPosition;
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
-import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
+import com.gtnewhorizons.wdmla.api.ui.ThemeHelper;
 import com.gtnewhorizons.wdmla.util.FormatUtil;
 
 import mcp.mobius.waila.overlay.DisplayUtil;
@@ -28,7 +28,7 @@ public enum MobSpawnerHeaderProvider implements IBlockComponentProvider {
             String spawnerName = DisplayUtil.itemDisplayNameShortFormatted(accessor.getItemForm());
             String mobName = spawnerTile.func_145881_a().getEntityNameToSpawn();
             mobName = FormatUtil.formatNameByPixelCount(mobName);
-            ThemeHelper.INSTANCE.overrideTooltipTitle(tooltip, String.format("%s (%s)", spawnerName, mobName));
+            ThemeHelper.instance().overrideTooltipTitle(tooltip, String.format("%s (%s)", spawnerName, mobName));
 
             // @see codechicken.nei.ItemMobSpawner
             if (Mods.NEI) {
@@ -38,7 +38,7 @@ public enum MobSpawnerHeaderProvider implements IBlockComponentProvider {
                 }
 
                 ItemStack newStack = new ItemStack(Blocks.mob_spawner, 1, (int) entityID);
-                ThemeHelper.INSTANCE.overrideTooltipIcon(tooltip, newStack, false);
+                ThemeHelper.instance().overrideTooltipIcon(tooltip, newStack, false);
             }
         }
     }

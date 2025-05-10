@@ -36,7 +36,7 @@ import com.gtnewhorizons.wdmla.api.config.General;
 import com.gtnewhorizons.wdmla.api.config.PluginsConfig;
 import com.gtnewhorizons.wdmla.impl.WDMlaClientRegistration;
 import com.gtnewhorizons.wdmla.impl.WDMlaCommonRegistration;
-import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
+import com.gtnewhorizons.wdmla.api.ui.ThemeHelper;
 import com.gtnewhorizons.wdmla.impl.ui.component.FluidComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.HPanelComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.ProgressComponent;
@@ -93,7 +93,7 @@ public class FluidStorageProvider<T extends Accessor> implements IComponentProvi
             }
             for (var view : group.views) {
                 IComponent description;
-                ThemeHelper helper = ThemeHelper.INSTANCE;
+                ThemeHelper helper = ThemeHelper.instance();
                 String currentStr = FormatUtil.STANDARD.format(view.current)
                         + StatCollector.translateToLocal("hud.wdmla.msg.millibucket");
                 String maxStr = FormatUtil.STANDARD.format(view.max)

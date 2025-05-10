@@ -11,7 +11,7 @@ import com.gtnewhorizons.wdmla.api.TooltipPosition;
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
-import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
+import com.gtnewhorizons.wdmla.api.ui.ThemeHelper;
 
 // includes crops and stems
 public enum GrowableHeaderProvider implements IBlockComponentProvider {
@@ -21,17 +21,17 @@ public enum GrowableHeaderProvider implements IBlockComponentProvider {
     @Override
     public void appendTooltip(ITooltip tooltip, BlockAccessor accessor) {
         if (accessor.getBlock().equals(Blocks.wheat)) {
-            ThemeHelper.INSTANCE
+            ThemeHelper.instance()
                     .overrideTooltipTitle(tooltip, StatCollector.translateToLocal("hud.msg.wdmla.wheatcrop"));
         } else if (accessor.getBlock().equals(Blocks.carrots)) {
-            ThemeHelper.INSTANCE.overrideTooltipIcon(tooltip, new ItemStack(Items.carrot), false);
+            ThemeHelper.instance().overrideTooltipIcon(tooltip, new ItemStack(Items.carrot), false);
         } else if (accessor.getBlock().equals(Blocks.potatoes)) {
-            ThemeHelper.INSTANCE.overrideTooltipIcon(tooltip, new ItemStack(Items.potato), false);
+            ThemeHelper.instance().overrideTooltipIcon(tooltip, new ItemStack(Items.potato), false);
         } else if (accessor.getBlock().equals(Blocks.pumpkin_stem)) {
-            ThemeHelper.INSTANCE
+            ThemeHelper.instance()
                     .overrideTooltipTitle(tooltip, StatCollector.translateToLocal("hud.msg.wdmla.pumpkinstem"));
         } else if (accessor.getBlock().equals(Blocks.melon_stem)) {
-            ThemeHelper.INSTANCE
+            ThemeHelper.instance()
                     .overrideTooltipTitle(tooltip, StatCollector.translateToLocal("hud.msg.wdmla.melonstem"));
         }
     }

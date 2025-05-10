@@ -16,7 +16,7 @@ import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
 import com.gtnewhorizons.wdmla.api.ui.ColorPalette;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.impl.ui.StatusHelper;
-import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
+import com.gtnewhorizons.wdmla.api.ui.ThemeHelper;
 import com.gtnewhorizons.wdmla.impl.ui.component.HPanelComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.ItemComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.ProgressComponent;
@@ -51,12 +51,12 @@ public enum ExampleThemeBlockProvider implements IBlockComponentProvider {
 
         if (!accessor.showDetails()) {
             tooltip.text("normal");
-            tooltip.child(ThemeHelper.INSTANCE.info("This is info"));
-            tooltip.child(ThemeHelper.INSTANCE.title("This is title"));
-            tooltip.child(ThemeHelper.INSTANCE.success("This is success"));
-            tooltip.child(ThemeHelper.INSTANCE.warning("This is warning"));
-            tooltip.child(ThemeHelper.INSTANCE.danger("This is danger"));
-            tooltip.child(ThemeHelper.INSTANCE.failure("This is failure"));
+            tooltip.child(ThemeHelper.instance().info("This is info"));
+            tooltip.child(ThemeHelper.instance().title("This is title"));
+            tooltip.child(ThemeHelper.instance().success("This is success"));
+            tooltip.child(ThemeHelper.instance().warning("This is warning"));
+            tooltip.child(ThemeHelper.instance().danger("This is danger"));
+            tooltip.child(ThemeHelper.instance().failure("This is failure"));
         } else {
             tooltip.child(new TextComponent("This is 0.5 pixel off text.").padding(new Padding(-1f, 0, 0.5f, 0)));
             for (float i = 0; i < 1; i += 0.2f) {
@@ -73,9 +73,9 @@ public enum ExampleThemeBlockProvider implements IBlockComponentProvider {
                                     new VPanelComponent().padding(DEFAULT_PROGRESS_DESCRIPTION_PADDING)
                                             .child(new TextComponent("Test Energy: 8μI / 10μI"))));
 
-            tooltip.child(ThemeHelper.INSTANCE.value("The answer", "42"));
+            tooltip.child(ThemeHelper.instance().value("The answer", "42"));
             tooltip.child(
-                    ThemeHelper.INSTANCE.furnaceLikeProgress(
+                    ThemeHelper.instance().furnaceLikeProgress(
                             Arrays.asList(new ItemStack(Items.egg)),
                             Arrays.asList(new ItemStack(Items.chicken)),
                             1,

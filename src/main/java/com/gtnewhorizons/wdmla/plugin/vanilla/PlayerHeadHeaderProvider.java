@@ -10,7 +10,7 @@ import com.gtnewhorizons.wdmla.api.TooltipPosition;
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
-import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
+import com.gtnewhorizons.wdmla.api.ui.ThemeHelper;
 import com.mojang.authlib.GameProfile;
 
 public enum PlayerHeadHeaderProvider implements IBlockComponentProvider {
@@ -28,7 +28,7 @@ public enum PlayerHeadHeaderProvider implements IBlockComponentProvider {
             String playerName = profile.getName();
             String formattedHeadName = String
                     .format(StatCollector.translateToLocal("item.skull.player.name"), playerName);
-            ThemeHelper.INSTANCE.overrideTooltipTitle(tooltip, formattedHeadName);
+            ThemeHelper.instance().overrideTooltipTitle(tooltip, formattedHeadName);
         }
     }
 

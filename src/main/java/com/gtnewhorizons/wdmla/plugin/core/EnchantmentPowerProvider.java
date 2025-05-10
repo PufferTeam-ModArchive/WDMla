@@ -7,7 +7,7 @@ import com.gtnewhorizons.wdmla.api.identifier.WDMlaIDs;
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
-import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
+import com.gtnewhorizons.wdmla.api.ui.ThemeHelper;
 import com.gtnewhorizons.wdmla.util.FormatUtil;
 
 public enum EnchantmentPowerProvider implements IBlockComponentProvider {
@@ -19,7 +19,7 @@ public enum EnchantmentPowerProvider implements IBlockComponentProvider {
         float power = accessor.getBlock().getEnchantPowerBonus(accessor.getPlayer().worldObj, 0, 0, 0);
         if (power > 0) {
             tooltip.child(
-                    ThemeHelper.INSTANCE.value(
+                    ThemeHelper.instance().value(
                             StatCollector.translateToLocal("hud.msg.wdmla.enchantment.power"),
                             FormatUtil.STANDARD.format(power)).tag(WDMlaIDs.ENCHANTMENT_POWER));
         }

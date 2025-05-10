@@ -9,7 +9,7 @@ import com.gtnewhorizons.wdmla.api.TooltipPosition;
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
-import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
+import com.gtnewhorizons.wdmla.api.ui.ThemeHelper;
 
 public enum SilverFishBlockHeaderProvider implements IBlockComponentProvider {
 
@@ -26,7 +26,7 @@ public enum SilverFishBlockHeaderProvider implements IBlockComponentProvider {
             case 5 -> new ItemStack(Blocks.stonebrick, 1, 3);
             default -> new ItemStack(Blocks.stone);
         };
-        ThemeHelper.INSTANCE.overrideTooltipTitle(tooltip, dummyStack);
+        ThemeHelper.instance().overrideTooltipTitle(tooltip, dummyStack);
     }
 
     @Override

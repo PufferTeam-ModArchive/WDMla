@@ -11,7 +11,7 @@ import com.gtnewhorizons.wdmla.api.TooltipPosition;
 import com.gtnewhorizons.wdmla.api.accessor.EntityAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IEntityComponentProvider;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
-import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
+import com.gtnewhorizons.wdmla.api.ui.ThemeHelper;
 import com.gtnewhorizons.wdmla.impl.ui.component.ItemComponent;
 
 import mcp.mobius.waila.api.impl.ModuleRegistrar;
@@ -32,7 +32,7 @@ public enum FallingBlockHeaderProvider implements IEntityComponentProvider {
 
             ItemStack itemForm = new ItemStack(falling.func_145805_f(), 1, falling.field_145814_a);
             tooltip.replaceChildWithTag(WDMlaIDs.ENTITY, new ItemComponent(itemForm).doDrawOverlay(false));
-            ThemeHelper.INSTANCE.overrideEntityTooltipTitle(
+            ThemeHelper.instance().overrideEntityTooltipTitle(
                     tooltip,
                     String.format(
                             StatCollector.translateToLocal("hud.msg.wdmla.entity.falling"),

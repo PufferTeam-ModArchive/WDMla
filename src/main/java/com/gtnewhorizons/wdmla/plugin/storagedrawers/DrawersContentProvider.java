@@ -12,7 +12,7 @@ import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
 import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.impl.ObjectDataCenter;
-import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
+import com.gtnewhorizons.wdmla.api.ui.ThemeHelper;
 import com.jaquadro.minecraft.storagedrawers.api.storage.IDrawer;
 import com.jaquadro.minecraft.storagedrawers.api.storage.IFractionalDrawer;
 import com.jaquadro.minecraft.storagedrawers.block.tile.TileEntityDrawers;
@@ -36,7 +36,7 @@ public enum DrawersContentProvider implements IBlockComponentProvider {
         if (SecurityManager.hasAccess(accessor.getPlayer().getGameProfile(), drawers)) {
             appendDrawersContent(accessor, drawers, tooltip);
         } else {
-            tooltip.child(ThemeHelper.INSTANCE.failure(StatCollector.translateToLocal("hud.msg.wdmla.no.access")));
+            tooltip.child(ThemeHelper.instance().failure(StatCollector.translateToLocal("hud.msg.wdmla.no.access")));
         }
     }
 
@@ -64,7 +64,7 @@ public enum DrawersContentProvider implements IBlockComponentProvider {
 
             String displayName = DisplayUtil.stripSymbols(DisplayUtil.itemDisplayNameShortFormatted(stack));
             if (drawer.getStoredItemCount() == Integer.MAX_VALUE) {
-                tooltip.horizontal().child(ThemeHelper.INSTANCE.smallItem(stack)).text(displayName + " [Inf]");
+                tooltip.horizontal().child(ThemeHelper.instance().smallItem(stack)).text(displayName + " [Inf]");
                 continue;
             }
             // GTNH has no compact drawer
@@ -72,12 +72,12 @@ public enum DrawersContentProvider implements IBlockComponentProvider {
                 String text = displayName + ((i == 0) ? " [" : " [+")
                         + ((IFractionalDrawer) drawer).getStoredItemRemainder()
                         + "]";
-                tooltip.horizontal().child(ThemeHelper.INSTANCE.smallItem(stack)).text(text);
+                tooltip.horizontal().child(ThemeHelper.instance().smallItem(stack)).text(text);
                 continue;
             }
 
             IComponent itemLine = tracker[i].update(drawer);
-            tooltip.horizontal().child(ThemeHelper.INSTANCE.smallItem(stack)).child(itemLine);
+            tooltip.horizontal().child(ThemeHelper.instance().smallItem(stack)).child(itemLine);
         }
 
         if (drawerTile.isUnlimited() || drawerTile.isVending()) {
@@ -85,7 +85,7 @@ public enum DrawersContentProvider implements IBlockComponentProvider {
         } else {
             int limit = drawerTile.getDrawerCapacity() * drawerTile.getEffectiveStorageMultiplier();
             tooltip.horizontal().text(StatCollector.translateToLocal("hud.msg.wdmla.stack.limit")).child(
-                    ThemeHelper.INSTANCE
+                    ThemeHelper.instance()
                             .info(String.format(": %d (x%d)", limit, drawerTile.getEffectiveStorageMultiplier())));
         }
 

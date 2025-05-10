@@ -15,7 +15,7 @@ import com.gtnewhorizons.wdmla.api.ui.HighlightTracker;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.impl.ObjectDataCenter;
 import com.gtnewhorizons.wdmla.impl.ui.StatusHelper;
-import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
+import com.gtnewhorizons.wdmla.api.ui.ThemeHelper;
 import com.gtnewhorizons.wdmla.impl.ui.component.HPanelComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.IconComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.VPanelComponent;
@@ -42,7 +42,7 @@ public enum DrawersPropertyProvider implements IBlockComponentProvider {
         }
 
         if (drawers.isSealed()) {
-            tooltip.child(ThemeHelper.INSTANCE.info(StatCollector.translateToLocal("hud.msg.wdmla.sealed")));
+            tooltip.child(ThemeHelper.instance().info(StatCollector.translateToLocal("hud.msg.wdmla.sealed")));
             return;
         }
 
@@ -89,25 +89,25 @@ public enum DrawersPropertyProvider implements IBlockComponentProvider {
             if (hasOwner) {
                 detailedPanel.child(
                         new HPanelComponent()
-                                .child(ThemeHelper.INSTANCE.smallItem(new ItemStack(ModItems.personalKey, 1))).child(
-                                        ThemeHelper.INSTANCE.success(
+                                .child(ThemeHelper.instance().smallItem(new ItemStack(ModItems.personalKey, 1))).child(
+                                        ThemeHelper.instance().success(
                                                 StatCollector.translateToLocal("hud.msg.wdmla.access.protected")
                                                         + "!")));
             } else {
                 detailedPanel.child(
                         new HPanelComponent()
                                 .child(
-                                        ThemeHelper.INSTANCE.smallItem(new ItemStack(ModItems.personalKey, 1)).child(
+                                        ThemeHelper.instance().smallItem(new ItemStack(ModItems.personalKey, 1)).child(
                                                 new HPanelComponent().padding(new Padding(2, 0, 1.5f, 0))
-                                                        .child(ThemeHelper.INSTANCE.failure("✕"))))
+                                                        .child(ThemeHelper.instance().failure("✕"))))
                                 .child(
-                                        ThemeHelper.INSTANCE.failure(
+                                        ThemeHelper.instance().failure(
                                                 StatCollector.translateToLocal("hud.msg.wdmla.access.protected"))));
             }
         } else if (hasOwner) {
             panel.child(
                     new HPanelComponent()
-                            .child(ThemeHelper.INSTANCE.smallItem(new ItemStack(ModItems.personalKey, 1))));
+                            .child(ThemeHelper.instance().smallItem(new ItemStack(ModItems.personalKey, 1))));
         }
 
         if (panel.childrenSize() > 0) {

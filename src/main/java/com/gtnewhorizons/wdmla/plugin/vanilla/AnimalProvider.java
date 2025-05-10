@@ -12,7 +12,7 @@ import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.api.config.PluginsConfig;
 import com.gtnewhorizons.wdmla.api.config.WDMlaConfig;
 import com.gtnewhorizons.wdmla.api.format.TimeFormattingPattern;
-import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
+import com.gtnewhorizons.wdmla.api.ui.ThemeHelper;
 
 public enum AnimalProvider implements IEntityComponentProvider, ITimeFormatConfigurable {
 
@@ -33,7 +33,7 @@ public enum AnimalProvider implements IEntityComponentProvider, ITimeFormatConfi
             int absTimeToGrow = Math.abs(animal.getGrowingAge());
             TimeFormattingPattern timePattern = WDMlaConfig.instance().getTimeFormatter(this);
             tooltip.child(
-                    ThemeHelper.INSTANCE
+                    ThemeHelper.instance()
                             .value(
                                     StatCollector.translateToLocal("hud.msg.wdmla.animal.growth"),
                                     timePattern.tickFormatter.format(absTimeToGrow))
@@ -50,7 +50,7 @@ public enum AnimalProvider implements IEntityComponentProvider, ITimeFormatConfi
             int absTimeBreedCooldown = Math.abs(animal.getGrowingAge());
             TimeFormattingPattern timePattern = WDMlaConfig.instance().getTimeFormatter(this);
             tooltip.child(
-                    ThemeHelper.INSTANCE
+                    ThemeHelper.instance()
                             .value(
                                     StatCollector.translateToLocal("hud.msg.wdmla.animal.breedcooldown"),
                                     timePattern.tickFormatter.format(absTimeBreedCooldown))

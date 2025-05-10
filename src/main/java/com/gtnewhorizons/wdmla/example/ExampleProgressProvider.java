@@ -13,7 +13,7 @@ import com.gtnewhorizons.wdmla.api.provider.IServerExtensionProvider;
 import com.gtnewhorizons.wdmla.api.view.ClientViewGroup;
 import com.gtnewhorizons.wdmla.api.view.ProgressView;
 import com.gtnewhorizons.wdmla.api.view.ViewGroup;
-import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
+import com.gtnewhorizons.wdmla.api.ui.ThemeHelper;
 import com.gtnewhorizons.wdmla.impl.ui.component.TextComponent;
 import com.gtnewhorizons.wdmla.impl.ui.style.ProgressStyle;
 
@@ -33,7 +33,7 @@ public enum ExampleProgressProvider implements IServerExtensionProvider<Progress
         return ClientViewGroup.map(groups, ProgressView::read, (group, clientGroup) -> {
             ProgressView view = clientGroup.views.get(0);
             // view.style.filledColor(0xFFCC0000);
-            view.description = ThemeHelper.INSTANCE.info("Testtttttttttttttttttttttttttttttttt");
+            view.description = ThemeHelper.instance().info("Testtttttttttttttttttttttttttttttttt");
             view.hasScale = true;
 
             view = clientGroup.views.get(1);

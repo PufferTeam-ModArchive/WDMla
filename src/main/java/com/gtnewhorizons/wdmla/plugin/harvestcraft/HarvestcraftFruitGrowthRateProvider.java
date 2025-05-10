@@ -6,7 +6,7 @@ import net.minecraft.util.ResourceLocation;
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
-import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
+import com.gtnewhorizons.wdmla.api.ui.ThemeHelper;
 
 public enum HarvestcraftFruitGrowthRateProvider implements IBlockComponentProvider {
 
@@ -15,7 +15,7 @@ public enum HarvestcraftFruitGrowthRateProvider implements IBlockComponentProvid
     @Override
     public void appendTooltip(ITooltip tooltip, BlockAccessor accessor) {
         float growthValue = accessor.getMetadata() / 2.0F;
-        tooltip.child(ThemeHelper.INSTANCE.growthValue(growthValue));
+        tooltip.child(ThemeHelper.instance().growthValue(growthValue));
     }
 
     @Override

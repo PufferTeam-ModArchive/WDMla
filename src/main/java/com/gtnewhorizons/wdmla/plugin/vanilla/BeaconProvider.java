@@ -12,7 +12,7 @@ import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
 import com.gtnewhorizons.wdmla.api.provider.IServerDataProvider;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.impl.ui.StatusHelper;
-import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
+import com.gtnewhorizons.wdmla.api.ui.ThemeHelper;
 
 public enum BeaconProvider implements IBlockComponentProvider, IServerDataProvider<BlockAccessor> {
 
@@ -31,13 +31,13 @@ public enum BeaconProvider implements IBlockComponentProvider, IServerDataProvid
 
         int levels = accessor.getServerData().getInteger("Levels");
         tooltip.child(
-                ThemeHelper.INSTANCE
+                ThemeHelper.instance()
                         .value(StatCollector.translateToLocal("hud.msg.wdmla.level"), String.valueOf(levels)));
 
         int primary = accessor.getServerData().getInteger("Primary");
         if (primary > 0) {
             tooltip.child(
-                    ThemeHelper.INSTANCE.value(
+                    ThemeHelper.instance().value(
                             StatCollector.translateToLocal("hud.msg.wdmla.primary"),
                             StatCollector.translateToLocal(Potion.potionTypes[primary].getName())));
         }
@@ -45,7 +45,7 @@ public enum BeaconProvider implements IBlockComponentProvider, IServerDataProvid
         int secondary = accessor.getServerData().getInteger("Secondary");
         if (secondary > 0) {
             tooltip.child(
-                    ThemeHelper.INSTANCE.value(
+                    ThemeHelper.instance().value(
                             StatCollector.translateToLocal("hud.msg.wdmla.secondary"),
                             StatCollector.translateToLocal(Potion.potionTypes[secondary].getName())));
         }

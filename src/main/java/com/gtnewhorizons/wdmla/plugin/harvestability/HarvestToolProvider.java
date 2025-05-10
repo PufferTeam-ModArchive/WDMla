@@ -27,7 +27,7 @@ import com.gtnewhorizons.wdmla.api.config.PluginsConfig;
 import com.gtnewhorizons.wdmla.impl.ObjectDataCenter;
 import com.gtnewhorizons.wdmla.impl.WDMlaClientRegistration;
 import com.gtnewhorizons.wdmla.impl.harvestability.HarvestabilityInfoImpl;
-import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
+import com.gtnewhorizons.wdmla.api.ui.ThemeHelper;
 import com.gtnewhorizons.wdmla.impl.ui.component.HPanelComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.ItemComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.VPanelComponent;
@@ -205,10 +205,10 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
             currentlyHarvestableIcon = !PluginsConfig.harvestability.icon.colorIconWithEffectiveness
                     || info.isHeldToolEffective()
                     || !info.getEffectiveTool().isValid()
-                            ? ThemeHelper.INSTANCE.success(PluginsConfig.harvestability.icon.currentlyHarvestableString)
-                            : ThemeHelper.INSTANCE.info(PluginsConfig.harvestability.icon.currentlyHarvestableString);
+                            ? ThemeHelper.instance().success(PluginsConfig.harvestability.icon.currentlyHarvestableString)
+                            : ThemeHelper.instance().info(PluginsConfig.harvestability.icon.currentlyHarvestableString);
         } else {
-            currentlyHarvestableIcon = ThemeHelper.INSTANCE
+            currentlyHarvestableIcon = ThemeHelper.instance()
                     .failure(PluginsConfig.harvestability.icon.notCurrentlyHarvestableString);
         }
 
@@ -246,8 +246,8 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
                     : String.valueOf(info.getHarvestLevel().getDisplayNum());
             IComponent harvestLevelText = new HPanelComponent().tag(HarvestabilityIdentifiers.HARVESTABILITY_TEXT)
                     .text(String.format("%s: ", StatCollector.translateToLocal("hud.msg.wdmla.harvestlevel"))).child(
-                            info.isCurrentlyHarvestable() ? ThemeHelper.INSTANCE.success(harvestLevelString)
-                                    : ThemeHelper.INSTANCE.failure(harvestLevelString));
+                            info.isCurrentlyHarvestable() ? ThemeHelper.instance().success(harvestLevelString)
+                                    : ThemeHelper.instance().failure(harvestLevelString));
             lines.child(harvestLevelText);
         }
 
@@ -255,9 +255,9 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
             ITooltip effectiveToolPanel = new HPanelComponent();
             effectiveToolPanel.text(StatCollector.translateToLocal("hud.msg.wdmla.effectivetool") + ": ");
             if (info.isHeldToolEffective()) {
-                effectiveToolPanel.child(ThemeHelper.INSTANCE.success(info.getEffectiveTool().getLocalizedName()));
+                effectiveToolPanel.child(ThemeHelper.instance().success(info.getEffectiveTool().getLocalizedName()));
             } else {
-                effectiveToolPanel.child(ThemeHelper.INSTANCE.failure(info.getEffectiveTool().getLocalizedName()));
+                effectiveToolPanel.child(ThemeHelper.instance().failure(info.getEffectiveTool().getLocalizedName()));
             }
             lines.child(effectiveToolPanel);
         }
@@ -266,10 +266,10 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
             ITooltip currentlyHarvestable = new HPanelComponent();
             if (info.isCurrentlyHarvestable()) {
                 String icon = PluginsConfig.harvestability.icon.currentlyHarvestableString;
-                currentlyHarvestable.child(ThemeHelper.INSTANCE.success(icon));
+                currentlyHarvestable.child(ThemeHelper.instance().success(icon));
             } else {
                 String icon = PluginsConfig.harvestability.icon.notCurrentlyHarvestableString;
-                currentlyHarvestable.child(ThemeHelper.INSTANCE.failure(icon));
+                currentlyHarvestable.child(ThemeHelper.instance().failure(icon));
             }
             String suffix = StatCollector.translateToLocal("hud.msg.wdmla.currentlyharvestable");
             lines.child(currentlyHarvestable.text(suffix));

@@ -13,7 +13,7 @@ import com.gtnewhorizons.wdmla.api.provider.ITimeFormatConfigurable;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.api.config.WDMlaConfig;
 import com.gtnewhorizons.wdmla.api.format.TimeFormattingPattern;
-import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
+import com.gtnewhorizons.wdmla.api.ui.ThemeHelper;
 
 public enum ChickenProvider
         implements IEntityComponentProvider, IServerDataProvider<EntityAccessor>, ITimeFormatConfigurable {
@@ -25,7 +25,7 @@ public enum ChickenProvider
         if (accessor.getServerData().hasKey("nextEgg")) {
             TimeFormattingPattern timePattern = WDMlaConfig.instance().getTimeFormatter(this);
             tooltip.child(
-                    ThemeHelper.INSTANCE
+                    ThemeHelper.instance()
                             .value(
                                     StatCollector.translateToLocal("hud.msg.wdmla.nextegg"),
                                     timePattern.tickFormatter.format(accessor.getServerData().getInteger("nextEgg")))

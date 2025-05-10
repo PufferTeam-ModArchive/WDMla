@@ -9,7 +9,7 @@ import com.gtnewhorizons.wdmla.api.accessor.EntityAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IEntityComponentProvider;
 import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
-import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
+import com.gtnewhorizons.wdmla.api.ui.ThemeHelper;
 import com.gtnewhorizons.wdmla.api.identifier.VanillaIDs;
 import com.gtnewhorizons.wdmla.util.FormatUtil;
 
@@ -27,7 +27,7 @@ public enum SlowerChickenProvider implements IEntityComponentProvider {
                 tooltip.replaceChildWithTag(
                         VanillaIDs.CHICKEN,
                         chicken.child(
-                                ThemeHelper.INSTANCE.warning(
+                                ThemeHelper.instance().warning(
                                         StatCollector.translateToLocalFormatted(
                                                 "hud.msg.wdmla.rng.multiplier",
                                                 FormatUtil.STANDARD.format(IguanaConfig.eggTimeoutMultiplier)))));

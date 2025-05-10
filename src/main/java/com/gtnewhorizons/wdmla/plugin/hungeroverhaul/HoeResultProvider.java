@@ -17,7 +17,7 @@ import com.gtnewhorizons.wdmla.api.Mods;
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
-import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
+import com.gtnewhorizons.wdmla.api.ui.ThemeHelper;
 
 import iguanaman.hungeroverhaul.config.IguanaConfig;
 import iguanaman.hungeroverhaul.util.IguanaEventHook;
@@ -39,13 +39,13 @@ public enum HoeResultProvider implements IBlockComponentProvider {
         if (IguanaConfig.modifyHoeUse && isHoldingHoe(accessor.getPlayer().inventory.getCurrentItem())) {
             Block block = accessor.getBlock();
             if ((block == Blocks.dirt || block == Blocks.grass) && isWaterNearby(accessor)) {
-                tooltip.horizontal().child(ThemeHelper.INSTANCE.smallItem(new ItemStack(Blocks.farmland)))
+                tooltip.horizontal().child(ThemeHelper.instance().smallItem(new ItemStack(Blocks.farmland)))
                         .text(StatCollector.translateToLocal("hud.msg.wdmla.near.water")).text(": ")
-                        .child(ThemeHelper.INSTANCE.success(StatCollector.translateToLocal("hud.msg.wdmla.yes")));
+                        .child(ThemeHelper.instance().success(StatCollector.translateToLocal("hud.msg.wdmla.yes")));
             } else if (block == Blocks.grass && !isWaterNearby(accessor)) {
-                tooltip.horizontal().child(ThemeHelper.INSTANCE.smallItem(new ItemStack(Items.wheat_seeds)))
+                tooltip.horizontal().child(ThemeHelper.instance().smallItem(new ItemStack(Items.wheat_seeds)))
                         .text(StatCollector.translateToLocal("hud.msg.wdmla.near.water")).text(": ")
-                        .child(ThemeHelper.INSTANCE.failure(StatCollector.translateToLocal("hud.msg.wdmla.no")));
+                        .child(ThemeHelper.instance().failure(StatCollector.translateToLocal("hud.msg.wdmla.no")));
             } else {
                 tooltip.horizontal().text(StatCollector.translateToLocal("hud.msg.wdmla.cannot.hoe"));
             }

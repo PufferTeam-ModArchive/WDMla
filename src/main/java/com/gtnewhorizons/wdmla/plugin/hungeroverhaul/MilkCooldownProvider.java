@@ -12,7 +12,7 @@ import com.gtnewhorizons.wdmla.api.provider.ITimeFormatConfigurable;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.api.config.WDMlaConfig;
 import com.gtnewhorizons.wdmla.api.format.TimeFormattingPattern;
-import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
+import com.gtnewhorizons.wdmla.api.ui.ThemeHelper;
 
 import iguanaman.hungeroverhaul.config.IguanaConfig;
 
@@ -27,7 +27,7 @@ public enum MilkCooldownProvider
         if (IguanaConfig.milkedTimeout > 1 && accessor.getServerData().hasKey("Milked")
                 && accessor.getEntity() != null) {
             tooltip.child(
-                    ThemeHelper.INSTANCE.value(
+                    ThemeHelper.instance().value(
                             StatCollector.translateToLocal("hud.msg.wdmla.milk.cooldown"),
                             formatter.tickFormatter.format(
                                     accessor.getServerData().getInteger("Milked") * 20

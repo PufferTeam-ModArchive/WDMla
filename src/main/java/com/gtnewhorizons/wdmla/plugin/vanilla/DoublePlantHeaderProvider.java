@@ -9,7 +9,7 @@ import com.gtnewhorizons.wdmla.api.TooltipPosition;
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
-import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
+import com.gtnewhorizons.wdmla.api.ui.ThemeHelper;
 
 public enum DoublePlantHeaderProvider implements IBlockComponentProvider {
 
@@ -24,8 +24,8 @@ public enum DoublePlantHeaderProvider implements IBlockComponentProvider {
             int meta = accessor.getWorld().getBlockMetadata(x, y, z);
 
             ItemStack newStack = new ItemStack(Blocks.double_plant, 0, meta);
-            ThemeHelper.INSTANCE.overrideTooltipIcon(tooltip, newStack, false);
-            ThemeHelper.INSTANCE.overrideTooltipTitle(tooltip, newStack);
+            ThemeHelper.instance().overrideTooltipIcon(tooltip, newStack, false);
+            ThemeHelper.instance().overrideTooltipTitle(tooltip, newStack);
         }
     }
 
