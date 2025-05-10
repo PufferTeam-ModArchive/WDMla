@@ -3,7 +3,7 @@ package com.gtnewhorizons.wdmla.api.config;
 import com.gtnewhorizons.wdmla.api.provider.IComponentProvider;
 import com.gtnewhorizons.wdmla.api.provider.ITimeFormatConfigurable;
 import com.gtnewhorizons.wdmla.config.WDMlaConfigImpl;
-import com.gtnewhorizons.wdmla.impl.format.TimeFormattingPattern;
+import com.gtnewhorizons.wdmla.api.format.TimeFormattingPattern;
 
 public interface WDMlaConfig {
 

@@ -12,7 +12,7 @@ import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
 import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.api.config.PluginsConfig;
-import com.gtnewhorizons.wdmla.impl.format.TimeFormattingPattern;
+import com.gtnewhorizons.wdmla.api.format.TimeFormattingPattern;
 import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
 import com.gtnewhorizons.wdmla.impl.ui.component.HPanelComponent;
 
@@ -38,7 +38,7 @@ public enum RedstoneStateProvider implements IBlockComponentProvider {
                     ThemeHelper.INSTANCE
                             .value(
                                     StatCollector.translateToLocal("hud.msg.wdmla.delay"),
-                                    TimeFormattingPattern.ALWAYS_TICK.tickFormatter.apply(tick))
+                                    TimeFormattingPattern.ALWAYS_TICK.tickFormatter.format(tick))
                             .tag(VanillaIdentifiers.REDSTONE_STATE));
         } else
             if ((block instanceof BlockRedstoneComparator) && PluginsConfig.vanilla.redstoneState.showComparatorMode) {

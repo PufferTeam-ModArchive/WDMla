@@ -11,7 +11,7 @@ import com.gtnewhorizons.wdmla.api.provider.IServerDataProvider;
 import com.gtnewhorizons.wdmla.api.provider.ITimeFormatConfigurable;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.api.config.WDMlaConfig;
-import com.gtnewhorizons.wdmla.impl.format.TimeFormattingPattern;
+import com.gtnewhorizons.wdmla.api.format.TimeFormattingPattern;
 import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
 
 public enum ChickenProvider
@@ -27,7 +27,7 @@ public enum ChickenProvider
                     ThemeHelper.INSTANCE
                             .value(
                                     StatCollector.translateToLocal("hud.msg.wdmla.nextegg"),
-                                    timePattern.tickFormatter.apply(accessor.getServerData().getInteger("nextEgg")))
+                                    timePattern.tickFormatter.format(accessor.getServerData().getInteger("nextEgg")))
                             .tag(VanillaIdentifiers.CHICKEN));
         }
     }

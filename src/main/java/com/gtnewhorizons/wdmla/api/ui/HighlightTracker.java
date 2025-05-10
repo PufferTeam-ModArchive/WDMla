@@ -5,7 +5,9 @@ import java.time.Instant;
 import java.util.Objects;
 
 import net.minecraft.util.MathHelper;
+import org.jetbrains.annotations.ApiStatus;
 
+@ApiStatus.Experimental
 public class HighlightTracker<T> {
 
     private T currentValue;

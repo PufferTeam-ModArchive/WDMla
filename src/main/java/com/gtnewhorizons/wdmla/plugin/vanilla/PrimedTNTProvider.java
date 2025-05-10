@@ -10,7 +10,7 @@ import com.gtnewhorizons.wdmla.api.provider.IServerDataProvider;
 import com.gtnewhorizons.wdmla.api.provider.ITimeFormatConfigurable;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.api.config.WDMlaConfig;
-import com.gtnewhorizons.wdmla.impl.format.TimeFormattingPattern;
+import com.gtnewhorizons.wdmla.api.format.TimeFormattingPattern;
 import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
 
 public enum PrimedTNTProvider
@@ -25,7 +25,7 @@ public enum PrimedTNTProvider
                 ThemeHelper.INSTANCE
                         .value(
                                 StatCollector.translateToLocal("hud.msg.wdmla.fuse"),
-                                timePattern.tickFormatter.apply((int) accessor.getServerData().getByte("Fuse")))
+                                timePattern.tickFormatter.format((int) accessor.getServerData().getByte("Fuse")))
                         .tag(VanillaIdentifiers.PRIMED_TNT));
     }
 

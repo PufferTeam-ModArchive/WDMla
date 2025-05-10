@@ -6,6 +6,7 @@ import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
 import java.util.Locale;
 
+import com.gtnewhorizons.wdmla.api.format.TimeFormattingPattern;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 
@@ -14,7 +15,7 @@ import com.gtnewhorizons.wdmla.api.config.General;
 /**
  * For unifying formatting.
  * 
- * @see com.gtnewhorizons.wdmla.impl.format.TimeFormattingPattern
+ * @see TimeFormattingPattern
  */
 public class FormatUtil {
 

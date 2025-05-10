@@ -1,6 +1,6 @@
 package com.gtnewhorizons.wdmla.api.provider;
 
-import com.gtnewhorizons.wdmla.impl.format.TimeFormattingPattern;
+import com.gtnewhorizons.wdmla.api.format.TimeFormattingPattern;
 
 /**
  * Provides provider-specific time formatter when implemented on {@link IComponentProvider}.<br>

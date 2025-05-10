@@ -10,7 +10,7 @@ import com.gtnewhorizons.wdmla.api.provider.ITimeFormatConfigurable;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.api.config.PluginsConfig;
 import com.gtnewhorizons.wdmla.api.config.WDMlaConfig;
-import com.gtnewhorizons.wdmla.impl.format.TimeFormattingPattern;
+import com.gtnewhorizons.wdmla.api.format.TimeFormattingPattern;
 import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
 
 public enum AnimalProvider implements IEntityComponentProvider, ITimeFormatConfigurable {
@@ -35,7 +35,7 @@ public enum AnimalProvider implements IEntityComponentProvider, ITimeFormatConfi
                     ThemeHelper.INSTANCE
                             .value(
                                     StatCollector.translateToLocal("hud.msg.wdmla.animal.growth"),
-                                    timePattern.tickFormatter.apply(absTimeToGrow))
+                                    timePattern.tickFormatter.format(absTimeToGrow))
                             .tag(VanillaIdentifiers.ANIMAL_GROWTH));
         }
     }
@@ -52,7 +52,7 @@ public enum AnimalProvider implements IEntityComponentProvider, ITimeFormatConfi
                     ThemeHelper.INSTANCE
                             .value(
                                     StatCollector.translateToLocal("hud.msg.wdmla.animal.breedcooldown"),
-                                    timePattern.tickFormatter.apply(absTimeBreedCooldown))
+                                    timePattern.tickFormatter.format(absTimeBreedCooldown))
                             .tag(VanillaIdentifiers.ANIMAL_BREED));
         }
     }

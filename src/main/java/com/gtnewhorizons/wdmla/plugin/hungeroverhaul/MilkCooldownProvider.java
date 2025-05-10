@@ -10,7 +10,7 @@ import com.gtnewhorizons.wdmla.api.provider.IServerDataProvider;
 import com.gtnewhorizons.wdmla.api.provider.ITimeFormatConfigurable;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.api.config.WDMlaConfig;
-import com.gtnewhorizons.wdmla.impl.format.TimeFormattingPattern;
+import com.gtnewhorizons.wdmla.api.format.TimeFormattingPattern;
 import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
 
 import iguanaman.hungeroverhaul.config.IguanaConfig;
@@ -28,7 +28,7 @@ public enum MilkCooldownProvider
             tooltip.child(
                     ThemeHelper.INSTANCE.value(
                             StatCollector.translateToLocal("hud.msg.wdmla.milk.cooldown"),
-                            formatter.tickFormatter.apply(
+                            formatter.tickFormatter.format(
                                     accessor.getServerData().getInteger("Milked") * 20
                                             + (int) (20 - accessor.getEntity().worldObj.getTotalWorldTime() % 20))));
         }

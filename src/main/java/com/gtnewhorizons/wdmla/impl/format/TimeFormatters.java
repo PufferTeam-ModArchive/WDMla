@@ -1,34 +1,25 @@
 package com.gtnewhorizons.wdmla.impl.format;
 
-import java.time.Duration;
-import java.time.temporal.ChronoUnit;
-import java.util.function.Function;
-
-import net.minecraft.util.StatCollector;
-
 import com.gtnewhorizons.wdmla.api.Ticks;
 import com.gtnewhorizons.wdmla.util.FormatUtil;
+import net.minecraft.util.StatCollector;
 
-/**
- * Tries to format time unit into specified time unit with the help of {@link ChronoUnit} and {@link FormatUtil}
- */
-public enum TimeFormattingPattern {
+import java.time.Duration;
+import java.time.temporal.ChronoUnit;
 
-    /**
-     * 123,456t
-     */
-    ALWAYS_TICK(tick -> FormatUtil.STANDARD.format(tick) + StatCollector.translateToLocal("hud.msg.wdmla.ticks")),
+public class TimeFormatters {
+    private TimeFormatters() {}
 
-    /**
-     * 7,890s
-     */
-    ALWAYS_SECOND(tick -> FormatUtil.STANDARD.format(Duration.of(tick, Ticks.INSTANCE).get(ChronoUnit.SECONDS))
-            + StatCollector.translateToLocal("hud.msg.wdmla.seconds")),
+    public static String alwaysTick(int tick) {
+        return FormatUtil.STANDARD.format(tick) + StatCollector.translateToLocal("hud.msg.wdmla.ticks");
+    }
 
-    /**
-     * 1h02m03s
-     */
-    HOUR_MIN_SEC(tick -> {
+    public static String alwaysSecond(int tick) {
+        return FormatUtil.STANDARD.format(Duration.of(tick, Ticks.INSTANCE).get(ChronoUnit.SECONDS))
+                + StatCollector.translateToLocal("hud.msg.wdmla.seconds");
+    }
+
+    public static String hourMinSec(int tick) {
         Duration duration = Duration.of(tick, Ticks.INSTANCE);
         if (duration.toMinutes() < 1) {
             return FormatUtil.STANDARD.format(duration.get(ChronoUnit.SECONDS))
@@ -46,11 +37,5 @@ public enum TimeFormattingPattern {
                     + FormatUtil.TIME_PART.format(duration.minusMinutes(duration.toMinutes()).get(ChronoUnit.SECONDS))
                     + StatCollector.translateToLocal("hud.msg.wdmla.seconds");
         }
-    });
-
-    public final Function<Integer, String> tickFormatter;
-
-    TimeFormattingPattern(Function<Integer, String> tickFormatter) {
-        this.tickFormatter = tickFormatter;
     }
 }

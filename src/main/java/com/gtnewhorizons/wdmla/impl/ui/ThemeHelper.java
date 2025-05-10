@@ -20,7 +20,7 @@ import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.api.ui.MessageType;
 import com.gtnewhorizons.wdmla.api.config.General;
 import com.gtnewhorizons.wdmla.api.config.PluginsConfig;
-import com.gtnewhorizons.wdmla.impl.format.TimeFormattingPattern;
+import com.gtnewhorizons.wdmla.api.format.TimeFormattingPattern;
 import com.gtnewhorizons.wdmla.impl.ui.component.EntityComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.HPanelComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.IconComponent;
@@ -219,8 +219,8 @@ public class ThemeHelper {
             if (currentProgress != 0 && maxProgress != 0 && legacyProcessText == null) {
                 legacyProcessText = ThemeHelper.INSTANCE.value(
                         StatCollector.translateToLocal("hud.msg.wdmla.progress"),
-                        TimeFormattingPattern.ALWAYS_TICK.tickFormatter.apply(currentProgress) + " / "
-                                + TimeFormattingPattern.ALWAYS_TICK.tickFormatter.apply(maxProgress));
+                        TimeFormattingPattern.ALWAYS_TICK.tickFormatter.format(currentProgress) + " / "
+                                + TimeFormattingPattern.ALWAYS_TICK.tickFormatter.format(maxProgress));
             }
 
             if (legacyProcessText != null) {
