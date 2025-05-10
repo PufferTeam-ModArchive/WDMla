@@ -28,9 +28,9 @@ public class ArchitectureCraftPlugin implements IWDMlaPlugin {
         registration.registerBlockComponent(BlockShapeProvider.INSTANCE, BlockShape.class);
         registration.registerHarvest(ShapeHarvestHandler.INSTANCE, BlockShape.class);
 
-        WDMlaConfig.instance()
-                .getCategory(Identifiers.CONFIG_AUTOGEN + Configuration.CATEGORY_SPLITTER + "architecturecraft")
-                .setLanguageKey("provider.wdmla.architecturecraft.category");
+        WDMlaConfig.instance().setCategoryLangKey(
+                Identifiers.CONFIG_AUTOGEN + Configuration.CATEGORY_SPLITTER + "architecturecraft",
+                "provider.wdmla.architecturecraft.category");
     }
 
     public static ResourceLocation path(String path) {

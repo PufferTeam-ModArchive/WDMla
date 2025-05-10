@@ -39,9 +39,8 @@ public class UniversalPlugin implements IWDMlaPlugin {
         registration.registerItemStorageClient(ItemStorageProvider.Extension.INSTANCE);
         registration.registerFluidStorageClient(FluidStorageProvider.Extension.INSTANCE);
 
-        WDMlaConfig.instance()
-                .getCategory(
-                        Identifiers.CONFIG_AUTOGEN + Configuration.CATEGORY_SPLITTER + Identifiers.NAMESPACE_UNIVERSAL)
-                .setLanguageKey("provider.wdmla.universal.category");
+        WDMlaConfig.instance().setCategoryLangKey(
+                Identifiers.CONFIG_AUTOGEN + Configuration.CATEGORY_SPLITTER + Identifiers.NAMESPACE_UNIVERSAL,
+                "provider.wdmla.universal.category");
     }
 }

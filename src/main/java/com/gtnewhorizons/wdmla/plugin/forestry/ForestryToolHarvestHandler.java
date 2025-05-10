@@ -2,13 +2,13 @@ package com.gtnewhorizons.wdmla.plugin.forestry;
 
 import java.util.Arrays;
 
-import com.gtnewhorizons.wdmla.api.harvestability.EffectiveTool;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.ResourceLocation;
 
 import com.gtnewhorizons.wdmla.api.TooltipPosition;
+import com.gtnewhorizons.wdmla.api.harvestability.EffectiveTool;
 import com.gtnewhorizons.wdmla.api.harvestability.HarvestabilityInfo;
 import com.gtnewhorizons.wdmla.api.harvestability.HarvestabilityTestPhase;
 import com.gtnewhorizons.wdmla.api.provider.HarvestHandler;
@@ -20,9 +20,8 @@ public enum ForestryToolHarvestHandler implements HarvestHandler {
 
     INSTANCE;
 
-    private static final EffectiveTool SCOOP = EffectiveTool.of(
-            "scoop",
-            Arrays.asList(PluginApiculture.items.scoop.getItemStack()));
+    private static final EffectiveTool SCOOP = EffectiveTool
+            .of("scoop", Arrays.asList(PluginApiculture.items.scoop.getItemStack()));
 
     @Override
     public boolean testHarvest(HarvestabilityInfo info, HarvestabilityTestPhase phase, EntityPlayer player, Block block,

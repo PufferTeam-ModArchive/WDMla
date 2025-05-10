@@ -42,10 +42,9 @@ public class HarvestabilityPlugin implements IWDMlaPlugin {
         registration.registerHarvest(VanillaSpecialHarvestHandler.INSTANCE, BlockSnowBlock.class);
         registration.registerHarvest(VanillaSpecialHarvestHandler.INSTANCE, BlockWeb.class);
 
-        WDMlaConfig.instance()
-                .getCategory(
-                        Identifiers.CONFIG_AUTOGEN + Configuration.CATEGORY_SPLITTER
-                                + HarvestabilityIdentifiers.NAMESPACE_HARVESTABILITY)
-                .setLanguageKey("provider.wdmla.harvestability.category");
+        WDMlaConfig.instance().setCategoryLangKey(
+                Identifiers.CONFIG_AUTOGEN + Configuration.CATEGORY_SPLITTER
+                        + HarvestabilityIdentifiers.NAMESPACE_HARVESTABILITY,
+                "provider.wdmla.harvestability.category");
     }
 }

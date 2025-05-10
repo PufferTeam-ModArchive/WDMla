@@ -141,9 +141,9 @@ public class VanillaPlugin implements IWDMlaPlugin {
 
         registration.registerItemStorageClient(ItemFrameProvider.INSTANCE);
 
-        WDMlaConfig.instance().getCategory(
-                Identifiers.CONFIG_AUTOGEN + Configuration.CATEGORY_SPLITTER + VanillaIdentifiers.NAMESPACE_MINECRAFT)
-                .setLanguageKey("provider.wdmla.minecraft.category");
+        WDMlaConfig.instance().setCategoryLangKey(
+                Identifiers.CONFIG_AUTOGEN + Configuration.CATEGORY_SPLITTER + VanillaIdentifiers.NAMESPACE_MINECRAFT,
+                "provider.wdmla.minecraft.category");
     }
 
     @Override

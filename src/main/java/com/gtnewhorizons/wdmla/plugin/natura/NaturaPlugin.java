@@ -41,8 +41,9 @@ public class NaturaPlugin implements IWDMlaPlugin {
         registration.registerBlockComponent(FurnaceProvider.INSTANCE, NetherrackFurnaceBlock.class);
         registration.registerBlockComponent(BerryBushProvider.INSTANCE, BerryBush.class);
 
-        WDMlaConfig.instance().getCategory(Identifiers.CONFIG_AUTOGEN + Configuration.CATEGORY_SPLITTER + "natura")
-                .setLanguageKey("provider.wdmla.natura.category");
+        WDMlaConfig.instance().setCategoryLangKey(
+                Identifiers.CONFIG_AUTOGEN + Configuration.CATEGORY_SPLITTER + "natura",
+                "provider.wdmla.natura.category");
     }
 
     public static ResourceLocation path(String path) {

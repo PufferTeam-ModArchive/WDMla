@@ -21,6 +21,7 @@ import com.gtnewhorizons.wdmla.api.view.ViewGroup;
 import com.gtnewhorizons.wdmla.command.GenerateDumpCommand;
 import com.gtnewhorizons.wdmla.command.PrintUnsupportedTEsCommand;
 import com.gtnewhorizons.wdmla.config.WDMlaConfig;
+import com.gtnewhorizons.wdmla.config.WDMlaConfigImpl;
 import com.gtnewhorizons.wdmla.overlay.WDMlaTickHandler;
 import com.gtnewhorizons.wdmla.plugin.harvestability.proxy.ProxyGregTech;
 import com.gtnewhorizons.wdmla.plugin.harvestability.proxy.ProxyIguanaTweaks;
@@ -41,7 +42,7 @@ public class ClientProxy extends CommonProxy {
         super.preInit(event);
         File wdmlaConfigFolder = new File(event.getModConfigurationDirectory().getPath(), "WDMla");
         File wdmlaConfig = new File(wdmlaConfigFolder, "plugins_autogen.cfg");
-        new WDMlaConfig(wdmlaConfig);
+        new WDMlaConfigImpl(wdmlaConfig);
     }
 
     @Override

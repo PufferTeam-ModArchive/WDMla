@@ -11,7 +11,7 @@ import java.util.Set;
  * <br>
  * Read-only interface for Waila internal config storage.<br>
  * An instance of this interface is passed to most of Waila callbacks as a way to change the behavior depending on
- * client settings. Modern version : {@link com.gtnewhorizons.wdmla.config.WDMlaConfig}
+ * client settings. Modern version : {@linkplain com.gtnewhorizons.wdmla.config.WDMlaConfigImpl}
  * 
  * @author ProfMobius
  *

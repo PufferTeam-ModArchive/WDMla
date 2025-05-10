@@ -1,11 +1,13 @@
 package com.gtnewhorizons.wdmla.api.harvestability;
 
-import com.gtnewhorizons.wdmla.impl.harvestability.HarvestLevelImpl;
-import net.minecraft.item.ItemStack;
-import org.jetbrains.annotations.Nullable;
-
 import java.util.List;
 import java.util.function.Function;
+
+import net.minecraft.item.ItemStack;
+
+import org.jetbrains.annotations.Nullable;
+
+import com.gtnewhorizons.wdmla.impl.harvestability.HarvestLevelImpl;
 
 public interface HarvestLevel {
 

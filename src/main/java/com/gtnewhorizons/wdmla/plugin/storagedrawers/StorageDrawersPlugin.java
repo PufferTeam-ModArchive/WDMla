@@ -37,9 +37,9 @@ public class StorageDrawersPlugin implements IWDMlaPlugin {
 
         registration.registerItemStorageClient(DrawerControllerStorageProvider.INSTANCE);
 
-        WDMlaConfig.instance()
-                .getCategory(Identifiers.CONFIG_AUTOGEN + Configuration.CATEGORY_SPLITTER + "storagedrawers")
-                .setLanguageKey("provider.wdmla.storagedrawers.category");
+        WDMlaConfig.instance().setCategoryLangKey(
+                Identifiers.CONFIG_AUTOGEN + Configuration.CATEGORY_SPLITTER + "storagedrawers",
+                "provider.wdmla.storagedrawers.category");
     }
 
     public static ResourceLocation path(String path) {

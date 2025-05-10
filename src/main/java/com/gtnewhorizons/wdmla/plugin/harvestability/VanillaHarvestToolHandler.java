@@ -31,15 +31,12 @@ public enum VanillaHarvestToolHandler implements HarvestHandler {
                     new ItemStack(Items.stone_pickaxe),
                     new ItemStack(Items.iron_pickaxe),
                     new ItemStack(Items.diamond_pickaxe)));
-    public static final EffectiveTool TOOL_SHOVEL = EffectiveTool.of(
-            "shovel",
-            Arrays.asList(new ItemStack(Items.wooden_shovel)));
-    public static final EffectiveTool TOOL_AXE = EffectiveTool.of(
-            "axe",
-            Arrays.asList(new ItemStack(Items.wooden_axe)));
-    public static final EffectiveTool TOOL_SWORD = EffectiveTool.of(
-            "sword",
-            Arrays.asList(new ItemStack(Items.wooden_sword)));
+    public static final EffectiveTool TOOL_SHOVEL = EffectiveTool
+            .of("shovel", Arrays.asList(new ItemStack(Items.wooden_shovel)));
+    public static final EffectiveTool TOOL_AXE = EffectiveTool
+            .of("axe", Arrays.asList(new ItemStack(Items.wooden_axe)));
+    public static final EffectiveTool TOOL_SWORD = EffectiveTool
+            .of("sword", Arrays.asList(new ItemStack(Items.wooden_sword)));
 
     static {
         testTools.put(TOOL_PICKAXE, new ItemStack(Items.wooden_pickaxe));

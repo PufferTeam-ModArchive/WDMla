@@ -27,8 +27,8 @@ public class DebugPlugin implements IWDMlaPlugin {
         registration.registerEntityComponent(RegistryDataProvider.getEntity(), Entity.class);
         registration.registerEntityComponent(CoordinatesProvider.getEntity(), Entity.class);
 
-        WDMlaConfig.instance()
-                .getCategory(Identifiers.CONFIG_AUTOGEN + Configuration.CATEGORY_SPLITTER + Identifiers.NAMESPACE_DEBUG)
-                .setLanguageKey("provider.wdmla.debug.category");
+        WDMlaConfig.instance().setCategoryLangKey(
+                Identifiers.CONFIG_AUTOGEN + Configuration.CATEGORY_SPLITTER + Identifiers.NAMESPACE_DEBUG,
+                "provider.wdmla.debug.category");
     }
 }

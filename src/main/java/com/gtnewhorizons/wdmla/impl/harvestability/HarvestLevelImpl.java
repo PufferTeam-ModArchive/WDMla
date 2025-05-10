@@ -3,10 +3,12 @@ package com.gtnewhorizons.wdmla.impl.harvestability;
 import java.util.List;
 import java.util.function.Function;
 
-import com.gtnewhorizons.wdmla.api.harvestability.HarvestLevel;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
+
 import org.jetbrains.annotations.Nullable;
+
+import com.gtnewhorizons.wdmla.api.harvestability.HarvestLevel;
 
 public class HarvestLevelImpl implements HarvestLevel {
 

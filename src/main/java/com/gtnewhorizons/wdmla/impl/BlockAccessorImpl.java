@@ -2,8 +2,6 @@ package com.gtnewhorizons.wdmla.impl;
 
 import java.util.function.Supplier;
 
-import com.gtnewhorizons.wdmla.api.accessor.AccessorImpl;
-import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -19,6 +17,8 @@ import net.minecraftforge.common.DimensionManager;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Nullable;
 
+import com.gtnewhorizons.wdmla.api.accessor.AccessorImpl;
+import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IServerDataProvider;
 
 import cpw.mods.fml.common.network.NetworkRegistry;

@@ -2,8 +2,8 @@ package com.gtnewhorizons.wdmla.config;
 
 import com.gtnewhorizon.gtnhlib.config.Config;
 import com.gtnewhorizons.wdmla.WDMla;
-import com.gtnewhorizons.wdmla.api.ui.ColorPalette;
 import com.gtnewhorizons.wdmla.api.theme.DefaultThemes;
+import com.gtnewhorizons.wdmla.api.ui.ColorPalette;
 
 /**
  * List of WDMla general configs. Don't get confused with Waila general config in

@@ -47,7 +47,8 @@ public class RegistryDataProvider implements IToggleableProvider {
             int blockID = Block.getIdFromBlock(accessor.getBlock());
             int meta = accessor.getMetadata();
             String registryName = GameData.getBlockRegistry().getNameForObject(accessor.getBlock());
-            if (displayMode == PluginsConfig.Debug.DisplayMode.SHORT || (displayMode == PluginsConfig.Debug.DisplayMode.DETAILS && !accessor.showDetails())) {
+            if (displayMode == PluginsConfig.Debug.DisplayMode.SHORT
+                    || (displayMode == PluginsConfig.Debug.DisplayMode.DETAILS && !accessor.showDetails())) {
                 tooltip.text(
                         String.format(
                                 ITALIC + StatCollector.translateToLocal("hud.msg.wdmla.block.registry.data.short"),
@@ -83,7 +84,8 @@ public class RegistryDataProvider implements IToggleableProvider {
             String registryName = EntityList.classToStringMapping.get(accessor.getEntity().getClass());
             int registryID = (int) EntityList.stringToIDMapping.get(registryName);
             int entityID = accessor.getEntity().getEntityId();
-            if (displayMode == PluginsConfig.Debug.DisplayMode.SHORT || (displayMode == PluginsConfig.Debug.DisplayMode.DETAILS && !accessor.showDetails())) {
+            if (displayMode == PluginsConfig.Debug.DisplayMode.SHORT
+                    || (displayMode == PluginsConfig.Debug.DisplayMode.DETAILS && !accessor.showDetails())) {
                 tooltip.text(
                         String.format(
                                 ITALIC + StatCollector.translateToLocal("hud.msg.wdmla.entity.registry.data.short"),

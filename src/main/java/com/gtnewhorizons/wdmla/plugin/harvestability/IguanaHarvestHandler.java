@@ -1,11 +1,11 @@
 package com.gtnewhorizons.wdmla.plugin.harvestability;
 
-import com.gtnewhorizons.wdmla.api.harvestability.HarvestLevel;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.ResourceLocation;
 
+import com.gtnewhorizons.wdmla.api.harvestability.HarvestLevel;
 import com.gtnewhorizons.wdmla.api.harvestability.HarvestabilityInfo;
 import com.gtnewhorizons.wdmla.api.harvestability.HarvestabilityTestPhase;
 import com.gtnewhorizons.wdmla.api.provider.HarvestHandler;
@@ -24,7 +24,8 @@ public enum IguanaHarvestHandler implements HarvestHandler {
                 info.setEffectiveTool(ProxyIguanaTweaks.pickaxe);
             }
         } else if (phase == HarvestabilityTestPhase.HARVEST_LEVEL) {
-            info.setHarvestLevel(HarvestLevel.newNameRule(info.getHarvestLevel(), ProxyIguanaTweaks::getHarvestLevelName));
+            info.setHarvestLevel(
+                    HarvestLevel.newNameRule(info.getHarvestLevel(), ProxyIguanaTweaks::getHarvestLevelName));
         }
 
         return true;

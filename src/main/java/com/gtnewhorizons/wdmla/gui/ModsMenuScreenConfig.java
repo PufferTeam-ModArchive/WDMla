@@ -14,7 +14,7 @@ import com.gtnewhorizons.wdmla.WDMla;
 import com.gtnewhorizons.wdmla.api.Identifiers;
 import com.gtnewhorizons.wdmla.config.General;
 import com.gtnewhorizons.wdmla.config.PluginsConfig;
-import com.gtnewhorizons.wdmla.config.WDMlaConfig;
+import com.gtnewhorizons.wdmla.config.WDMlaConfigImpl;
 
 import cpw.mods.fml.client.config.IConfigElement;
 import mcp.mobius.waila.api.impl.ConfigHandler;
@@ -50,7 +50,7 @@ public class ModsMenuScreenConfig extends LiveEditGuiConfig {
                 .getConfigElementsMulti(true, General.class, PluginsConfig.class);
         categories.addAll(
                 Arrays.asList(
-                        new ConfigElement<>(WDMlaConfig.instance().getCategory(Identifiers.CONFIG_AUTOGEN)),
+                        new ConfigElement<>(WDMlaConfigImpl._instance.getCategory(Identifiers.CONFIG_AUTOGEN)),
                         new ConfigElement<>(
                                 ConfigHandler.instance().config.getCategory(Configuration.CATEGORY_GENERAL)),
                         new ConfigElement<>(ConfigHandler.instance().config.getCategory(Constants.CATEGORY_MODULES))));

@@ -32,9 +32,9 @@ public class HarvestcraftPlugin implements IWDMlaPlugin {
         registration.registerBlockComponent(AnimalTrapProvider.INSTANCE, BlockPamAnimalTrap.class);
         registration.registerBlockComponent(FishTrapProvider.INSTANCE, BlockPamFishTrap.class);
 
-        WDMlaConfig.instance()
-                .getCategory(Identifiers.CONFIG_AUTOGEN + Configuration.CATEGORY_SPLITTER + "harvestcraft")
-                .setLanguageKey("provider.wdmla.harvestcraft.category");
+        WDMlaConfig.instance().setCategoryLangKey(
+                Identifiers.CONFIG_AUTOGEN + Configuration.CATEGORY_SPLITTER + "harvestcraft",
+                "provider.wdmla.harvestcraft.category");
     }
 
     public static ResourceLocation path(String path) {

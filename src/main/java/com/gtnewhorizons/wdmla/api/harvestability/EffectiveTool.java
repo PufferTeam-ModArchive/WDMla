@@ -1,10 +1,11 @@
 package com.gtnewhorizons.wdmla.api.harvestability;
 
-import com.gtnewhorizons.wdmla.impl.harvestability.EffectiveToolImpl;
+import java.util.List;
+
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 
-import java.util.List;
+import com.gtnewhorizons.wdmla.impl.harvestability.EffectiveToolImpl;
 
 public interface EffectiveTool {
 

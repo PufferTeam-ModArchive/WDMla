@@ -19,8 +19,9 @@ public class ForestryPlugin implements IWDMlaPlugin {
     public void registerClient(IWDMlaClientRegistration registration) {
         registration.registerHarvest(ForestryToolHarvestHandler.INSTANCE, BlockBeehives.class);
 
-        WDMlaConfig.instance().getCategory(Identifiers.CONFIG_AUTOGEN + Configuration.CATEGORY_SPLITTER + "forestry")
-                .setLanguageKey("provider.wdmla.forestry.category");
+        WDMlaConfig.instance().setCategoryLangKey(
+                Identifiers.CONFIG_AUTOGEN + Configuration.CATEGORY_SPLITTER + "forestry",
+                "provider.wdmla.forestry.category");
     }
 
     public static ResourceLocation path(String path) {

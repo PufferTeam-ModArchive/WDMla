@@ -32,9 +32,9 @@ public class HungerOverhaulPlugin implements IWDMlaPlugin {
         registration.registerEntityComponent(SlowAnimalProvider.INSTANCE, EntityAnimal.class);
         registration.registerEntityComponent(MilkCooldownProvider.INSTANCE, EntityCow.class);
 
-        WDMlaConfig.instance()
-                .getCategory(Identifiers.CONFIG_AUTOGEN + Configuration.CATEGORY_SPLITTER + "hungeroverhaul")
-                .setLanguageKey("provider.wdmla.hungeroverhaul.category");
+        WDMlaConfig.instance().setCategoryLangKey(
+                Identifiers.CONFIG_AUTOGEN + Configuration.CATEGORY_SPLITTER + "hungeroverhaul",
+                "provider.wdmla.hungeroverhaul.category");
     }
 
     public static ResourceLocation path(String path) {
