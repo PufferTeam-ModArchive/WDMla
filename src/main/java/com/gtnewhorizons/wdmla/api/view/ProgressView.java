@@ -8,7 +8,6 @@ import org.jetbrains.annotations.Nullable;
 import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.impl.ui.style.ProgressStyle;
 
-@ApiStatus.Experimental
 public class ProgressView {
 
     /**

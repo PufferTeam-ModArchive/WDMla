@@ -54,6 +54,5 @@ public interface IWDMlaCommonRegistration {
      */
     <T> void registerFluidStorage(IServerExtensionProvider<FluidView.Data> provider, Class<? extends T> clazz);
 
-    @ApiStatus.Experimental
     <T> void registerProgress(IServerExtensionProvider<ProgressView.Data> provider, Class<? extends T> clazz);
 }
