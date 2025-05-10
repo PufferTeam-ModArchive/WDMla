@@ -2,7 +2,6 @@ package com.gtnewhorizons.wdmla.config;
 
 import com.gtnewhorizon.gtnhlib.config.Config;
 import com.gtnewhorizons.wdmla.WDMla;
-import com.gtnewhorizons.wdmla.plugin.debug.RegistryDataProvider;
 
 /**
  * List of WDMla plugins config.<br>
@@ -436,7 +435,13 @@ public class PluginsConfig {
 
             @Config.LangKey("option.wdmla.debug.registry.data.display.mode")
             @Config.DefaultEnum("SHORT")
-            public RegistryDataProvider.DisplayMode displayMode;
+            public DisplayMode displayMode;
+        }
+
+        public enum DisplayMode {
+            SHORT,
+            FULL,
+            DETAILS
         }
     }
 }

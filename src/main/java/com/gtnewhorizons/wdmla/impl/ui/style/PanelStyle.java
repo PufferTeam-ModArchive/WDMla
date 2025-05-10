@@ -15,9 +15,8 @@ public class PanelStyle implements IPanelStyle {
     }
 
     public PanelStyle() {
-        IPanelStyle theme = General.currentTheme.get().panelStyle;
         this.alignment = ComponentAlignment.TOPLEFT;
-        this.spacing = theme.getSpacing();
+        this.spacing = General.currentTheme.get().defaultSpacing;
     }
 
     public PanelStyle spacing(float spacing) {

@@ -7,7 +7,7 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.ResourceLocation;
 
 import com.gtnewhorizons.wdmla.api.Identifiers;
-import com.gtnewhorizons.wdmla.api.Theme;
+import com.gtnewhorizons.wdmla.api.theme.Theme;
 import com.gtnewhorizons.wdmla.api.TooltipPosition;
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
@@ -87,7 +87,7 @@ public enum DefaultBlockInfoProvider implements IBlockComponentProvider {
                                 tooltip.getWidth() - (icon != null ? icon.getWidth() : 0)
                                         - (name != null ? name.getWidth() : 0)
                                         - getWidth()
-                                        - General.currentTheme.get().panelStyle.getSpacing() * 2,
+                                        - General.currentTheme.get().defaultSpacing * 2,
                                 0);
                     }
                     super.tick(x, y);

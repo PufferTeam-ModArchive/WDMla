@@ -43,11 +43,11 @@ public class RegistryDataProvider implements IToggleableProvider {
                     .getConfig(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_METADATA, true)) {
                 return;
             }
-            DisplayMode displayMode = PluginsConfig.debug.registryData.displayMode;
+            PluginsConfig.Debug.DisplayMode displayMode = PluginsConfig.debug.registryData.displayMode;
             int blockID = Block.getIdFromBlock(accessor.getBlock());
             int meta = accessor.getMetadata();
             String registryName = GameData.getBlockRegistry().getNameForObject(accessor.getBlock());
-            if (displayMode == DisplayMode.SHORT || (displayMode == DisplayMode.DETAILS && !accessor.showDetails())) {
+            if (displayMode == PluginsConfig.Debug.DisplayMode.SHORT || (displayMode == PluginsConfig.Debug.DisplayMode.DETAILS && !accessor.showDetails())) {
                 tooltip.text(
                         String.format(
                                 ITALIC + StatCollector.translateToLocal("hud.msg.wdmla.block.registry.data.short"),
@@ -79,11 +79,11 @@ public class RegistryDataProvider implements IToggleableProvider {
                 return;
             }
 
-            DisplayMode displayMode = PluginsConfig.debug.registryData.displayMode;
+            PluginsConfig.Debug.DisplayMode displayMode = PluginsConfig.debug.registryData.displayMode;
             String registryName = EntityList.classToStringMapping.get(accessor.getEntity().getClass());
             int registryID = (int) EntityList.stringToIDMapping.get(registryName);
             int entityID = accessor.getEntity().getEntityId();
-            if (displayMode == DisplayMode.SHORT || (displayMode == DisplayMode.DETAILS && !accessor.showDetails())) {
+            if (displayMode == PluginsConfig.Debug.DisplayMode.SHORT || (displayMode == PluginsConfig.Debug.DisplayMode.DETAILS && !accessor.showDetails())) {
                 tooltip.text(
                         String.format(
                                 ITALIC + StatCollector.translateToLocal("hud.msg.wdmla.entity.registry.data.short"),
@@ -119,11 +119,5 @@ public class RegistryDataProvider implements IToggleableProvider {
     @Override
     public boolean canToggleInGui() {
         return false;
-    }
-
-    public enum DisplayMode {
-        SHORT,
-        FULL,
-        DETAILS
     }
 }

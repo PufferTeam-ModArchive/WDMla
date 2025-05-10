@@ -1,9 +1,7 @@
-package com.gtnewhorizons.wdmla.impl.ui;
+package com.gtnewhorizons.wdmla.api.theme;
 
 import com.gtnewhorizons.wdmla.api.TextColors;
-import com.gtnewhorizons.wdmla.api.Theme;
 import com.gtnewhorizons.wdmla.api.ui.ColorPalette;
-import com.gtnewhorizons.wdmla.impl.ui.style.PanelStyle;
 
 public enum DefaultThemes {
 
@@ -17,7 +15,7 @@ public enum DefaultThemes {
                     ColorPalette.DANGER,
                     ColorPalette.FAILURE,
                     ColorPalette.MOD_NAME),
-            new PanelStyle(2)),
+            2),
     JADE(ColorPalette.BG_COLOR_JADE, ColorPalette.BG_GRADIENT1_JADE, ColorPalette.BG_GRADIENT2_JADE,
             new TextColors(
                     ColorPalette.DEFAULT,
@@ -28,7 +26,7 @@ public enum DefaultThemes {
                     ColorPalette.DANGER,
                     ColorPalette.FAILURE,
                     ColorPalette.MOD_NAME),
-            new PanelStyle(1)), // Jade has tight spacing than others
+            1), // Jade has tight spacing than others
     TOP(ColorPalette.BG_COLOR_TOP, ColorPalette.BG_GRADIENT1_TOP, ColorPalette.BG_GRADIENT2_TOP,
             new TextColors(
                     ColorPalette.DEFAULT,
@@ -39,12 +37,12 @@ public enum DefaultThemes {
                     ColorPalette.DANGER,
                     ColorPalette.FAILURE,
                     ColorPalette.MOD_NAME),
-            new PanelStyle(2));
+            2);
 
-    private Theme theme;
+    private final Theme theme;
 
-    DefaultThemes(int bgColor, int gradient1, int gradient2, TextColors textColors, PanelStyle panelStyle) {
-        this.theme = new Theme(bgColor, gradient1, gradient2, textColors, panelStyle);
+    DefaultThemes(int bgColor, int gradient1, int gradient2, TextColors textColors, int defaultSpacing) {
+        this.theme = new Theme(bgColor, gradient1, gradient2, textColors, defaultSpacing);
     }
 
     public Theme get() {
