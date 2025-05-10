@@ -15,6 +15,7 @@ import com.gtnewhorizons.wdmla.api.identifier.WDMlaIDs;
 import com.gtnewhorizons.wdmla.api.WDMlaPlugin;
 import com.gtnewhorizons.wdmla.api.config.WDMlaConfig;
 
+@SuppressWarnings("unused")
 @WDMlaPlugin(uid = "hungeroverhaul", dependencies = "HungerOverhaul")
 public class HungerOverhaulPlugin implements IWDMlaPlugin {
 

@@ -19,6 +19,7 @@ import mods.natura.blocks.trees.NLeavesDark;
 import mods.natura.blocks.trees.NLeavesNocolor;
 import mods.natura.blocks.trees.OverworldLeaves;
 
+@SuppressWarnings("unused")
 @WDMlaPlugin(
         uid = "Natura",
         dependencies = "Natura",

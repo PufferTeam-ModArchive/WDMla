@@ -15,6 +15,7 @@ import gcewing.architecture.common.block.BlockSawbench;
 import gcewing.architecture.common.block.BlockShape;
 
 // TODO: display chisel and hammer interaction
+@SuppressWarnings("unused")
 @WDMlaPlugin(uid = "architecturecraft", dependencies = "ArchitectureCraft")
 public class ArchitectureCraftPlugin implements IWDMlaPlugin {
 

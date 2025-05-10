@@ -15,6 +15,7 @@ import com.pam.harvestcraft.BlockPamFishTrap;
 import com.pam.harvestcraft.BlockPamFruit;
 
 // GTNH Harvestcraft is in private repo so we maintain the plugin here
+@SuppressWarnings("unused")
 @WDMlaPlugin(uid = "harvestcraft", dependencies = "harvestcraft")
 public class HarvestcraftPlugin implements IWDMlaPlugin {
 

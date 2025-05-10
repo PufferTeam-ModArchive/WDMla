@@ -11,7 +11,8 @@ import com.gtnewhorizons.wdmla.api.config.WDMlaConfig;
 
 import forestry.apiculture.blocks.BlockBeehives;
 
-// TODO: finish supporting rest of tile entities
+// TODO: finish adding support for rest of tile entities
+@SuppressWarnings("unused")
 @WDMlaPlugin(uid = "forestry", dependencies = "Forestry")
 public class ForestryPlugin implements IWDMlaPlugin {
 

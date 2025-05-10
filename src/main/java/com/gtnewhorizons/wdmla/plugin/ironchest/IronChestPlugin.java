@@ -7,6 +7,7 @@ import com.gtnewhorizons.wdmla.plugin.universal.ItemStorageProvider;
 
 import cpw.mods.ironchest.BlockIronChest;
 
+@SuppressWarnings("unused")
 @WDMlaPlugin(uid = "ironchest", dependencies = "ironchest")
 public class IronChestPlugin implements IWDMlaPlugin {
 

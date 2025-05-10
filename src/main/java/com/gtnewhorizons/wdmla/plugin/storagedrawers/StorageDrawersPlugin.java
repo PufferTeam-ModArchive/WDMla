@@ -17,6 +17,7 @@ import com.jaquadro.minecraft.storagedrawers.block.BlockDrawers;
 import com.jaquadro.minecraft.storagedrawers.block.BlockDrawersCustom;
 import com.jaquadro.minecraft.storagedrawers.block.BlockFramingTable;
 
+@SuppressWarnings("unused")
 @WDMlaPlugin(
         uid = "StorageDrawers",
         dependencies = "StorageDrawers",
