@@ -1,5 +1,6 @@
 package com.gtnewhorizons.wdmla.plugin.vanilla;
 
+import com.gtnewhorizons.wdmla.api.identifier.VanillaIDs;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -39,7 +40,7 @@ public enum CustomMetaDataHeaderProvider implements IBlockComponentProvider {
 
     @Override
     public ResourceLocation getUid() {
-        return VanillaIdentifiers.CUSTOM_META_HEADER;
+        return VanillaIDs.CUSTOM_META_HEADER;
     }
 
     @Override

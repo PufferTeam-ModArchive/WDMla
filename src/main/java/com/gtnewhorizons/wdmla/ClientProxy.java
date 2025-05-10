@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 
-import com.gtnewhorizons.wdmla.api.Identifiers;
+import com.gtnewhorizons.wdmla.api.identifier.WDMlaIDs;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
@@ -76,7 +76,7 @@ public class ClientProxy extends CommonProxy {
     @SuppressWarnings("unused")
     @SubscribeEvent
     public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event) {
-        if (event.modID.equals(Identifiers.MODID)) {
+        if (event.modID.equals(WDMlaIDs.MODID)) {
             WDMlaConfig.instance().save();
             WDMlaConfig.instance().reloadConfig();
             loadComplete(); // sort priorities

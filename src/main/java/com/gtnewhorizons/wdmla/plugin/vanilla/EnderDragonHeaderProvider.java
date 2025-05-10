@@ -1,5 +1,6 @@
 package com.gtnewhorizons.wdmla.plugin.vanilla;
 
+import com.gtnewhorizons.wdmla.api.identifier.VanillaIDs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.boss.EntityDragonPart;
 import net.minecraft.util.ResourceLocation;
@@ -30,6 +31,6 @@ public enum EnderDragonHeaderProvider implements IEntityComponentProvider {
 
     @Override
     public ResourceLocation getUid() {
-        return VanillaIdentifiers.ENDER_DRAGON_HEADER;
+        return VanillaIDs.ENDER_DRAGON_HEADER;
     }
 }

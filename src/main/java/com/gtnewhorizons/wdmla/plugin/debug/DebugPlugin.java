@@ -6,7 +6,7 @@ import net.minecraftforge.common.config.Configuration;
 
 import com.gtnewhorizons.wdmla.api.IWDMlaClientRegistration;
 import com.gtnewhorizons.wdmla.api.IWDMlaPlugin;
-import com.gtnewhorizons.wdmla.api.Identifiers;
+import com.gtnewhorizons.wdmla.api.identifier.WDMlaIDs;
 import com.gtnewhorizons.wdmla.api.WDMlaPlugin;
 import com.gtnewhorizons.wdmla.api.config.WDMlaConfig;
 
@@ -14,7 +14,7 @@ import com.gtnewhorizons.wdmla.api.config.WDMlaConfig;
  * The base plugin that registers providers which provide less useful information to very wide range objects.
  */
 @SuppressWarnings("unused")
-@WDMlaPlugin(uid = Identifiers.NAMESPACE_DEBUG)
+@WDMlaPlugin(uid = WDMlaIDs.NAMESPACE_DEBUG)
 public class DebugPlugin implements IWDMlaPlugin {
 
     @Override
@@ -28,7 +28,7 @@ public class DebugPlugin implements IWDMlaPlugin {
         registration.registerEntityComponent(CoordinatesProvider.getEntity(), Entity.class);
 
         WDMlaConfig.instance().setCategoryLangKey(
-                Identifiers.CONFIG_AUTOGEN + Configuration.CATEGORY_SPLITTER + Identifiers.NAMESPACE_DEBUG,
+                WDMlaIDs.CONFIG_AUTOGEN + Configuration.CATEGORY_SPLITTER + WDMlaIDs.NAMESPACE_DEBUG,
                 "provider.wdmla.debug.category");
     }
 }

@@ -1,11 +1,12 @@
 package com.gtnewhorizons.wdmla.plugin.vanilla;
 
+import com.gtnewhorizons.wdmla.api.identifier.VanillaIDs;
 import net.minecraft.entity.item.EntityFallingBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 
-import com.gtnewhorizons.wdmla.api.Identifiers;
+import com.gtnewhorizons.wdmla.api.identifier.WDMlaIDs;
 import com.gtnewhorizons.wdmla.api.TooltipPosition;
 import com.gtnewhorizons.wdmla.api.accessor.EntityAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IEntityComponentProvider;
@@ -30,7 +31,7 @@ public enum FallingBlockHeaderProvider implements IEntityComponentProvider {
             }
 
             ItemStack itemForm = new ItemStack(falling.func_145805_f(), 1, falling.field_145814_a);
-            tooltip.replaceChildWithTag(Identifiers.ENTITY, new ItemComponent(itemForm).doDrawOverlay(false));
+            tooltip.replaceChildWithTag(WDMlaIDs.ENTITY, new ItemComponent(itemForm).doDrawOverlay(false));
             ThemeHelper.INSTANCE.overrideEntityTooltipTitle(
                     tooltip,
                     String.format(
@@ -42,7 +43,7 @@ public enum FallingBlockHeaderProvider implements IEntityComponentProvider {
 
     @Override
     public ResourceLocation getUid() {
-        return VanillaIdentifiers.FALLING_BLOCK_HEADER;
+        return VanillaIDs.FALLING_BLOCK_HEADER;
     }
 
     @Override

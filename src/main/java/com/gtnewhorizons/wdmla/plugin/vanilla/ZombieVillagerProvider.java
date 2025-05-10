@@ -1,5 +1,6 @@
 package com.gtnewhorizons.wdmla.plugin.vanilla;
 
+import com.gtnewhorizons.wdmla.api.identifier.VanillaIDs;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
@@ -29,7 +30,7 @@ public enum ZombieVillagerProvider
                                 .value(
                                         StatCollector.translateToLocal("hud.msg.wdmla.conversion.time"),
                                         timePattern.tickFormatter.format(conversionTime))
-                                .tag(VanillaIdentifiers.VILLAGER_PROFESSION));
+                                .tag(VanillaIDs.VILLAGER_PROFESSION));
             }
         }
     }
@@ -41,7 +42,7 @@ public enum ZombieVillagerProvider
 
     @Override
     public ResourceLocation getUid() {
-        return VanillaIdentifiers.ZOMBIE_VILLAGER;
+        return VanillaIDs.ZOMBIE_VILLAGER;
     }
 
     @Override

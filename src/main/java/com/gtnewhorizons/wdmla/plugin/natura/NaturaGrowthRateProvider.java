@@ -1,5 +1,6 @@
 package com.gtnewhorizons.wdmla.plugin.natura;
 
+import com.gtnewhorizons.wdmla.api.identifier.CommonPluginIDs;
 import net.minecraft.util.ResourceLocation;
 
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
@@ -25,6 +26,6 @@ public enum NaturaGrowthRateProvider implements IBlockComponentProvider {
 
     @Override
     public ResourceLocation getUid() {
-        return NaturaPlugin.path("growth_rate");
+        return CommonPluginIDs.NATURA_GROWTH_RATE;
     }
 }

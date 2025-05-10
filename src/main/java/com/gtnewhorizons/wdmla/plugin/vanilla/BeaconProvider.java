@@ -1,5 +1,6 @@
 package com.gtnewhorizons.wdmla.plugin.vanilla;
 
+import com.gtnewhorizons.wdmla.api.identifier.VanillaIDs;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.tileentity.TileEntityBeacon;
@@ -52,7 +53,7 @@ public enum BeaconProvider implements IBlockComponentProvider, IServerDataProvid
 
     @Override
     public ResourceLocation getUid() {
-        return VanillaIdentifiers.BEACON;
+        return VanillaIDs.BEACON;
     }
 
     @Override

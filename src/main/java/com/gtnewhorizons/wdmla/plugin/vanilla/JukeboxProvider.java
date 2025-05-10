@@ -1,5 +1,6 @@
 package com.gtnewhorizons.wdmla.plugin.vanilla;
 
+import com.gtnewhorizons.wdmla.api.identifier.VanillaIDs;
 import net.minecraft.block.BlockJukebox;
 import net.minecraft.item.ItemRecord;
 import net.minecraft.item.ItemStack;
@@ -49,6 +50,6 @@ public enum JukeboxProvider implements IBlockComponentProvider, IServerDataProvi
 
     @Override
     public ResourceLocation getUid() {
-        return VanillaIdentifiers.JUKEBOX;
+        return VanillaIDs.JUKEBOX;
     }
 }

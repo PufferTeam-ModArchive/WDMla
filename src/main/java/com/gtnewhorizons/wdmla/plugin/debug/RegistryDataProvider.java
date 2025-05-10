@@ -8,7 +8,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 import net.minecraftforge.common.config.Configuration;
 
-import com.gtnewhorizons.wdmla.api.Identifiers;
+import com.gtnewhorizons.wdmla.api.identifier.WDMlaIDs;
 import com.gtnewhorizons.wdmla.api.TooltipPosition;
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.accessor.EntityAccessor;
@@ -110,7 +110,7 @@ public class RegistryDataProvider implements IToggleableProvider {
 
     @Override
     public ResourceLocation getUid() {
-        return Identifiers.REGISTRY_DATA;
+        return WDMlaIDs.REGISTRY_DATA;
     }
 
     @Override

@@ -4,7 +4,7 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
-import com.gtnewhorizons.wdmla.api.Identifiers;
+import com.gtnewhorizons.wdmla.api.identifier.WDMlaIDs;
 import com.gtnewhorizons.wdmla.api.accessor.EntityAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IEntityComponentProvider;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
@@ -22,7 +22,7 @@ public enum EntityEquipmentProvider implements IEntityComponentProvider {
             return;
         }
 
-        ITooltip itemRow = new HPanelComponent().tag(Identifiers.EQUIPMENT);
+        ITooltip itemRow = new HPanelComponent().tag(WDMlaIDs.EQUIPMENT);
         for (int i = 0; i < 5; i++) {
             ItemStack equipment = ((EntityLiving) accessor.getEntity()).getEquipmentInSlot(i);
             if (equipment != null) {
@@ -37,6 +37,6 @@ public enum EntityEquipmentProvider implements IEntityComponentProvider {
 
     @Override
     public ResourceLocation getUid() {
-        return Identifiers.EQUIPMENT;
+        return WDMlaIDs.EQUIPMENT;
     }
 }

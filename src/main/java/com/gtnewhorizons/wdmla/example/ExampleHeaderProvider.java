@@ -6,7 +6,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
-import com.gtnewhorizons.wdmla.api.Identifiers;
+import com.gtnewhorizons.wdmla.api.identifier.WDMlaIDs;
 import com.gtnewhorizons.wdmla.api.TooltipPosition;
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
@@ -20,7 +20,7 @@ public enum ExampleHeaderProvider implements IBlockComponentProvider {
 
     @Override
     public ResourceLocation getUid() {
-        return Identifiers.EXAMPLE_HEAD;
+        return WDMlaIDs.EXAMPLE_HEAD;
     }
 
     @Override
@@ -33,7 +33,7 @@ public enum ExampleHeaderProvider implements IBlockComponentProvider {
         ThemeHelper.INSTANCE.overrideTooltipIcon(tooltip, new ItemStack(Blocks.lit_furnace), true);
         ThemeHelper.INSTANCE.overrideTooltipTitle(tooltip, "Furnace");
         tooltip.replaceChildWithTag(
-                Identifiers.MOD_NAME,
-                new TextComponent(BLUE + ITALIC + "WDMla").tag(Identifiers.MOD_NAME));
+                WDMlaIDs.MOD_NAME,
+                new TextComponent(BLUE + ITALIC + "WDMla").tag(WDMlaIDs.MOD_NAME));
     }
 }

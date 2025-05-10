@@ -1,8 +1,8 @@
-package com.gtnewhorizons.wdmla.plugin.vanilla;
+package com.gtnewhorizons.wdmla.api.identifier;
 
 import net.minecraft.util.ResourceLocation;
 
-public class VanillaIdentifiers {
+public final class VanillaIDs {
 
     // provider Uid & component tag
     public static final ResourceLocation SILVERFISH_HEADER = MC("silverfish_header");

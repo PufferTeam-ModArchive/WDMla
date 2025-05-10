@@ -4,7 +4,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.config.Configuration;
 
-import com.gtnewhorizons.wdmla.api.Identifiers;
+import com.gtnewhorizons.wdmla.api.identifier.WDMlaIDs;
 import com.gtnewhorizons.wdmla.api.TooltipPosition;
 import com.gtnewhorizons.wdmla.api.accessor.EntityAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IEntityComponentProvider;
@@ -28,7 +28,7 @@ public enum EntityHealthProvider implements IEntityComponentProvider {
 
     @Override
     public ResourceLocation getUid() {
-        return Identifiers.ENTITY_HEALTH;
+        return WDMlaIDs.ENTITY_HEALTH;
     }
 
     @Override
@@ -48,9 +48,9 @@ public enum EntityHealthProvider implements IEntityComponentProvider {
                             .child(ThemeHelper.INSTANCE.info(FormatUtil.STANDARD.format(livingEntity.getHealth())))
                             .text(" / ")
                             .child(ThemeHelper.INSTANCE.info(FormatUtil.STANDARD.format(livingEntity.getMaxHealth())))
-                            .tag(Identifiers.ENTITY_HEALTH));
+                            .tag(WDMlaIDs.ENTITY_HEALTH));
         } else {
-            tooltip.child(new HealthComponent(health, maxhp).tag(Identifiers.ENTITY_HEALTH));
+            tooltip.child(new HealthComponent(health, maxhp).tag(WDMlaIDs.ENTITY_HEALTH));
         }
     }
 }

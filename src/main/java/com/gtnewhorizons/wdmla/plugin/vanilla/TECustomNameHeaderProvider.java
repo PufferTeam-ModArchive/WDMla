@@ -1,5 +1,6 @@
 package com.gtnewhorizons.wdmla.plugin.vanilla;
 
+import com.gtnewhorizons.wdmla.api.identifier.VanillaIDs;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 
@@ -41,6 +42,6 @@ public enum TECustomNameHeaderProvider implements IServerDataProvider<BlockAcces
 
     @Override
     public ResourceLocation getUid() {
-        return VanillaIdentifiers.TE_CUSTOM_NAME_HEADER;
+        return VanillaIDs.TE_CUSTOM_NAME_HEADER;
     }
 }

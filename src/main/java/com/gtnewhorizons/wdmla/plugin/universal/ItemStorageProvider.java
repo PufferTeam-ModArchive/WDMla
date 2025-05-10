@@ -23,7 +23,7 @@ import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import com.gtnewhorizons.wdmla.ClientProxy;
 import com.gtnewhorizons.wdmla.CommonProxy;
-import com.gtnewhorizons.wdmla.api.Identifiers;
+import com.gtnewhorizons.wdmla.api.identifier.WDMlaIDs;
 import com.gtnewhorizons.wdmla.api.TooltipPosition;
 import com.gtnewhorizons.wdmla.api.accessor.Accessor;
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
@@ -231,7 +231,7 @@ public class ItemStorageProvider<T extends Accessor> implements IComponentProvid
                     group.views = group.views.subList(0, ItemCollector.MAX_SIZE);
                 }
             }
-            data.setTag(Identifiers.ITEM_STORAGE.toString(), encodeGroups(entry));
+            data.setTag(WDMlaIDs.ITEM_STORAGE.toString(), encodeGroups(entry));
         }
     }
 
@@ -239,7 +239,7 @@ public class ItemStorageProvider<T extends Accessor> implements IComponentProvid
     public void appendTooltip(ITooltip tooltip, T accessor) {
         List<ClientViewGroup<ItemView>> groups = ClientProxy.mapToClientGroups(
                 accessor,
-                Identifiers.ITEM_STORAGE,
+                WDMlaIDs.ITEM_STORAGE,
                 ItemStorageProvider::decodeGroups,
                 WDMlaClientRegistration.instance().itemStorageProviders::get);
         if (groups == null || groups.isEmpty()) {
@@ -256,7 +256,7 @@ public class ItemStorageProvider<T extends Accessor> implements IComponentProvid
 
     @Override
     public ResourceLocation getUid() {
-        return Identifiers.ITEM_STORAGE;
+        return WDMlaIDs.ITEM_STORAGE;
     }
 
     @Override
@@ -296,7 +296,7 @@ public class ItemStorageProvider<T extends Accessor> implements IComponentProvid
 
         @Override
         public ResourceLocation getUid() {
-            return Identifiers.ITEM_STORAGE_DEFAULT;
+            return WDMlaIDs.ITEM_STORAGE_DEFAULT;
         }
 
         @Override

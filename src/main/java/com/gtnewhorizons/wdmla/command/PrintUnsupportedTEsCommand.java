@@ -11,7 +11,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChatComponentText;
 
 import com.gtnewhorizon.gtnhlib.commands.GTNHClientCommand;
-import com.gtnewhorizons.wdmla.api.Identifiers;
+import com.gtnewhorizons.wdmla.api.identifier.WDMlaIDs;
 import com.gtnewhorizons.wdmla.impl.WDMlaClientRegistration;
 import com.gtnewhorizons.wdmla.impl.WDMlaCommonRegistration;
 import com.gtnewhorizons.wdmla.plugin.harvestability.HarvestabilityIdentifiers;
@@ -45,11 +45,11 @@ public class PrintUnsupportedTEsCommand extends GTNHClientCommand {
             long supportedNonGlobalProviderCount = WDMlaClientRegistration.instance().blockComponentProviders
                     .get(block.getClass()).stream()
                     .filter(
-                            provider -> !provider.getUid().getResourceDomain().equals(Identifiers.NAMESPACE_CORE)
+                            provider -> !provider.getUid().getResourceDomain().equals(WDMlaIDs.NAMESPACE_CORE)
                                     && !provider.getUid().getResourceDomain()
                                             .equals(HarvestabilityIdentifiers.NAMESPACE_HARVESTABILITY)
-                                    && !provider.getUid().getResourceDomain().equals(Identifiers.NAMESPACE_UNIVERSAL)
-                                    && !provider.getUid().getResourceDomain().equals(Identifiers.NAMESPACE_DEBUG))
+                                    && !provider.getUid().getResourceDomain().equals(WDMlaIDs.NAMESPACE_UNIVERSAL)
+                                    && !provider.getUid().getResourceDomain().equals(WDMlaIDs.NAMESPACE_DEBUG))
                     .count();
             long supportedStorageProvidersCount = WDMlaCommonRegistration.instance().itemStorageProviders.entries()
                     .filter(classCollectionEntry -> classCollectionEntry.getKey().isInstance(block)).count();

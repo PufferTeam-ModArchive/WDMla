@@ -10,7 +10,7 @@ import net.minecraftforge.common.config.Configuration;
 
 import com.gtnewhorizon.gtnhlib.config.ConfigException;
 import com.gtnewhorizon.gtnhlib.config.ConfigurationManager;
-import com.gtnewhorizons.wdmla.api.Identifiers;
+import com.gtnewhorizons.wdmla.api.identifier.WDMlaIDs;
 import com.gtnewhorizons.wdmla.api.config.General;
 import com.gtnewhorizons.wdmla.api.config.PluginsConfig;
 import com.gtnewhorizons.wdmla.config.WDMlaConfigImpl;
@@ -27,7 +27,7 @@ import mcp.mobius.waila.utils.Constants;
 public class ModsMenuScreenConfig extends LiveEditGuiConfig {
 
     public ModsMenuScreenConfig(GuiScreen parent) throws ConfigException {
-        super(parent, getMainCategories(), Identifiers.MODID, false, false, "WDMla", "Waila Replacement Mod");
+        super(parent, getMainCategories(), WDMlaIDs.MODID, false, false, "WDMla", "Waila Replacement Mod");
     }
 
     @Override
@@ -49,7 +49,7 @@ public class ModsMenuScreenConfig extends LiveEditGuiConfig {
                 .getConfigElementsMulti(true, General.class, PluginsConfig.class);
         categories.addAll(
                 Arrays.asList(
-                        new ConfigElement<>(WDMlaConfigImpl._instance.getCategory(Identifiers.CONFIG_AUTOGEN)),
+                        new ConfigElement<>(WDMlaConfigImpl._instance.getCategory(WDMlaIDs.CONFIG_AUTOGEN)),
                         new ConfigElement<>(
                                 ConfigHandler.instance().config.getCategory(Configuration.CATEGORY_GENERAL)),
                         new ConfigElement<>(ConfigHandler.instance().config.getCategory(Constants.CATEGORY_MODULES))));

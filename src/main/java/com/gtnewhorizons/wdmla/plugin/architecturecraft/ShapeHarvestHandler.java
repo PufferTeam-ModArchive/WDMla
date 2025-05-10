@@ -1,5 +1,6 @@
 package com.gtnewhorizons.wdmla.plugin.architecturecraft;
 
+import com.gtnewhorizons.wdmla.api.identifier.CommonPluginIDs;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -58,7 +59,7 @@ public enum ShapeHarvestHandler implements HarvestHandler {
 
     @Override
     public ResourceLocation getUid() {
-        return ArchitectureCraftPlugin.path("shape_harvest");
+        return CommonPluginIDs.AC_SHAPE_HARVEST;
     }
 
     @Override

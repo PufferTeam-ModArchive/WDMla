@@ -1,5 +1,6 @@
 package com.gtnewhorizons.wdmla.plugin.vanilla;
 
+import com.gtnewhorizons.wdmla.api.identifier.VanillaIDs;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntityMobSpawner;
 import net.minecraft.util.ResourceLocation;
@@ -27,7 +28,7 @@ public enum MobSpawnerProvider
             tooltip.child(
                     ThemeHelper.INSTANCE.value(
                             StatCollector.translateToLocal("hud.msg.wdmla.delay"),
-                            timePattern.tickFormatter.format(delay)).tag(VanillaIdentifiers.MOB_SPAWNER));
+                            timePattern.tickFormatter.format(delay)).tag(VanillaIDs.MOB_SPAWNER));
         }
     }
 
@@ -41,7 +42,7 @@ public enum MobSpawnerProvider
 
     @Override
     public ResourceLocation getUid() {
-        return VanillaIdentifiers.MOB_SPAWNER;
+        return VanillaIDs.MOB_SPAWNER;
     }
 
     @Override

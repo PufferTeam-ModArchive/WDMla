@@ -4,7 +4,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 
-import com.gtnewhorizons.wdmla.api.Identifiers;
+import com.gtnewhorizons.wdmla.api.identifier.WDMlaIDs;
 import com.gtnewhorizons.wdmla.api.TooltipPosition;
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
@@ -32,7 +32,7 @@ public enum BreakProgressTextProvider implements IBlockComponentProvider {
 
     @Override
     public ResourceLocation getUid() {
-        return Identifiers.BREAK_PROGRESS_TEXT;
+        return WDMlaIDs.BREAK_PROGRESS_TEXT;
     }
 
     @Override

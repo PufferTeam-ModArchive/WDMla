@@ -1,5 +1,6 @@
 package com.gtnewhorizons.wdmla.plugin.vanilla;
 
+import com.gtnewhorizons.wdmla.api.identifier.VanillaIDs;
 import net.minecraft.block.BlockCrops;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.ResourceLocation;
@@ -30,6 +31,6 @@ public enum GrowthRateProvider implements IBlockComponentProvider {
 
     @Override
     public ResourceLocation getUid() {
-        return VanillaIdentifiers.GROWTH_RATE;
+        return VanillaIDs.GROWTH_RATE;
     }
 }

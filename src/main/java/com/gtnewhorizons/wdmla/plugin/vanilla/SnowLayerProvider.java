@@ -3,6 +3,7 @@ package com.gtnewhorizons.wdmla.plugin.vanilla;
 import java.util.Arrays;
 import java.util.List;
 
+import com.gtnewhorizons.wdmla.api.identifier.VanillaIDs;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -27,6 +28,6 @@ public enum SnowLayerProvider implements IBlockComponentProvider {
 
     @Override
     public ResourceLocation getUid() {
-        return VanillaIdentifiers.SNOW_LAYER;
+        return VanillaIDs.SNOW_LAYER;
     }
 }

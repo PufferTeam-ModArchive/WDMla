@@ -3,7 +3,7 @@ package com.gtnewhorizons.wdmla.api.provider;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.config.Configuration;
 
-import com.gtnewhorizons.wdmla.api.Identifiers;
+import com.gtnewhorizons.wdmla.api.identifier.WDMlaIDs;
 import com.gtnewhorizons.wdmla.api.TooltipPosition;
 
 /**
@@ -50,7 +50,7 @@ public interface IWDMlaProvider {
     }
 
     default String getConfigCategory() {
-        return Identifiers.CONFIG_AUTOGEN + Configuration.CATEGORY_SPLITTER
+        return WDMlaIDs.CONFIG_AUTOGEN + Configuration.CATEGORY_SPLITTER
                 + getUid().getResourceDomain()
                 + Configuration.CATEGORY_SPLITTER
                 + getUid().getResourcePath();

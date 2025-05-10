@@ -13,7 +13,7 @@ import net.minecraft.util.StatCollector;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import com.gtnewhorizons.wdmla.api.Identifiers;
+import com.gtnewhorizons.wdmla.api.identifier.WDMlaIDs;
 import com.gtnewhorizons.wdmla.api.TooltipPosition;
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.harvestability.HarvestabilityInfo;
@@ -109,7 +109,7 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
             return;
         }
 
-        IComponent itemNameRow = tooltip.getChildWithTag(Identifiers.TARGET_NAME_ROW);
+        IComponent itemNameRow = tooltip.getChildWithTag(WDMlaIDs.TARGET_NAME_ROW);
         if (!(itemNameRow instanceof ITooltip)) {
             return;
         }

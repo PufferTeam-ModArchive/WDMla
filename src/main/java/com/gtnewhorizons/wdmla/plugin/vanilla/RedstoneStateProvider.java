@@ -1,5 +1,6 @@
 package com.gtnewhorizons.wdmla.plugin.vanilla;
 
+import com.gtnewhorizons.wdmla.api.identifier.VanillaIDs;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLever;
 import net.minecraft.block.BlockRedstoneComparator;
@@ -31,7 +32,7 @@ public enum RedstoneStateProvider implements IBlockComponentProvider {
             tooltip.child(
                     new HPanelComponent()
                             .text(String.format("%s: ", StatCollector.translateToLocal("hud.msg.wdmla.state")))
-                            .child(redstoneOn).tag(VanillaIdentifiers.REDSTONE_STATE));
+                            .child(redstoneOn).tag(VanillaIDs.REDSTONE_STATE));
         } else if (block instanceof BlockRedstoneRepeater && PluginsConfig.vanilla.redstoneState.showRepeaterDelay) {
             int tick = (accessor.getMetadata() >> 2) + 1;
             tooltip.child(
@@ -39,7 +40,7 @@ public enum RedstoneStateProvider implements IBlockComponentProvider {
                             .value(
                                     StatCollector.translateToLocal("hud.msg.wdmla.delay"),
                                     TimeFormattingPattern.ALWAYS_TICK.tickFormatter.format(tick))
-                            .tag(VanillaIdentifiers.REDSTONE_STATE));
+                            .tag(VanillaIDs.REDSTONE_STATE));
         } else
             if ((block instanceof BlockRedstoneComparator) && PluginsConfig.vanilla.redstoneState.showComparatorMode) {
                 String mode = ((accessor.getMetadata() >> 2) & 1) == 0
@@ -47,12 +48,12 @@ public enum RedstoneStateProvider implements IBlockComponentProvider {
                         : StatCollector.translateToLocal("hud.msg.wdmla.substractor");
                 tooltip.child(
                         ThemeHelper.INSTANCE.value(StatCollector.translateToLocal("hud.msg.wdmla.mode"), mode)
-                                .tag(VanillaIdentifiers.REDSTONE_STATE));
+                                .tag(VanillaIDs.REDSTONE_STATE));
             }
     }
 
     @Override
     public ResourceLocation getUid() {
-        return VanillaIdentifiers.REDSTONE_STATE;
+        return VanillaIDs.REDSTONE_STATE;
     }
 }

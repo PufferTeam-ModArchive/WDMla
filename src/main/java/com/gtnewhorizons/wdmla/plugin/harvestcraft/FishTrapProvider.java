@@ -1,5 +1,6 @@
 package com.gtnewhorizons.wdmla.plugin.harvestcraft;
 
+import com.gtnewhorizons.wdmla.api.identifier.CommonPluginIDs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
@@ -44,7 +45,7 @@ public enum FishTrapProvider implements IBlockComponentProvider, IServerDataProv
 
     @Override
     public ResourceLocation getUid() {
-        return HarvestcraftPlugin.path("fish_trap");
+        return CommonPluginIDs.HC_FISH_TRAP;
     }
 
     private boolean isIngredientValid(ItemStack baitSlotItemStack) {

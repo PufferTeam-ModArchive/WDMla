@@ -3,6 +3,7 @@ package com.gtnewhorizons.wdmla.plugin.vanilla;
 import java.util.Arrays;
 import java.util.List;
 
+import com.gtnewhorizons.wdmla.api.identifier.VanillaIDs;
 import net.minecraft.entity.item.EntityItemFrame;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -38,6 +39,6 @@ public enum ItemFrameProvider
 
     @Override
     public ResourceLocation getUid() {
-        return VanillaIdentifiers.ITEM_FRAME;
+        return VanillaIDs.ITEM_FRAME;
     }
 }

@@ -1,5 +1,6 @@
 package com.gtnewhorizons.wdmla.plugin.vanilla;
 
+import com.gtnewhorizons.wdmla.api.identifier.VanillaIDs;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.tileentity.TileEntityCommandBlock;
@@ -45,6 +46,6 @@ public enum CommandBlockProvider implements IBlockComponentProvider, IServerData
 
     @Override
     public ResourceLocation getUid() {
-        return VanillaIdentifiers.COMMAND_BLOCK;
+        return VanillaIDs.COMMAND_BLOCK;
     }
 }

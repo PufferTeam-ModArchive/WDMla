@@ -1,5 +1,6 @@
 package com.gtnewhorizons.wdmla.plugin.harvestcraft;
 
+import com.gtnewhorizons.wdmla.api.identifier.CommonPluginIDs;
 import net.minecraft.util.ResourceLocation;
 
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
@@ -19,6 +20,6 @@ public enum HarvestcraftFruitGrowthRateProvider implements IBlockComponentProvid
 
     @Override
     public ResourceLocation getUid() {
-        return HarvestcraftPlugin.path("fruit_growth_rate");
+        return CommonPluginIDs.HC_GROWTH_RATE;
     }
 }

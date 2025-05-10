@@ -1,5 +1,6 @@
 package com.gtnewhorizons.wdmla.plugin.vanilla;
 
+import com.gtnewhorizons.wdmla.api.identifier.VanillaIDs;
 import net.minecraft.entity.EntityMinecartCommandBlock;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.server.MinecraftServer;
@@ -45,6 +46,6 @@ public enum MinecartCommandBlockProvider implements IEntityComponentProvider, IS
 
     @Override
     public ResourceLocation getUid() {
-        return VanillaIdentifiers.MINECART_COMMAND_BLOCK;
+        return VanillaIDs.MINECART_COMMAND_BLOCK;
     }
 }

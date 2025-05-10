@@ -2,6 +2,7 @@ package com.gtnewhorizons.wdmla.plugin.forestry;
 
 import java.util.Arrays;
 
+import com.gtnewhorizons.wdmla.api.identifier.CommonPluginIDs;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.MovingObjectPosition;
@@ -36,7 +37,7 @@ public enum ForestryToolHarvestHandler implements HarvestHandler {
 
     @Override
     public ResourceLocation getUid() {
-        return ForestryPlugin.path("tool_harvest");
+        return CommonPluginIDs.FORESTRY_HARVEST;
     }
 
     @Override

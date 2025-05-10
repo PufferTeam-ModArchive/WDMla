@@ -5,7 +5,7 @@ import static mcp.mobius.waila.api.SpecialChars.*;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.ResourceLocation;
 
-import com.gtnewhorizons.wdmla.api.Identifiers;
+import com.gtnewhorizons.wdmla.api.identifier.WDMlaIDs;
 import com.gtnewhorizons.wdmla.api.TooltipPosition;
 import com.gtnewhorizons.wdmla.api.accessor.EntityAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IEntityComponentProvider;
@@ -30,7 +30,7 @@ public enum DefaultEntityInfoProvider implements IEntityComponentProvider {
 
     @Override
     public ResourceLocation getUid() {
-        return Identifiers.DEFAULT_ENTITY;
+        return WDMlaIDs.DEFAULT_ENTITY;
     }
 
     @Override
@@ -48,11 +48,11 @@ public enum DefaultEntityInfoProvider implements IEntityComponentProvider {
         ITooltip row = tooltip.horizontal();
         if (PluginsConfig.core.defaultEntity.showEntity) {
             if (!PluginsConfig.core.defaultEntity.fancyRenderer && !(accessor.getEntity() instanceof EntityLiving)) {
-                row.child(new HPanelComponent().tag(Identifiers.ENTITY));
+                row.child(new HPanelComponent().tag(WDMlaIDs.ENTITY));
             } else {
                 row.child(
                         new EntityComponent(accessor.getEntity()).padding(new Padding(6, 0, 10, 0))
-                                .size(new Size(12, 12)).tag(Identifiers.ENTITY));
+                                .size(new Size(12, 12)).tag(WDMlaIDs.ENTITY));
             }
         }
 
@@ -65,13 +65,13 @@ public enum DefaultEntityInfoProvider implements IEntityComponentProvider {
             } else {
                 name = FormatUtil.formatNameByPixelCount(accessor.getEntity().getCommandSenderName());
             }
-            row_vertical.child(ThemeHelper.INSTANCE.title(name).tag(Identifiers.ENTITY_NAME));
+            row_vertical.child(ThemeHelper.INSTANCE.title(name).tag(WDMlaIDs.ENTITY_NAME));
         }
         if (PluginsConfig.core.defaultEntity.showModName) {
             row_vertical.child(
                     new TextComponent(ITALIC + ModIdentification.nameFromEntity(accessor.getEntity()))
                             .style(new TextStyle().color(General.currentTheme.get().textColor(MessageType.MOD_NAME)))
-                            .tag(Identifiers.MOD_NAME));
+                            .tag(WDMlaIDs.MOD_NAME));
         }
     }
 }

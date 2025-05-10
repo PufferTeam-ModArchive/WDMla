@@ -18,7 +18,7 @@ import org.jetbrains.annotations.Nullable;
 
 import com.gtnewhorizons.wdmla.ClientProxy;
 import com.gtnewhorizons.wdmla.CommonProxy;
-import com.gtnewhorizons.wdmla.api.Identifiers;
+import com.gtnewhorizons.wdmla.api.identifier.WDMlaIDs;
 import com.gtnewhorizons.wdmla.api.TooltipPosition;
 import com.gtnewhorizons.wdmla.api.accessor.Accessor;
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
@@ -71,7 +71,7 @@ public class FluidStorageProvider<T extends Accessor> implements IComponentProvi
     public void appendTooltip(ITooltip tooltip, T accessor) {
         List<ClientViewGroup<FluidView>> groups = ClientProxy.mapToClientGroups(
                 accessor,
-                Identifiers.FLUID_STORAGE,
+                WDMlaIDs.FLUID_STORAGE,
                 FluidStorageProvider::decodeGroups,
                 WDMlaClientRegistration.instance().fluidStorageProviders::get);
         if (groups == null || groups.isEmpty()) {
@@ -169,7 +169,7 @@ public class FluidStorageProvider<T extends Accessor> implements IComponentProvi
         Map.Entry<ResourceLocation, List<ViewGroup<FluidView.Data>>> entry = CommonProxy
                 .getServerExtensionData(accessor, WDMlaCommonRegistration.instance().fluidStorageProviders);
         if (entry != null) {
-            data.setTag(Identifiers.FLUID_STORAGE.toString(), encodeGroups(entry));
+            data.setTag(WDMlaIDs.FLUID_STORAGE.toString(), encodeGroups(entry));
         }
     }
 
@@ -225,7 +225,7 @@ public class FluidStorageProvider<T extends Accessor> implements IComponentProvi
 
     @Override
     public ResourceLocation getUid() {
-        return Identifiers.FLUID_STORAGE;
+        return WDMlaIDs.FLUID_STORAGE;
     }
 
     @Override
@@ -247,7 +247,7 @@ public class FluidStorageProvider<T extends Accessor> implements IComponentProvi
 
         @Override
         public ResourceLocation getUid() {
-            return Identifiers.FLUID_STORAGE_DEFAULT;
+            return WDMlaIDs.FLUID_STORAGE_DEFAULT;
         }
 
         @Override

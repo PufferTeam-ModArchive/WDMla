@@ -1,5 +1,6 @@
 package com.gtnewhorizons.wdmla.plugin.hungeroverhaul;
 
+import com.gtnewhorizons.wdmla.api.identifier.CommonPluginIDs;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 
@@ -9,22 +10,22 @@ import com.gtnewhorizons.wdmla.api.provider.IEntityComponentProvider;
 import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
-import com.gtnewhorizons.wdmla.plugin.vanilla.VanillaIdentifiers;
+import com.gtnewhorizons.wdmla.api.identifier.VanillaIDs;
 import com.gtnewhorizons.wdmla.util.FormatUtil;
 
 import iguanaman.hungeroverhaul.config.IguanaConfig;
 
-public enum SlowAnimalProvider implements IEntityComponentProvider {
+public enum SlowerAnimalProvider implements IEntityComponentProvider {
 
     INSTANCE;
 
     @Override
     public void appendTooltip(ITooltip tooltip, EntityAccessor accessor) {
         if (IguanaConfig.breedingTimeoutMultiplier > 1) {
-            IComponent breedComponent = tooltip.getChildWithTag(VanillaIdentifiers.ANIMAL_BREED);
+            IComponent breedComponent = tooltip.getChildWithTag(VanillaIDs.ANIMAL_BREED);
             if (breedComponent instanceof ITooltip breed) {
                 tooltip.replaceChildWithTag(
-                        VanillaIdentifiers.ANIMAL_BREED,
+                        VanillaIDs.ANIMAL_BREED,
                         breed.child(
                                 ThemeHelper.INSTANCE.warning(
                                         StatCollector.translateToLocalFormatted(
@@ -34,10 +35,10 @@ public enum SlowAnimalProvider implements IEntityComponentProvider {
         }
 
         if (IguanaConfig.childDurationMultiplier > 1) {
-            IComponent growthComponent = tooltip.getChildWithTag(VanillaIdentifiers.ANIMAL_GROWTH);
+            IComponent growthComponent = tooltip.getChildWithTag(VanillaIDs.ANIMAL_GROWTH);
             if (growthComponent instanceof ITooltip growth) {
                 tooltip.replaceChildWithTag(
-                        VanillaIdentifiers.ANIMAL_GROWTH,
+                        VanillaIDs.ANIMAL_GROWTH,
                         growth.child(
                                 ThemeHelper.INSTANCE.warning(
                                         StatCollector.translateToLocalFormatted(
@@ -49,7 +50,7 @@ public enum SlowAnimalProvider implements IEntityComponentProvider {
 
     @Override
     public ResourceLocation getUid() {
-        return HungerOverhaulPlugin.path("slow_animal");
+        return CommonPluginIDs.HO_SLOWER_ANIMAL;
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.gtnewhorizons.wdmla.api;
+package com.gtnewhorizons.wdmla.api.identifier;
 
 import net.minecraft.util.ResourceLocation;
 
@@ -7,7 +7,7 @@ import net.minecraft.util.ResourceLocation;
  * 
  * @see mcp.mobius.waila.utils.Constants
  */
-public final class Identifiers {
+public final class WDMlaIDs {
 
     public static final String MODID = "wdmla";
 
@@ -21,12 +21,6 @@ public final class Identifiers {
     public static final ResourceLocation MOD_NAME = Core("mod_name");
     public static final ResourceLocation BLOCK_FACE = Core("block_face");
     public static final ResourceLocation TARGET_NAME_ROW = Core("target_name_row");
-
-    // sprite location
-    public static final ResourceLocation FURNACE_PATH = new ResourceLocation("waila", "textures/sprites.png");
-    public static final ResourceLocation RS2_ICON_PATH = new ResourceLocation("waila", "textures/rs2.png");
-    public static final ResourceLocation LOCK_PATH = new ResourceLocation("waila", "textures/lock.png");
-    public static final ResourceLocation VOID_PATH = new ResourceLocation("waila", "textures/void.png");
 
     // provider Uid
     public static final ResourceLocation DEFAULT_BLOCK = Core("default_block");

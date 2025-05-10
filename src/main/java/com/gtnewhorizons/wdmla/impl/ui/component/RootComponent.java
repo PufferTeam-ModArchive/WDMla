@@ -4,7 +4,7 @@ import net.minecraft.util.ResourceLocation;
 
 import org.jetbrains.annotations.NotNull;
 
-import com.gtnewhorizons.wdmla.api.Identifiers;
+import com.gtnewhorizons.wdmla.api.identifier.WDMlaIDs;
 import com.gtnewhorizons.wdmla.api.ui.IDrawable;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.impl.ui.drawable.BackgroundDrawable;
@@ -52,6 +52,6 @@ public final class RootComponent extends VPanelComponent {
     }
 
     private void tagInternal() {
-        super.tag(Identifiers.ROOT);
+        super.tag(WDMlaIDs.ROOT);
     }
 }

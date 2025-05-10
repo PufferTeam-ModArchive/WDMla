@@ -1,5 +1,6 @@
 package com.gtnewhorizons.wdmla.plugin.hungeroverhaul;
 
+import com.gtnewhorizons.wdmla.api.identifier.CommonPluginIDs;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 
@@ -9,22 +10,22 @@ import com.gtnewhorizons.wdmla.api.provider.IEntityComponentProvider;
 import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.impl.ui.ThemeHelper;
-import com.gtnewhorizons.wdmla.plugin.vanilla.VanillaIdentifiers;
+import com.gtnewhorizons.wdmla.api.identifier.VanillaIDs;
 import com.gtnewhorizons.wdmla.util.FormatUtil;
 
 import iguanaman.hungeroverhaul.config.IguanaConfig;
 
-public enum SlowChickenProvider implements IEntityComponentProvider {
+public enum SlowerChickenProvider implements IEntityComponentProvider {
 
     INSTANCE;
 
     @Override
     public void appendTooltip(ITooltip tooltip, EntityAccessor accessor) {
         if (IguanaConfig.eggTimeoutMultiplier > 1) {
-            IComponent chickenComponent = tooltip.getChildWithTag(VanillaIdentifiers.CHICKEN);
+            IComponent chickenComponent = tooltip.getChildWithTag(VanillaIDs.CHICKEN);
             if (chickenComponent instanceof ITooltip chicken) {
                 tooltip.replaceChildWithTag(
-                        VanillaIdentifiers.CHICKEN,
+                        VanillaIDs.CHICKEN,
                         chicken.child(
                                 ThemeHelper.INSTANCE.warning(
                                         StatCollector.translateToLocalFormatted(
@@ -36,7 +37,7 @@ public enum SlowChickenProvider implements IEntityComponentProvider {
 
     @Override
     public ResourceLocation getUid() {
-        return HungerOverhaulPlugin.path("slow_chicken");
+        return CommonPluginIDs.HO_SLOWER_CHICKEN;
     }
 
     @Override

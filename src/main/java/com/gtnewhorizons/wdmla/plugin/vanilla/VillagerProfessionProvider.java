@@ -1,5 +1,6 @@
 package com.gtnewhorizons.wdmla.plugin.vanilla;
 
+import com.gtnewhorizons.wdmla.api.identifier.VanillaIDs;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
@@ -23,13 +24,13 @@ public enum VillagerProfessionProvider implements IEntityComponentProvider {
             String name = getVillagerName(villager.getProfession());
             tooltip.child(
                     new TextComponent(StatCollector.translateToLocal("hud.msg.wdmla.villager.profession." + name))
-                            .tag(VanillaIdentifiers.VILLAGER_PROFESSION));
+                            .tag(VanillaIDs.VILLAGER_PROFESSION));
         }
     }
 
     @Override
     public ResourceLocation getUid() {
-        return VanillaIdentifiers.VILLAGER_PROFESSION;
+        return VanillaIDs.VILLAGER_PROFESSION;
     }
 
     // copied from Wawla as this is the only way to get villager name dynamically

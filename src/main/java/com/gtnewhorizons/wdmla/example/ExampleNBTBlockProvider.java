@@ -11,7 +11,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.ResourceLocation;
 
-import com.gtnewhorizons.wdmla.api.Identifiers;
+import com.gtnewhorizons.wdmla.api.identifier.WDMlaIDs;
 import com.gtnewhorizons.wdmla.api.TooltipPosition;
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
@@ -33,7 +33,7 @@ public enum ExampleNBTBlockProvider implements IBlockComponentProvider, IServerD
 
     @Override
     public ResourceLocation getUid() {
-        return Identifiers.EXAMPLE_NBT_BLOCK;
+        return WDMlaIDs.EXAMPLE_NBT_BLOCK;
     }
 
     @Override

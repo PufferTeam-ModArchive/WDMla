@@ -1,5 +1,6 @@
 package com.gtnewhorizons.wdmla.plugin.vanilla;
 
+import com.gtnewhorizons.wdmla.api.identifier.VanillaIDs;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 
@@ -25,7 +26,7 @@ public enum FlowerPotHeaderProvider implements IBlockComponentProvider {
 
     @Override
     public ResourceLocation getUid() {
-        return VanillaIdentifiers.FLOWER_POT_HEADER;
+        return VanillaIDs.FLOWER_POT_HEADER;
     }
 
     @Override

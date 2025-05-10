@@ -1,5 +1,6 @@
 package com.gtnewhorizons.wdmla.plugin.vanilla;
 
+import com.gtnewhorizons.wdmla.api.identifier.VanillaIDs;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 
@@ -26,6 +27,6 @@ public enum EndPortalHeaderProvider implements IBlockComponentProvider {
 
     @Override
     public ResourceLocation getUid() {
-        return VanillaIdentifiers.END_PORTAL_HEADER;
+        return VanillaIDs.END_PORTAL_HEADER;
     }
 }

@@ -3,6 +3,7 @@ package com.gtnewhorizons.wdmla.plugin.hungeroverhaul;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+import com.gtnewhorizons.wdmla.api.identifier.CommonPluginIDs;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -53,7 +54,7 @@ public enum HoeResultProvider implements IBlockComponentProvider {
 
     @Override
     public ResourceLocation getUid() {
-        return HungerOverhaulPlugin.path("hoe_result");
+        return CommonPluginIDs.HO_HOE_RESULT;
     }
 
     private boolean isHoldingHoe(ItemStack mainHand) {

@@ -2,6 +2,7 @@ package com.gtnewhorizons.wdmla.plugin.vanilla;
 
 import java.util.Arrays;
 
+import com.gtnewhorizons.wdmla.api.identifier.VanillaIDs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
@@ -55,7 +56,7 @@ public enum FurnaceProvider implements IBlockComponentProvider, IServerDataProvi
                     200,
                     accessor.showDetails());
             if (progressComponent != null) {
-                tooltip.child(progressComponent.tag(VanillaIdentifiers.FURNACE));
+                tooltip.child(progressComponent.tag(VanillaIDs.FURNACE));
             }
         }
     }
@@ -69,6 +70,6 @@ public enum FurnaceProvider implements IBlockComponentProvider, IServerDataProvi
 
     @Override
     public ResourceLocation getUid() {
-        return VanillaIdentifiers.FURNACE;
+        return VanillaIDs.FURNACE;
     }
 }

@@ -6,7 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.ResourceLocation;
 
-import com.gtnewhorizons.wdmla.api.Identifiers;
+import com.gtnewhorizons.wdmla.api.identifier.WDMlaIDs;
 import com.gtnewhorizons.wdmla.api.TooltipPosition;
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
@@ -34,7 +34,7 @@ public enum DefaultBlockInfoProvider implements IBlockComponentProvider {
 
     @Override
     public ResourceLocation getUid() {
-        return Identifiers.DEFAULT_BLOCK;
+        return WDMlaIDs.DEFAULT_BLOCK;
     }
 
     @Override
@@ -58,9 +58,9 @@ public enum DefaultBlockInfoProvider implements IBlockComponentProvider {
                         new BlockComponent(
                                 accessor.getHitResult().blockX,
                                 accessor.getHitResult().blockY,
-                                accessor.getHitResult().blockZ).tag(Identifiers.ITEM_ICON));
+                                accessor.getHitResult().blockZ).tag(WDMlaIDs.ITEM_ICON));
             } else {
-                row.child(new ItemComponent(itemStack).doDrawOverlay(false).tag(Identifiers.ITEM_ICON));
+                row.child(new ItemComponent(itemStack).doDrawOverlay(false).tag(WDMlaIDs.ITEM_ICON));
             }
         }
 
@@ -74,14 +74,14 @@ public enum DefaultBlockInfoProvider implements IBlockComponentProvider {
                 itemName = DisplayUtil.itemDisplayNameShortFormatted(itemStack);
             }
             ITooltip title = row_vertical.horizontal();
-            IComponent nameComponent = ThemeHelper.INSTANCE.title(itemName).tag(Identifiers.ITEM_NAME);
+            IComponent nameComponent = ThemeHelper.INSTANCE.title(itemName).tag(WDMlaIDs.ITEM_NAME);
             title.child(nameComponent).child(new HPanelComponent() {
 
                 @Override
                 public void tick(float x, float y) {
                     if (General.alignIconRightTop) {
-                        IComponent icon = row.getChildWithTag(Identifiers.ITEM_ICON);
-                        IComponent name = title.getChildWithTag(Identifiers.ITEM_NAME);
+                        IComponent icon = row.getChildWithTag(WDMlaIDs.ITEM_ICON);
+                        IComponent name = title.getChildWithTag(WDMlaIDs.ITEM_NAME);
                         // align right
                         x += Math.max(
                                 tooltip.getWidth() - (icon != null ? icon.getWidth() : 0)
@@ -92,7 +92,7 @@ public enum DefaultBlockInfoProvider implements IBlockComponentProvider {
                     }
                     super.tick(x, y);
                 }
-            }.tag(Identifiers.TARGET_NAME_ROW));
+            }.tag(WDMlaIDs.TARGET_NAME_ROW));
         }
         String modName = ModIdentification.nameFromStack(itemStack);
         if (PluginsConfig.core.defaultBlock.showModName) {
@@ -101,12 +101,12 @@ public enum DefaultBlockInfoProvider implements IBlockComponentProvider {
                 row_vertical.child(
                         new TextComponent(ITALIC + modName)
                                 .style(new TextStyle().color(theme.textColor(MessageType.MOD_NAME)))
-                                .tag(Identifiers.MOD_NAME));
+                                .tag(WDMlaIDs.MOD_NAME));
             } else {
                 // reserve for replacement
                 row_vertical.child(
                         new TextComponent("").style(new TextStyle().color(theme.textColor(MessageType.MOD_NAME)))
-                                .tag(Identifiers.MOD_NAME));
+                                .tag(WDMlaIDs.MOD_NAME));
             }
         }
     }

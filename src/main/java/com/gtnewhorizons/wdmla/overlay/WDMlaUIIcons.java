@@ -1,24 +1,23 @@
 package com.gtnewhorizons.wdmla.overlay;
 
-import static com.gtnewhorizons.wdmla.api.Identifiers.*;
-
+import com.gtnewhorizons.wdmla.api.identifier.SpritePaths;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.ResourceLocation;
 
 public enum WDMlaUIIcons implements IIcon {
 
-    FURNACE(4, 0, 28, 16, 256, 256, FURNACE_PATH),
-    FURNACE_BG(4, 16, 28, 16, 256, 256, FURNACE_PATH),
-    CANCEL(1, 1, 12, 12, 42, 42, RS2_ICON_PATH),
-    ERROR(15, 1, 12, 12, 42, 42, RS2_ICON_PATH),
-    RESET(29, 1, 12, 12, 42, 42, RS2_ICON_PATH),
-    IDLE(1, 15, 12, 12, 42, 42, RS2_ICON_PATH),
-    PAUSE(15, 15, 12, 12, 42, 42, RS2_ICON_PATH),
-    SET(29, 15, 12, 12, 42, 42, RS2_ICON_PATH),
-    START(2, 29, 10, 12, 42, 42, RS2_ICON_PATH),
-    WARNING(15, 29, 10, 10, 42, 42, RS2_ICON_PATH),
-    LOCK(0, 0, 10, 12, 10, 12, LOCK_PATH),
-    VOID(0, 0, 16, 16, 16, 16, VOID_PATH)
+    FURNACE(4, 0, 28, 16, 256, 256, SpritePaths.FURNACE),
+    FURNACE_BG(4, 16, 28, 16, 256, 256, SpritePaths.FURNACE),
+    CANCEL(1, 1, 12, 12, 42, 42, SpritePaths.RS2_ICON),
+    ERROR(15, 1, 12, 12, 42, 42, SpritePaths.RS2_ICON),
+    RESET(29, 1, 12, 12, 42, 42, SpritePaths.RS2_ICON),
+    IDLE(1, 15, 12, 12, 42, 42, SpritePaths.RS2_ICON),
+    PAUSE(15, 15, 12, 12, 42, 42, SpritePaths.RS2_ICON),
+    SET(29, 15, 12, 12, 42, 42, SpritePaths.RS2_ICON),
+    START(2, 29, 10, 12, 42, 42, SpritePaths.RS2_ICON),
+    WARNING(15, 29, 10, 10, 42, 42, SpritePaths.RS2_ICON),
+    LOCK(0, 0, 10, 12, 10, 12, SpritePaths.LOCK),
+    VOID(0, 0, 16, 16, 16, 16, SpritePaths.VOID)
     // spotless:off
     ;
     // spotless:on

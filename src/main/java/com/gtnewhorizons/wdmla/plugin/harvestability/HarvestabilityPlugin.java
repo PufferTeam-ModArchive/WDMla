@@ -10,7 +10,7 @@ import net.minecraftforge.common.config.Configuration;
 
 import com.gtnewhorizons.wdmla.api.IWDMlaClientRegistration;
 import com.gtnewhorizons.wdmla.api.IWDMlaPlugin;
-import com.gtnewhorizons.wdmla.api.Identifiers;
+import com.gtnewhorizons.wdmla.api.identifier.WDMlaIDs;
 import com.gtnewhorizons.wdmla.api.Mods;
 import com.gtnewhorizons.wdmla.api.WDMlaPlugin;
 import com.gtnewhorizons.wdmla.api.config.WDMlaConfig;
@@ -43,7 +43,7 @@ public class HarvestabilityPlugin implements IWDMlaPlugin {
         registration.registerHarvest(VanillaSpecialHarvestHandler.INSTANCE, BlockWeb.class);
 
         WDMlaConfig.instance().setCategoryLangKey(
-                Identifiers.CONFIG_AUTOGEN + Configuration.CATEGORY_SPLITTER
+                WDMlaIDs.CONFIG_AUTOGEN + Configuration.CATEGORY_SPLITTER
                         + HarvestabilityIdentifiers.NAMESPACE_HARVESTABILITY,
                 "provider.wdmla.harvestability.category");
     }

@@ -1,5 +1,6 @@
 package com.gtnewhorizons.wdmla.plugin.vanilla;
 
+import com.gtnewhorizons.wdmla.api.identifier.VanillaIDs;
 import net.minecraft.entity.item.EntityMinecartFurnace;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
@@ -40,7 +41,7 @@ public enum MinecartFurnaceProvider
 
     @Override
     public ResourceLocation getUid() {
-        return VanillaIdentifiers.MINECART_FURNACE;
+        return VanillaIDs.MINECART_FURNACE;
     }
 
     @Override

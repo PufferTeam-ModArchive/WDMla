@@ -1,12 +1,13 @@
 package com.gtnewhorizons.wdmla.plugin.storagedrawers;
 
+import com.gtnewhorizons.wdmla.api.identifier.CommonPluginIDs;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.config.Configuration;
 
 import com.gtnewhorizons.wdmla.api.IWDMlaClientRegistration;
 import com.gtnewhorizons.wdmla.api.IWDMlaCommonRegistration;
 import com.gtnewhorizons.wdmla.api.IWDMlaPlugin;
-import com.gtnewhorizons.wdmla.api.Identifiers;
+import com.gtnewhorizons.wdmla.api.identifier.WDMlaIDs;
 import com.gtnewhorizons.wdmla.api.WDMlaPlugin;
 import com.gtnewhorizons.wdmla.api.config.WDMlaConfig;
 import com.gtnewhorizons.wdmla.plugin.core.HideFancyIconProvider;
@@ -38,11 +39,7 @@ public class StorageDrawersPlugin implements IWDMlaPlugin {
         registration.registerItemStorageClient(DrawerControllerStorageProvider.INSTANCE);
 
         WDMlaConfig.instance().setCategoryLangKey(
-                Identifiers.CONFIG_AUTOGEN + Configuration.CATEGORY_SPLITTER + "storagedrawers",
+                WDMlaIDs.CONFIG_AUTOGEN + Configuration.CATEGORY_SPLITTER + CommonPluginIDs.NAMESPACE_STORAGEDRAWERS,
                 "provider.wdmla.storagedrawers.category");
-    }
-
-    public static ResourceLocation path(String path) {
-        return new ResourceLocation("storagedrawers", path);
     }
 }

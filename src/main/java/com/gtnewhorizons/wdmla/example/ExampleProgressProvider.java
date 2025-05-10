@@ -6,7 +6,7 @@ import java.util.List;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
-import com.gtnewhorizons.wdmla.api.Identifiers;
+import com.gtnewhorizons.wdmla.api.identifier.WDMlaIDs;
 import com.gtnewhorizons.wdmla.api.accessor.Accessor;
 import com.gtnewhorizons.wdmla.api.provider.IClientExtensionProvider;
 import com.gtnewhorizons.wdmla.api.provider.IServerExtensionProvider;
@@ -24,7 +24,7 @@ public enum ExampleProgressProvider implements IServerExtensionProvider<Progress
 
     @Override
     public ResourceLocation getUid() {
-        return Identifiers.EXAMPLE_PROGRESS;
+        return WDMlaIDs.EXAMPLE_PROGRESS;
     }
 
     @Override

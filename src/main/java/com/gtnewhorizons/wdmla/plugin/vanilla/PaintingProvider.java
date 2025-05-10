@@ -1,5 +1,6 @@
 package com.gtnewhorizons.wdmla.plugin.vanilla;
 
+import com.gtnewhorizons.wdmla.api.identifier.VanillaIDs;
 import net.minecraft.entity.item.EntityPainting;
 import net.minecraft.util.ResourceLocation;
 
@@ -20,6 +21,6 @@ public enum PaintingProvider implements IEntityComponentProvider {
 
     @Override
     public ResourceLocation getUid() {
-        return VanillaIdentifiers.PAINTING;
+        return VanillaIDs.PAINTING;
     }
 }

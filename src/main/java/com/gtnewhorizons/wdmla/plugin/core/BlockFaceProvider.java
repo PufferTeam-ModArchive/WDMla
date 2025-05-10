@@ -3,7 +3,7 @@ package com.gtnewhorizons.wdmla.plugin.core;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 
-import com.gtnewhorizons.wdmla.api.Identifiers;
+import com.gtnewhorizons.wdmla.api.identifier.WDMlaIDs;
 import com.gtnewhorizons.wdmla.api.TooltipPosition;
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
@@ -18,7 +18,7 @@ public enum BlockFaceProvider implements IBlockComponentProvider {
     @Override
     public void appendTooltip(ITooltip tooltip, BlockAccessor accessor) {
         int side = accessor.getHitResult().sideHit;
-        if (side != -1 && tooltip.getChildWithTag(Identifiers.TARGET_NAME_ROW) instanceof ITooltip itemNameRow) {
+        if (side != -1 && tooltip.getChildWithTag(WDMlaIDs.TARGET_NAME_ROW) instanceof ITooltip itemNameRow) {
             itemNameRow.text(
                     String.format(
                             StatCollector.translateToLocal("hud.msg.wdmla.side.decorator"),
@@ -28,7 +28,7 @@ public enum BlockFaceProvider implements IBlockComponentProvider {
 
     @Override
     public ResourceLocation getUid() {
-        return Identifiers.BLOCK_FACE;
+        return WDMlaIDs.BLOCK_FACE;
     }
 
     @Override

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import com.gtnewhorizons.wdmla.api.identifier.CommonPluginIDs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
@@ -50,6 +51,6 @@ public enum DrawerControllerStorageProvider
 
     @Override
     public ResourceLocation getUid() {
-        return StorageDrawersPlugin.path("controller_storage");
+        return CommonPluginIDs.DRAWERS_CONTROLLER_STORAGE;
     }
 }

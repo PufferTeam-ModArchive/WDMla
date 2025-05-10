@@ -3,7 +3,7 @@ package com.gtnewhorizons.wdmla.plugin.core;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 
-import com.gtnewhorizons.wdmla.api.Identifiers;
+import com.gtnewhorizons.wdmla.api.identifier.WDMlaIDs;
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
@@ -21,12 +21,12 @@ public enum EnchantmentPowerProvider implements IBlockComponentProvider {
             tooltip.child(
                     ThemeHelper.INSTANCE.value(
                             StatCollector.translateToLocal("hud.msg.wdmla.enchantment.power"),
-                            FormatUtil.STANDARD.format(power)).tag(Identifiers.ENCHANTMENT_POWER));
+                            FormatUtil.STANDARD.format(power)).tag(WDMlaIDs.ENCHANTMENT_POWER));
         }
     }
 
     @Override
     public ResourceLocation getUid() {
-        return Identifiers.ENCHANTMENT_POWER;
+        return WDMlaIDs.ENCHANTMENT_POWER;
     }
 }

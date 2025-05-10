@@ -13,7 +13,7 @@ import net.minecraft.util.ResourceLocation;
 
 import com.gtnewhorizons.wdmla.ClientProxy;
 import com.gtnewhorizons.wdmla.CommonProxy;
-import com.gtnewhorizons.wdmla.api.Identifiers;
+import com.gtnewhorizons.wdmla.api.identifier.WDMlaIDs;
 import com.gtnewhorizons.wdmla.api.TooltipPosition;
 import com.gtnewhorizons.wdmla.api.accessor.Accessor;
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
@@ -56,7 +56,7 @@ public class ProgressProvider<T extends Accessor> implements IComponentProvider<
     public void appendTooltip(ITooltip tooltip, T accessor) {
         List<ClientViewGroup<ProgressView>> groups = ClientProxy.mapToClientGroups(
                 accessor,
-                Identifiers.PROGRESS,
+                WDMlaIDs.PROGRESS,
                 ProgressProvider::decodeGroups,
                 WDMlaClientRegistration.instance().progressProviders::get);
         if (groups == null || groups.isEmpty()) {
@@ -96,7 +96,7 @@ public class ProgressProvider<T extends Accessor> implements IComponentProvider<
         Map.Entry<ResourceLocation, List<ViewGroup<ProgressView.Data>>> entry = CommonProxy
                 .getServerExtensionData(accessor, WDMlaCommonRegistration.instance().progressProviders);
         if (entry != null) {
-            data.setTag(Identifiers.PROGRESS.toString(), encodeGroups(entry));
+            data.setTag(WDMlaIDs.PROGRESS.toString(), encodeGroups(entry));
         }
     }
 
@@ -158,7 +158,7 @@ public class ProgressProvider<T extends Accessor> implements IComponentProvider<
 
     @Override
     public ResourceLocation getUid() {
-        return Identifiers.PROGRESS;
+        return WDMlaIDs.PROGRESS;
     }
 
     @Override

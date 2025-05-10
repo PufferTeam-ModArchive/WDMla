@@ -2,6 +2,7 @@ package com.gtnewhorizons.wdmla.plugin.vanilla;
 
 import java.util.UUID;
 
+import com.gtnewhorizons.wdmla.api.identifier.VanillaIDs;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
@@ -32,7 +33,7 @@ public enum PetProvider implements IEntityComponentProvider, IServerDataProvider
                                     StatCollector.translateToLocal("hud.msg.wdmla.sitting"),
                                     pet.isSitting() ? StatCollector.translateToLocal("hud.msg.wdmla.yes")
                                             : StatCollector.translateToLocal("hud.msg.wdmla.no"))
-                            .tag(VanillaIdentifiers.PET));
+                            .tag(VanillaIDs.PET));
         }
 
         String ownerUUID = accessor.getServerData().getString("OwnerUUID");
@@ -47,12 +48,12 @@ public enum PetProvider implements IEntityComponentProvider, IServerDataProvider
 
         tooltip.child(
                 ThemeHelper.INSTANCE.value(StatCollector.translateToLocal("hud.msg.wdmla.owner"), ownerString)
-                        .tag(VanillaIdentifiers.PET));
+                        .tag(VanillaIDs.PET));
     }
 
     @Override
     public ResourceLocation getUid() {
-        return VanillaIdentifiers.PET;
+        return VanillaIDs.PET;
     }
 
     @Override

@@ -7,7 +7,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 
-import com.gtnewhorizons.wdmla.api.Identifiers;
+import com.gtnewhorizons.wdmla.api.identifier.WDMlaIDs;
 import com.gtnewhorizons.wdmla.api.accessor.Accessor;
 import com.gtnewhorizons.wdmla.api.provider.IClientExtensionProvider;
 import com.gtnewhorizons.wdmla.api.provider.IServerExtensionProvider;
@@ -47,6 +47,6 @@ public enum ExampleFluidStorageProvider
 
     @Override
     public ResourceLocation getUid() {
-        return Identifiers.EXAMPLE_FLUID_STORAGE;
+        return WDMlaIDs.EXAMPLE_FLUID_STORAGE;
     }
 }

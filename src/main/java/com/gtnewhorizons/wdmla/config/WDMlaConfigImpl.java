@@ -11,7 +11,7 @@ import com.gtnewhorizons.wdmla.api.theme.Theme;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;
 
-import com.gtnewhorizons.wdmla.api.Identifiers;
+import com.gtnewhorizons.wdmla.api.identifier.WDMlaIDs;
 import com.gtnewhorizons.wdmla.api.provider.IComponentProvider;
 import com.gtnewhorizons.wdmla.api.provider.ITimeFormatConfigurable;
 import com.gtnewhorizons.wdmla.impl.WDMlaClientRegistration;
@@ -33,8 +33,8 @@ public class WDMlaConfigImpl extends Configuration implements WDMlaConfig {
 
     @Override
     public void reloadConfig() {
-        getCategory(Identifiers.CONFIG_AUTOGEN).setLanguageKey("option.wdmla.autogen.category");
-        getCategory(Identifiers.CONFIG_AUTOGEN + Configuration.CATEGORY_SPLITTER + Identifiers.NAMESPACE_CORE)
+        getCategory(WDMlaIDs.CONFIG_AUTOGEN).setLanguageKey("option.wdmla.autogen.category");
+        getCategory(WDMlaIDs.CONFIG_AUTOGEN + Configuration.CATEGORY_SPLITTER + WDMlaIDs.NAMESPACE_CORE)
                 .setLanguageKey("provider.wdmla.core.category");
         reloadProviderAutogenConfigs();
         reloadTheme();

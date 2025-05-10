@@ -1,5 +1,6 @@
 package com.gtnewhorizons.wdmla.plugin.vanilla;
 
+import com.gtnewhorizons.wdmla.api.identifier.VanillaIDs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
@@ -38,12 +39,12 @@ public enum BedProvider implements IBlockComponentProvider {
     private void appendCannotSleep(ITooltip tooltip) {
         tooltip.horizontal().text(String.format("%s: ", StatCollector.translateToLocal("hud.msg.wdmla.cansleep")))
                 .child(ThemeHelper.INSTANCE.failure(StatCollector.translateToLocal("hud.msg.wdmla.no")))
-                .tag(VanillaIdentifiers.BED);
+                .tag(VanillaIDs.BED);
     }
 
     @Override
     public ResourceLocation getUid() {
-        return VanillaIdentifiers.BED;
+        return VanillaIDs.BED;
     }
 
     @Override

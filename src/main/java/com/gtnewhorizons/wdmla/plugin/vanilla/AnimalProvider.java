@@ -1,5 +1,6 @@
 package com.gtnewhorizons.wdmla.plugin.vanilla;
 
+import com.gtnewhorizons.wdmla.api.identifier.VanillaIDs;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
@@ -36,7 +37,7 @@ public enum AnimalProvider implements IEntityComponentProvider, ITimeFormatConfi
                             .value(
                                     StatCollector.translateToLocal("hud.msg.wdmla.animal.growth"),
                                     timePattern.tickFormatter.format(absTimeToGrow))
-                            .tag(VanillaIdentifiers.ANIMAL_GROWTH));
+                            .tag(VanillaIDs.ANIMAL_GROWTH));
         }
     }
 
@@ -53,13 +54,13 @@ public enum AnimalProvider implements IEntityComponentProvider, ITimeFormatConfi
                             .value(
                                     StatCollector.translateToLocal("hud.msg.wdmla.animal.breedcooldown"),
                                     timePattern.tickFormatter.format(absTimeBreedCooldown))
-                            .tag(VanillaIdentifiers.ANIMAL_BREED));
+                            .tag(VanillaIDs.ANIMAL_BREED));
         }
     }
 
     @Override
     public ResourceLocation getUid() {
-        return VanillaIdentifiers.ANIMAL;
+        return VanillaIDs.ANIMAL;
     }
 
     @Override

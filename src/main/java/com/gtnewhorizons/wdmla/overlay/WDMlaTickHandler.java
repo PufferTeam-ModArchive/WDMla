@@ -2,7 +2,7 @@ package com.gtnewhorizons.wdmla.overlay;
 
 import static mcp.mobius.waila.api.SpecialChars.ITALIC;
 
-import com.gtnewhorizons.wdmla.api.Identifiers;
+import com.gtnewhorizons.wdmla.api.identifier.WDMlaIDs;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
@@ -63,7 +63,7 @@ public class WDMlaTickHandler {
     @SideOnly(Side.CLIENT)
     public void screenRender(GuiScreenEvent.DrawScreenEvent.Post event) {
         if (!General.previewInCfg
-                || !(event.gui instanceof GuiConfig guiConfig && Identifiers.MODID.equals(guiConfig.modID))) {
+                || !(event.gui instanceof GuiConfig guiConfig && WDMlaIDs.MODID.equals(guiConfig.modID))) {
             return;
         }
 
@@ -109,7 +109,7 @@ public class WDMlaTickHandler {
         EntityPlayer player = mc.thePlayer;
         GuiScreen currentScreen = mc.currentScreen;
         boolean canDrawOnScreen = currentScreen == null
-                || (currentScreen instanceof GuiConfig modsConfig && Identifiers.MODID.equals(modsConfig.modID));
+                || (currentScreen instanceof GuiConfig modsConfig && WDMlaIDs.MODID.equals(modsConfig.modID));
 
         if (world == null || player == null
                 || !Minecraft.isGuiEnabled()

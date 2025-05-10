@@ -1,5 +1,6 @@
 package com.gtnewhorizons.wdmla.plugin.storagedrawers;
 
+import com.gtnewhorizons.wdmla.api.identifier.CommonPluginIDs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.ResourceLocation;
@@ -41,7 +42,7 @@ public enum DrawersContentProvider implements IBlockComponentProvider {
 
     @Override
     public ResourceLocation getUid() {
-        return StorageDrawersPlugin.path("content");
+        return CommonPluginIDs.DRAWERS_CONTENT;
     }
 
     private void appendDrawersContent(Accessor accessor, TileEntityDrawers drawerTile, ITooltip tooltip) {

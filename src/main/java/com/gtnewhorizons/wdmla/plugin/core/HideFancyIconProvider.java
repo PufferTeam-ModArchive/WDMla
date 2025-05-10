@@ -2,7 +2,7 @@ package com.gtnewhorizons.wdmla.plugin.core;
 
 import net.minecraft.util.ResourceLocation;
 
-import com.gtnewhorizons.wdmla.api.Identifiers;
+import com.gtnewhorizons.wdmla.api.identifier.WDMlaIDs;
 import com.gtnewhorizons.wdmla.api.TooltipPosition;
 import com.gtnewhorizons.wdmla.api.accessor.Accessor;
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
@@ -32,7 +32,7 @@ public class HideFancyIconProvider<T extends Accessor> implements IComponentProv
 
     @Override
     public ResourceLocation getUid() {
-        return Identifiers.HIDE_FANCY_ICON;
+        return WDMlaIDs.HIDE_FANCY_ICON;
     }
 
     @Override

@@ -7,7 +7,7 @@ import net.minecraft.entity.EntityLiving;
 import com.gtnewhorizons.wdmla.api.IWDMlaClientRegistration;
 import com.gtnewhorizons.wdmla.api.IWDMlaCommonRegistration;
 import com.gtnewhorizons.wdmla.api.IWDMlaPlugin;
-import com.gtnewhorizons.wdmla.api.Identifiers;
+import com.gtnewhorizons.wdmla.api.identifier.WDMlaIDs;
 import com.gtnewhorizons.wdmla.api.WDMlaPlugin;
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.accessor.EntityAccessor;
@@ -19,7 +19,7 @@ import com.gtnewhorizons.wdmla.impl.EntityAccessorClientHandler;
  * any provider that provides important information to very wide range objects should be registered here.
  */
 @SuppressWarnings("unused")
-@WDMlaPlugin(uid = Identifiers.NAMESPACE_CORE)
+@WDMlaPlugin(uid = WDMlaIDs.NAMESPACE_CORE)
 public class CorePlugin implements IWDMlaPlugin {
 
     @Override

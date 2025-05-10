@@ -3,6 +3,7 @@ package com.gtnewhorizons.wdmla.plugin.vanilla;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.gtnewhorizons.wdmla.api.identifier.VanillaIDs;
 import net.minecraft.block.material.Material;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntityNote;
@@ -64,6 +65,6 @@ public enum NoteBlockProvider implements IBlockComponentProvider, IServerDataPro
 
     @Override
     public ResourceLocation getUid() {
-        return VanillaIdentifiers.NOTE_BLOCK;
+        return VanillaIDs.NOTE_BLOCK;
     }
 }

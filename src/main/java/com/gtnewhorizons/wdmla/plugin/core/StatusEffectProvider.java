@@ -9,7 +9,7 @@ import net.minecraft.util.StatCollector;
 
 import org.apache.commons.lang3.StringUtils;
 
-import com.gtnewhorizons.wdmla.api.Identifiers;
+import com.gtnewhorizons.wdmla.api.identifier.WDMlaIDs;
 import com.gtnewhorizons.wdmla.api.accessor.EntityAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IEntityComponentProvider;
 import com.gtnewhorizons.wdmla.api.provider.IServerDataProvider;
@@ -62,7 +62,7 @@ public enum StatusEffectProvider implements IEntityComponentProvider, IServerDat
                         .child(
                                 new IconComponent(new PotionIcon(effect), PotionIcon.PATH)
                                         .size(new Size(lineComponent.getHeight(), lineComponent.getHeight())))
-                        .child(lineComponent).tag(Identifiers.STATUS_EFFECT);
+                        .child(lineComponent).tag(WDMlaIDs.STATUS_EFFECT);
             }
         }
     }
@@ -78,6 +78,6 @@ public enum StatusEffectProvider implements IEntityComponentProvider, IServerDat
 
     @Override
     public ResourceLocation getUid() {
-        return Identifiers.STATUS_EFFECT;
+        return WDMlaIDs.STATUS_EFFECT;
     }
 }

@@ -1,5 +1,6 @@
 package com.gtnewhorizons.wdmla.plugin.architecturecraft;
 
+import com.gtnewhorizons.wdmla.api.identifier.CommonPluginIDs;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 
@@ -31,6 +32,6 @@ public enum BlockShapeProvider implements IBlockComponentProvider {
 
     @Override
     public ResourceLocation getUid() {
-        return ArchitectureCraftPlugin.path("block_shape");
+        return CommonPluginIDs.AC_BLOCK_SHAPE;
     }
 }

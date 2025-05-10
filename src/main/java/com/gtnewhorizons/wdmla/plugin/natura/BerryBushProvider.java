@@ -1,5 +1,6 @@
 package com.gtnewhorizons.wdmla.plugin.natura;
 
+import com.gtnewhorizons.wdmla.api.identifier.CommonPluginIDs;
 import net.minecraft.util.ResourceLocation;
 
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
@@ -23,6 +24,6 @@ public enum BerryBushProvider implements IBlockComponentProvider {
 
     @Override
     public ResourceLocation getUid() {
-        return NaturaPlugin.path("berry_bush");
+        return CommonPluginIDs.NATURA_BERRY_BUSH;
     }
 }

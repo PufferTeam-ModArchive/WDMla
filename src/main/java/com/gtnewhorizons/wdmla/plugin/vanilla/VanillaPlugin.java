@@ -1,5 +1,6 @@
 package com.gtnewhorizons.wdmla.plugin.vanilla;
 
+import com.gtnewhorizons.wdmla.api.identifier.VanillaIDs;
 import net.minecraft.block.BlockAnvil;
 import net.minecraft.block.BlockBeacon;
 import net.minecraft.block.BlockBed;
@@ -64,7 +65,7 @@ import net.minecraftforge.common.config.Configuration;
 import com.gtnewhorizons.wdmla.api.IWDMlaClientRegistration;
 import com.gtnewhorizons.wdmla.api.IWDMlaCommonRegistration;
 import com.gtnewhorizons.wdmla.api.IWDMlaPlugin;
-import com.gtnewhorizons.wdmla.api.Identifiers;
+import com.gtnewhorizons.wdmla.api.identifier.WDMlaIDs;
 import com.gtnewhorizons.wdmla.api.TooltipPosition;
 import com.gtnewhorizons.wdmla.api.WDMlaPlugin;
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
@@ -80,7 +81,7 @@ import com.gtnewhorizons.wdmla.plugin.universal.ItemStorageProvider;
  * Registers providers depend on specific vanilla Minecraft mechanics with no mod interaction.
  */
 @SuppressWarnings("unused")
-@WDMlaPlugin(uid = VanillaIdentifiers.NAMESPACE_MINECRAFT)
+@WDMlaPlugin(uid = VanillaIDs.NAMESPACE_MINECRAFT)
 public class VanillaPlugin implements IWDMlaPlugin {
 
     @Override
@@ -142,7 +143,7 @@ public class VanillaPlugin implements IWDMlaPlugin {
         registration.registerItemStorageClient(ItemFrameProvider.INSTANCE);
 
         WDMlaConfig.instance().setCategoryLangKey(
-                Identifiers.CONFIG_AUTOGEN + Configuration.CATEGORY_SPLITTER + VanillaIdentifiers.NAMESPACE_MINECRAFT,
+                WDMlaIDs.CONFIG_AUTOGEN + Configuration.CATEGORY_SPLITTER + VanillaIDs.NAMESPACE_MINECRAFT,
                 "provider.wdmla.minecraft.category");
     }
 
@@ -199,7 +200,7 @@ public class VanillaPlugin implements IWDMlaPlugin {
 
         @Override
         public ResourceLocation getUid() {
-            return VanillaIdentifiers.REDSTONE_WIRE_HEADER;
+            return VanillaIDs.REDSTONE_WIRE_HEADER;
         }
 
         @Override
@@ -222,7 +223,7 @@ public class VanillaPlugin implements IWDMlaPlugin {
 
         @Override
         public ResourceLocation getUid() {
-            return VanillaIdentifiers.REDSTONE_WIRE;
+            return VanillaIDs.REDSTONE_WIRE;
         }
     }
 
@@ -239,7 +240,7 @@ public class VanillaPlugin implements IWDMlaPlugin {
 
         @Override
         public ResourceLocation getUid() {
-            return VanillaIdentifiers.REDSTONE_ORE_HEADER;
+            return VanillaIDs.REDSTONE_ORE_HEADER;
         }
 
         @Override
@@ -264,7 +265,7 @@ public class VanillaPlugin implements IWDMlaPlugin {
 
         @Override
         public ResourceLocation getUid() {
-            return VanillaIdentifiers.ZOMBIE_VILLAGER_HEADER;
+            return VanillaIDs.ZOMBIE_VILLAGER_HEADER;
         }
 
         @Override

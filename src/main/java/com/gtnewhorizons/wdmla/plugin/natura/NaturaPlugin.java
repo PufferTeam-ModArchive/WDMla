@@ -1,12 +1,12 @@
 package com.gtnewhorizons.wdmla.plugin.natura;
 
-import net.minecraft.util.ResourceLocation;
+import com.gtnewhorizons.wdmla.api.identifier.CommonPluginIDs;
 import net.minecraftforge.common.config.Configuration;
 
 import com.gtnewhorizons.wdmla.api.IWDMlaClientRegistration;
 import com.gtnewhorizons.wdmla.api.IWDMlaCommonRegistration;
 import com.gtnewhorizons.wdmla.api.IWDMlaPlugin;
-import com.gtnewhorizons.wdmla.api.Identifiers;
+import com.gtnewhorizons.wdmla.api.identifier.WDMlaIDs;
 import com.gtnewhorizons.wdmla.api.WDMlaPlugin;
 import com.gtnewhorizons.wdmla.api.config.WDMlaConfig;
 import com.gtnewhorizons.wdmla.plugin.vanilla.FurnaceProvider;
@@ -42,11 +42,7 @@ public class NaturaPlugin implements IWDMlaPlugin {
         registration.registerBlockComponent(BerryBushProvider.INSTANCE, BerryBush.class);
 
         WDMlaConfig.instance().setCategoryLangKey(
-                Identifiers.CONFIG_AUTOGEN + Configuration.CATEGORY_SPLITTER + "natura",
+                WDMlaIDs.CONFIG_AUTOGEN + Configuration.CATEGORY_SPLITTER + CommonPluginIDs.NAMESPACE_NATURA,
                 "provider.wdmla.natura.category");
-    }
-
-    public static ResourceLocation path(String path) {
-        return new ResourceLocation("natura", path);
     }
 }

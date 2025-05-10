@@ -1,5 +1,6 @@
 package com.gtnewhorizons.wdmla.plugin.hungeroverhaul;
 
+import com.gtnewhorizons.wdmla.api.identifier.CommonPluginIDs;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
@@ -43,7 +44,7 @@ public enum MilkCooldownProvider
 
     @Override
     public ResourceLocation getUid() {
-        return HungerOverhaulPlugin.path("milk_cooldown");
+        return CommonPluginIDs.HO_MILK_COOLDOWN;
     }
 
     @Override

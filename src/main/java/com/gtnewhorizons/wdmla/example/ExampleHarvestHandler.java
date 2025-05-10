@@ -9,7 +9,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.ResourceLocation;
 
-import com.gtnewhorizons.wdmla.api.Identifiers;
+import com.gtnewhorizons.wdmla.api.identifier.WDMlaIDs;
 import com.gtnewhorizons.wdmla.api.TooltipPosition;
 import com.gtnewhorizons.wdmla.api.harvestability.EffectiveTool;
 import com.gtnewhorizons.wdmla.api.harvestability.HarvestLevel;
@@ -42,7 +42,7 @@ public enum ExampleHarvestHandler implements HarvestHandler {
 
     @Override
     public ResourceLocation getUid() {
-        return Identifiers.EXAMPLE_HARVEST;
+        return WDMlaIDs.EXAMPLE_HARVEST;
     }
 
     @Override

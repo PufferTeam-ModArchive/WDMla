@@ -1,5 +1,6 @@
 package com.gtnewhorizons.wdmla.plugin.vanilla;
 
+import com.gtnewhorizons.wdmla.api.identifier.VanillaIDs;
 import net.minecraft.block.BlockHopper;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
@@ -24,7 +25,7 @@ public enum HopperProvider implements IBlockComponentProvider, IServerDataProvid
 
     @Override
     public ResourceLocation getUid() {
-        return VanillaIdentifiers.HOPPER;
+        return VanillaIDs.HOPPER;
     }
 
     @Override

@@ -5,7 +5,7 @@ import java.util.Random;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 
-import com.gtnewhorizons.wdmla.api.Identifiers;
+import com.gtnewhorizons.wdmla.api.identifier.WDMlaIDs;
 import com.gtnewhorizons.wdmla.api.accessor.EntityAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IEntityComponentProvider;
 import com.gtnewhorizons.wdmla.api.provider.IServerDataProvider;
@@ -29,6 +29,6 @@ public enum ExampleEntityProvider implements IEntityComponentProvider, IServerDa
 
     @Override
     public ResourceLocation getUid() {
-        return Identifiers.EXAMPLE_ENTITY;
+        return WDMlaIDs.EXAMPLE_ENTITY;
     }
 }

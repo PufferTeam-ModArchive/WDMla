@@ -2,6 +2,7 @@ package com.gtnewhorizons.wdmla.plugin.storagedrawers;
 
 import static com.gtnewhorizons.wdmla.impl.ui.StatusHelper.ICON_SIZE;
 
+import com.gtnewhorizons.wdmla.api.identifier.CommonPluginIDs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.ResourceLocation;
@@ -124,7 +125,7 @@ public enum DrawersPropertyProvider implements IBlockComponentProvider {
 
     @Override
     public ResourceLocation getUid() {
-        return StorageDrawersPlugin.path("property");
+        return CommonPluginIDs.DRAWERS_PROPERTY;
     }
 
     @Override

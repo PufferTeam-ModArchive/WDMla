@@ -1,5 +1,6 @@
 package com.gtnewhorizons.wdmla.plugin.vanilla;
 
+import com.gtnewhorizons.wdmla.api.identifier.VanillaIDs;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
@@ -53,11 +54,11 @@ public enum TotalEnchantmentPowerProvider implements IBlockComponentProvider {
         tooltip.child(
                 ThemeHelper.INSTANCE.value(
                         StatCollector.translateToLocal("hud.msg.wdmla.total.enchantment.power"),
-                        FormatUtil.STANDARD.format(power)).tag(VanillaIdentifiers.TOTAL_ENCHANTMENT_POWER));
+                        FormatUtil.STANDARD.format(power)).tag(VanillaIDs.TOTAL_ENCHANTMENT_POWER));
     }
 
     @Override
     public ResourceLocation getUid() {
-        return VanillaIdentifiers.TOTAL_ENCHANTMENT_POWER;
+        return VanillaIDs.TOTAL_ENCHANTMENT_POWER;
     }
 }

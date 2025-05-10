@@ -1,6 +1,6 @@
 package com.gtnewhorizons.wdmla;
 
-import com.gtnewhorizons.wdmla.api.Identifiers;
+import com.gtnewhorizons.wdmla.api.identifier.WDMlaIDs;
 import net.minecraft.launchwrapper.Launch;
 
 import com.gtnewhorizon.gtnhlib.config.ConfigException;
@@ -23,7 +23,7 @@ import mcp.mobius.waila.Tags;
  * DreamMaster looks at".
  */
 @Mod(
-        modid = Identifiers.MODID,
+        modid = WDMlaIDs.MODID,
         name = "WDMla",
         version = Tags.GRADLETOKEN_VERSION,
         dependencies = " after:Waila;" + " required-after:gtnhlib;",

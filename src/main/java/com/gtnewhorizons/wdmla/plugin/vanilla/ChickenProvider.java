@@ -1,5 +1,6 @@
 package com.gtnewhorizons.wdmla.plugin.vanilla;
 
+import com.gtnewhorizons.wdmla.api.identifier.VanillaIDs;
 import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
@@ -28,7 +29,7 @@ public enum ChickenProvider
                             .value(
                                     StatCollector.translateToLocal("hud.msg.wdmla.nextegg"),
                                     timePattern.tickFormatter.format(accessor.getServerData().getInteger("nextEgg")))
-                            .tag(VanillaIdentifiers.CHICKEN));
+                            .tag(VanillaIDs.CHICKEN));
         }
     }
 
@@ -41,7 +42,7 @@ public enum ChickenProvider
 
     @Override
     public ResourceLocation getUid() {
-        return VanillaIdentifiers.CHICKEN;
+        return VanillaIDs.CHICKEN;
     }
 
     @Override

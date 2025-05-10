@@ -1,7 +1,7 @@
 package com.gtnewhorizons.wdmla.api.config;
 
 import com.gtnewhorizon.gtnhlib.config.Config;
-import com.gtnewhorizons.wdmla.api.Identifiers;
+import com.gtnewhorizons.wdmla.api.identifier.WDMlaIDs;
 
 /**
  * List of WDMla plugins config.<br>
@@ -9,7 +9,7 @@ import com.gtnewhorizons.wdmla.api.Identifiers;
  * Note: we can't split config files for each config due to GTNHLib's limitation.<br>
  * Sorry for inconvenience.
  */
-@Config(modid = Identifiers.MODID, category = "plugins", configSubDirectory = "WDMla", filename = "plugins")
+@Config(modid = WDMlaIDs.MODID, category = "plugins", configSubDirectory = "WDMla", filename = "plugins")
 @Config.LangKey("option.wdmla.plugin.category")
 public class PluginsConfig {
 

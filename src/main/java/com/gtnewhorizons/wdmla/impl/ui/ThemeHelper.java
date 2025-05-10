@@ -13,7 +13,7 @@ import net.minecraft.util.StatCollector;
 import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.Nullable;
 
-import com.gtnewhorizons.wdmla.api.Identifiers;
+import com.gtnewhorizons.wdmla.api.identifier.WDMlaIDs;
 import com.gtnewhorizons.wdmla.api.theme.Theme;
 import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
@@ -31,7 +31,7 @@ import com.gtnewhorizons.wdmla.impl.ui.sizer.Padding;
 import com.gtnewhorizons.wdmla.impl.ui.sizer.Size;
 import com.gtnewhorizons.wdmla.impl.ui.style.TextStyle;
 import com.gtnewhorizons.wdmla.overlay.WDMlaUIIcons;
-import com.gtnewhorizons.wdmla.plugin.vanilla.VanillaIdentifiers;
+import com.gtnewhorizons.wdmla.api.identifier.VanillaIDs;
 import com.gtnewhorizons.wdmla.util.FormatUtil;
 
 import mcp.mobius.waila.overlay.DisplayUtil;
@@ -62,8 +62,8 @@ public class ThemeHelper {
         }
 
         root.replaceChildWithTag(
-                Identifiers.ITEM_ICON,
-                new ItemComponent(newItemStack).doDrawOverlay(false).tag(Identifiers.ITEM_ICON));
+                WDMlaIDs.ITEM_ICON,
+                new ItemComponent(newItemStack).doDrawOverlay(false).tag(WDMlaIDs.ITEM_ICON));
     }
 
     public void overrideTooltipTitle(ITooltip root, ItemStack newItemStack) {
@@ -75,8 +75,8 @@ public class ThemeHelper {
         Theme theme = General.currentTheme.get();
         IComponent replacedName = new HPanelComponent().child(
                 new TextComponent(formattedNewName).style(new TextStyle().color(theme.textColor(MessageType.TITLE))))
-                .tag(Identifiers.ITEM_NAME);
-        root.replaceChildWithTag(Identifiers.ITEM_NAME, replacedName);
+                .tag(WDMlaIDs.ITEM_NAME);
+        root.replaceChildWithTag(WDMlaIDs.ITEM_NAME, replacedName);
     }
 
     public void overrideEntityTooltipTitle(ITooltip root, String newName, @Nullable Entity entityMayHaveCustomName) {
@@ -88,19 +88,19 @@ public class ThemeHelper {
         }
         IComponent replacedName = new HPanelComponent()
                 .child(new TextComponent(newName).style(new TextStyle().color(theme.textColor(MessageType.TITLE))))
-                .tag(Identifiers.ENTITY_NAME);
-        root.replaceChildWithTag(Identifiers.ENTITY_NAME, replacedName);
+                .tag(WDMlaIDs.ENTITY_NAME);
+        root.replaceChildWithTag(WDMlaIDs.ENTITY_NAME, replacedName);
     }
 
     public void overrideEntityTooltipIcon(ITooltip root, @Nullable Entity newEntity) {
         if (PluginsConfig.core.defaultEntity.showEntity) {
             if (!PluginsConfig.core.defaultEntity.fancyRenderer && !(newEntity instanceof EntityLiving)) {
-                root.replaceChildWithTag(Identifiers.ENTITY, new HPanelComponent().tag(Identifiers.ENTITY));
+                root.replaceChildWithTag(WDMlaIDs.ENTITY, new HPanelComponent().tag(WDMlaIDs.ENTITY));
             } else {
                 root.replaceChildWithTag(
-                        Identifiers.ENTITY,
+                        WDMlaIDs.ENTITY,
                         new EntityComponent(newEntity).padding(new Padding(6, 0, 10, 0)).size(new Size(12, 12))
-                                .tag(Identifiers.ENTITY));
+                                .tag(WDMlaIDs.ENTITY));
             }
         }
     }
@@ -112,8 +112,8 @@ public class ThemeHelper {
     public void overrideTooltipModName(ITooltip root, String newName) {
         Theme theme = General.currentTheme.get();
         IComponent replacedModName = new TextComponent(ITALIC + newName)
-                .style(new TextStyle().color(theme.textColor(MessageType.MOD_NAME))).tag(Identifiers.MOD_NAME);
-        root.replaceChildWithTag(Identifiers.MOD_NAME, replacedModName);
+                .style(new TextStyle().color(theme.textColor(MessageType.MOD_NAME))).tag(WDMlaIDs.MOD_NAME);
+        root.replaceChildWithTag(WDMlaIDs.MOD_NAME, replacedModName);
     }
 
     public void overrideTooltipHeader(ITooltip root, ItemStack newItemStack) {
@@ -269,14 +269,14 @@ public class ThemeHelper {
         if (growthValue < 1) {
             return ThemeHelper.INSTANCE.value(
                     StatCollector.translateToLocal("hud.msg.wdmla.growth"),
-                    FormatUtil.PERCENTAGE_STANDARD.format(growthValue)).tag(VanillaIdentifiers.GROWTH_RATE);
+                    FormatUtil.PERCENTAGE_STANDARD.format(growthValue)).tag(VanillaIDs.GROWTH_RATE);
         } else {
             return new HPanelComponent()
                     .text(String.format("%s: ", StatCollector.translateToLocal("hud.msg.wdmla.growth")))
                     .child(
                             ThemeHelper.INSTANCE.success(
                                     String.format("%s", StatCollector.translateToLocal("hud.msg.wdmla.mature"))))
-                    .tag(VanillaIdentifiers.GROWTH_RATE);
+                    .tag(VanillaIDs.GROWTH_RATE);
         }
     }
 }

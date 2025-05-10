@@ -4,7 +4,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 import net.minecraft.util.Vec3;
 
-import com.gtnewhorizons.wdmla.api.Identifiers;
+import com.gtnewhorizons.wdmla.api.identifier.WDMlaIDs;
 import com.gtnewhorizons.wdmla.api.TooltipPosition;
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.accessor.EntityAccessor;
@@ -105,7 +105,7 @@ public class CoordinatesProvider implements IToggleableProvider {
 
     @Override
     public ResourceLocation getUid() {
-        return Identifiers.COORDINATES;
+        return WDMlaIDs.COORDINATES;
     }
 
     @Override

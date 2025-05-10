@@ -1,5 +1,6 @@
 package com.gtnewhorizons.wdmla.plugin.vanilla;
 
+import com.gtnewhorizons.wdmla.api.identifier.VanillaIDs;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.passive.EntityHorse;
 import net.minecraft.util.ResourceLocation;
@@ -55,6 +56,6 @@ public enum HorseProvider implements IEntityComponentProvider {
 
     @Override
     public ResourceLocation getUid() {
-        return VanillaIdentifiers.HORSE;
+        return VanillaIDs.HORSE;
     }
 }

@@ -1,5 +1,6 @@
 package com.gtnewhorizons.wdmla.plugin.vanilla;
 
+import com.gtnewhorizons.wdmla.api.identifier.VanillaIDs;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
@@ -26,7 +27,7 @@ public enum PrimedTNTProvider
                         .value(
                                 StatCollector.translateToLocal("hud.msg.wdmla.fuse"),
                                 timePattern.tickFormatter.format((int) accessor.getServerData().getByte("Fuse")))
-                        .tag(VanillaIdentifiers.PRIMED_TNT));
+                        .tag(VanillaIDs.PRIMED_TNT));
     }
 
     @Override
@@ -36,6 +37,6 @@ public enum PrimedTNTProvider
 
     @Override
     public ResourceLocation getUid() {
-        return VanillaIdentifiers.PRIMED_TNT;
+        return VanillaIDs.PRIMED_TNT;
     }
 }

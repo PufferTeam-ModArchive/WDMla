@@ -1,5 +1,6 @@
 package com.gtnewhorizons.wdmla.plugin.natura;
 
+import com.gtnewhorizons.wdmla.api.identifier.CommonPluginIDs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
@@ -28,6 +29,6 @@ public enum NaturaCropHeaderProvider implements IBlockComponentProvider {
 
     @Override
     public ResourceLocation getUid() {
-        return NaturaPlugin.path("crop_header");
+        return CommonPluginIDs.NATURA_CROP_HEADER;
     }
 }
