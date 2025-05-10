@@ -6,7 +6,7 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 
 import com.gtnewhorizons.wdmla.api.harvestability.EffectiveTool;
-import com.gtnewhorizons.wdmla.config.PluginsConfig;
+import com.gtnewhorizons.wdmla.api.config.PluginsConfig;
 
 public class ProxyIguanaTweaks {
 

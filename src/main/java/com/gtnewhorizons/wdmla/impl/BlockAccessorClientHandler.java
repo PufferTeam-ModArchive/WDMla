@@ -13,7 +13,7 @@ import com.gtnewhorizons.wdmla.api.provider.IComponentProvider;
 import com.gtnewhorizons.wdmla.api.provider.IServerDataProvider;
 import com.gtnewhorizons.wdmla.api.provider.IWDMlaProvider;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
-import com.gtnewhorizons.wdmla.config.WDMlaConfig;
+import com.gtnewhorizons.wdmla.api.config.WDMlaConfig;
 import com.gtnewhorizons.wdmla.wailacompat.DataProviderCompat;
 import com.gtnewhorizons.wdmla.wailacompat.RayTracingCompat;
 import com.gtnewhorizons.wdmla.wailacompat.TooltipCompat;

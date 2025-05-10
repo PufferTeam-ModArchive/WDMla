@@ -9,7 +9,7 @@ import com.gtnewhorizons.wdmla.api.IWDMlaCommonRegistration;
 import com.gtnewhorizons.wdmla.api.IWDMlaPlugin;
 import com.gtnewhorizons.wdmla.api.Identifiers;
 import com.gtnewhorizons.wdmla.api.WDMlaPlugin;
-import com.gtnewhorizons.wdmla.config.WDMlaConfig;
+import com.gtnewhorizons.wdmla.api.config.WDMlaConfig;
 
 /**
  * Registers special storage related providers.

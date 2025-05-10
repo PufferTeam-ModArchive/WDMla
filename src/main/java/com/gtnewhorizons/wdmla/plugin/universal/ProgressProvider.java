@@ -25,7 +25,7 @@ import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.api.view.ClientViewGroup;
 import com.gtnewhorizons.wdmla.api.view.ProgressView;
 import com.gtnewhorizons.wdmla.api.view.ViewGroup;
-import com.gtnewhorizons.wdmla.config.General;
+import com.gtnewhorizons.wdmla.api.config.General;
 import com.gtnewhorizons.wdmla.impl.WDMlaClientRegistration;
 import com.gtnewhorizons.wdmla.impl.WDMlaCommonRegistration;
 import com.gtnewhorizons.wdmla.impl.ui.component.ProgressComponent;

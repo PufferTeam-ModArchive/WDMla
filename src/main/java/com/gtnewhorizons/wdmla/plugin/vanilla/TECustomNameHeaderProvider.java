@@ -7,7 +7,7 @@ import com.gtnewhorizons.wdmla.api.TooltipPosition;
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IServerDataProvider;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
-import com.gtnewhorizons.wdmla.config.General;
+import com.gtnewhorizons.wdmla.api.config.General;
 
 /**
  * special class for providing only custom name for specific tile entities. <br>

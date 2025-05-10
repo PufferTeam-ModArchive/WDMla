@@ -8,7 +8,7 @@ import com.gtnewhorizons.wdmla.api.IWDMlaClientRegistration;
 import com.gtnewhorizons.wdmla.api.IWDMlaPlugin;
 import com.gtnewhorizons.wdmla.api.Identifiers;
 import com.gtnewhorizons.wdmla.api.WDMlaPlugin;
-import com.gtnewhorizons.wdmla.config.WDMlaConfig;
+import com.gtnewhorizons.wdmla.api.config.WDMlaConfig;
 
 /**
  * The base plugin that registers providers which provide less useful information to very wide range objects.

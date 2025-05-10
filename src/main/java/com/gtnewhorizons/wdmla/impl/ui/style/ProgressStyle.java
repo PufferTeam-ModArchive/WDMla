@@ -4,7 +4,7 @@ import org.jetbrains.annotations.Nullable;
 
 import com.gtnewhorizons.wdmla.api.ui.IDrawable;
 import com.gtnewhorizons.wdmla.api.ui.style.IProgressStyle;
-import com.gtnewhorizons.wdmla.config.General;
+import com.gtnewhorizons.wdmla.api.config.General;
 
 public class ProgressStyle implements IProgressStyle {
 

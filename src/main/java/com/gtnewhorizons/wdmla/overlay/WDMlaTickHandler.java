@@ -2,6 +2,7 @@ package com.gtnewhorizons.wdmla.overlay;
 
 import static mcp.mobius.waila.api.SpecialChars.ITALIC;
 
+import com.gtnewhorizons.wdmla.api.Identifiers;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
@@ -19,10 +20,9 @@ import net.minecraftforge.common.config.Configuration;
 import org.jetbrains.annotations.Nullable;
 import org.lwjgl.input.Keyboard;
 
-import com.gtnewhorizons.wdmla.WDMla;
 import com.gtnewhorizons.wdmla.api.accessor.Accessor;
 import com.gtnewhorizons.wdmla.api.ui.MessageType;
-import com.gtnewhorizons.wdmla.config.General;
+import com.gtnewhorizons.wdmla.api.config.General;
 import com.gtnewhorizons.wdmla.impl.ObjectDataCenter;
 import com.gtnewhorizons.wdmla.impl.WDMlaClientRegistration;
 import com.gtnewhorizons.wdmla.impl.ui.component.RootComponent;
@@ -63,7 +63,7 @@ public class WDMlaTickHandler {
     @SideOnly(Side.CLIENT)
     public void screenRender(GuiScreenEvent.DrawScreenEvent.Post event) {
         if (!General.previewInCfg
-                || !(event.gui instanceof GuiConfig guiConfig && WDMla.MODID.equals(guiConfig.modID))) {
+                || !(event.gui instanceof GuiConfig guiConfig && Identifiers.MODID.equals(guiConfig.modID))) {
             return;
         }
 
@@ -109,7 +109,7 @@ public class WDMlaTickHandler {
         EntityPlayer player = mc.thePlayer;
         GuiScreen currentScreen = mc.currentScreen;
         boolean canDrawOnScreen = currentScreen == null
-                || (currentScreen instanceof GuiConfig modsConfig && WDMla.MODID.equals(modsConfig.modID));
+                || (currentScreen instanceof GuiConfig modsConfig && Identifiers.MODID.equals(modsConfig.modID));
 
         if (world == null || player == null
                 || !Minecraft.isGuiEnabled()

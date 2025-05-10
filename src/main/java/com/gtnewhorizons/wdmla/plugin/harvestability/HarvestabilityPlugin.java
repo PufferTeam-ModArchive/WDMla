@@ -13,7 +13,7 @@ import com.gtnewhorizons.wdmla.api.IWDMlaPlugin;
 import com.gtnewhorizons.wdmla.api.Identifiers;
 import com.gtnewhorizons.wdmla.api.Mods;
 import com.gtnewhorizons.wdmla.api.WDMlaPlugin;
-import com.gtnewhorizons.wdmla.config.WDMlaConfig;
+import com.gtnewhorizons.wdmla.api.config.WDMlaConfig;
 
 /**
  * the plugin dedicated to register harvest tool and harvestability info providers.

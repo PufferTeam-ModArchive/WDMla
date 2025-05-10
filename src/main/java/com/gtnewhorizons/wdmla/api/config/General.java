@@ -1,7 +1,7 @@
-package com.gtnewhorizons.wdmla.config;
+package com.gtnewhorizons.wdmla.api.config;
 
 import com.gtnewhorizon.gtnhlib.config.Config;
-import com.gtnewhorizons.wdmla.WDMla;
+import com.gtnewhorizons.wdmla.api.Identifiers;
 import com.gtnewhorizons.wdmla.api.theme.DefaultThemes;
 import com.gtnewhorizons.wdmla.api.ui.ColorPalette;
 
@@ -10,7 +10,7 @@ import com.gtnewhorizons.wdmla.api.ui.ColorPalette;
  * {@linkplain mcp.mobius.waila.api.impl.ConfigHandler#reloadDefaultConfig()}<br>
  * All static configuration entry which does not belong to specific plugin should go here.
  */
-@Config(modid = WDMla.MODID, category = "wdmla_general", configSubDirectory = "WDMla", filename = "general")
+@Config(modid = Identifiers.MODID, category = "wdmla_general", configSubDirectory = "WDMla", filename = "general")
 @Config.LangKey("option.wdmla.general.category")
 @Config.Comment("These are WDMla exclusive settings")
 public class General {

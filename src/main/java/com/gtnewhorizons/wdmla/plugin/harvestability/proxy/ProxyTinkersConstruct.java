@@ -13,7 +13,7 @@ import net.minecraftforge.common.ForgeHooks;
 import com.gtnewhorizons.wdmla.api.Mods;
 import com.gtnewhorizons.wdmla.api.harvestability.EffectiveTool;
 import com.gtnewhorizons.wdmla.api.harvestability.HarvestLevel;
-import com.gtnewhorizons.wdmla.config.PluginsConfig;
+import com.gtnewhorizons.wdmla.api.config.PluginsConfig;
 import com.gtnewhorizons.wdmla.plugin.harvestability.BaseHarvestLogicHandler;
 
 import tconstruct.library.TConstructRegistry;

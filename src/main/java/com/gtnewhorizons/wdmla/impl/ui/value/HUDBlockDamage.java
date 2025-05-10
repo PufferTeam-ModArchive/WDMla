@@ -4,7 +4,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.util.MathHelper;
 
 import com.gtnewhorizons.wdmla.api.ui.sizer.IArea;
-import com.gtnewhorizons.wdmla.config.General;
+import com.gtnewhorizons.wdmla.api.config.General;
 import com.gtnewhorizons.wdmla.impl.ui.sizer.Area;
 
 public class HUDBlockDamage {

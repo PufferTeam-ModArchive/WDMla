@@ -11,7 +11,7 @@ import org.lwjgl.opengl.GL11;
 
 import com.gtnewhorizons.wdmla.api.ui.IDrawable;
 import com.gtnewhorizons.wdmla.api.ui.sizer.IArea;
-import com.gtnewhorizons.wdmla.config.PluginsConfig;
+import com.gtnewhorizons.wdmla.api.config.PluginsConfig;
 import com.gtnewhorizons.wdmla.overlay.GuiDraw;
 
 import mcp.mobius.waila.Waila;

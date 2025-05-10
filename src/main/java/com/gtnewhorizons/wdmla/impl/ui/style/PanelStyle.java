@@ -2,7 +2,7 @@ package com.gtnewhorizons.wdmla.impl.ui.style;
 
 import com.gtnewhorizons.wdmla.api.ui.ComponentAlignment;
 import com.gtnewhorizons.wdmla.api.ui.style.IPanelStyle;
-import com.gtnewhorizons.wdmla.config.General;
+import com.gtnewhorizons.wdmla.api.config.General;
 
 public class PanelStyle implements IPanelStyle {
 

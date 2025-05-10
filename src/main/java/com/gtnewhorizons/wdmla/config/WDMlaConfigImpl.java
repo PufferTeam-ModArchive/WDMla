@@ -4,6 +4,8 @@ import java.io.File;
 import java.util.Arrays;
 
 import com.gtnewhorizons.wdmla.api.TextColors;
+import com.gtnewhorizons.wdmla.api.config.General;
+import com.gtnewhorizons.wdmla.api.config.WDMlaConfig;
 import com.gtnewhorizons.wdmla.api.theme.DefaultThemes;
 import com.gtnewhorizons.wdmla.api.theme.Theme;
 import net.minecraftforge.common.config.Configuration;

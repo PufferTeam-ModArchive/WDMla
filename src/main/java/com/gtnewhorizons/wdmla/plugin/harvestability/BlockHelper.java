@@ -15,7 +15,7 @@ import net.minecraftforge.common.IShearable;
 import net.minecraftforge.oredict.OreDictionary;
 
 import com.gtnewhorizons.wdmla.api.harvestability.HarvestabilityInfo;
-import com.gtnewhorizons.wdmla.config.PluginsConfig;
+import com.gtnewhorizons.wdmla.api.config.PluginsConfig;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 

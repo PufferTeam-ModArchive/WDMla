@@ -9,7 +9,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
-import com.gtnewhorizons.wdmla.config.General;
+import com.gtnewhorizons.wdmla.api.config.General;
 import com.gtnewhorizons.wdmla.plugin.PluginScanner;
 
 import cpw.mods.fml.common.FMLCommonHandler;

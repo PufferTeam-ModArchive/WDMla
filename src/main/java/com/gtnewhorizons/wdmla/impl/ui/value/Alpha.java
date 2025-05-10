@@ -1,6 +1,6 @@
 package com.gtnewhorizons.wdmla.impl.ui.value;
 
-import com.gtnewhorizons.wdmla.config.General;
+import com.gtnewhorizons.wdmla.api.config.General;
 
 /**
  * Alpha value of the color

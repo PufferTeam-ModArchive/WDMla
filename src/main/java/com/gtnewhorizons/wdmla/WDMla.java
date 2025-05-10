@@ -1,11 +1,12 @@
 package com.gtnewhorizons.wdmla;
 
+import com.gtnewhorizons.wdmla.api.Identifiers;
 import net.minecraft.launchwrapper.Launch;
 
 import com.gtnewhorizon.gtnhlib.config.ConfigException;
 import com.gtnewhorizon.gtnhlib.config.ConfigurationManager;
-import com.gtnewhorizons.wdmla.config.General;
-import com.gtnewhorizons.wdmla.config.PluginsConfig;
+import com.gtnewhorizons.wdmla.api.config.General;
+import com.gtnewhorizons.wdmla.api.config.PluginsConfig;
 import com.gtnewhorizons.wdmla.example.TestMode;
 
 import cpw.mods.fml.common.Mod;
@@ -22,7 +23,7 @@ import mcp.mobius.waila.Tags;
  * DreamMaster looks at".
  */
 @Mod(
-        modid = WDMla.MODID,
+        modid = Identifiers.MODID,
         name = "WDMla",
         version = Tags.GRADLETOKEN_VERSION,
         dependencies = " after:Waila;" + " required-after:gtnhlib;",
@@ -39,8 +40,6 @@ public class WDMla {
             throw new RuntimeException(e);
         }
     }
-
-    public static final String MODID = "wdmla";
 
     @SidedProxy(clientSide = "com.gtnewhorizons.wdmla.ClientProxy", serverSide = "com.gtnewhorizons.wdmla.CommonProxy")
     public static CommonProxy proxy;

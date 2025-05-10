@@ -16,7 +16,7 @@ import com.gtnewhorizons.wdmla.api.harvestability.EffectiveTool;
 import com.gtnewhorizons.wdmla.api.harvestability.HarvestabilityInfo;
 import com.gtnewhorizons.wdmla.api.harvestability.HarvestabilityTestPhase;
 import com.gtnewhorizons.wdmla.api.provider.HarvestHandler;
-import com.gtnewhorizons.wdmla.config.PluginsConfig;
+import com.gtnewhorizons.wdmla.api.config.PluginsConfig;
 
 public enum VanillaHarvestToolHandler implements HarvestHandler {
 

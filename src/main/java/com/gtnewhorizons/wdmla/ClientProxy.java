@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 
+import com.gtnewhorizons.wdmla.api.Identifiers;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
@@ -20,7 +21,7 @@ import com.gtnewhorizons.wdmla.api.view.ClientViewGroup;
 import com.gtnewhorizons.wdmla.api.view.ViewGroup;
 import com.gtnewhorizons.wdmla.command.GenerateDumpCommand;
 import com.gtnewhorizons.wdmla.command.PrintUnsupportedTEsCommand;
-import com.gtnewhorizons.wdmla.config.WDMlaConfig;
+import com.gtnewhorizons.wdmla.api.config.WDMlaConfig;
 import com.gtnewhorizons.wdmla.config.WDMlaConfigImpl;
 import com.gtnewhorizons.wdmla.overlay.WDMlaTickHandler;
 import com.gtnewhorizons.wdmla.plugin.harvestability.proxy.ProxyGregTech;
@@ -75,7 +76,7 @@ public class ClientProxy extends CommonProxy {
     @SuppressWarnings("unused")
     @SubscribeEvent
     public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event) {
-        if (event.modID.equals(WDMla.MODID)) {
+        if (event.modID.equals(Identifiers.MODID)) {
             WDMlaConfig.instance().save();
             WDMlaConfig.instance().reloadConfig();
             loadComplete(); // sort priorities

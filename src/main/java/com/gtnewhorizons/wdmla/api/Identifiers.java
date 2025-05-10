@@ -9,6 +9,8 @@ import net.minecraft.util.ResourceLocation;
  */
 public final class Identifiers {
 
+    public static final String MODID = "wdmla";
+
     // component tag
     public static final ResourceLocation ROOT = Core("root");
 

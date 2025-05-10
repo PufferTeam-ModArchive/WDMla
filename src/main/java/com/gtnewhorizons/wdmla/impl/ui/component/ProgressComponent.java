@@ -8,7 +8,7 @@ import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.api.ui.style.IProgressStyle;
 import com.gtnewhorizons.wdmla.api.ui.style.IRectStyle;
-import com.gtnewhorizons.wdmla.config.General;
+import com.gtnewhorizons.wdmla.api.config.General;
 import com.gtnewhorizons.wdmla.impl.ui.drawable.ProgressDrawable;
 import com.gtnewhorizons.wdmla.impl.ui.drawable.RectDrawable;
 import com.gtnewhorizons.wdmla.impl.ui.sizer.Area;

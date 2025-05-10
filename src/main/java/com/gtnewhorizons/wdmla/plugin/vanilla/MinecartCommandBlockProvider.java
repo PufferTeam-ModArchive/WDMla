@@ -11,7 +11,7 @@ import com.gtnewhorizons.wdmla.api.accessor.EntityAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IEntityComponentProvider;
 import com.gtnewhorizons.wdmla.api.provider.IServerDataProvider;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
-import com.gtnewhorizons.wdmla.config.PluginsConfig;
+import com.gtnewhorizons.wdmla.api.config.PluginsConfig;
 
 public enum MinecartCommandBlockProvider implements IEntityComponentProvider, IServerDataProvider<EntityAccessor> {
 

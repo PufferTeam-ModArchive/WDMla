@@ -5,7 +5,7 @@ import org.jetbrains.annotations.NotNull;
 import com.gtnewhorizons.wdmla.api.ui.ColorPalette;
 import com.gtnewhorizons.wdmla.api.ui.IDrawable;
 import com.gtnewhorizons.wdmla.api.ui.sizer.IArea;
-import com.gtnewhorizons.wdmla.config.General;
+import com.gtnewhorizons.wdmla.api.config.General;
 import com.gtnewhorizons.wdmla.impl.ObjectDataCenter;
 import com.gtnewhorizons.wdmla.impl.ui.sizer.Area;
 import com.gtnewhorizons.wdmla.impl.ui.value.Alpha;

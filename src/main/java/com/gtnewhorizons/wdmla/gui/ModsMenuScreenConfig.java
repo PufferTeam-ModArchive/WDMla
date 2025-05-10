@@ -10,10 +10,9 @@ import net.minecraftforge.common.config.Configuration;
 
 import com.gtnewhorizon.gtnhlib.config.ConfigException;
 import com.gtnewhorizon.gtnhlib.config.ConfigurationManager;
-import com.gtnewhorizons.wdmla.WDMla;
 import com.gtnewhorizons.wdmla.api.Identifiers;
-import com.gtnewhorizons.wdmla.config.General;
-import com.gtnewhorizons.wdmla.config.PluginsConfig;
+import com.gtnewhorizons.wdmla.api.config.General;
+import com.gtnewhorizons.wdmla.api.config.PluginsConfig;
 import com.gtnewhorizons.wdmla.config.WDMlaConfigImpl;
 
 import cpw.mods.fml.client.config.IConfigElement;
@@ -28,7 +27,7 @@ import mcp.mobius.waila.utils.Constants;
 public class ModsMenuScreenConfig extends LiveEditGuiConfig {
 
     public ModsMenuScreenConfig(GuiScreen parent) throws ConfigException {
-        super(parent, getMainCategories(), WDMla.MODID, false, false, "WDMla", "Waila Replacement Mod");
+        super(parent, getMainCategories(), Identifiers.MODID, false, false, "WDMla", "Waila Replacement Mod");
     }
 
     @Override
