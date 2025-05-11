@@ -15,7 +15,7 @@ import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
 import com.gtnewhorizons.wdmla.api.ui.ColorPalette;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
-import com.gtnewhorizons.wdmla.impl.ui.StatusHelper;
+import com.gtnewhorizons.wdmla.api.ui.StatusHelper;
 import com.gtnewhorizons.wdmla.api.ui.ThemeHelper;
 import com.gtnewhorizons.wdmla.impl.ui.component.HPanelComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.ItemComponent;
@@ -38,13 +38,13 @@ public enum ExampleThemeBlockProvider implements IBlockComponentProvider {
     @Override
     public void appendTooltip(ITooltip tooltip, BlockAccessor accessor) {
         if (accessor.getTileEntity() instanceof TileEntitySkull skull && skull.func_145904_a() == 1) {
-            tooltip.child(StatusHelper.INSTANCE.structureIncomplete());
-            tooltip.child(StatusHelper.INSTANCE.hasProblem());
-            tooltip.child(StatusHelper.INSTANCE.runningFine());
-            tooltip.child(StatusHelper.INSTANCE.idle());
-            tooltip.child(StatusHelper.INSTANCE.workingDisabled());
-            tooltip.child(StatusHelper.INSTANCE.insufficientEnergy());
-            tooltip.child(StatusHelper.INSTANCE.insufficientFuel());
+            tooltip.child(StatusHelper.instance().structureIncomplete());
+            tooltip.child(StatusHelper.instance().hasProblem());
+            tooltip.child(StatusHelper.instance().runningFine());
+            tooltip.child(StatusHelper.instance().idle());
+            tooltip.child(StatusHelper.instance().workingDisabled());
+            tooltip.child(StatusHelper.instance().insufficientEnergy());
+            tooltip.child(StatusHelper.instance().insufficientFuel());
 
             return;
         }

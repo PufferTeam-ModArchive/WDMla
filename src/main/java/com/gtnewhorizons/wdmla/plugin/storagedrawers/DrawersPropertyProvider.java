@@ -1,6 +1,6 @@
 package com.gtnewhorizons.wdmla.plugin.storagedrawers;
 
-import static com.gtnewhorizons.wdmla.impl.ui.StatusHelper.ICON_SIZE;
+import static com.gtnewhorizons.wdmla.api.ui.StatusHelper.ICON_SIZE;
 
 import com.gtnewhorizons.wdmla.api.identifier.CommonPluginIDs;
 import net.minecraft.item.ItemStack;
@@ -14,7 +14,7 @@ import com.gtnewhorizons.wdmla.api.ui.HighlightState;
 import com.gtnewhorizons.wdmla.api.ui.HighlightTracker;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.impl.ObjectDataCenter;
-import com.gtnewhorizons.wdmla.impl.ui.StatusHelper;
+import com.gtnewhorizons.wdmla.api.ui.StatusHelper;
 import com.gtnewhorizons.wdmla.api.ui.ThemeHelper;
 import com.gtnewhorizons.wdmla.impl.ui.component.HPanelComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.IconComponent;
@@ -61,9 +61,9 @@ public enum DrawersPropertyProvider implements IBlockComponentProvider {
         ITooltip detailedPanel = new VPanelComponent();
         if (isLockedTracker.update(isLocked)) {
             if (isLocked) {
-                detailedPanel.child(StatusHelper.INSTANCE.locked(HighlightState.ACTIVATING));
+                detailedPanel.child(StatusHelper.instance().locked(HighlightState.ACTIVATING));
             } else {
-                detailedPanel.child(StatusHelper.INSTANCE.locked(HighlightState.DEACTIVATING));
+                detailedPanel.child(StatusHelper.instance().locked(HighlightState.DEACTIVATING));
             }
         } else if (isLocked) {
             panel.child(
@@ -74,9 +74,9 @@ public enum DrawersPropertyProvider implements IBlockComponentProvider {
 
         if (isVoidTracker.update(isVoid)) {
             if (isVoid) {
-                detailedPanel.child(StatusHelper.INSTANCE.voidOverflow(HighlightState.ACTIVATING));
+                detailedPanel.child(StatusHelper.instance().voidOverflow(HighlightState.ACTIVATING));
             } else {
-                detailedPanel.child(StatusHelper.INSTANCE.voidOverflow(HighlightState.DEACTIVATING));
+                detailedPanel.child(StatusHelper.instance().voidOverflow(HighlightState.DEACTIVATING));
             }
         } else if (isVoid) {
             panel.child(

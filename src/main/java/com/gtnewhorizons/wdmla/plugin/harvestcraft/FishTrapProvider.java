@@ -10,7 +10,7 @@ import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
 import com.gtnewhorizons.wdmla.api.provider.IServerDataProvider;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
-import com.gtnewhorizons.wdmla.impl.ui.StatusHelper;
+import com.gtnewhorizons.wdmla.api.ui.StatusHelper;
 import com.pam.harvestcraft.ItemRegistry;
 import com.pam.harvestcraft.TileEntityPamFishTrap;
 
@@ -25,13 +25,13 @@ public enum FishTrapProvider implements IBlockComponentProvider, IServerDataProv
         }
 
         if (!accessor.getServerData().getBoolean("GoodEnvironment")) {
-            tooltip.child(StatusHelper.INSTANCE.structureIncomplete());
+            tooltip.child(StatusHelper.instance().structureIncomplete());
             String material = StatCollector.translateToLocal("hud.msg.wdmla.any.fluid");
             tooltip.text(StatCollector.translateToLocalFormatted("hud.msg.wdmla.must.surround", material));
         } else if (!accessor.getServerData().getBoolean("IngredientValid")) {
-            tooltip.child(StatusHelper.INSTANCE.idle());
+            tooltip.child(StatusHelper.instance().idle());
         } else {
-            tooltip.child(StatusHelper.INSTANCE.runningFine());
+            tooltip.child(StatusHelper.instance().runningFine());
         }
     }
 

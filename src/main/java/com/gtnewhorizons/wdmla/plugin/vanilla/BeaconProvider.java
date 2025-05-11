@@ -11,7 +11,7 @@ import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
 import com.gtnewhorizons.wdmla.api.provider.IServerDataProvider;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
-import com.gtnewhorizons.wdmla.impl.ui.StatusHelper;
+import com.gtnewhorizons.wdmla.api.ui.StatusHelper;
 import com.gtnewhorizons.wdmla.api.ui.ThemeHelper;
 
 public enum BeaconProvider implements IBlockComponentProvider, IServerDataProvider<BlockAccessor> {
@@ -25,7 +25,7 @@ public enum BeaconProvider implements IBlockComponentProvider, IServerDataProvid
         }
 
         if (!accessor.getServerData().getBoolean("Formed")) {
-            tooltip.child(StatusHelper.INSTANCE.structureIncomplete());
+            tooltip.child(StatusHelper.instance().structureIncomplete());
             return;
         }
 

@@ -1,7 +1,7 @@
 package com.gtnewhorizons.wdmla.impl.ui;
 
+import com.gtnewhorizons.wdmla.api.ui.StatusHelper;
 import com.gtnewhorizons.wdmla.api.ui.ThemeHelper;
-import net.minecraft.client.Minecraft;
 import net.minecraft.util.StatCollector;
 
 import com.gtnewhorizons.wdmla.api.ui.HighlightState;
@@ -15,16 +15,15 @@ import com.gtnewhorizons.wdmla.overlay.WDMlaUIIcons;
 /**
  * Use this class to unify common object status
  */
-public class StatusHelper {
+public class StatusHelperImpl implements StatusHelper {
 
-    public static final StatusHelper INSTANCE = new StatusHelper();
+    public static final StatusHelperImpl _instance = new StatusHelperImpl();
 
-    public static final int ICON_SIZE = Minecraft.getMinecraft().fontRenderer.FONT_HEIGHT;
-
-    private StatusHelper() {
+    private StatusHelperImpl() {
 
     }
 
+    @Override
     public IComponent structureIncomplete() {
         return new HPanelComponent().child(
                 new IconComponent(WDMlaUIIcons.ERROR, WDMlaUIIcons.ERROR.texPath).size(new Size(ICON_SIZE, ICON_SIZE)))
@@ -33,30 +32,35 @@ public class StatusHelper {
                                 .failure(StatCollector.translateToLocal("hud.msg.wdmla.incomplete.structure")));
     }
 
+    @Override
     public IComponent hasProblem() {
         return new HPanelComponent().child(
                 new IconComponent(WDMlaUIIcons.ERROR, WDMlaUIIcons.ERROR.texPath).size(new Size(ICON_SIZE, ICON_SIZE)))
                 .child(ThemeHelper.instance().failure(StatCollector.translateToLocal("hud.msg.wdmla.has.problem")));
     }
 
+    @Override
     public IComponent runningFine() {
         return new HPanelComponent().child(
                 new IconComponent(WDMlaUIIcons.START, WDMlaUIIcons.START.texPath).size(new Size(ICON_SIZE, ICON_SIZE)))
                 .child(ThemeHelper.instance().success(StatCollector.translateToLocal("hud.msg.wdmla.running.fine")));
     }
 
+    @Override
     public IComponent idle() {
         return new HPanelComponent().child(
                 new IconComponent(WDMlaUIIcons.IDLE, WDMlaUIIcons.IDLE.texPath).size(new Size(ICON_SIZE, ICON_SIZE)))
                 .child(ThemeHelper.instance().info(StatCollector.translateToLocal("hud.msg.wdmla.idle")));
     }
 
+    @Override
     public IComponent workingDisabled() {
         return new HPanelComponent().child(
                 new IconComponent(WDMlaUIIcons.PAUSE, WDMlaUIIcons.PAUSE.texPath).size(new Size(ICON_SIZE, ICON_SIZE)))
                 .child(ThemeHelper.instance().info(StatCollector.translateToLocal("hud.msg.wdmla.working.disabled")));
     }
 
+    @Override
     public IComponent insufficientEnergy() {
         return new HPanelComponent().child(
                 new IconComponent(WDMlaUIIcons.WARNING, WDMlaUIIcons.WARNING.texPath)
@@ -66,6 +70,7 @@ public class StatusHelper {
                                 .warning(StatCollector.translateToLocal("hud.msg.wdmla.insufficient.energy")));
     }
 
+    @Override
     public IComponent insufficientFuel() {
         return new HPanelComponent()
                 .child(
@@ -74,10 +79,12 @@ public class StatusHelper {
                 .child(ThemeHelper.instance().warning(StatCollector.translateToLocal("hud.msg.wdmla.insufficient.fuel")));
     }
 
+    @Override
     public IComponent locked() {
         return locked(HighlightState.ACTIVE);
     }
 
+    @Override
     public IComponent locked(HighlightState highlightState) {
         switch (highlightState) {
             case ACTIVATING -> {
@@ -110,14 +117,12 @@ public class StatusHelper {
         }
     }
 
-    /**
-     * Indicates the input item/fluid is voided on overflow. This concept is shared between multiple storage mods
-     * (drawers, barrels, super chests...)
-     */
+    @Override
     public IComponent voidOverflow() {
         return voidOverflow(HighlightState.ACTIVE);
     }
 
+    @Override
     public IComponent voidOverflow(HighlightState highlightState) {
         switch (highlightState) {
             case ACTIVATING -> {

@@ -9,7 +9,7 @@ import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
 import com.gtnewhorizons.wdmla.api.provider.IServerDataProvider;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
-import com.gtnewhorizons.wdmla.impl.ui.StatusHelper;
+import com.gtnewhorizons.wdmla.api.ui.StatusHelper;
 
 // TODO: facing
 public enum HopperProvider implements IBlockComponentProvider, IServerDataProvider<BlockAccessor> {
@@ -19,7 +19,7 @@ public enum HopperProvider implements IBlockComponentProvider, IServerDataProvid
     @Override
     public void appendTooltip(ITooltip tooltip, BlockAccessor accessor) {
         if (accessor.getBlock() instanceof BlockHopper && accessor.getServerData().getBoolean("Locked")) {
-            tooltip.child(StatusHelper.INSTANCE.locked());
+            tooltip.child(StatusHelper.instance().locked());
         }
     }
 
