@@ -1,6 +1,6 @@
 package com.gtnewhorizons.wdmla.api.view;
 
-import static com.gtnewhorizons.wdmla.impl.ui.component.TooltipComponent.DEFAULT_PROGRESS_DESCRIPTION_PADDING;
+import static com.gtnewhorizons.wdmla.api.ui.ComponentHelper.DEFAULT_PROGRESS_DESCRIPTION_PADDING;
 
 import java.util.List;
 import java.util.Objects;

@@ -1,6 +1,6 @@
 package com.gtnewhorizons.wdmla.plugin.universal;
 
-import static com.gtnewhorizons.wdmla.impl.ui.component.TooltipComponent.DEFAULT_PROGRESS_DESCRIPTION_PADDING;
+import static com.gtnewhorizons.wdmla.api.ui.ComponentHelper.DEFAULT_PROGRESS_DESCRIPTION_PADDING;
 
 import java.util.AbstractMap;
 import java.util.ArrayList;

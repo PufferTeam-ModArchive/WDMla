@@ -15,19 +15,11 @@ import com.gtnewhorizons.wdmla.api.ui.sizer.ISize;
  */
 public interface ITooltip extends IComponent {
 
-    ITooltip text(String text, IPadding padding);
-
     ITooltip text(String text);
 
     ITooltip vertical();
 
     ITooltip horizontal();
-
-    ITooltip item(ItemStack stack, IPadding padding, ISize size);
-
-    ITooltip item(ItemStack stack);
-
-    ITooltip progress(long current, long max, String progressText);
 
     // spotless:off
     /**

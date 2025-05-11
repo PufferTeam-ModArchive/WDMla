@@ -1,9 +1,10 @@
 package com.gtnewhorizons.wdmla.example;
 
-import static com.gtnewhorizons.wdmla.impl.ui.component.TooltipComponent.DEFAULT_PROGRESS_DESCRIPTION_PADDING;
+import static com.gtnewhorizons.wdmla.api.ui.ComponentHelper.DEFAULT_PROGRESS_DESCRIPTION_PADDING;
 
 import java.util.Random;
 
+import com.gtnewhorizons.wdmla.impl.ui.component.ItemComponent;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -41,6 +42,7 @@ public enum ExampleNBTBlockProvider implements IBlockComponentProvider, IServerD
         return TooltipPosition.BODY + 10;
     }
 
+    //TODO: rewrite. This is very outdated version of example
     @Override
     public void appendTooltip(ITooltip tooltip, BlockAccessor accessor) {
         int cookTime = accessor.getServerData().getShort("CookTime");
@@ -78,7 +80,7 @@ public enum ExampleNBTBlockProvider implements IBlockComponentProvider, IServerD
 
         int burnTime = accessor.getServerData().getInteger("BurnTime") / 20;
         if (burnTime > 0) {
-            tooltip.horizontal().text("Burn").item(new ItemStack(Blocks.fire), new Padding(), new Size(8, 8))
+            tooltip.horizontal().text("Burn").child(new ItemComponent(new ItemStack(Blocks.fire)).size(new Size(8, 8)))
                     .text(": " + burnTime + " " + "Seconds Remaining");
         }
 
@@ -87,18 +89,18 @@ public enum ExampleNBTBlockProvider implements IBlockComponentProvider, IServerD
             ITooltip itemSection = new VPanelComponent()
                     .bgStyle(new RectStyle().backgroundColor(0x8000ffff).borderColor(0xff00ffff));
             if (items[0] != null) {
-                itemSection.horizontal().text("In: ", itemPadding).item(items[0], new Padding(), new Size(10, 10))
-                        .text(" " + DisplayUtil.itemDisplayNameShortFormatted(items[0]), itemPadding);
+                itemSection.horizontal().child(new TextComponent("In: ").padding(itemPadding)).child(new ItemComponent(items[0]).size(new Size(10, 10)))
+                        .child(new TextComponent(" " + DisplayUtil.itemDisplayNameShortFormatted(items[0])).padding(itemPadding));
             }
 
             if (items[2] != null) {
-                itemSection.horizontal().text("Out: ", itemPadding).item(items[2], new Padding(), new Size(10, 10))
-                        .text(" " + DisplayUtil.itemDisplayNameShortFormatted(items[2]), itemPadding);
+                itemSection.horizontal().child(new TextComponent("Out: ").padding(itemPadding)).child(new ItemComponent(items[2]).size(new Size(10, 10)))
+                        .child(new TextComponent(" " + DisplayUtil.itemDisplayNameShortFormatted(items[2])).padding(itemPadding));
             }
 
             if (items[1] != null) {
-                itemSection.horizontal().text("Fuel: ", itemPadding).item(items[1], new Padding(), new Size(10, 10))
-                        .text(" " + DisplayUtil.itemDisplayNameShortFormatted(items[1]), itemPadding);
+                itemSection.horizontal().child(new TextComponent("Fuel: ").padding(itemPadding)).child(new ItemComponent(items[1]).size(new Size(10, 10)))
+                        .child(new TextComponent(" " + DisplayUtil.itemDisplayNameShortFormatted(items[1])).padding(itemPadding));
             }
             tooltip.child(itemSection);
         }

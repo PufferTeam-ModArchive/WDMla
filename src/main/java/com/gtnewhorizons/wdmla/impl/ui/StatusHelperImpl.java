@@ -17,7 +17,7 @@ import com.gtnewhorizons.wdmla.overlay.WDMlaUIIcons;
  */
 public class StatusHelperImpl implements StatusHelper {
 
-    public static final StatusHelperImpl _instance = new StatusHelperImpl();
+    public static final StatusHelper _instance = new StatusHelperImpl();
 
     private StatusHelperImpl() {
 

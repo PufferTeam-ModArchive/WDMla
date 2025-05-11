@@ -1,12 +1,13 @@
 package com.gtnewhorizons.wdmla.plugin.universal;
 
-import static com.gtnewhorizons.wdmla.impl.ui.component.TooltipComponent.DEFAULT_PROGRESS_DESCRIPTION_PADDING;
+import static com.gtnewhorizons.wdmla.api.ui.ComponentHelper.DEFAULT_PROGRESS_DESCRIPTION_PADDING;
 
 import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import com.gtnewhorizons.wdmla.impl.ui.component.ItemComponent;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -143,10 +144,9 @@ public class FluidStorageProvider<T extends Accessor> implements IComponentProvi
                                     .child(description);
                         } else {
                             theTooltip.horizontal()
-                                    .item(
-                                            new ItemStack(Items.bucket),
-                                            new Padding(),
-                                            new Size(description.getHeight(), description.getHeight()))
+                                    .child(
+                                            new ItemComponent(new ItemStack(Items.bucket))
+                                                    .size(new Size(description.getHeight(), description.getHeight())))
                                     .child(description);
                         }
                     }

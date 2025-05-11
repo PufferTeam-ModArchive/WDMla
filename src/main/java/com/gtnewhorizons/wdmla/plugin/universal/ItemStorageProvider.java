@@ -192,7 +192,7 @@ public class ItemStorageProvider<T extends Accessor> implements IComponentProvid
                 } else if (itemView.amountText != null) {
                     elements.child(new ItemComponent(stack).stackSizeOverride(itemView.amountText));
                 } else {
-                    elements.item(stack);
+                    elements.child(new ItemComponent(stack));
                 }
                 drawnCount += 1;
             }

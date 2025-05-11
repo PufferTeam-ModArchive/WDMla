@@ -19,8 +19,6 @@ public class TooltipComponent extends Component implements ITooltip {
 
     protected List<IComponent> children;
 
-    public static final IPadding DEFAULT_PROGRESS_DESCRIPTION_PADDING = new Padding(2, 1, 2, 3);
-
     protected TooltipComponent(List<IComponent> children, IPadding padding, ISize size, IDrawable foreground) {
         super(padding, size, foreground);
         this.children = children;
@@ -54,13 +52,6 @@ public class TooltipComponent extends Component implements ITooltip {
     }
 
     @Override
-    public ITooltip text(String text, IPadding padding) {
-        IComponent c = new TextComponent(text).padding(padding);
-        this.children.add(c);
-        return this;
-    }
-
-    @Override
     public ITooltip text(String text) {
         IComponent c = new TextComponent(text);
         this.children.add(c);
@@ -79,28 +70,6 @@ public class TooltipComponent extends Component implements ITooltip {
         ITooltip c = new HPanelComponent();
         this.children.add(c);
         return c;
-    }
-
-    @Override
-    public ITooltip item(ItemStack stack, IPadding padding, ISize size) {
-        IComponent c = new ItemComponent(stack).padding(padding).size(size);
-        this.children.add(c);
-        return this;
-    }
-
-    @Override
-    public ITooltip item(ItemStack stack) {
-        IComponent c = new ItemComponent(stack);
-        this.children.add(c);
-        return this;
-    }
-
-    @Override
-    public ITooltip progress(long current, long max, String progressText) {
-        ITooltip c = new ProgressComponent(current, max)
-                .child(new TextComponent(progressText).padding(DEFAULT_PROGRESS_DESCRIPTION_PADDING));
-        this.children.add(c);
-        return this;
     }
 
     @Override

@@ -45,7 +45,7 @@ public class ThemeHelperImpl implements ThemeHelper {
 
     private static final int ITEM_SIZE = Minecraft.getMinecraft().fontRenderer.FONT_HEIGHT;
 
-    public static final ThemeHelperImpl _instance = new ThemeHelperImpl();
+    public static final ThemeHelper _instance = new ThemeHelperImpl();
 
     private ThemeHelperImpl() {}
 
@@ -179,7 +179,7 @@ public class ThemeHelperImpl implements ThemeHelper {
             HPanelComponent hPanel = new HPanelComponent();
             for (ItemStack inputStack : input) {
                 if (inputStack != null) {
-                    hPanel.item(inputStack);
+                    hPanel.child(new ItemComponent(inputStack));
                 }
             }
             float ratio = (float) currentProgress / maxProgress;
@@ -190,7 +190,7 @@ public class ThemeHelperImpl implements ThemeHelper {
                                             .clip(0f, 0f, ratio, 1f).padding(new Padding())));
             for (ItemStack outputStack : output) {
                 if (outputStack != null) {
-                    hPanel.item(outputStack);
+                    hPanel.child(new ItemComponent(outputStack));
                 }
             }
             return hPanel;
