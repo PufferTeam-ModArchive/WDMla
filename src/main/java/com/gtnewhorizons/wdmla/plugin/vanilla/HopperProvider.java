@@ -9,7 +9,7 @@ import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
 import com.gtnewhorizons.wdmla.api.provider.IServerDataProvider;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
-import com.gtnewhorizons.wdmla.api.ui.StatusHelper;
+import com.gtnewhorizons.wdmla.api.ui.helper.StatusHelper;
 
 // TODO: facing
 public enum HopperProvider implements IBlockComponentProvider, IServerDataProvider<BlockAccessor> {

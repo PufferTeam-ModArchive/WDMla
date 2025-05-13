@@ -2,6 +2,7 @@ package com.gtnewhorizons.wdmla.impl.ui.component;
 
 import java.util.List;
 
+import com.gtnewhorizons.wdmla.api.ui.helper.ComponentHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
@@ -49,27 +50,6 @@ public class TooltipComponent extends Component implements ITooltip {
     public ITooltip child(@NotNull IComponent child) {
         this.children.add(child);
         return this;
-    }
-
-    @Override
-    public ITooltip text(String text) {
-        IComponent c = new TextComponent(text);
-        this.children.add(c);
-        return this;
-    }
-
-    @Override
-    public ITooltip vertical() {
-        ITooltip c = new VPanelComponent();
-        this.children.add(c);
-        return c;
-    }
-
-    @Override
-    public ITooltip horizontal() {
-        ITooltip c = new HPanelComponent();
-        this.children.add(c);
-        return c;
     }
 
     @Override
@@ -122,5 +102,26 @@ public class TooltipComponent extends Component implements ITooltip {
         }
 
         return false;
+    }
+
+    @Override
+    public ITooltip text(String text) {
+        IComponent c = ComponentHelper.instance().text(text);
+        this.children.add(c);
+        return this;
+    }
+
+    @Override
+    public ITooltip vertical() {
+        ITooltip c = ComponentHelper.instance().vertical();
+        this.children.add(c);
+        return c;
+    }
+
+    @Override
+    public ITooltip horizontal() {
+        ITooltip c = ComponentHelper.instance().horizontal();
+        this.children.add(c);
+        return c;
     }
 }

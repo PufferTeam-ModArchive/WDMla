@@ -1,6 +1,6 @@
 package com.gtnewhorizons.wdmla.example;
 
-import static com.gtnewhorizons.wdmla.api.ui.ComponentHelper.DEFAULT_PROGRESS_DESCRIPTION_PADDING;
+import static com.gtnewhorizons.wdmla.api.ui.helper.ComponentHelper.DEFAULT_PROGRESS_DESCRIPTION_PADDING;
 
 import java.util.Random;
 

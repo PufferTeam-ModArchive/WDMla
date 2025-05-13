@@ -15,12 +15,6 @@ import com.gtnewhorizons.wdmla.api.ui.sizer.ISize;
  */
 public interface ITooltip extends IComponent {
 
-    ITooltip text(String text);
-
-    ITooltip vertical();
-
-    ITooltip horizontal();
-
     // spotless:off
     /**
      * Appends any component to this tooltip as child.<br>
@@ -74,4 +68,11 @@ public interface ITooltip extends IComponent {
      * @return The replacement was succeeded or not. If the child doesn't exist it will always return false
      */
     boolean replaceChildWithTag(ResourceLocation tag, IComponent newChild);
+
+    //shortcuts for frequently used components
+    ITooltip text(String text);
+
+    ITooltip vertical();
+
+    ITooltip horizontal();
 }

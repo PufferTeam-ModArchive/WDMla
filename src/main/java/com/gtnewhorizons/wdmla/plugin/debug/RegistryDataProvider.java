@@ -17,7 +17,7 @@ import com.gtnewhorizons.wdmla.api.provider.IEntityComponentProvider;
 import com.gtnewhorizons.wdmla.api.provider.IToggleableProvider;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.api.config.PluginsConfig;
-import com.gtnewhorizons.wdmla.api.ui.ThemeHelper;
+import com.gtnewhorizons.wdmla.api.ui.helper.ThemeHelper;
 
 import cpw.mods.fml.common.registry.GameData;
 import mcp.mobius.waila.api.impl.ConfigHandler;

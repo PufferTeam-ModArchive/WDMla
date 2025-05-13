@@ -1,10 +1,12 @@
-package com.gtnewhorizons.wdmla.impl.ui;
+package com.gtnewhorizons.wdmla.impl.ui.helper;
 
-import com.gtnewhorizons.wdmla.api.ui.ComponentHelper;
+import com.gtnewhorizons.wdmla.api.ui.helper.ComponentHelper;
 import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import com.gtnewhorizons.wdmla.impl.ui.component.HPanelComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.ProgressComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.TextComponent;
+import com.gtnewhorizons.wdmla.impl.ui.component.VPanelComponent;
 
 public class ComponentHelperImpl implements ComponentHelper {
 
@@ -16,17 +18,17 @@ public class ComponentHelperImpl implements ComponentHelper {
 
     @Override
     public IComponent text(String text) {
-        return null;
+        return new TextComponent(text);
     }
 
     @Override
     public ITooltip vertical() {
-        return null;
+        return new VPanelComponent();
     }
 
     @Override
     public ITooltip horizontal() {
-        return null;
+        return new HPanelComponent();
     }
 
     @Override

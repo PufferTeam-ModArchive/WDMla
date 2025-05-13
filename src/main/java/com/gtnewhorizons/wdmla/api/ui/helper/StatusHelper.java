@@ -1,6 +1,8 @@
-package com.gtnewhorizons.wdmla.api.ui;
+package com.gtnewhorizons.wdmla.api.ui.helper;
 
-import com.gtnewhorizons.wdmla.impl.ui.StatusHelperImpl;
+import com.gtnewhorizons.wdmla.api.ui.HighlightState;
+import com.gtnewhorizons.wdmla.api.ui.IComponent;
+import com.gtnewhorizons.wdmla.impl.ui.helper.StatusHelperImpl;
 import net.minecraft.client.Minecraft;
 
 public interface StatusHelper {

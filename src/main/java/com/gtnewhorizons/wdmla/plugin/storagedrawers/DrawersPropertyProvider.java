@@ -1,6 +1,6 @@
 package com.gtnewhorizons.wdmla.plugin.storagedrawers;
 
-import static com.gtnewhorizons.wdmla.api.ui.StatusHelper.ICON_SIZE;
+import static com.gtnewhorizons.wdmla.api.ui.helper.StatusHelper.ICON_SIZE;
 
 import com.gtnewhorizons.wdmla.api.identifier.CommonPluginIDs;
 import net.minecraft.item.ItemStack;
@@ -14,8 +14,8 @@ import com.gtnewhorizons.wdmla.api.ui.HighlightState;
 import com.gtnewhorizons.wdmla.api.ui.HighlightTracker;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.impl.ObjectDataCenter;
-import com.gtnewhorizons.wdmla.api.ui.StatusHelper;
-import com.gtnewhorizons.wdmla.api.ui.ThemeHelper;
+import com.gtnewhorizons.wdmla.api.ui.helper.StatusHelper;
+import com.gtnewhorizons.wdmla.api.ui.helper.ThemeHelper;
 import com.gtnewhorizons.wdmla.impl.ui.component.HPanelComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.IconComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.VPanelComponent;

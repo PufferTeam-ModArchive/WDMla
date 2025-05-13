@@ -1,10 +1,10 @@
-package com.gtnewhorizons.wdmla.impl.ui;
+package com.gtnewhorizons.wdmla.impl.ui.helper;
 
 import static mcp.mobius.waila.api.SpecialChars.ITALIC;
 
 import java.util.List;
 
-import com.gtnewhorizons.wdmla.api.ui.ThemeHelper;
+import com.gtnewhorizons.wdmla.api.ui.helper.ThemeHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;

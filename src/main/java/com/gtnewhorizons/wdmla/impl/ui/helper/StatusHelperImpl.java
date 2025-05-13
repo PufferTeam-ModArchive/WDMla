@@ -1,7 +1,7 @@
-package com.gtnewhorizons.wdmla.impl.ui;
+package com.gtnewhorizons.wdmla.impl.ui.helper;
 
-import com.gtnewhorizons.wdmla.api.ui.StatusHelper;
-import com.gtnewhorizons.wdmla.api.ui.ThemeHelper;
+import com.gtnewhorizons.wdmla.api.ui.helper.StatusHelper;
+import com.gtnewhorizons.wdmla.api.ui.helper.ThemeHelper;
 import net.minecraft.util.StatCollector;
 
 import com.gtnewhorizons.wdmla.api.ui.HighlightState;

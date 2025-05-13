@@ -1,7 +1,9 @@
-package com.gtnewhorizons.wdmla.api.ui;
+package com.gtnewhorizons.wdmla.api.ui.helper;
 
+import com.gtnewhorizons.wdmla.api.ui.IComponent;
+import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.api.ui.sizer.IPadding;
-import com.gtnewhorizons.wdmla.impl.ui.ComponentHelperImpl;
+import com.gtnewhorizons.wdmla.impl.ui.helper.ComponentHelperImpl;
 import com.gtnewhorizons.wdmla.impl.ui.sizer.Padding;
 
 public interface ComponentHelper {

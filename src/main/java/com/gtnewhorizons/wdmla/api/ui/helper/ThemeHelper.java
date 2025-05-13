@@ -1,6 +1,9 @@
-package com.gtnewhorizons.wdmla.api.ui;
+package com.gtnewhorizons.wdmla.api.ui.helper;
 
-import com.gtnewhorizons.wdmla.impl.ui.ThemeHelperImpl;
+import com.gtnewhorizons.wdmla.api.ui.IComponent;
+import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import com.gtnewhorizons.wdmla.api.ui.MessageType;
+import com.gtnewhorizons.wdmla.impl.ui.helper.ThemeHelperImpl;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
