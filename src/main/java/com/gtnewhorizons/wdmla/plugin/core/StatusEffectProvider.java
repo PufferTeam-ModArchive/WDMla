@@ -13,7 +13,6 @@ import com.gtnewhorizons.wdmla.api.identifier.WDMlaIDs;
 import com.gtnewhorizons.wdmla.api.accessor.EntityAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IEntityComponentProvider;
 import com.gtnewhorizons.wdmla.api.provider.IServerDataProvider;
-import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.api.ui.helper.ThemeHelper;
 import com.gtnewhorizons.wdmla.impl.ui.component.IconComponent;
@@ -52,7 +51,7 @@ public enum StatusEffectProvider implements IEntityComponentProvider, IServerDat
 
                 String builtLine = String
                         .format(StatCollector.translateToLocal("hud.msg.wdmla.effect.format"), effectName, duration);
-                IComponent lineComponent;
+                ITooltip lineComponent;
                 if (Potion.potionTypes[effect.getPotionID()].isBadEffect()) {
                     lineComponent = ThemeHelper.instance().danger(builtLine);
                 } else {

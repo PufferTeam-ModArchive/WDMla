@@ -1,7 +1,7 @@
 package com.gtnewhorizons.wdmla.wailacompat.parser;
 
 import com.gtnewhorizons.wdmla.api.ITTRenderParser;
-import com.gtnewhorizons.wdmla.impl.ui.component.Component;
+import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.impl.ui.component.HPanelComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.IconComponent;
 import com.gtnewhorizons.wdmla.impl.ui.sizer.Padding;
@@ -10,7 +10,7 @@ import com.gtnewhorizons.wdmla.overlay.WDMlaUIIcons;
 public class ProgressArgsParser implements ITTRenderParser {
 
     @Override
-    public Component parse(String[] args) {
+    public ITooltip parse(String[] args) {
         int current = Integer.parseInt(args[0]);
         int max = Integer.parseInt(args[1]);
         HPanelComponent hPanel = new HPanelComponent();

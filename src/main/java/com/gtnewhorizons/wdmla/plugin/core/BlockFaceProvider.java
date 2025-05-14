@@ -18,7 +18,8 @@ public enum BlockFaceProvider implements IBlockComponentProvider {
     @Override
     public void appendTooltip(ITooltip tooltip, BlockAccessor accessor) {
         int side = accessor.getHitResult().sideHit;
-        if (side != -1 && tooltip.getChildWithTag(WDMlaIDs.TARGET_NAME_ROW) instanceof ITooltip itemNameRow) {
+        ITooltip itemNameRow = tooltip.getChildWithTag(WDMlaIDs.TARGET_NAME_ROW);
+        if (side != -1 && itemNameRow != null) {
             itemNameRow.text(
                     String.format(
                             StatCollector.translateToLocal("hud.msg.wdmla.side.decorator"),

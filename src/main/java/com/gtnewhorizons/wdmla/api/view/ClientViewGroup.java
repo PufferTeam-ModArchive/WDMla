@@ -16,7 +16,6 @@ import org.jetbrains.annotations.Nullable;
 
 import com.gtnewhorizons.wdmla.api.theme.Theme;
 import com.gtnewhorizons.wdmla.api.ui.ComponentAlignment;
-import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.api.ui.MessageType;
 import com.gtnewhorizons.wdmla.api.config.General;
@@ -85,7 +84,7 @@ public class ClientViewGroup<T> {
             consumer.accept(tooltip, group);
             if (renderGroup && group.boxProgress > 0 && group.boxProgress < 1) {
                 // TODO:overlap progress bar with item group
-                IComponent content = new TextComponent(String.format("%d%%", (int) (group.boxProgress * 100)));
+                ITooltip content = new TextComponent(String.format("%d%%", (int) (group.boxProgress * 100)));
                 tooltip.child(
                         new ProgressComponent(group.boxProgress)
                                 .style(

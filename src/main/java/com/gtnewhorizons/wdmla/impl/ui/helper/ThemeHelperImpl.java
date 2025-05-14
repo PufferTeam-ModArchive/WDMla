@@ -16,7 +16,6 @@ import org.jetbrains.annotations.Nullable;
 
 import com.gtnewhorizons.wdmla.api.identifier.WDMlaIDs;
 import com.gtnewhorizons.wdmla.api.theme.Theme;
-import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.api.ui.MessageType;
 import com.gtnewhorizons.wdmla.api.config.General;
@@ -76,8 +75,8 @@ public class ThemeHelperImpl implements ThemeHelper {
     @Override
     public void overrideTooltipTitle(ITooltip root, String formattedNewName) {
         Theme theme = General.currentTheme.get();
-        IComponent replacedName = new HPanelComponent().child(
-                new TextComponent(formattedNewName).style(new TextStyle().color(theme.textColor(MessageType.TITLE))))
+        ITooltip replacedName = new HPanelComponent().child(
+                        new TextComponent(formattedNewName).style(new TextStyle().color(theme.textColor(MessageType.TITLE))))
                 .tag(WDMlaIDs.ITEM_NAME);
         root.replaceChildWithTag(WDMlaIDs.ITEM_NAME, replacedName);
     }
@@ -90,7 +89,7 @@ public class ThemeHelperImpl implements ThemeHelper {
         } else {
             newName = FormatUtil.formatNameByPixelCount(newName);
         }
-        IComponent replacedName = new HPanelComponent()
+        ITooltip replacedName = new HPanelComponent()
                 .child(new TextComponent(newName).style(new TextStyle().color(theme.textColor(MessageType.TITLE))))
                 .tag(WDMlaIDs.ENTITY_NAME);
         root.replaceChildWithTag(WDMlaIDs.ENTITY_NAME, replacedName);
@@ -118,7 +117,7 @@ public class ThemeHelperImpl implements ThemeHelper {
     @Override
     public void overrideTooltipModName(ITooltip root, String newName) {
         Theme theme = General.currentTheme.get();
-        IComponent replacedModName = new TextComponent(ITALIC + newName)
+        ITooltip replacedModName = new TextComponent(ITALIC + newName)
                 .style(new TextStyle().color(theme.textColor(MessageType.MOD_NAME))).tag(WDMlaIDs.MOD_NAME);
         root.replaceChildWithTag(WDMlaIDs.MOD_NAME, replacedModName);
     }
@@ -131,50 +130,50 @@ public class ThemeHelperImpl implements ThemeHelper {
     }
 
     @Override
-    public IComponent info(String content) {
+    public ITooltip info(String content) {
         return color(content, MessageType.INFO);
     }
 
     @Override
-    public IComponent title(String content) {
+    public ITooltip title(String content) {
         return color(content, MessageType.TITLE);
     }
 
     @Override
-    public IComponent success(String content) {
+    public ITooltip success(String content) {
         return color(content, MessageType.SUCCESS);
     }
 
     @Override
-    public IComponent warning(String content) {
+    public ITooltip warning(String content) {
         return color(content, MessageType.WARNING);
     }
 
     @Override
-    public IComponent danger(String content) {
+    public ITooltip danger(String content) {
         return color(content, MessageType.DANGER);
     }
 
     @Override
-    public IComponent failure(String content) {
+    public ITooltip failure(String content) {
         return color(content, MessageType.FAILURE);
     }
 
     @Override
-    public IComponent color(String content, MessageType type) {
+    public ITooltip color(String content, MessageType type) {
         Theme theme = General.currentTheme.get();
         return new TextComponent(content).style(new TextStyle().color(theme.textColor(type)));
     }
 
     @Override
-    public IComponent furnaceLikeProgress(List<ItemStack> input, List<ItemStack> output, int currentProgress,
-                                          int maxProgress, boolean showDetails) {
+    public ITooltip furnaceLikeProgress(List<ItemStack> input, List<ItemStack> output, int currentProgress,
+                                        int maxProgress, boolean showDetails) {
         return furnaceLikeProgress(input, output, currentProgress, maxProgress, showDetails, null);
     }
 
     @Override
-    public IComponent furnaceLikeProgress(List<ItemStack> input, List<ItemStack> output, int currentProgress,
-                                          int maxProgress, boolean showDetails, @Nullable IComponent legacyProcessText) {
+    public ITooltip furnaceLikeProgress(List<ItemStack> input, List<ItemStack> output, int currentProgress,
+                                        int maxProgress, boolean showDetails, @Nullable ITooltip legacyProcessText) {
         if (!General.forceLegacy) {
             HPanelComponent hPanel = new HPanelComponent();
             for (ItemStack inputStack : input) {
@@ -241,7 +240,7 @@ public class ThemeHelperImpl implements ThemeHelper {
     }
 
     @Override
-    public IComponent value(String entry, String value) {
+    public ITooltip value(String entry, String value) {
         return new HPanelComponent().text(String.format("%s: ", entry)).child(info(value));
     }
 
@@ -251,7 +250,7 @@ public class ThemeHelperImpl implements ThemeHelper {
     }
 
     @Override
-    public IComponent itemStackFullLine(ItemStack stack) {
+    public ITooltip itemStackFullLine(ItemStack stack) {
         String strippedName = DisplayUtil.stripSymbols(DisplayUtil.itemDisplayNameShortFormatted(stack));
         TextComponent name = new TextComponent(strippedName);
         ITooltip hPanel = new HPanelComponent().child(smallItem(stack));
@@ -261,7 +260,7 @@ public class ThemeHelperImpl implements ThemeHelper {
     }
 
     @Override
-    public IComponent growthValue(float growthValue) {
+    public ITooltip growthValue(float growthValue) {
         if (growthValue < 1) {
             return ThemeHelper.instance().value(
                     StatCollector.translateToLocal("hud.msg.wdmla.growth"),

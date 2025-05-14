@@ -7,7 +7,6 @@ import net.minecraft.util.StatCollector;
 import com.gtnewhorizons.wdmla.api.TooltipPosition;
 import com.gtnewhorizons.wdmla.api.accessor.EntityAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IEntityComponentProvider;
-import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.api.ui.helper.ThemeHelper;
 import com.gtnewhorizons.wdmla.api.identifier.VanillaIDs;
@@ -22,11 +21,11 @@ public enum SlowerChickenProvider implements IEntityComponentProvider {
     @Override
     public void appendTooltip(ITooltip tooltip, EntityAccessor accessor) {
         if (IguanaConfig.eggTimeoutMultiplier > 1) {
-            IComponent chickenComponent = tooltip.getChildWithTag(VanillaIDs.CHICKEN);
-            if (chickenComponent instanceof ITooltip chicken) {
+            ITooltip chickenComponent = tooltip.getChildWithTag(VanillaIDs.CHICKEN);
+            if (chickenComponent != null) {
                 tooltip.replaceChildWithTag(
                         VanillaIDs.CHICKEN,
-                        chicken.child(
+                        chickenComponent.child(
                                 ThemeHelper.instance().warning(
                                         StatCollector.translateToLocalFormatted(
                                                 "hud.msg.wdmla.rng.multiplier",

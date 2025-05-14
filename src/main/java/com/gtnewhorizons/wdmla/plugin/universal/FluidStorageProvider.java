@@ -28,7 +28,6 @@ import com.gtnewhorizons.wdmla.api.provider.IClientExtensionProvider;
 import com.gtnewhorizons.wdmla.api.provider.IComponentProvider;
 import com.gtnewhorizons.wdmla.api.provider.IServerDataProvider;
 import com.gtnewhorizons.wdmla.api.provider.IServerExtensionProvider;
-import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.api.view.ClientViewGroup;
 import com.gtnewhorizons.wdmla.api.view.FluidView;
@@ -92,7 +91,7 @@ public class FluidStorageProvider<T extends Accessor> implements IComponentProvi
                 group.renderHeader(tooltip);
             }
             for (var view : group.views) {
-                IComponent description;
+                ITooltip description;
                 ThemeHelper helper = ThemeHelper.instance();
                 String currentStr = FormatUtil.STANDARD.format(view.current)
                         + StatCollector.translateToLocal("hud.wdmla.msg.millibucket");

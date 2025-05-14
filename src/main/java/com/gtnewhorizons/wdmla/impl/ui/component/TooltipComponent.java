@@ -3,35 +3,41 @@ package com.gtnewhorizons.wdmla.impl.ui.component;
 import java.util.List;
 
 import com.gtnewhorizons.wdmla.api.ui.helper.ComponentHelper;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
 import org.jetbrains.annotations.NotNull;
 
-import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.ui.IDrawable;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.api.ui.sizer.IPadding;
 import com.gtnewhorizons.wdmla.api.ui.sizer.ISize;
 import com.gtnewhorizons.wdmla.impl.ui.sizer.Area;
-import com.gtnewhorizons.wdmla.impl.ui.sizer.Padding;
 
-public class TooltipComponent extends Component implements ITooltip {
+public class TooltipComponent implements ITooltip {
 
-    protected List<IComponent> children;
+    // settings
+    protected IPadding padding;
+    protected ISize size;
 
-    protected TooltipComponent(List<IComponent> children, IPadding padding, ISize size, IDrawable foreground) {
-        super(padding, size, foreground);
+    // render
+    protected IDrawable foreground;
+
+    protected ResourceLocation tag;
+
+    protected List<ITooltip> children;
+
+    protected TooltipComponent(List<ITooltip> children, IPadding padding, ISize size, IDrawable foreground) {
+        this.padding = padding;
+        this.size = size;
+        this.foreground = foreground;
         this.children = children;
     }
 
-    @Override
     public TooltipComponent padding(@NotNull IPadding padding) {
         this.padding = padding;
         return this;
     }
 
-    @Override
     public TooltipComponent size(@NotNull ISize size) {
         this.size = size;
         return this;
@@ -41,13 +47,23 @@ public class TooltipComponent extends Component implements ITooltip {
     public void tick(float x, float y) {
         foreground.draw(new Area(x + padding.getLeft(), y + padding.getTop(), size.getW(), size.getH()));
 
-        for (IComponent child : children) {
+        for (ITooltip child : children) {
             child.tick(x + padding.getLeft(), y + padding.getTop());
         }
     }
 
     @Override
-    public ITooltip child(@NotNull IComponent child) {
+    public float getWidth() {
+        return padding.getLeft() + size.getW() + padding.getRight();
+    }
+
+    @Override
+    public float getHeight() {
+        return padding.getTop() + size.getH() + padding.getBottom();
+    }
+
+    @Override
+    public ITooltip child(@NotNull ITooltip child) {
         this.children.add(child);
         return this;
     }
@@ -70,13 +86,18 @@ public class TooltipComponent extends Component implements ITooltip {
     }
 
     @Override
-    public IComponent getChildWithTag(ResourceLocation tag) {
+    public ResourceLocation getTag() {
+        return tag;
+    }
+
+    @Override
+    public ITooltip getChildWithTag(ResourceLocation tag) {
         for (int i = 0; i < children.size(); i++) {
-            IComponent child = children.get(i);
+            ITooltip child = children.get(i);
             if (tag.equals(child.getTag())) {
                 return child;
-            } else if (child instanceof ITooltip tooltipChild) {
-                IComponent nestedChild = tooltipChild.getChildWithTag(tag);
+            } else {
+                ITooltip nestedChild = child.getChildWithTag(tag);
                 if (nestedChild != null) {
                     return nestedChild;
                 }
@@ -87,14 +108,14 @@ public class TooltipComponent extends Component implements ITooltip {
     }
 
     @Override
-    public boolean replaceChildWithTag(@NotNull ResourceLocation tag, IComponent newChild) {
+    public boolean replaceChildWithTag(@NotNull ResourceLocation tag, ITooltip newChild) {
         for (int i = 0; i < children.size(); i++) {
-            IComponent child = children.get(i);
+            ITooltip child = children.get(i);
             if (tag.equals(child.getTag())) {
                 children.set(i, newChild);
                 return true;
-            } else if (child instanceof ITooltip tooltipChild) {
-                boolean isReplaced = tooltipChild.replaceChildWithTag(tag, newChild);
+            } else {
+                boolean isReplaced = child.replaceChildWithTag(tag, newChild);
                 if (isReplaced) {
                     return true;
                 }
@@ -106,7 +127,7 @@ public class TooltipComponent extends Component implements ITooltip {
 
     @Override
     public ITooltip text(String text) {
-        IComponent c = ComponentHelper.instance().text(text);
+        ITooltip c = ComponentHelper.instance().text(text);
         this.children.add(c);
         return this;
     }

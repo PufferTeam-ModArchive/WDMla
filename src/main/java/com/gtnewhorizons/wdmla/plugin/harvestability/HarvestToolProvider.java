@@ -20,7 +20,6 @@ import com.gtnewhorizons.wdmla.api.harvestability.HarvestabilityInfo;
 import com.gtnewhorizons.wdmla.api.harvestability.HarvestabilityTestPhase;
 import com.gtnewhorizons.wdmla.api.provider.HarvestHandler;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
-import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.api.config.General;
 import com.gtnewhorizons.wdmla.api.config.PluginsConfig;
@@ -109,14 +108,14 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
             return;
         }
 
-        IComponent itemNameRow = tooltip.getChildWithTag(WDMlaIDs.TARGET_NAME_ROW);
+        ITooltip itemNameRow = tooltip.getChildWithTag(WDMlaIDs.TARGET_NAME_ROW);
         if (!(itemNameRow instanceof ITooltip)) {
             return;
         }
 
-        IComponent harvestabilityIcon = assembleHarvestabilityIcon(info);
+        ITooltip harvestabilityIcon = assembleHarvestabilityIcon(info);
 
-        IComponent harvestabilityText = null;
+        ITooltip harvestabilityText = null;
         if (!PluginsConfig.harvestability.condition.textDetailsOnly || accessor.showDetails()) {
             harvestabilityText = assembleHarvestabilityText(info);
         }
@@ -200,7 +199,7 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
         }
 
         // TODO: resize CHECK text
-        IComponent currentlyHarvestableIcon;
+        ITooltip currentlyHarvestableIcon;
         if (info.isCurrentlyHarvestable()) {
             currentlyHarvestableIcon = !PluginsConfig.harvestability.icon.colorIconWithEffectiveness
                     || info.isHeldToolEffective()
@@ -237,14 +236,14 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
         return harvestabilityComponent;
     }
 
-    private static @Nullable IComponent assembleHarvestabilityText(HarvestabilityInfo info) {
+    private static @Nullable ITooltip assembleHarvestabilityText(HarvestabilityInfo info) {
         ITooltip lines = new VPanelComponent();
         if (info.getHarvestLevel().isToolRequired() && (PluginsConfig.harvestability.text.harvestLevelNum
                 || PluginsConfig.harvestability.text.harvestLevelName)) {
             String harvestLevelString = PluginsConfig.harvestability.text.harvestLevelName
                     ? DisplayUtil.stripSymbols(info.getHarvestLevel().getName())
                     : String.valueOf(info.getHarvestLevel().getDisplayNum());
-            IComponent harvestLevelText = new HPanelComponent().tag(HarvestabilityIdentifiers.HARVESTABILITY_TEXT)
+            ITooltip harvestLevelText = new HPanelComponent().tag(HarvestabilityIdentifiers.HARVESTABILITY_TEXT)
                     .text(String.format("%s: ", StatCollector.translateToLocal("hud.msg.wdmla.harvestlevel"))).child(
                             info.isCurrentlyHarvestable() ? ThemeHelper.instance().success(harvestLevelString)
                                     : ThemeHelper.instance().failure(harvestLevelString));

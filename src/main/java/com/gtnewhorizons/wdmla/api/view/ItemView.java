@@ -1,10 +1,9 @@
 package com.gtnewhorizons.wdmla.api.view;
 
+import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import net.minecraft.item.ItemStack;
 
 import org.jetbrains.annotations.Nullable;
-
-import com.gtnewhorizons.wdmla.api.ui.IComponent;
 
 /**
  * This is an ItemStack wrapper which is used in client Waila storage view.<br>
@@ -23,7 +22,7 @@ public class ItemView {
      * A full line description about this ItemStack
      */
     @Nullable
-    public IComponent description;
+    public ITooltip description;
 
     public ItemView(ItemStack item) {
         this.item = item;
@@ -34,7 +33,7 @@ public class ItemView {
         return this;
     }
 
-    public ItemView description(IComponent description) {
+    public ItemView description(com.gtnewhorizons.wdmla.api.ui.ITooltip description) {
         this.description = description;
         return this;
     }

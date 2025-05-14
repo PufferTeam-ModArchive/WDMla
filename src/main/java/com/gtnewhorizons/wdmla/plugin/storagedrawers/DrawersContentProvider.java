@@ -9,7 +9,6 @@ import net.minecraft.util.StatCollector;
 import com.gtnewhorizons.wdmla.api.accessor.Accessor;
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
-import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.impl.ObjectDataCenter;
 import com.gtnewhorizons.wdmla.api.ui.helper.ThemeHelper;
@@ -76,7 +75,7 @@ public enum DrawersContentProvider implements IBlockComponentProvider {
                 continue;
             }
 
-            IComponent itemLine = tracker[i].update(drawer);
+            ITooltip itemLine = tracker[i].update(drawer);
             tooltip.horizontal().child(ThemeHelper.instance().smallItem(stack)).child(itemLine);
         }
 

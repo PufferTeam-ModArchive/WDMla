@@ -1,11 +1,11 @@
 package com.gtnewhorizons.wdmla.impl.ui.helper;
 
+import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.api.ui.helper.StatusHelper;
 import com.gtnewhorizons.wdmla.api.ui.helper.ThemeHelper;
 import net.minecraft.util.StatCollector;
 
 import com.gtnewhorizons.wdmla.api.ui.HighlightState;
-import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.HPanelComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.IconComponent;
 import com.gtnewhorizons.wdmla.impl.ui.sizer.Padding;
@@ -24,54 +24,54 @@ public class StatusHelperImpl implements StatusHelper {
     }
 
     @Override
-    public IComponent structureIncomplete() {
+    public ITooltip structureIncomplete() {
         return new HPanelComponent().child(
-                new IconComponent(WDMlaUIIcons.ERROR, WDMlaUIIcons.ERROR.texPath).size(new Size(ICON_SIZE, ICON_SIZE)))
+                        new IconComponent(WDMlaUIIcons.ERROR, WDMlaUIIcons.ERROR.texPath).size(new Size(ICON_SIZE, ICON_SIZE)))
                 .child(
                         ThemeHelper.instance()
                                 .failure(StatCollector.translateToLocal("hud.msg.wdmla.incomplete.structure")));
     }
 
     @Override
-    public IComponent hasProblem() {
+    public ITooltip hasProblem() {
         return new HPanelComponent().child(
-                new IconComponent(WDMlaUIIcons.ERROR, WDMlaUIIcons.ERROR.texPath).size(new Size(ICON_SIZE, ICON_SIZE)))
+                        new IconComponent(WDMlaUIIcons.ERROR, WDMlaUIIcons.ERROR.texPath).size(new Size(ICON_SIZE, ICON_SIZE)))
                 .child(ThemeHelper.instance().failure(StatCollector.translateToLocal("hud.msg.wdmla.has.problem")));
     }
 
     @Override
-    public IComponent runningFine() {
+    public ITooltip runningFine() {
         return new HPanelComponent().child(
-                new IconComponent(WDMlaUIIcons.START, WDMlaUIIcons.START.texPath).size(new Size(ICON_SIZE, ICON_SIZE)))
+                        new IconComponent(WDMlaUIIcons.START, WDMlaUIIcons.START.texPath).size(new Size(ICON_SIZE, ICON_SIZE)))
                 .child(ThemeHelper.instance().success(StatCollector.translateToLocal("hud.msg.wdmla.running.fine")));
     }
 
     @Override
-    public IComponent idle() {
+    public ITooltip idle() {
         return new HPanelComponent().child(
-                new IconComponent(WDMlaUIIcons.IDLE, WDMlaUIIcons.IDLE.texPath).size(new Size(ICON_SIZE, ICON_SIZE)))
+                        new IconComponent(WDMlaUIIcons.IDLE, WDMlaUIIcons.IDLE.texPath).size(new Size(ICON_SIZE, ICON_SIZE)))
                 .child(ThemeHelper.instance().info(StatCollector.translateToLocal("hud.msg.wdmla.idle")));
     }
 
     @Override
-    public IComponent workingDisabled() {
+    public ITooltip workingDisabled() {
         return new HPanelComponent().child(
-                new IconComponent(WDMlaUIIcons.PAUSE, WDMlaUIIcons.PAUSE.texPath).size(new Size(ICON_SIZE, ICON_SIZE)))
+                        new IconComponent(WDMlaUIIcons.PAUSE, WDMlaUIIcons.PAUSE.texPath).size(new Size(ICON_SIZE, ICON_SIZE)))
                 .child(ThemeHelper.instance().info(StatCollector.translateToLocal("hud.msg.wdmla.working.disabled")));
     }
 
     @Override
-    public IComponent insufficientEnergy() {
+    public ITooltip insufficientEnergy() {
         return new HPanelComponent().child(
-                new IconComponent(WDMlaUIIcons.WARNING, WDMlaUIIcons.WARNING.texPath)
-                        .size(new Size(ICON_SIZE, ICON_SIZE)))
+                        new IconComponent(WDMlaUIIcons.WARNING, WDMlaUIIcons.WARNING.texPath)
+                                .size(new Size(ICON_SIZE, ICON_SIZE)))
                 .child(
                         ThemeHelper.instance()
                                 .warning(StatCollector.translateToLocal("hud.msg.wdmla.insufficient.energy")));
     }
 
     @Override
-    public IComponent insufficientFuel() {
+    public ITooltip insufficientFuel() {
         return new HPanelComponent()
                 .child(
                         new IconComponent(WDMlaUIIcons.WARNING, WDMlaUIIcons.WARNING.texPath)
@@ -80,17 +80,17 @@ public class StatusHelperImpl implements StatusHelper {
     }
 
     @Override
-    public IComponent locked() {
+    public ITooltip locked() {
         return locked(HighlightState.ACTIVE);
     }
 
     @Override
-    public IComponent locked(HighlightState highlightState) {
+    public ITooltip locked(HighlightState highlightState) {
         switch (highlightState) {
             case ACTIVATING -> {
                 return new HPanelComponent().child(
-                        new IconComponent(WDMlaUIIcons.LOCK, WDMlaUIIcons.LOCK.texPath)
-                                .size(new Size(ICON_SIZE, ICON_SIZE)))
+                                new IconComponent(WDMlaUIIcons.LOCK, WDMlaUIIcons.LOCK.texPath)
+                                        .size(new Size(ICON_SIZE, ICON_SIZE)))
                         .child(
                                 ThemeHelper.instance()
                                         .success(StatCollector.translateToLocal("hud.msg.wdmla.locked") + "!"));
@@ -118,12 +118,12 @@ public class StatusHelperImpl implements StatusHelper {
     }
 
     @Override
-    public IComponent voidOverflow() {
+    public ITooltip voidOverflow() {
         return voidOverflow(HighlightState.ACTIVE);
     }
 
     @Override
-    public IComponent voidOverflow(HighlightState highlightState) {
+    public ITooltip voidOverflow(HighlightState highlightState) {
         switch (highlightState) {
             case ACTIVATING -> {
                 return new HPanelComponent()
@@ -136,8 +136,8 @@ public class StatusHelperImpl implements StatusHelper {
             }
             case ACTIVE -> {
                 return new HPanelComponent().child(
-                        new IconComponent(WDMlaUIIcons.VOID, WDMlaUIIcons.VOID.texPath)
-                                .size(new Size(ICON_SIZE, ICON_SIZE)))
+                                new IconComponent(WDMlaUIIcons.VOID, WDMlaUIIcons.VOID.texPath)
+                                        .size(new Size(ICON_SIZE, ICON_SIZE)))
                         .child(
                                 ThemeHelper.instance()
                                         .info(StatCollector.translateToLocal("hud.msg.wdmla.void.overflow")));

@@ -1,8 +1,7 @@
 package com.gtnewhorizons.wdmla.api;
 
+import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import org.jetbrains.annotations.ApiStatus;
-
-import com.gtnewhorizons.wdmla.impl.ui.component.Component;
 
 /**
  * Waila compatibility interface which converts encoded strings into component.<br>
@@ -13,9 +12,9 @@ public interface ITTRenderParser {
 
     /**
      * Parse renderer builder provided by custom regex which is part of legacy Waila api
-     * 
+     *
      * @param args string begins with custom regex
      * @return corresponding WDMla component
      */
-    Component parse(String[] args);
+    ITooltip parse(String[] args);
 }

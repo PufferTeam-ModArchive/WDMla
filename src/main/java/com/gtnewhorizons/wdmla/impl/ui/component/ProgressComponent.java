@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import org.jetbrains.annotations.NotNull;
 
-import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.api.ui.style.IProgressStyle;
 import com.gtnewhorizons.wdmla.api.ui.style.IRectStyle;
@@ -70,7 +69,7 @@ public class ProgressComponent extends TooltipComponent {
     }
 
     @Override
-    public ITooltip child(@NotNull IComponent child) {
+    public ITooltip child(@NotNull ITooltip child) {
         if (children.isEmpty()) {
             this.children.add(child);
         } else {

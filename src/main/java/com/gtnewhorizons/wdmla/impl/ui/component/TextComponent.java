@@ -1,5 +1,6 @@
 package com.gtnewhorizons.wdmla.impl.ui.component;
 
+import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import org.jetbrains.annotations.NotNull;
 
 import com.gtnewhorizons.wdmla.api.ui.sizer.ISize;
@@ -12,12 +13,14 @@ import com.gtnewhorizons.wdmla.impl.ui.style.TextStyle;
 
 import mcp.mobius.waila.utils.WailaExceptionHandler;
 
-public class TextComponent extends Component {
+import java.util.ArrayList;
+
+public class TextComponent extends TooltipComponent {
 
     protected ITextStyle style;
 
     public TextComponent(String text) {
-        super(new Padding(), new TextSize(text), new TextDrawable(text));
+        super(new ArrayList<>(), new Padding(), new TextSize(text), new TextDrawable(text));
         this.style = new TextStyle();
     }
 
@@ -35,7 +38,7 @@ public class TextComponent extends Component {
 
     @Override
     public TextComponent size(@NotNull ISize size) {
-        throw new IllegalArgumentException("You can't set the size of TextComponent!");
+        throw new UnsupportedOperationException("You can't set the size of TextComponent!");
     }
 
     @Override
@@ -51,5 +54,10 @@ public class TextComponent extends Component {
             default -> WailaExceptionHandler
                     .handleErr(new IllegalArgumentException("invalid text alignment"), this.getClass().getName(), null);
         }
+    }
+
+    @Override
+    public ITooltip child(@NotNull ITooltip child) {
+        throw new UnsupportedOperationException("You can't set children for TextComponent!");
     }
 }

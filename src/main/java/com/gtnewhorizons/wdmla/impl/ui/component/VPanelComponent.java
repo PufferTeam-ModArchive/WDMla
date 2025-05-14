@@ -1,8 +1,8 @@
 package com.gtnewhorizons.wdmla.impl.ui.component;
 
+import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import org.jetbrains.annotations.NotNull;
 
-import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.ui.sizer.ISize;
 import com.gtnewhorizons.wdmla.impl.ui.sizer.Area;
 
@@ -48,7 +48,7 @@ public class VPanelComponent extends PanelComponent {
     @Override
     public float getWidth() {
         float w = 0;
-        for (IComponent child : children) {
+        for (ITooltip child : children) {
             float ww = child.getWidth();
             if (ww > w) {
                 w = ww;
@@ -61,7 +61,7 @@ public class VPanelComponent extends PanelComponent {
     @Override
     public float getHeight() {
         float h = 0;
-        for (IComponent child : children) {
+        for (ITooltip child : children) {
             h += child.getHeight();
         }
 

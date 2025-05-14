@@ -1,7 +1,6 @@
 package com.gtnewhorizons.wdmla.impl.ui.helper;
 
 import com.gtnewhorizons.wdmla.api.ui.helper.ComponentHelper;
-import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.impl.ui.component.ArmorComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.BlockComponent;
@@ -30,7 +29,7 @@ public class ComponentHelperImpl implements ComponentHelper {
     }
 
     @Override
-    public IComponent text(String text) {
+    public ITooltip text(String text) {
         return new TextComponent(text);
     }
 
@@ -55,7 +54,7 @@ public class ComponentHelperImpl implements ComponentHelper {
     }
 
     @Override
-    public IComponent block(int blockX, int blockY, int blockZ) {
+    public ITooltip block(int blockX, int blockY, int blockZ) {
         return new BlockComponent(blockX, blockY, blockZ);
     }
 
@@ -65,7 +64,7 @@ public class ComponentHelperImpl implements ComponentHelper {
     }
 
     @Override
-    public IComponent fluid(FluidStack fluid) {
+    public ITooltip fluid(FluidStack fluid) {
         return new FluidComponent(fluid);
     }
 
@@ -96,7 +95,7 @@ public class ComponentHelperImpl implements ComponentHelper {
     }
 
     @Override
-    public IComponent rect() {
+    public ITooltip rect() {
         return new RectComponent();
     }
 }

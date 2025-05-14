@@ -1,6 +1,5 @@
 package com.gtnewhorizons.wdmla.api.ui.helper;
 
-import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.api.ui.MessageType;
 import com.gtnewhorizons.wdmla.impl.ui.helper.ThemeHelperImpl;
@@ -35,22 +34,22 @@ public interface ThemeHelper {
 
     void overrideTooltipHeader(ITooltip root, ItemStack newItemStack);
 
-    IComponent info(String content);
+    ITooltip info(String content);
 
-    IComponent title(String content);
+    ITooltip title(String content);
 
-    IComponent success(String content);
+    ITooltip success(String content);
 
-    IComponent warning(String content);
+    ITooltip warning(String content);
 
-    IComponent danger(String content);
+    ITooltip danger(String content);
 
-    IComponent failure(String content);
+    ITooltip failure(String content);
 
-    IComponent color(String content, MessageType type);
+    ITooltip color(String content, MessageType type);
 
-    IComponent furnaceLikeProgress(List<ItemStack> input, List<ItemStack> output, int currentProgress,
-                                   int maxProgress, boolean showDetails);
+    ITooltip furnaceLikeProgress(List<ItemStack> input, List<ItemStack> output, int currentProgress,
+                                 int maxProgress, boolean showDetails);
 
     /**
      * Provides Minecraft furnace progress arrow and item display.
@@ -64,10 +63,10 @@ public interface ThemeHelper {
      *                          auto generated.
      * @return built component
      */
-    IComponent furnaceLikeProgress(List<ItemStack> input, List<ItemStack> output, int currentProgress,
-                                   int maxProgress, boolean showDetails, @Nullable IComponent legacyProcessText);
+    ITooltip furnaceLikeProgress(List<ItemStack> input, List<ItemStack> output, int currentProgress,
+                                 int maxProgress, boolean showDetails, @Nullable ITooltip legacyProcessText);
 
-    IComponent value(String entry, String value);
+    ITooltip value(String entry, String value);
 
     /**
      * Provides an ItemComponent with size of default text height
@@ -79,12 +78,12 @@ public interface ThemeHelper {
     /**
      * Constructs a component to display an ItemStack in "(icon) 3x Apple" format
      */
-    IComponent itemStackFullLine(ItemStack stack);
+    ITooltip itemStackFullLine(ItemStack stack);
 
     /**
      * display any crop's growth value with percentage
      *
      * @param growthValue growth value (0 ~ 1)
      */
-    IComponent growthValue(float growthValue);
+    ITooltip growthValue(float growthValue);
 }

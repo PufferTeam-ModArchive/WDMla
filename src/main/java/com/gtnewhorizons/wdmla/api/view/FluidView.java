@@ -1,11 +1,10 @@
 package com.gtnewhorizons.wdmla.api.view;
 
+import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fluids.FluidStack;
 
 import org.jetbrains.annotations.Nullable;
-
-import com.gtnewhorizons.wdmla.api.ui.IComponent;
 
 /**
  * This is a Fluid Tank wrapper which is used in client Waila fluid storage view.<br>
@@ -26,7 +25,7 @@ public class FluidView {
      * the override text or any component to be displayed instead of fluid name
      */
     @Nullable
-    public IComponent description;
+    public ITooltip description;
     /**
      * If true, the progress bar will have vertical stripes
      */

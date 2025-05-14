@@ -9,11 +9,91 @@ import org.jetbrains.annotations.Nullable;
 import com.gtnewhorizons.wdmla.api.ui.sizer.IPadding;
 import com.gtnewhorizons.wdmla.api.ui.sizer.ISize;
 
+// spotless:off
 /**
- * The interface for the advanced component which can append child components.<br>
- * Also provides quick shortcuts to append simple child elements of this component which does not require theme import.
+ * Base UI Component.<br>
+ * How to implement a simple component without considering child element:<br>
+ * <ul>
+ * <li>Prepare the custom style class like {@link com.gtnewhorizons.wdmla.api.ui.style.ITextStyle} to decide what parameter is required to construct ui element</li>
+ * <li>Prepare the {@link IDrawable} class.
+ * This class will call rendering class to render the ui, based on provided style and {@link com.gtnewhorizons.wdmla.api.ui.sizer.IArea} information</li>
+ * <li>Implement {@link com.gtnewhorizons.wdmla.impl.ui.component.TooltipComponent} class. Call the foreground(drawable) with provided condition in tick method.</li>
+ * </ul>
+ * Full Example code:<br>
+ * <pre>
+ * {@code
+ * public class SimpleTextComponent extends Component {
+ *
+ *     protected ITextStyle style;
+ *
+ *     public SimpleTextComponent(String text) {
+ *         super(new Padding(), new TextSize(text), new TextDrawable(text));
+ *         this.style = new TextStyle();
+ *     }
+ *
+ *     public SimpleTextComponent style(ITextStyle style) {
+ *         ((TextDrawable) this.foreground).style(style);
+ *         this.style = style;
+ *         return this;
+ *     }
+ *
+ *     @Override
+ *     public SimpleTextComponent size(@NotNull ISize size) {
+ *         throw new IllegalArgumentException("You can't set the size of TextComponent!");
+ *     }
+ *
+ *     @Override
+ *     public void tick(int x, int y) {
+ *         foreground.draw(new Area(x + padding.getLeft(), y + padding.getTop(), width, height));
+ *     }
+ * }
+ * }
+ * </pre>
  */
-public interface ITooltip extends IComponent {
+// spotless:on
+public interface ITooltip {
+
+    /**
+     * Client render tick event. Call everything that consists UI component.
+     *
+     * @param x x position in the minecraft screen coordinate
+     * @param y y position in the minecraft screen coordinate
+     */
+    void tick(float x, float y);
+
+    /**
+     * Must return positive value for rendering. If you want a negative sized element for layout, use
+     * {@link com.gtnewhorizons.wdmla.api.ui.sizer.IPadding}.
+     *
+     * @return the ui component width.
+     */
+    float getWidth();
+
+    /**
+     * Must return positive value for rendering. If you want a negative sized element for layout, use
+     * {@link com.gtnewhorizons.wdmla.api.ui.sizer.IPadding}.
+     *
+     * @return the ui component height.
+     */
+    float getHeight();
+
+    /**
+     * Applies custom identifier of resource location to component for later lookup purpose.<br>
+     * If any component has potential to be used or replaced by other providers, appending a new tag is the best
+     * option.<br>
+     * Only one tag can be applied to component for now.
+     *
+     * @param tag unique identifier of new or existing tag
+     * @return this component object
+     */
+    ITooltip tag(ResourceLocation tag);
+
+    /**
+     * get the tag of this component.
+     *
+     * @return the unique tag.
+     */
+    ResourceLocation getTag();
 
     // spotless:off
     /**
@@ -36,7 +116,7 @@ public interface ITooltip extends IComponent {
      * @return this tooltip instance
      */
     //spotless:on
-    ITooltip child(@NotNull IComponent child);
+    ITooltip child(@NotNull ITooltip child);
 
     /**
      * @return the count of children object appended to this tooltip
@@ -48,8 +128,6 @@ public interface ITooltip extends IComponent {
      */
     ITooltip clear();
 
-    ITooltip tag(ResourceLocation tag);
-
     /**
      * Search children inside this component with a tag. The target must have a tag applied with
      * {@link ITooltip#tag(ResourceLocation)}.
@@ -58,7 +136,7 @@ public interface ITooltip extends IComponent {
      * @return the first component found
      */
     @Nullable
-    IComponent getChildWithTag(ResourceLocation tag);
+    ITooltip getChildWithTag(ResourceLocation tag);
 
     /**
      * Replace a child inside this component with a specific tag.
@@ -67,7 +145,7 @@ public interface ITooltip extends IComponent {
      * @param newChild the new child to replace. I strongly recommend give it the same tag with previous one
      * @return The replacement was succeeded or not. If the child doesn't exist it will always return false
      */
-    boolean replaceChildWithTag(ResourceLocation tag, IComponent newChild);
+    boolean replaceChildWithTag(ResourceLocation tag, ITooltip newChild);
 
     //shortcuts for frequently used components
     ITooltip text(String text);

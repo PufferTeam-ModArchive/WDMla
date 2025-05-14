@@ -11,7 +11,6 @@ import com.gtnewhorizons.wdmla.api.TooltipPosition;
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
 import com.gtnewhorizons.wdmla.api.theme.Theme;
-import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.api.ui.MessageType;
 import com.gtnewhorizons.wdmla.api.config.General;
@@ -74,14 +73,14 @@ public enum DefaultBlockInfoProvider implements IBlockComponentProvider {
                 itemName = DisplayUtil.itemDisplayNameShortFormatted(itemStack);
             }
             ITooltip title = row_vertical.horizontal();
-            IComponent nameComponent = ThemeHelper.instance().title(itemName).tag(WDMlaIDs.ITEM_NAME);
+            ITooltip nameComponent = ThemeHelper.instance().title(itemName).tag(WDMlaIDs.ITEM_NAME);
             title.child(nameComponent).child(new HPanelComponent() {
 
                 @Override
                 public void tick(float x, float y) {
                     if (General.alignIconRightTop) {
-                        IComponent icon = row.getChildWithTag(WDMlaIDs.ITEM_ICON);
-                        IComponent name = title.getChildWithTag(WDMlaIDs.ITEM_NAME);
+                        ITooltip icon = row.getChildWithTag(WDMlaIDs.ITEM_ICON);
+                        ITooltip name = title.getChildWithTag(WDMlaIDs.ITEM_NAME);
                         // align right
                         x += Math.max(
                                 tooltip.getWidth() - (icon != null ? icon.getWidth() : 0)

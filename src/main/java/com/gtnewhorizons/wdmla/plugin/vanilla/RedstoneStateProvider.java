@@ -10,7 +10,6 @@ import net.minecraft.util.StatCollector;
 
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
-import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.api.config.PluginsConfig;
 import com.gtnewhorizons.wdmla.api.format.TimeFormattingPattern;
@@ -26,7 +25,7 @@ public enum RedstoneStateProvider implements IBlockComponentProvider {
         Block block = accessor.getBlock();
 
         if (block instanceof BlockLever && PluginsConfig.vanilla.redstoneState.showLeverState) {
-            IComponent redstoneOn = (accessor.getMetadata() & 8) == 0
+            ITooltip redstoneOn = (accessor.getMetadata() & 8) == 0
                     ? ThemeHelper.instance().failure(StatCollector.translateToLocal("hud.msg.wdmla.off"))
                     : ThemeHelper.instance().success(StatCollector.translateToLocal("hud.msg.wdmla.on"));
             tooltip.child(

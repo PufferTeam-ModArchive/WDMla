@@ -7,7 +7,6 @@ import net.minecraft.util.StatCollector;
 import com.gtnewhorizons.wdmla.api.TooltipPosition;
 import com.gtnewhorizons.wdmla.api.accessor.EntityAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IEntityComponentProvider;
-import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.api.ui.helper.ThemeHelper;
 import com.gtnewhorizons.wdmla.api.identifier.VanillaIDs;
@@ -22,11 +21,11 @@ public enum SlowerAnimalProvider implements IEntityComponentProvider {
     @Override
     public void appendTooltip(ITooltip tooltip, EntityAccessor accessor) {
         if (IguanaConfig.breedingTimeoutMultiplier > 1) {
-            IComponent breedComponent = tooltip.getChildWithTag(VanillaIDs.ANIMAL_BREED);
-            if (breedComponent instanceof ITooltip breed) {
+            ITooltip breedComponent = tooltip.getChildWithTag(VanillaIDs.ANIMAL_BREED);
+            if (breedComponent != null) {
                 tooltip.replaceChildWithTag(
                         VanillaIDs.ANIMAL_BREED,
-                        breed.child(
+                        breedComponent.child(
                                 ThemeHelper.instance().warning(
                                         StatCollector.translateToLocalFormatted(
                                                 "hud.msg.wdmla.rng.multiplier",
@@ -35,11 +34,11 @@ public enum SlowerAnimalProvider implements IEntityComponentProvider {
         }
 
         if (IguanaConfig.childDurationMultiplier > 1) {
-            IComponent growthComponent = tooltip.getChildWithTag(VanillaIDs.ANIMAL_GROWTH);
-            if (growthComponent instanceof ITooltip growth) {
+            ITooltip growthComponent = tooltip.getChildWithTag(VanillaIDs.ANIMAL_GROWTH);
+            if (growthComponent != null) {
                 tooltip.replaceChildWithTag(
                         VanillaIDs.ANIMAL_GROWTH,
-                        growth.child(
+                        growthComponent.child(
                                 ThemeHelper.instance().warning(
                                         StatCollector.translateToLocalFormatted(
                                                 "hud.msg.wdmla.rng.multiplier",

@@ -1,6 +1,5 @@
 package com.gtnewhorizons.wdmla.api.ui.helper;
 
-import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.api.ui.sizer.IPadding;
 import com.gtnewhorizons.wdmla.impl.ui.helper.ComponentHelperImpl;
@@ -22,7 +21,7 @@ public interface ComponentHelper {
         return ComponentHelperImpl._instance;
     }
 
-    IComponent text(String text);
+    ITooltip text(String text);
 
     ITooltip vertical();
 
@@ -32,11 +31,11 @@ public interface ComponentHelper {
 
     ITooltip health(float health, float maxHealth);
 
-    IComponent block(int blockX, int blockY, int blockZ);
+    ITooltip block(int blockX, int blockY, int blockZ);
 
     ITooltip entity(Entity entity);
 
-    IComponent fluid(FluidStack fluid);
+    ITooltip fluid(FluidStack fluid);
 
     ITooltip progress(long current, long max, String progressText);
 
@@ -48,5 +47,5 @@ public interface ComponentHelper {
 
     ITooltip progress(float ratio);
 
-    IComponent rect();
+    ITooltip rect();
 }

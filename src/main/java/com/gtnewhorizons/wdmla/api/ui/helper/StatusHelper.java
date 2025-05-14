@@ -1,7 +1,7 @@
 package com.gtnewhorizons.wdmla.api.ui.helper;
 
 import com.gtnewhorizons.wdmla.api.ui.HighlightState;
-import com.gtnewhorizons.wdmla.api.ui.IComponent;
+import com.gtnewhorizons.wdmla.api.ui.ITooltip;
 import com.gtnewhorizons.wdmla.impl.ui.helper.StatusHelperImpl;
 import net.minecraft.client.Minecraft;
 
@@ -13,29 +13,29 @@ public interface StatusHelper {
 
     int ICON_SIZE = Minecraft.getMinecraft().fontRenderer.FONT_HEIGHT;
 
-    IComponent structureIncomplete();
+    ITooltip structureIncomplete();
 
-    IComponent hasProblem();
+    ITooltip hasProblem();
 
-    IComponent runningFine();
+    ITooltip runningFine();
 
-    IComponent idle();
+    ITooltip idle();
 
-    IComponent workingDisabled();
+    ITooltip workingDisabled();
 
-    IComponent insufficientEnergy();
+    ITooltip insufficientEnergy();
 
-    IComponent insufficientFuel();
+    ITooltip insufficientFuel();
 
-    IComponent locked();
+    ITooltip locked();
 
-    IComponent locked(HighlightState highlightState);
+    ITooltip locked(HighlightState highlightState);
 
     /**
      * Indicates the input item/fluid is voided on overflow. This concept is shared between multiple storage mods
      * (drawers, barrels, super chests...)
      */
-    IComponent voidOverflow();
+    ITooltip voidOverflow();
 
-    IComponent voidOverflow(HighlightState highlightState);
+    ITooltip voidOverflow(HighlightState highlightState);
 }
