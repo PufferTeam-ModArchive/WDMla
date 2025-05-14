@@ -6,7 +6,6 @@ import com.gtnewhorizons.wdmla.impl.ui.drawable.FluidDrawable;
 import com.gtnewhorizons.wdmla.impl.ui.sizer.Padding;
 import com.gtnewhorizons.wdmla.impl.ui.sizer.Size;
 
-// tmp
 public class FluidComponent extends Component {
 
     public static final int DEFAULT_W = 16;
