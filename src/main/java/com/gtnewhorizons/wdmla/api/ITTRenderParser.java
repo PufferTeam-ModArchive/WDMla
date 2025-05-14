@@ -1,6 +1,6 @@
 package com.gtnewhorizons.wdmla.api;
 
-import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import org.jetbrains.annotations.ApiStatus;
 
 /**
@@ -16,5 +16,5 @@ public interface ITTRenderParser {
      * @param args string begins with custom regex
      * @return corresponding WDMla component
      */
-    ITooltip parse(String[] args);
+    IComponent parse(String[] args);
 }

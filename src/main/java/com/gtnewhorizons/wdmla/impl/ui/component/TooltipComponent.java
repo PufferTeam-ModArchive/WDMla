@@ -8,12 +8,12 @@ import net.minecraft.util.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
 
 import com.gtnewhorizons.wdmla.api.ui.IDrawable;
-import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.ui.sizer.IPadding;
 import com.gtnewhorizons.wdmla.api.ui.sizer.ISize;
 import com.gtnewhorizons.wdmla.impl.ui.sizer.Area;
 
-public class TooltipComponent implements ITooltip {
+public class TooltipComponent implements IComponent {
 
     // settings
     protected IPadding padding;
@@ -24,9 +24,9 @@ public class TooltipComponent implements ITooltip {
 
     protected ResourceLocation tag;
 
-    protected List<ITooltip> children;
+    protected List<IComponent> children;
 
-    protected TooltipComponent(List<ITooltip> children, IPadding padding, ISize size, IDrawable foreground) {
+    protected TooltipComponent(List<IComponent> children, IPadding padding, ISize size, IDrawable foreground) {
         this.padding = padding;
         this.size = size;
         this.foreground = foreground;
@@ -47,7 +47,7 @@ public class TooltipComponent implements ITooltip {
     public void tick(float x, float y) {
         foreground.draw(new Area(x + padding.getLeft(), y + padding.getTop(), size.getW(), size.getH()));
 
-        for (ITooltip child : children) {
+        for (IComponent child : children) {
             child.tick(x + padding.getLeft(), y + padding.getTop());
         }
     }
@@ -63,7 +63,7 @@ public class TooltipComponent implements ITooltip {
     }
 
     @Override
-    public ITooltip child(@NotNull ITooltip child) {
+    public IComponent child(@NotNull IComponent child) {
         this.children.add(child);
         return this;
     }
@@ -74,13 +74,13 @@ public class TooltipComponent implements ITooltip {
     }
 
     @Override
-    public ITooltip clear() {
+    public IComponent clear() {
         this.children.clear();
         return this;
     }
 
     @Override
-    public ITooltip tag(ResourceLocation tag) {
+    public IComponent tag(ResourceLocation tag) {
         this.tag = tag;
         return this;
     }
@@ -91,13 +91,13 @@ public class TooltipComponent implements ITooltip {
     }
 
     @Override
-    public ITooltip getChildWithTag(ResourceLocation tag) {
+    public IComponent getChildWithTag(ResourceLocation tag) {
         for (int i = 0; i < children.size(); i++) {
-            ITooltip child = children.get(i);
+            IComponent child = children.get(i);
             if (tag.equals(child.getTag())) {
                 return child;
             } else {
-                ITooltip nestedChild = child.getChildWithTag(tag);
+                IComponent nestedChild = child.getChildWithTag(tag);
                 if (nestedChild != null) {
                     return nestedChild;
                 }
@@ -108,9 +108,9 @@ public class TooltipComponent implements ITooltip {
     }
 
     @Override
-    public boolean replaceChildWithTag(@NotNull ResourceLocation tag, ITooltip newChild) {
+    public boolean replaceChildWithTag(@NotNull ResourceLocation tag, IComponent newChild) {
         for (int i = 0; i < children.size(); i++) {
-            ITooltip child = children.get(i);
+            IComponent child = children.get(i);
             if (tag.equals(child.getTag())) {
                 children.set(i, newChild);
                 return true;
@@ -126,22 +126,22 @@ public class TooltipComponent implements ITooltip {
     }
 
     @Override
-    public ITooltip text(String text) {
-        ITooltip c = ComponentHelper.instance().text(text);
+    public IComponent text(String text) {
+        IComponent c = ComponentHelper.instance().text(text);
         this.children.add(c);
         return this;
     }
 
     @Override
-    public ITooltip vertical() {
-        ITooltip c = ComponentHelper.instance().vertical();
+    public IComponent vertical() {
+        IComponent c = ComponentHelper.instance().vertical();
         this.children.add(c);
         return c;
     }
 
     @Override
-    public ITooltip horizontal() {
-        ITooltip c = ComponentHelper.instance().horizontal();
+    public IComponent horizontal() {
+        IComponent c = ComponentHelper.instance().horizontal();
         this.children.add(c);
         return c;
     }

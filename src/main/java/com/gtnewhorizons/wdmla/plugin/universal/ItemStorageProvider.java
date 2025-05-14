@@ -34,7 +34,7 @@ import com.gtnewhorizons.wdmla.api.provider.IServerDataProvider;
 import com.gtnewhorizons.wdmla.api.provider.IServerExtensionProvider;
 import com.gtnewhorizons.wdmla.api.theme.Theme;
 import com.gtnewhorizons.wdmla.api.ui.ComponentAlignment;
-import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.ui.MessageType;
 import com.gtnewhorizons.wdmla.api.view.ClientViewGroup;
 import com.gtnewhorizons.wdmla.api.view.ItemView;
@@ -128,7 +128,7 @@ public class ItemStorageProvider<T extends Accessor> implements IComponentProvid
         return new ViewGroup<>(itemStacks, contentDecodedGroup);
     }
 
-    public static void append(ITooltip tooltip, Accessor accessor, List<ClientViewGroup<ItemView>> groups) {
+    public static void append(IComponent tooltip, Accessor accessor, List<ClientViewGroup<ItemView>> groups) {
         boolean renderGroup = groups.size() > 1 || groups.get(0).shouldRenderGroup();
         ClientViewGroup.tooltip(tooltip, groups, renderGroup, (theTooltip, group) -> {
             MutableBoolean showName = getShowName(group);
@@ -137,7 +137,7 @@ public class ItemStorageProvider<T extends Accessor> implements IComponentProvid
             if (renderGroup) {
                 Theme theme = General.currentTheme.get();
                 if (group.title != null) {
-                    ITooltip hPanel = new HPanelComponent()
+                    IComponent hPanel = new HPanelComponent()
                             .style(new PanelStyle().alignment(ComponentAlignment.CENTER));
                     hPanel.child(
                             new RectComponent()
@@ -236,7 +236,7 @@ public class ItemStorageProvider<T extends Accessor> implements IComponentProvid
     }
 
     @Override
-    public void appendTooltip(ITooltip tooltip, T accessor) {
+    public void appendTooltip(IComponent tooltip, T accessor) {
         List<ClientViewGroup<ItemView>> groups = ClientProxy.mapToClientGroups(
                 accessor,
                 WDMlaIDs.ITEM_STORAGE,

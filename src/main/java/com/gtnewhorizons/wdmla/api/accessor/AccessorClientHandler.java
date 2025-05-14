@@ -5,7 +5,7 @@ import java.util.function.Function;
 import org.jetbrains.annotations.ApiStatus;
 
 import com.gtnewhorizons.wdmla.api.provider.IWDMlaProvider;
-import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import com.gtnewhorizons.wdmla.api.ui.IComponent;
 
 /**
  * Classes implement this handles main accessor object of specific type, passing it to provider or server.<br>
@@ -46,5 +46,5 @@ public interface AccessorClientHandler<T extends Accessor> {
      * @param accessor        accessor object which may have corresponding provider to collect tooltip
      * @param tooltipProvider provides suitable tooltip object for specified provider
      */
-    void gatherComponents(T accessor, Function<IWDMlaProvider, ITooltip> tooltipProvider);
+    void gatherComponents(T accessor, Function<IWDMlaProvider, IComponent> tooltipProvider);
 }

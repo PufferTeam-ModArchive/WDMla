@@ -11,7 +11,7 @@ import com.gtnewhorizons.wdmla.api.accessor.EntityAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IComponentProvider;
 import com.gtnewhorizons.wdmla.api.provider.IServerDataProvider;
 import com.gtnewhorizons.wdmla.api.provider.IWDMlaProvider;
-import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.config.WDMlaConfig;
 import com.gtnewhorizons.wdmla.overlay.RayTracing;
 import com.gtnewhorizons.wdmla.wailacompat.DataProviderCompat;
@@ -51,12 +51,12 @@ public class EntityAccessorClientHandler implements AccessorClientHandler<Entity
     }
 
     @Override
-    public void gatherComponents(EntityAccessor accessor, Function<IWDMlaProvider, ITooltip> tooltipProvider) {
+    public void gatherComponents(EntityAccessor accessor, Function<IWDMlaProvider, IComponent> tooltipProvider) {
         // step 1: gather WDMla tooltip components including icon, block name and mod name
         for (IComponentProvider<EntityAccessor> provider : WDMlaClientRegistration.instance().getEntityProviders(
                 accessor.getEntity(),
                 iComponentProvider -> WDMlaConfig.instance().isProviderEnabled(iComponentProvider))) {
-            ITooltip middleTooltip = tooltipProvider.apply(provider);
+            IComponent middleTooltip = tooltipProvider.apply(provider);
             provider.appendTooltip(middleTooltip, accessor);
         }
 
@@ -73,8 +73,8 @@ public class EntityAccessorClientHandler implements AccessorClientHandler<Entity
         List<String> legacyTooltips = dataProviderCompat.getLegacyEntityTooltips(entity, legacyAccessor);
 
         // step 4: Convert legacy tooltip String to actual various WDMla component
-        ITooltip convertedTooltips = tooltipCompat.computeRenderables(legacyTooltips);
-        ITooltip lateTooltip = tooltipProvider.apply(null);
+        IComponent convertedTooltips = tooltipCompat.computeRenderables(legacyTooltips);
+        IComponent lateTooltip = tooltipProvider.apply(null);
         lateTooltip.child(convertedTooltips);
     }
 }

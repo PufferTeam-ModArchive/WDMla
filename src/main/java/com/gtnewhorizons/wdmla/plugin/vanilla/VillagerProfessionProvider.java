@@ -7,7 +7,7 @@ import net.minecraft.util.StatCollector;
 
 import com.gtnewhorizons.wdmla.api.accessor.EntityAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IEntityComponentProvider;
-import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.TextComponent;
 
 import cpw.mods.fml.common.registry.VillagerRegistry;
@@ -19,7 +19,7 @@ public enum VillagerProfessionProvider implements IEntityComponentProvider {
     private static final String[] VANILLA_VILLAGERS = { "farmer", "librarian", "priest", "blacksmith", "butcher" };
 
     @Override
-    public void appendTooltip(ITooltip tooltip, EntityAccessor accessor) {
+    public void appendTooltip(IComponent tooltip, EntityAccessor accessor) {
         if (accessor.getEntity() instanceof EntityVillager villager) {
             String name = getVillagerName(villager.getProfession());
             tooltip.child(

@@ -1,6 +1,6 @@
 package com.gtnewhorizons.wdmla.api.view;
 
-import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import net.minecraft.nbt.NBTTagCompound;
 
 import org.jetbrains.annotations.Nullable;
@@ -17,7 +17,7 @@ public class ProgressView {
     public long progress;
     public long maxProgress;
     @Nullable
-    public ITooltip description;
+    public IComponent description;
     /**
      * If true, the progress bar will have default vertical stripes This will do nothing if custom style is present
      */

@@ -9,7 +9,7 @@ import net.minecraft.util.StatCollector;
 import com.gtnewhorizons.wdmla.api.accessor.Accessor;
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
-import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.impl.ObjectDataCenter;
 import com.gtnewhorizons.wdmla.api.ui.helper.ThemeHelper;
 import com.jaquadro.minecraft.storagedrawers.api.storage.IDrawer;
@@ -27,7 +27,7 @@ public enum DrawersContentProvider implements IBlockComponentProvider {
     private MovingObjectPosition lastPos;
 
     @Override
-    public void appendTooltip(ITooltip tooltip, BlockAccessor accessor) {
+    public void appendTooltip(IComponent tooltip, BlockAccessor accessor) {
         if (!(accessor.getTileEntity() instanceof TileEntityDrawers drawers)) {
             return;
         }
@@ -44,7 +44,7 @@ public enum DrawersContentProvider implements IBlockComponentProvider {
         return CommonPluginIDs.DRAWERS_CONTENT;
     }
 
-    private void appendDrawersContent(Accessor accessor, TileEntityDrawers drawerTile, ITooltip tooltip) {
+    private void appendDrawersContent(Accessor accessor, TileEntityDrawers drawerTile, IComponent tooltip) {
         for (int i = 0; i < drawerTile.getDrawerCount(); i++) {
             if (!drawerTile.isDrawerEnabled(i)) {
                 continue;
@@ -75,7 +75,7 @@ public enum DrawersContentProvider implements IBlockComponentProvider {
                 continue;
             }
 
-            ITooltip itemLine = tracker[i].update(drawer);
+            IComponent itemLine = tracker[i].update(drawer);
             tooltip.horizontal().child(ThemeHelper.instance().smallItem(stack)).child(itemLine);
         }
 

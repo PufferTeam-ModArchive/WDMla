@@ -16,7 +16,7 @@ import net.minecraft.world.World;
 import com.gtnewhorizons.wdmla.api.Mods;
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
-import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.ui.helper.ThemeHelper;
 
 import iguanaman.hungeroverhaul.config.IguanaConfig;
@@ -35,7 +35,7 @@ public enum HoeResultProvider implements IBlockComponentProvider {
     private Method isWaterNearby;
 
     @Override
-    public void appendTooltip(ITooltip tooltip, BlockAccessor accessor) {
+    public void appendTooltip(IComponent tooltip, BlockAccessor accessor) {
         if (IguanaConfig.modifyHoeUse && isHoldingHoe(accessor.getPlayer().inventory.getCurrentItem())) {
             Block block = accessor.getBlock();
             if ((block == Blocks.dirt || block == Blocks.grass) && isWaterNearby(accessor)) {

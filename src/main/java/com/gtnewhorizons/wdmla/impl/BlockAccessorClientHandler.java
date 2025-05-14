@@ -12,7 +12,7 @@ import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IComponentProvider;
 import com.gtnewhorizons.wdmla.api.provider.IServerDataProvider;
 import com.gtnewhorizons.wdmla.api.provider.IWDMlaProvider;
-import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.config.WDMlaConfig;
 import com.gtnewhorizons.wdmla.wailacompat.DataProviderCompat;
 import com.gtnewhorizons.wdmla.wailacompat.RayTracingCompat;
@@ -66,7 +66,7 @@ public class BlockAccessorClientHandler implements AccessorClientHandler<BlockAc
     }
 
     @Override
-    public void gatherComponents(BlockAccessor accessor, Function<IWDMlaProvider, ITooltip> tooltipProvider) {
+    public void gatherComponents(BlockAccessor accessor, Function<IWDMlaProvider, IComponent> tooltipProvider) {
         // step 1: setup legacy DataAccessor with legacy WailaStack
         DataAccessorCommon legacyAccessor = DataAccessorCommon.instance;
         legacyAccessor.set(accessor.getWorld(), accessor.getPlayer(), accessor.getHitResult());
@@ -79,7 +79,7 @@ public class BlockAccessorClientHandler implements AccessorClientHandler<BlockAc
         for (IComponentProvider<BlockAccessor> provider : WDMlaClientRegistration.instance().getBlockProviders(
                 accessor.getBlock(),
                 iComponentProvider -> WDMlaConfig.instance().isProviderEnabled(iComponentProvider))) {
-            ITooltip middleTooltip = tooltipProvider.apply(provider);
+            IComponent middleTooltip = tooltipProvider.apply(provider);
             provider.appendTooltip(middleTooltip, accessor);
         }
 
@@ -88,8 +88,8 @@ public class BlockAccessorClientHandler implements AccessorClientHandler<BlockAc
         List<String> legacyTooltips = dataProviderCompat.getLegacyBlockTooltips(itemForm, legacyAccessor);
 
         // step 4: Convert legacy tooltip String to actual various WDMla component
-        ITooltip convertedTooltips = tooltipCompat.computeRenderables(legacyTooltips);
-        ITooltip lateTooltip = tooltipProvider.apply(null);
+        IComponent convertedTooltips = tooltipCompat.computeRenderables(legacyTooltips);
+        IComponent lateTooltip = tooltipProvider.apply(null);
         lateTooltip.child(convertedTooltips);
     }
 }

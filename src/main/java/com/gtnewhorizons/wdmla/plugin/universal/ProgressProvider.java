@@ -21,7 +21,7 @@ import com.gtnewhorizons.wdmla.api.accessor.EntityAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IComponentProvider;
 import com.gtnewhorizons.wdmla.api.provider.IServerDataProvider;
 import com.gtnewhorizons.wdmla.api.provider.IServerExtensionProvider;
-import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.view.ClientViewGroup;
 import com.gtnewhorizons.wdmla.api.view.ProgressView;
 import com.gtnewhorizons.wdmla.api.view.ViewGroup;
@@ -53,7 +53,7 @@ public class ProgressProvider<T extends Accessor> implements IComponentProvider<
     }
 
     @Override
-    public void appendTooltip(ITooltip tooltip, T accessor) {
+    public void appendTooltip(IComponent tooltip, T accessor) {
         List<ClientViewGroup<ProgressView>> groups = ClientProxy.mapToClientGroups(
                 accessor,
                 WDMlaIDs.PROGRESS,
@@ -66,7 +66,7 @@ public class ProgressProvider<T extends Accessor> implements IComponentProvider<
         append(tooltip, groups);
     }
 
-    public static void append(ITooltip tooltip, List<ClientViewGroup<ProgressView>> groups) {
+    public static void append(IComponent tooltip, List<ClientViewGroup<ProgressView>> groups) {
         boolean renderGroup = groups.size() > 1 || groups.get(0).shouldRenderGroup();
         ClientViewGroup.tooltip(tooltip, groups, renderGroup, (theTooltip, group) -> {
             if (renderGroup && group.title != null) {

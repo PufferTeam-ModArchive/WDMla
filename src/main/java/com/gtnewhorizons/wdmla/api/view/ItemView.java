@@ -1,6 +1,6 @@
 package com.gtnewhorizons.wdmla.api.view;
 
-import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import net.minecraft.item.ItemStack;
 
 import org.jetbrains.annotations.Nullable;
@@ -22,7 +22,7 @@ public class ItemView {
      * A full line description about this ItemStack
      */
     @Nullable
-    public ITooltip description;
+    public IComponent description;
 
     public ItemView(ItemStack item) {
         this.item = item;
@@ -33,7 +33,7 @@ public class ItemView {
         return this;
     }
 
-    public ItemView description(com.gtnewhorizons.wdmla.api.ui.ITooltip description) {
+    public ItemView description(IComponent description) {
         this.description = description;
         return this;
     }

@@ -7,7 +7,7 @@ import net.minecraft.util.StatCollector;
 
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
-import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.ui.helper.ThemeHelper;
 
 public enum BedProvider implements IBlockComponentProvider {
@@ -15,7 +15,7 @@ public enum BedProvider implements IBlockComponentProvider {
     INSTANCE;
 
     @Override
-    public void appendTooltip(ITooltip tooltip, BlockAccessor accessor) {
+    public void appendTooltip(IComponent tooltip, BlockAccessor accessor) {
         EntityPlayer player = accessor.getPlayer();
 
         if (player.isPlayerSleeping() || !player.isEntityAlive()) {
@@ -36,7 +36,7 @@ public enum BedProvider implements IBlockComponentProvider {
         // we don't suggest player can sleep at this point because we don't check most of the conditions
     }
 
-    private void appendCannotSleep(ITooltip tooltip) {
+    private void appendCannotSleep(IComponent tooltip) {
         tooltip.horizontal().text(String.format("%s: ", StatCollector.translateToLocal("hud.msg.wdmla.cansleep")))
                 .child(ThemeHelper.instance().failure(StatCollector.translateToLocal("hud.msg.wdmla.no")))
                 .tag(VanillaIDs.BED);

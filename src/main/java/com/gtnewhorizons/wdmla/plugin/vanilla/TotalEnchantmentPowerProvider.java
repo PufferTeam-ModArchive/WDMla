@@ -9,7 +9,7 @@ import net.minecraftforge.common.ForgeHooks;
 
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
-import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.ui.helper.ThemeHelper;
 import com.gtnewhorizons.wdmla.util.FormatUtil;
 
@@ -49,7 +49,7 @@ public enum TotalEnchantmentPowerProvider implements IBlockComponentProvider {
     }
 
     @Override
-    public void appendTooltip(ITooltip tooltip, BlockAccessor accessor) {
+    public void appendTooltip(IComponent tooltip, BlockAccessor accessor) {
         float power = calculateEnchantPower(accessor);
         tooltip.child(
                 ThemeHelper.instance().value(

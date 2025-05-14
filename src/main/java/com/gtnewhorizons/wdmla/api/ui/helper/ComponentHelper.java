@@ -1,6 +1,6 @@
 package com.gtnewhorizons.wdmla.api.ui.helper;
 
-import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.ui.sizer.IPadding;
 import com.gtnewhorizons.wdmla.impl.ui.helper.ComponentHelperImpl;
 import com.gtnewhorizons.wdmla.impl.ui.sizer.Padding;
@@ -21,31 +21,31 @@ public interface ComponentHelper {
         return ComponentHelperImpl._instance;
     }
 
-    ITooltip text(String text);
+    IComponent text(String text);
 
-    ITooltip vertical();
+    IComponent vertical();
 
-    ITooltip horizontal();
+    IComponent horizontal();
 
-    ITooltip armor(float armor, float maxArmor);
+    IComponent armor(float armor, float maxArmor);
 
-    ITooltip health(float health, float maxHealth);
+    IComponent health(float health, float maxHealth);
 
-    ITooltip block(int blockX, int blockY, int blockZ);
+    IComponent block(int blockX, int blockY, int blockZ);
 
-    ITooltip entity(Entity entity);
+    IComponent entity(Entity entity);
 
-    ITooltip fluid(FluidStack fluid);
+    IComponent fluid(FluidStack fluid);
 
-    ITooltip progress(long current, long max, String progressText);
+    IComponent progress(long current, long max, String progressText);
 
-    ITooltip icon(IIcon icon, ResourceLocation path);
+    IComponent icon(IIcon icon, ResourceLocation path);
 
-    ITooltip item(ItemStack itemStack);
+    IComponent item(ItemStack itemStack);
 
-    ITooltip progress(long current, long max);
+    IComponent progress(long current, long max);
 
-    ITooltip progress(float ratio);
+    IComponent progress(float ratio);
 
-    ITooltip rect();
+    IComponent rect();
 }

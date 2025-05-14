@@ -1,14 +1,14 @@
 package com.gtnewhorizons.wdmla.wailacompat.parser;
 
 import com.gtnewhorizons.wdmla.api.ITTRenderParser;
-import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.IconComponent;
 import com.gtnewhorizons.wdmla.overlay.VanillaUIIcons;
 
 public class IconArgsParser implements ITTRenderParser {
 
     @Override
-    public ITooltip parse(String[] args) {
+    public IComponent parse(String[] args) {
         VanillaUIIcons iconUI = switch (args[0]) {
             case "a" -> VanillaUIIcons.HEART;
             case "b" -> VanillaUIIcons.HHEART;

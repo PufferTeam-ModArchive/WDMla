@@ -10,7 +10,7 @@ import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
 import com.gtnewhorizons.wdmla.api.provider.IServerDataProvider;
 import com.gtnewhorizons.wdmla.api.provider.ITimeFormatConfigurable;
-import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.config.WDMlaConfig;
 import com.gtnewhorizons.wdmla.api.format.TimeFormattingPattern;
 import com.gtnewhorizons.wdmla.api.ui.helper.ThemeHelper;
@@ -21,7 +21,7 @@ public enum MobSpawnerProvider
     INSTANCE;
 
     @Override
-    public void appendTooltip(ITooltip tooltip, BlockAccessor accessor) {
+    public void appendTooltip(IComponent tooltip, BlockAccessor accessor) {
         if (accessor.getServerData().hasKey("delay")) {
             int delay = accessor.getServerData().getInteger("delay");
             TimeFormattingPattern timePattern = WDMlaConfig.instance().getTimeFormatter(this);

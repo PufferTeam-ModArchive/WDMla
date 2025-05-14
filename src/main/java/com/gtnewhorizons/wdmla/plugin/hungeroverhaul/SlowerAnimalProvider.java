@@ -7,7 +7,7 @@ import net.minecraft.util.StatCollector;
 import com.gtnewhorizons.wdmla.api.TooltipPosition;
 import com.gtnewhorizons.wdmla.api.accessor.EntityAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IEntityComponentProvider;
-import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.ui.helper.ThemeHelper;
 import com.gtnewhorizons.wdmla.api.identifier.VanillaIDs;
 import com.gtnewhorizons.wdmla.util.FormatUtil;
@@ -19,9 +19,9 @@ public enum SlowerAnimalProvider implements IEntityComponentProvider {
     INSTANCE;
 
     @Override
-    public void appendTooltip(ITooltip tooltip, EntityAccessor accessor) {
+    public void appendTooltip(IComponent tooltip, EntityAccessor accessor) {
         if (IguanaConfig.breedingTimeoutMultiplier > 1) {
-            ITooltip breedComponent = tooltip.getChildWithTag(VanillaIDs.ANIMAL_BREED);
+            IComponent breedComponent = tooltip.getChildWithTag(VanillaIDs.ANIMAL_BREED);
             if (breedComponent != null) {
                 tooltip.replaceChildWithTag(
                         VanillaIDs.ANIMAL_BREED,
@@ -34,7 +34,7 @@ public enum SlowerAnimalProvider implements IEntityComponentProvider {
         }
 
         if (IguanaConfig.childDurationMultiplier > 1) {
-            ITooltip growthComponent = tooltip.getChildWithTag(VanillaIDs.ANIMAL_GROWTH);
+            IComponent growthComponent = tooltip.getChildWithTag(VanillaIDs.ANIMAL_GROWTH);
             if (growthComponent != null) {
                 tooltip.replaceChildWithTag(
                         VanillaIDs.ANIMAL_GROWTH,

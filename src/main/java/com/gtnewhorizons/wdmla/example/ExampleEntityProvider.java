@@ -9,7 +9,7 @@ import com.gtnewhorizons.wdmla.api.identifier.WDMlaIDs;
 import com.gtnewhorizons.wdmla.api.accessor.EntityAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IEntityComponentProvider;
 import com.gtnewhorizons.wdmla.api.provider.IServerDataProvider;
-import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.TextComponent;
 
 public enum ExampleEntityProvider implements IEntityComponentProvider, IServerDataProvider<EntityAccessor> {
@@ -17,7 +17,7 @@ public enum ExampleEntityProvider implements IEntityComponentProvider, IServerDa
     INSTANCE;
 
     @Override
-    public void appendTooltip(ITooltip tooltip, EntityAccessor accessor) {
+    public void appendTooltip(IComponent tooltip, EntityAccessor accessor) {
         int random = accessor.getServerData().getInteger("random");
         tooltip.child(new TextComponent("Recieved Server Entity Data: " + random));
     }

@@ -8,7 +8,7 @@ import net.minecraft.util.ResourceLocation;
 import com.gtnewhorizons.wdmla.api.TooltipPosition;
 import com.gtnewhorizons.wdmla.api.accessor.EntityAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IEntityComponentProvider;
-import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.ui.helper.ThemeHelper;
 
 public enum EnderDragonHeaderProvider implements IEntityComponentProvider {
@@ -16,7 +16,7 @@ public enum EnderDragonHeaderProvider implements IEntityComponentProvider {
     INSTANCE;
 
     @Override
-    public void appendTooltip(ITooltip tooltip, EntityAccessor accessor) {
+    public void appendTooltip(IComponent tooltip, EntityAccessor accessor) {
         if (accessor.getEntity() instanceof EntityDragonPart dragonPart) {
             Entity dragon = (Entity) dragonPart.entityDragonObj;
             ThemeHelper.instance().overrideEntityTooltipTitle(tooltip, dragon.getCommandSenderName(), dragon);

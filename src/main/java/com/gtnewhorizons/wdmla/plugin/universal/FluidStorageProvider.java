@@ -28,7 +28,7 @@ import com.gtnewhorizons.wdmla.api.provider.IClientExtensionProvider;
 import com.gtnewhorizons.wdmla.api.provider.IComponentProvider;
 import com.gtnewhorizons.wdmla.api.provider.IServerDataProvider;
 import com.gtnewhorizons.wdmla.api.provider.IServerExtensionProvider;
-import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.view.ClientViewGroup;
 import com.gtnewhorizons.wdmla.api.view.FluidView;
 import com.gtnewhorizons.wdmla.api.view.ViewGroup;
@@ -67,7 +67,7 @@ public class FluidStorageProvider<T extends Accessor> implements IComponentProvi
     }
 
     @Override
-    public void appendTooltip(ITooltip tooltip, T accessor) {
+    public void appendTooltip(IComponent tooltip, T accessor) {
         List<ClientViewGroup<FluidView>> groups = ClientProxy.mapToClientGroups(
                 accessor,
                 WDMlaIDs.FLUID_STORAGE,
@@ -80,7 +80,7 @@ public class FluidStorageProvider<T extends Accessor> implements IComponentProvi
         append(tooltip, accessor, groups);
     }
 
-    public void append(ITooltip tooltip, T accessor, List<ClientViewGroup<FluidView>> groups) {
+    public void append(IComponent tooltip, T accessor, List<ClientViewGroup<FluidView>> groups) {
         if (!accessor.showDetails() && PluginsConfig.universal.fluidStorage.detailed) {
             return;
         }
@@ -91,7 +91,7 @@ public class FluidStorageProvider<T extends Accessor> implements IComponentProvi
                 group.renderHeader(tooltip);
             }
             for (var view : group.views) {
-                ITooltip description;
+                IComponent description;
                 ThemeHelper helper = ThemeHelper.instance();
                 String currentStr = FormatUtil.STANDARD.format(view.current)
                         + StatCollector.translateToLocal("hud.wdmla.msg.millibucket");

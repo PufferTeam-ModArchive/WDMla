@@ -9,7 +9,7 @@ import com.gtnewhorizons.wdmla.api.accessor.EntityAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IEntityComponentProvider;
 import com.gtnewhorizons.wdmla.api.provider.IServerDataProvider;
 import com.gtnewhorizons.wdmla.api.provider.ITimeFormatConfigurable;
-import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.config.WDMlaConfig;
 import com.gtnewhorizons.wdmla.api.format.TimeFormattingPattern;
 import com.gtnewhorizons.wdmla.api.ui.helper.ThemeHelper;
@@ -22,7 +22,7 @@ public enum MilkCooldownProvider
     INSTANCE;
 
     @Override
-    public void appendTooltip(ITooltip tooltip, EntityAccessor accessor) {
+    public void appendTooltip(IComponent tooltip, EntityAccessor accessor) {
         TimeFormattingPattern formatter = WDMlaConfig.instance().getTimeFormatter(this);
         if (IguanaConfig.milkedTimeout > 1 && accessor.getServerData().hasKey("Milked")
                 && accessor.getEntity() != null) {

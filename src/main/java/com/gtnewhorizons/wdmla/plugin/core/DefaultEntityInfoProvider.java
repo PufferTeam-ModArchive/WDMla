@@ -9,7 +9,7 @@ import com.gtnewhorizons.wdmla.api.identifier.WDMlaIDs;
 import com.gtnewhorizons.wdmla.api.TooltipPosition;
 import com.gtnewhorizons.wdmla.api.accessor.EntityAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IEntityComponentProvider;
-import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.ui.MessageType;
 import com.gtnewhorizons.wdmla.api.config.General;
 import com.gtnewhorizons.wdmla.api.config.PluginsConfig;
@@ -44,8 +44,8 @@ public enum DefaultEntityInfoProvider implements IEntityComponentProvider {
     }
 
     @Override
-    public void appendTooltip(ITooltip tooltip, EntityAccessor accessor) {
-        ITooltip row = tooltip.horizontal();
+    public void appendTooltip(IComponent tooltip, EntityAccessor accessor) {
+        IComponent row = tooltip.horizontal();
         if (PluginsConfig.core.defaultEntity.showEntity) {
             if (!PluginsConfig.core.defaultEntity.fancyRenderer && !(accessor.getEntity() instanceof EntityLiving)) {
                 row.child(new HPanelComponent().tag(WDMlaIDs.ENTITY));
@@ -56,7 +56,7 @@ public enum DefaultEntityInfoProvider implements IEntityComponentProvider {
             }
         }
 
-        ITooltip row_vertical = row.vertical();
+        IComponent row_vertical = row.vertical();
         if (PluginsConfig.core.defaultEntity.showEntityName) {
             String name;
             if (accessor.getEntity() instanceof EntityLiving living && living.hasCustomNameTag()

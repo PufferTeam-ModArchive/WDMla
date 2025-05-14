@@ -7,7 +7,7 @@ import net.minecraft.util.ResourceLocation;
 import com.gtnewhorizons.wdmla.api.TooltipPosition;
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IServerDataProvider;
-import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.config.General;
 
 /**
@@ -17,7 +17,7 @@ import com.gtnewhorizons.wdmla.api.config.General;
  * Please do not implement this on TileEntity.class. It will just cause tons of unnecessary packet transaction. <br>
  * Client Side:
  * 
- * @see com.gtnewhorizons.wdmla.plugin.core.DefaultBlockInfoProvider#appendTooltip(ITooltip, BlockAccessor)
+ * @see com.gtnewhorizons.wdmla.plugin.core.DefaultBlockInfoProvider#appendTooltip(IComponent, BlockAccessor)
  */
 public enum TECustomNameHeaderProvider implements IServerDataProvider<BlockAccessor> {
 

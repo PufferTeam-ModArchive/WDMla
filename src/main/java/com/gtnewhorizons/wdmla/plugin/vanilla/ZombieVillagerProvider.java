@@ -9,7 +9,7 @@ import com.gtnewhorizons.wdmla.api.accessor.EntityAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IEntityComponentProvider;
 import com.gtnewhorizons.wdmla.api.provider.IServerDataProvider;
 import com.gtnewhorizons.wdmla.api.provider.ITimeFormatConfigurable;
-import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.config.WDMlaConfig;
 import com.gtnewhorizons.wdmla.api.format.TimeFormattingPattern;
 import com.gtnewhorizons.wdmla.api.ui.helper.ThemeHelper;
@@ -20,7 +20,7 @@ public enum ZombieVillagerProvider
     INSTANCE;
 
     @Override
-    public void appendTooltip(ITooltip tooltip, EntityAccessor accessor) {
+    public void appendTooltip(IComponent tooltip, EntityAccessor accessor) {
         if (accessor.getServerData().hasKey("ConversionTime")) {
             int conversionTime = accessor.getServerData().getInteger("ConversionTime");
             if (conversionTime != -1) {

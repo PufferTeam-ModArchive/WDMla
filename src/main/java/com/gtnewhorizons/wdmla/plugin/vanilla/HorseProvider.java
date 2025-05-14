@@ -10,7 +10,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import com.gtnewhorizons.wdmla.api.accessor.EntityAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IEntityComponentProvider;
-import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.ui.helper.ThemeHelper;
 import com.gtnewhorizons.wdmla.util.FormatUtil;
 
@@ -22,7 +22,7 @@ public enum HorseProvider implements IEntityComponentProvider {
     public static final double SPEED_UNIT_TO_BLOCKS_PER_SECOND_RATE = 42.16;
 
     @Override
-    public void appendTooltip(ITooltip tooltip, EntityAccessor accessor) {
+    public void appendTooltip(IComponent tooltip, EntityAccessor accessor) {
         if (accessor.getEntity() instanceof EntityHorse horse) {
             double jumpStrength = horse.getHorseJumpStrength();
             tooltip.child(

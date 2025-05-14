@@ -1,6 +1,6 @@
 package com.gtnewhorizons.wdmla.impl.ui.component;
 
-import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import org.jetbrains.annotations.NotNull;
 
 import com.gtnewhorizons.wdmla.api.ui.sizer.ISize;
@@ -57,7 +57,7 @@ public class TextComponent extends TooltipComponent {
     }
 
     @Override
-    public ITooltip child(@NotNull ITooltip child) {
+    public IComponent child(@NotNull IComponent child) {
         throw new UnsupportedOperationException("You can't set children for TextComponent!");
     }
 }

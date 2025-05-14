@@ -1,6 +1,6 @@
 package com.gtnewhorizons.wdmla.api.view;
 
-import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fluids.FluidStack;
 
@@ -25,7 +25,7 @@ public class FluidView {
      * the override text or any component to be displayed instead of fluid name
      */
     @Nullable
-    public ITooltip description;
+    public IComponent description;
     /**
      * If true, the progress bar will have vertical stripes
      */

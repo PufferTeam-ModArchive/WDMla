@@ -16,7 +16,7 @@ import org.jetbrains.annotations.Nullable;
 
 import com.gtnewhorizons.wdmla.api.identifier.WDMlaIDs;
 import com.gtnewhorizons.wdmla.api.theme.Theme;
-import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.ui.MessageType;
 import com.gtnewhorizons.wdmla.api.config.General;
 import com.gtnewhorizons.wdmla.api.config.PluginsConfig;
@@ -50,12 +50,12 @@ public class ThemeHelperImpl implements ThemeHelper {
 
     @Deprecated
     @Override
-    public void overrideTooltipIcon(ITooltip root, ItemStack newItemStack) {
+    public void overrideTooltipIcon(IComponent root, ItemStack newItemStack) {
         overrideTooltipIcon(root, newItemStack, false);
     }
 
     @Override
-    public void overrideTooltipIcon(ITooltip root, ItemStack newItemStack, boolean overrideFancyRenderer) {
+    public void overrideTooltipIcon(IComponent root, ItemStack newItemStack, boolean overrideFancyRenderer) {
         if (!overrideFancyRenderer
                 && PluginsConfig.core.defaultBlock.fancyRenderer == PluginsConfig.Core.fancyRendererMode.ALL) {
             return;
@@ -67,36 +67,36 @@ public class ThemeHelperImpl implements ThemeHelper {
     }
 
     @Override
-    public void overrideTooltipTitle(ITooltip root, ItemStack newItemStack) {
+    public void overrideTooltipTitle(IComponent root, ItemStack newItemStack) {
         String strippedName = DisplayUtil.itemDisplayNameShortFormatted(newItemStack);
         overrideTooltipTitle(root, strippedName);
     }
 
     @Override
-    public void overrideTooltipTitle(ITooltip root, String formattedNewName) {
+    public void overrideTooltipTitle(IComponent root, String formattedNewName) {
         Theme theme = General.currentTheme.get();
-        ITooltip replacedName = new HPanelComponent().child(
+        IComponent replacedName = new HPanelComponent().child(
                         new TextComponent(formattedNewName).style(new TextStyle().color(theme.textColor(MessageType.TITLE))))
                 .tag(WDMlaIDs.ITEM_NAME);
         root.replaceChildWithTag(WDMlaIDs.ITEM_NAME, replacedName);
     }
 
     @Override
-    public void overrideEntityTooltipTitle(ITooltip root, String newName, @Nullable Entity entityMayHaveCustomName) {
+    public void overrideEntityTooltipTitle(IComponent root, String newName, @Nullable Entity entityMayHaveCustomName) {
         Theme theme = General.currentTheme.get();
         if (entityMayHaveCustomName instanceof EntityLiving living && living.hasCustomNameTag()) {
             newName = FormatUtil.formatNameByPixelCount(living.getCustomNameTag());
         } else {
             newName = FormatUtil.formatNameByPixelCount(newName);
         }
-        ITooltip replacedName = new HPanelComponent()
+        IComponent replacedName = new HPanelComponent()
                 .child(new TextComponent(newName).style(new TextStyle().color(theme.textColor(MessageType.TITLE))))
                 .tag(WDMlaIDs.ENTITY_NAME);
         root.replaceChildWithTag(WDMlaIDs.ENTITY_NAME, replacedName);
     }
 
     @Override
-    public void overrideEntityTooltipIcon(ITooltip root, @Nullable Entity newEntity) {
+    public void overrideEntityTooltipIcon(IComponent root, @Nullable Entity newEntity) {
         if (PluginsConfig.core.defaultEntity.showEntity) {
             if (!PluginsConfig.core.defaultEntity.fancyRenderer && !(newEntity instanceof EntityLiving)) {
                 root.replaceChildWithTag(WDMlaIDs.ENTITY, new HPanelComponent().tag(WDMlaIDs.ENTITY));
@@ -110,70 +110,70 @@ public class ThemeHelperImpl implements ThemeHelper {
     }
 
     @Override
-    public void overrideTooltipModName(ITooltip root, ItemStack newItemStack) {
+    public void overrideTooltipModName(IComponent root, ItemStack newItemStack) {
         overrideTooltipModName(root, ModIdentification.nameFromStack(newItemStack));
     }
 
     @Override
-    public void overrideTooltipModName(ITooltip root, String newName) {
+    public void overrideTooltipModName(IComponent root, String newName) {
         Theme theme = General.currentTheme.get();
-        ITooltip replacedModName = new TextComponent(ITALIC + newName)
+        IComponent replacedModName = new TextComponent(ITALIC + newName)
                 .style(new TextStyle().color(theme.textColor(MessageType.MOD_NAME))).tag(WDMlaIDs.MOD_NAME);
         root.replaceChildWithTag(WDMlaIDs.MOD_NAME, replacedModName);
     }
 
     @Override
-    public void overrideTooltipHeader(ITooltip root, ItemStack newItemStack) {
+    public void overrideTooltipHeader(IComponent root, ItemStack newItemStack) {
         overrideTooltipIcon(root, newItemStack, false);
         overrideTooltipTitle(root, newItemStack);
         overrideTooltipModName(root, newItemStack);
     }
 
     @Override
-    public ITooltip info(String content) {
+    public IComponent info(String content) {
         return color(content, MessageType.INFO);
     }
 
     @Override
-    public ITooltip title(String content) {
+    public IComponent title(String content) {
         return color(content, MessageType.TITLE);
     }
 
     @Override
-    public ITooltip success(String content) {
+    public IComponent success(String content) {
         return color(content, MessageType.SUCCESS);
     }
 
     @Override
-    public ITooltip warning(String content) {
+    public IComponent warning(String content) {
         return color(content, MessageType.WARNING);
     }
 
     @Override
-    public ITooltip danger(String content) {
+    public IComponent danger(String content) {
         return color(content, MessageType.DANGER);
     }
 
     @Override
-    public ITooltip failure(String content) {
+    public IComponent failure(String content) {
         return color(content, MessageType.FAILURE);
     }
 
     @Override
-    public ITooltip color(String content, MessageType type) {
+    public IComponent color(String content, MessageType type) {
         Theme theme = General.currentTheme.get();
         return new TextComponent(content).style(new TextStyle().color(theme.textColor(type)));
     }
 
     @Override
-    public ITooltip furnaceLikeProgress(List<ItemStack> input, List<ItemStack> output, int currentProgress,
-                                        int maxProgress, boolean showDetails) {
+    public IComponent furnaceLikeProgress(List<ItemStack> input, List<ItemStack> output, int currentProgress,
+                                          int maxProgress, boolean showDetails) {
         return furnaceLikeProgress(input, output, currentProgress, maxProgress, showDetails, null);
     }
 
     @Override
-    public ITooltip furnaceLikeProgress(List<ItemStack> input, List<ItemStack> output, int currentProgress,
-                                        int maxProgress, boolean showDetails, @Nullable ITooltip legacyProcessText) {
+    public IComponent furnaceLikeProgress(List<ItemStack> input, List<ItemStack> output, int currentProgress,
+                                          int maxProgress, boolean showDetails, @Nullable IComponent legacyProcessText) {
         if (!General.forceLegacy) {
             HPanelComponent hPanel = new HPanelComponent();
             for (ItemStack inputStack : input) {
@@ -194,7 +194,7 @@ public class ThemeHelperImpl implements ThemeHelper {
             }
             return hPanel;
         } else {
-            ITooltip vPanel = new VPanelComponent();
+            IComponent vPanel = new VPanelComponent();
             if (showDetails) {
                 for (ItemStack inputStack : input) {
                     if (inputStack != null) {
@@ -240,27 +240,27 @@ public class ThemeHelperImpl implements ThemeHelper {
     }
 
     @Override
-    public ITooltip value(String entry, String value) {
+    public IComponent value(String entry, String value) {
         return new HPanelComponent().text(String.format("%s: ", entry)).child(info(value));
     }
 
     @Override
-    public ITooltip smallItem(ItemStack itemStack) {
+    public IComponent smallItem(ItemStack itemStack) {
         return new ItemComponent(itemStack).doDrawOverlay(false).size(new Size(ITEM_SIZE, ITEM_SIZE));
     }
 
     @Override
-    public ITooltip itemStackFullLine(ItemStack stack) {
+    public IComponent itemStackFullLine(ItemStack stack) {
         String strippedName = DisplayUtil.stripSymbols(DisplayUtil.itemDisplayNameShortFormatted(stack));
         TextComponent name = new TextComponent(strippedName);
-        ITooltip hPanel = new HPanelComponent().child(smallItem(stack));
+        IComponent hPanel = new HPanelComponent().child(smallItem(stack));
         String s = String.valueOf(stack.stackSize); // TODO: unit format
         return hPanel.text(s).text(StatCollector.translateToLocal("hud.msg.wdmla.item.count") + StringUtils.EMPTY)
                 .child(name);
     }
 
     @Override
-    public ITooltip growthValue(float growthValue) {
+    public IComponent growthValue(float growthValue) {
         if (growthValue < 1) {
             return ThemeHelper.instance().value(
                     StatCollector.translateToLocal("hud.msg.wdmla.growth"),

@@ -12,7 +12,7 @@ import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
 import com.gtnewhorizons.wdmla.api.ui.HighlightState;
 import com.gtnewhorizons.wdmla.api.ui.HighlightTracker;
-import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.impl.ObjectDataCenter;
 import com.gtnewhorizons.wdmla.api.ui.helper.StatusHelper;
 import com.gtnewhorizons.wdmla.api.ui.helper.ThemeHelper;
@@ -36,7 +36,7 @@ public enum DrawersPropertyProvider implements IBlockComponentProvider {
     private MovingObjectPosition lastPos;
 
     @Override
-    public void appendTooltip(ITooltip tooltip, BlockAccessor accessor) {
+    public void appendTooltip(IComponent tooltip, BlockAccessor accessor) {
         if (!(accessor.getTileEntity() instanceof TileEntityDrawers drawers)) {
             return;
         }
@@ -57,8 +57,8 @@ public enum DrawersPropertyProvider implements IBlockComponentProvider {
         }
         lastPos = accessor.getHitResult();
 
-        ITooltip panel = new HPanelComponent();
-        ITooltip detailedPanel = new VPanelComponent();
+        IComponent panel = new HPanelComponent();
+        IComponent detailedPanel = new VPanelComponent();
         if (isLockedTracker.update(isLocked)) {
             if (isLocked) {
                 detailedPanel.child(StatusHelper.instance().locked(HighlightState.ACTIVATING));

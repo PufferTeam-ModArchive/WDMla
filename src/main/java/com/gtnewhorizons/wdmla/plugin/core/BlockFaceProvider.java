@@ -7,7 +7,7 @@ import com.gtnewhorizons.wdmla.api.identifier.WDMlaIDs;
 import com.gtnewhorizons.wdmla.api.TooltipPosition;
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
-import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import com.gtnewhorizons.wdmla.api.ui.IComponent;
 
 public enum BlockFaceProvider implements IBlockComponentProvider {
 
@@ -16,9 +16,9 @@ public enum BlockFaceProvider implements IBlockComponentProvider {
     private static final String[] SIDES = { "down", "up", "east", "west", "north", "south" };
 
     @Override
-    public void appendTooltip(ITooltip tooltip, BlockAccessor accessor) {
+    public void appendTooltip(IComponent tooltip, BlockAccessor accessor) {
         int side = accessor.getHitResult().sideHit;
-        ITooltip itemNameRow = tooltip.getChildWithTag(WDMlaIDs.TARGET_NAME_ROW);
+        IComponent itemNameRow = tooltip.getChildWithTag(WDMlaIDs.TARGET_NAME_ROW);
         if (side != -1 && itemNameRow != null) {
             itemNameRow.text(
                     String.format(

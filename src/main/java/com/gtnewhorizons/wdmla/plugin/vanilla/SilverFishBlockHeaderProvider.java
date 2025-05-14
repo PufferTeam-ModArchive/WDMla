@@ -8,7 +8,7 @@ import net.minecraft.util.ResourceLocation;
 import com.gtnewhorizons.wdmla.api.TooltipPosition;
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
-import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.ui.helper.ThemeHelper;
 
 public enum SilverFishBlockHeaderProvider implements IBlockComponentProvider {
@@ -16,7 +16,7 @@ public enum SilverFishBlockHeaderProvider implements IBlockComponentProvider {
     INSTANCE;
 
     @Override
-    public void appendTooltip(ITooltip tooltip, BlockAccessor accessor) {
+    public void appendTooltip(IComponent tooltip, BlockAccessor accessor) {
         int metadata = accessor.getMetadata();
         ItemStack dummyStack = switch (metadata) {
             case 1 -> new ItemStack(Blocks.cobblestone);

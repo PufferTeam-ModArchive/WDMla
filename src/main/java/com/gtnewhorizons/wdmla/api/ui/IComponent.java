@@ -1,13 +1,9 @@
 package com.gtnewhorizons.wdmla.api.ui;
 
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-
-import com.gtnewhorizons.wdmla.api.ui.sizer.IPadding;
-import com.gtnewhorizons.wdmla.api.ui.sizer.ISize;
 
 // spotless:off
 /**
@@ -51,7 +47,7 @@ import com.gtnewhorizons.wdmla.api.ui.sizer.ISize;
  * </pre>
  */
 // spotless:on
-public interface ITooltip {
+public interface IComponent {
 
     /**
      * Client render tick event. Call everything that consists UI component.
@@ -86,7 +82,7 @@ public interface ITooltip {
      * @param tag unique identifier of new or existing tag
      * @return this component object
      */
-    ITooltip tag(ResourceLocation tag);
+    IComponent tag(ResourceLocation tag);
 
     /**
      * get the tag of this component.
@@ -99,7 +95,7 @@ public interface ITooltip {
     /**
      * Appends any component to this tooltip as child.<br>
      * Child component behaves same as normal component, except it can be searched from parent with
-     * {@link ITooltip#getChildWithTag(ResourceLocation)}.<br>
+     * {@link IComponent#getChildWithTag(ResourceLocation)}.<br>
      * Its position might be affected by the parent position and setting.<br>
      * Any tooltip is (mostly) the child of {@link com.gtnewhorizons.wdmla.impl.ui.component.RootComponent}. <br>
      * It can be chained like this:
@@ -116,7 +112,7 @@ public interface ITooltip {
      * @return this tooltip instance
      */
     //spotless:on
-    ITooltip child(@NotNull ITooltip child);
+    IComponent child(@NotNull IComponent child);
 
     /**
      * @return the count of children object appended to this tooltip
@@ -126,17 +122,17 @@ public interface ITooltip {
     /**
      * Clears all children appended to this tooltip.
      */
-    ITooltip clear();
+    IComponent clear();
 
     /**
      * Search children inside this component with a tag. The target must have a tag applied with
-     * {@link ITooltip#tag(ResourceLocation)}.
+     * {@link IComponent#tag(ResourceLocation)}.
      * 
      * @param tag the identifier to find a child
      * @return the first component found
      */
     @Nullable
-    ITooltip getChildWithTag(ResourceLocation tag);
+    IComponent getChildWithTag(ResourceLocation tag);
 
     /**
      * Replace a child inside this component with a specific tag.
@@ -145,12 +141,12 @@ public interface ITooltip {
      * @param newChild the new child to replace. I strongly recommend give it the same tag with previous one
      * @return The replacement was succeeded or not. If the child doesn't exist it will always return false
      */
-    boolean replaceChildWithTag(ResourceLocation tag, ITooltip newChild);
+    boolean replaceChildWithTag(ResourceLocation tag, IComponent newChild);
 
     //shortcuts for frequently used components
-    ITooltip text(String text);
+    IComponent text(String text);
 
-    ITooltip vertical();
+    IComponent vertical();
 
-    ITooltip horizontal();
+    IComponent horizontal();
 }

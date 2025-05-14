@@ -8,7 +8,7 @@ import com.gtnewhorizons.wdmla.api.identifier.WDMlaIDs;
 import com.gtnewhorizons.wdmla.api.TooltipPosition;
 import com.gtnewhorizons.wdmla.api.accessor.EntityAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IEntityComponentProvider;
-import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.ArmorComponent;
 
 public enum EntityArmorProvider implements IEntityComponentProvider {
@@ -16,7 +16,7 @@ public enum EntityArmorProvider implements IEntityComponentProvider {
     INSTANCE;
 
     @Override
-    public void appendTooltip(ITooltip tooltip, EntityAccessor accessor) {
+    public void appendTooltip(IComponent tooltip, EntityAccessor accessor) {
         float armorValue = ((EntityLiving) accessor.getEntity()).getTotalArmorValue() / 2.0f;
         if (armorValue > 0) {
             if (accessor.getEntity() instanceof EntityPlayer) {

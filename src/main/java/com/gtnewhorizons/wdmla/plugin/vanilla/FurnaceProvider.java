@@ -12,7 +12,7 @@ import net.minecraft.util.ResourceLocation;
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
 import com.gtnewhorizons.wdmla.api.provider.IServerDataProvider;
-import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.ui.helper.ThemeHelper;
 
 public enum FurnaceProvider implements IBlockComponentProvider, IServerDataProvider<BlockAccessor> {
@@ -20,7 +20,7 @@ public enum FurnaceProvider implements IBlockComponentProvider, IServerDataProvi
     INSTANCE;
 
     @Override
-    public void appendTooltip(ITooltip tooltip, BlockAccessor accessor) {
+    public void appendTooltip(IComponent tooltip, BlockAccessor accessor) {
         int cookTime = accessor.getServerData().getShort("CookTime");
 
         ItemStack[] items = new ItemStack[3];
@@ -48,7 +48,7 @@ public enum FurnaceProvider implements IBlockComponentProvider, IServerDataProvi
         }
 
         if (!allEmpty) {
-            ITooltip progressComponent = ThemeHelper.instance().furnaceLikeProgress(
+            IComponent progressComponent = ThemeHelper.instance().furnaceLikeProgress(
                     Arrays.asList(items[0], items[1]),
                     Arrays.asList(items[2]),
                     cookTime,

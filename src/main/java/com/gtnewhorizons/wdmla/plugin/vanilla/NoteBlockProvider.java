@@ -16,7 +16,7 @@ import org.apache.commons.lang3.StringUtils;
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
 import com.gtnewhorizons.wdmla.api.provider.IServerDataProvider;
-import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import com.gtnewhorizons.wdmla.api.ui.IComponent;
 
 import mcp.mobius.waila.api.SpecialChars;
 
@@ -38,7 +38,7 @@ public enum NoteBlockProvider implements IBlockComponentProvider, IServerDataPro
     };
 
     @Override
-    public void appendTooltip(ITooltip tooltip, BlockAccessor accessor) {
+    public void appendTooltip(IComponent tooltip, BlockAccessor accessor) {
         if (accessor.getServerData().hasKey("note")) {
             int x = accessor.getHitResult().blockX;
             int y = accessor.getHitResult().blockY - 1;

@@ -11,7 +11,7 @@ import com.gtnewhorizons.wdmla.api.TooltipPosition;
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
 import com.gtnewhorizons.wdmla.api.theme.Theme;
-import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.ui.MessageType;
 import com.gtnewhorizons.wdmla.api.config.General;
 import com.gtnewhorizons.wdmla.api.config.PluginsConfig;
@@ -42,12 +42,12 @@ public enum DefaultBlockInfoProvider implements IBlockComponentProvider {
     }
 
     @Override
-    public void appendTooltip(ITooltip tooltip, BlockAccessor accessor) {
+    public void appendTooltip(IComponent tooltip, BlockAccessor accessor) {
         // step 1: check whether waila has custom Wailastack or not
         ItemStack overrideStack = RayTracingCompat.INSTANCE.getWailaStack(accessor.getHitResult());
 
         // step 2: construct an actual icon
-        ITooltip row = tooltip.horizontal();
+        IComponent row = tooltip.horizontal();
         ItemStack itemStack = overrideStack != null ? overrideStack : accessor.getItemForm();
         if (PluginsConfig.core.defaultBlock.showIcon) {
             if (PluginsConfig.core.defaultBlock.fancyRenderer == PluginsConfig.Core.fancyRendererMode.ALL
@@ -63,7 +63,7 @@ public enum DefaultBlockInfoProvider implements IBlockComponentProvider {
             }
         }
 
-        ITooltip row_vertical = row.vertical();
+        IComponent row_vertical = row.vertical();
         if (PluginsConfig.core.defaultBlock.showBlockName) {
             String itemName;
             if (accessor.getServerData().hasKey("CustomName")) {
@@ -72,15 +72,15 @@ public enum DefaultBlockInfoProvider implements IBlockComponentProvider {
             } else {
                 itemName = DisplayUtil.itemDisplayNameShortFormatted(itemStack);
             }
-            ITooltip title = row_vertical.horizontal();
-            ITooltip nameComponent = ThemeHelper.instance().title(itemName).tag(WDMlaIDs.ITEM_NAME);
+            IComponent title = row_vertical.horizontal();
+            IComponent nameComponent = ThemeHelper.instance().title(itemName).tag(WDMlaIDs.ITEM_NAME);
             title.child(nameComponent).child(new HPanelComponent() {
 
                 @Override
                 public void tick(float x, float y) {
                     if (General.alignIconRightTop) {
-                        ITooltip icon = row.getChildWithTag(WDMlaIDs.ITEM_ICON);
-                        ITooltip name = title.getChildWithTag(WDMlaIDs.ITEM_NAME);
+                        IComponent icon = row.getChildWithTag(WDMlaIDs.ITEM_ICON);
+                        IComponent name = title.getChildWithTag(WDMlaIDs.ITEM_NAME);
                         // align right
                         x += Math.max(
                                 tooltip.getWidth() - (icon != null ? icon.getWidth() : 0)

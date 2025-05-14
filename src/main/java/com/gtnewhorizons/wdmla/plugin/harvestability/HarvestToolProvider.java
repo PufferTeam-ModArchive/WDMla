@@ -20,7 +20,7 @@ import com.gtnewhorizons.wdmla.api.harvestability.HarvestabilityInfo;
 import com.gtnewhorizons.wdmla.api.harvestability.HarvestabilityTestPhase;
 import com.gtnewhorizons.wdmla.api.provider.HarvestHandler;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
-import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.config.General;
 import com.gtnewhorizons.wdmla.api.config.PluginsConfig;
 import com.gtnewhorizons.wdmla.impl.ObjectDataCenter;
@@ -56,7 +56,7 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
     }
 
     @Override
-    public void appendTooltip(ITooltip tooltip, BlockAccessor accessor) {
+    public void appendTooltip(IComponent tooltip, BlockAccessor accessor) {
         if (General.forceLegacy) {
             tooltip.text("The legacy harvestability support").text("will come back in the next version!");
             return;
@@ -108,19 +108,19 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
             return;
         }
 
-        ITooltip itemNameRow = tooltip.getChildWithTag(WDMlaIDs.TARGET_NAME_ROW);
-        if (!(itemNameRow instanceof ITooltip)) {
+        IComponent itemNameRow = tooltip.getChildWithTag(WDMlaIDs.TARGET_NAME_ROW);
+        if (!(itemNameRow instanceof IComponent)) {
             return;
         }
 
-        ITooltip harvestabilityIcon = assembleHarvestabilityIcon(info);
+        IComponent harvestabilityIcon = assembleHarvestabilityIcon(info);
 
-        ITooltip harvestabilityText = null;
+        IComponent harvestabilityText = null;
         if (!PluginsConfig.harvestability.condition.textDetailsOnly || accessor.showDetails()) {
             harvestabilityText = assembleHarvestabilityText(info);
         }
 
-        ((ITooltip) itemNameRow).child(harvestabilityIcon);
+        ((IComponent) itemNameRow).child(harvestabilityIcon);
         if (harvestabilityText != null) {
             tooltip.child(harvestabilityText);
         }
@@ -191,15 +191,15 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
         return true;
     }
 
-    private static @NotNull ITooltip assembleHarvestabilityIcon(HarvestabilityInfo info) {
-        ITooltip harvestabilityComponent = new HPanelComponent().tag(HarvestabilityIdentifiers.HARVESTABILITY_ICON);
+    private static @NotNull IComponent assembleHarvestabilityIcon(HarvestabilityInfo info) {
+        IComponent harvestabilityComponent = new HPanelComponent().tag(HarvestabilityIdentifiers.HARVESTABILITY_ICON);
 
         if (!PluginsConfig.harvestability.icon.currentlyHarvestableIcon) {
             return harvestabilityComponent;
         }
 
         // TODO: resize CHECK text
-        ITooltip currentlyHarvestableIcon;
+        IComponent currentlyHarvestableIcon;
         if (info.isCurrentlyHarvestable()) {
             currentlyHarvestableIcon = !PluginsConfig.harvestability.icon.colorIconWithEffectiveness
                     || info.isHeldToolEffective()
@@ -213,7 +213,7 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
 
         ItemStack effectiveToolIcon = info.getEffectiveTool().getIcon(info.getHarvestLevel());
         if (effectiveToolIcon != null) {
-            ITooltip effectiveToolIconComponent = new ItemComponent(effectiveToolIcon).doDrawOverlay(false)
+            IComponent effectiveToolIconComponent = new ItemComponent(effectiveToolIcon).doDrawOverlay(false)
                     .size(new Size(10, 10));
 
             if (PluginsConfig.harvestability.icon.effectiveToolIcon) {
@@ -236,14 +236,14 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
         return harvestabilityComponent;
     }
 
-    private static @Nullable ITooltip assembleHarvestabilityText(HarvestabilityInfo info) {
-        ITooltip lines = new VPanelComponent();
+    private static @Nullable IComponent assembleHarvestabilityText(HarvestabilityInfo info) {
+        IComponent lines = new VPanelComponent();
         if (info.getHarvestLevel().isToolRequired() && (PluginsConfig.harvestability.text.harvestLevelNum
                 || PluginsConfig.harvestability.text.harvestLevelName)) {
             String harvestLevelString = PluginsConfig.harvestability.text.harvestLevelName
                     ? DisplayUtil.stripSymbols(info.getHarvestLevel().getName())
                     : String.valueOf(info.getHarvestLevel().getDisplayNum());
-            ITooltip harvestLevelText = new HPanelComponent().tag(HarvestabilityIdentifiers.HARVESTABILITY_TEXT)
+            IComponent harvestLevelText = new HPanelComponent().tag(HarvestabilityIdentifiers.HARVESTABILITY_TEXT)
                     .text(String.format("%s: ", StatCollector.translateToLocal("hud.msg.wdmla.harvestlevel"))).child(
                             info.isCurrentlyHarvestable() ? ThemeHelper.instance().success(harvestLevelString)
                                     : ThemeHelper.instance().failure(harvestLevelString));
@@ -251,7 +251,7 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
         }
 
         if (PluginsConfig.harvestability.text.effectiveToolLine && info.getEffectiveTool().isValid()) {
-            ITooltip effectiveToolPanel = new HPanelComponent();
+            IComponent effectiveToolPanel = new HPanelComponent();
             effectiveToolPanel.text(StatCollector.translateToLocal("hud.msg.wdmla.effectivetool") + ": ");
             if (info.isHeldToolEffective()) {
                 effectiveToolPanel.child(ThemeHelper.instance().success(info.getEffectiveTool().getLocalizedName()));
@@ -262,7 +262,7 @@ public enum HarvestToolProvider implements IBlockComponentProvider {
         }
 
         if (PluginsConfig.harvestability.text.currentlyHarvestableLine) {
-            ITooltip currentlyHarvestable = new HPanelComponent();
+            IComponent currentlyHarvestable = new HPanelComponent();
             if (info.isCurrentlyHarvestable()) {
                 String icon = PluginsConfig.harvestability.icon.currentlyHarvestableString;
                 currentlyHarvestable.child(ThemeHelper.instance().success(icon));

@@ -11,7 +11,7 @@ import com.gtnewhorizons.wdmla.api.accessor.EntityAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
 import com.gtnewhorizons.wdmla.api.provider.IEntityComponentProvider;
 import com.gtnewhorizons.wdmla.api.provider.IToggleableProvider;
-import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.ui.helper.ThemeHelper;
 import com.gtnewhorizons.wdmla.util.FormatUtil;
 
@@ -32,7 +32,7 @@ public class CoordinatesProvider implements IToggleableProvider {
         private static final ForBlock INSTANCE = new ForBlock();
 
         @Override
-        public void appendTooltip(ITooltip tooltip, BlockAccessor accessor) {
+        public void appendTooltip(IComponent tooltip, BlockAccessor accessor) {
             if (!accessor.showDetails()) {
                 tooltip.child(
                         ThemeHelper.instance().value(
@@ -70,7 +70,7 @@ public class CoordinatesProvider implements IToggleableProvider {
         private static final ForEntity INSTANCE = new ForEntity();
 
         @Override
-        public void appendTooltip(ITooltip tooltip, EntityAccessor accessor) {
+        public void appendTooltip(IComponent tooltip, EntityAccessor accessor) {
             if (!accessor.showDetails()) {
                 tooltip.child(
                         ThemeHelper.instance().value(

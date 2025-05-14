@@ -5,7 +5,7 @@ import net.minecraft.util.StatCollector;
 
 import com.gtnewhorizons.wdmla.api.ui.ComponentAlignment;
 import com.gtnewhorizons.wdmla.api.ui.HighlightTracker;
-import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.config.General;
 import com.gtnewhorizons.wdmla.impl.ui.component.HPanelComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.RectComponent;
@@ -41,7 +41,7 @@ public class DrawerInfoHighlighter {
         stackTracker = new HighlightTracker.ItemStack(stack);
     }
 
-    public ITooltip update(IDrawer drawer) {
+    public IComponent update(IDrawer drawer) {
         ItemStack stack = drawer.getStoredItemPrototype();
         if (stack == null || stack.getItem() == null) {
             return updateEmpty();
@@ -61,17 +61,17 @@ public class DrawerInfoHighlighter {
 
         float stackInterpolation = stackTracker.getInterpolation();
 
-        ITooltip displayNameComponent = getHighlightComponent(displayName, highlightStacks, stackInterpolation);
-        ITooltip stackCountComponent = getHighlightComponent(
+        IComponent displayNameComponent = getHighlightComponent(displayName, highlightStacks, stackInterpolation);
+        IComponent stackCountComponent = getHighlightComponent(
                 stackCountStr,
                 highlightStackCount,
                 stackCountTracker.getInterpolation());
-        ITooltip remainderComponent = getHighlightComponent(
+        IComponent remainderComponent = getHighlightComponent(
                 remainderStr,
                 highlightRemainder,
                 remainderTracker.getInterpolation());
 
-        ITooltip itemLine = new HPanelComponent();
+        IComponent itemLine = new HPanelComponent();
         itemLine.child(displayNameComponent);
         itemLine.child(getHighlightComponent(" [", highlightStacks, stackInterpolation));
 
@@ -98,7 +98,7 @@ public class DrawerInfoHighlighter {
         return itemLine;
     }
 
-    private ITooltip updateEmpty() {
+    private IComponent updateEmpty() {
         boolean highlightStacks = stackTracker.update(null);
         stackCountTracker.update(0);
         remainderTracker.update(0);
@@ -117,7 +117,7 @@ public class DrawerInfoHighlighter {
                                 .size(new Size(25, 1)));
     }
 
-    private ITooltip getHighlightComponent(String text, boolean doHighlight, float interpolation) {
+    private IComponent getHighlightComponent(String text, boolean doHighlight, float interpolation) {
         return new TextComponent(text).style(
                 doHighlight ? new TextStyle().color(getInterpolationColor(interpolation))
                         : new TextStyle().color(General.currentTheme.get().textColors._default));

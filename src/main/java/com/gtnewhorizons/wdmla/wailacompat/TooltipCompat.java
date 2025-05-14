@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 
 import com.gtnewhorizons.wdmla.api.ITTRenderParser;
-import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.impl.ui.component.VPanelComponent;
 import com.gtnewhorizons.wdmla.wailacompat.parser.HealthArgsParser;
 import com.gtnewhorizons.wdmla.wailacompat.parser.IconArgsParser;
@@ -27,8 +27,8 @@ public class TooltipCompat {
     private final ITTRenderParser progressParser = new ProgressArgsParser();
     private final ITTRenderParser iconParser = new IconArgsParser();
 
-    public ITooltip computeRenderables(List<String> legacyTextData) {
-        ITooltip verticalLayout = new VPanelComponent();
+    public IComponent computeRenderables(List<String> legacyTextData) {
+        IComponent verticalLayout = new VPanelComponent();
 
         ArrayList<ArrayList<String>> lines = new ArrayList<>();
         for (String s : legacyTextData) {
@@ -38,7 +38,7 @@ public class TooltipCompat {
         }
 
         for (int i = 0; i < lines.size(); i++) {
-            ITooltip lineComponent = verticalLayout.horizontal();
+            IComponent lineComponent = verticalLayout.horizontal();
             for (int c = 0; c < lines.get(i).size(); c++) { // We check all the columns for this line
                 String currentLine = lines.get(i).get(c);
                 Matcher lineMatcher = patternLineSplit.matcher(currentLine);

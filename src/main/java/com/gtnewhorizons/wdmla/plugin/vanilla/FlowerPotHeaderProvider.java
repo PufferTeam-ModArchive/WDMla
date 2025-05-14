@@ -7,7 +7,7 @@ import net.minecraft.util.StatCollector;
 import com.gtnewhorizons.wdmla.api.TooltipPosition;
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
-import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.ui.helper.ThemeHelper;
 
 import mcp.mobius.waila.overlay.DisplayUtil;
@@ -17,7 +17,7 @@ public enum FlowerPotHeaderProvider implements IBlockComponentProvider {
     INSTANCE;
 
     @Override
-    public void appendTooltip(ITooltip tooltip, BlockAccessor accessor) {
+    public void appendTooltip(IComponent tooltip, BlockAccessor accessor) {
         String formattedName = String.format(
                 StatCollector.translateToLocal("hud.msg.wdmla.flower.pot"),
                 DisplayUtil.itemDisplayNameShortFormatted(accessor.getItemForm()));

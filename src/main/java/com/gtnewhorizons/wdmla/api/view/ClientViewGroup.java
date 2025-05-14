@@ -16,7 +16,7 @@ import org.jetbrains.annotations.Nullable;
 
 import com.gtnewhorizons.wdmla.api.theme.Theme;
 import com.gtnewhorizons.wdmla.api.ui.ComponentAlignment;
-import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.ui.MessageType;
 import com.gtnewhorizons.wdmla.api.config.General;
 import com.gtnewhorizons.wdmla.impl.ui.component.HPanelComponent;
@@ -78,13 +78,13 @@ public class ClientViewGroup<T> {
         }).collect(Collectors.toList());
     }
 
-    public static <T> void tooltip(ITooltip tooltip, List<ClientViewGroup<T>> groups, boolean renderGroup,
-            BiConsumer<ITooltip, ClientViewGroup<T>> consumer) {
+    public static <T> void tooltip(IComponent tooltip, List<ClientViewGroup<T>> groups, boolean renderGroup,
+                                   BiConsumer<IComponent, ClientViewGroup<T>> consumer) {
         for (ClientViewGroup<T> group : groups) {
             consumer.accept(tooltip, group);
             if (renderGroup && group.boxProgress > 0 && group.boxProgress < 1) {
                 // TODO:overlap progress bar with item group
-                ITooltip content = new TextComponent(String.format("%d%%", (int) (group.boxProgress * 100)));
+                IComponent content = new TextComponent(String.format("%d%%", (int) (group.boxProgress * 100)));
                 tooltip.child(
                         new ProgressComponent(group.boxProgress)
                                 .style(
@@ -101,10 +101,10 @@ public class ClientViewGroup<T> {
         return title != null || boxProgress > 0;
     }
 
-    public void renderHeader(ITooltip tooltip) {
+    public void renderHeader(IComponent tooltip) {
         if (title != null) {
             Theme theme = General.currentTheme.get();
-            ITooltip hPanel = new HPanelComponent().style(new PanelStyle().alignment(ComponentAlignment.CENTER));
+            IComponent hPanel = new HPanelComponent().style(new PanelStyle().alignment(ComponentAlignment.CENTER));
             hPanel.child(
                     new RectComponent().style(new RectStyle().backgroundColor(theme.textColor(MessageType.NORMAL)))
                             .size(new Size(20, 1)));

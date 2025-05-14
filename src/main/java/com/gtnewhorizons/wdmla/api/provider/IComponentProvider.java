@@ -2,7 +2,7 @@ package com.gtnewhorizons.wdmla.api.provider;
 
 import com.gtnewhorizons.wdmla.api.IWDMlaClientRegistration;
 import com.gtnewhorizons.wdmla.api.accessor.Accessor;
-import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import com.gtnewhorizons.wdmla.api.ui.IComponent;
 
 // spotless:off
 /**
@@ -40,5 +40,5 @@ public interface IComponentProvider<T extends Accessor> extends IToggleableProvi
      * @param accessor Accessor which contains target object that matches this provider. Defined in
      *                 {@link IWDMlaClientRegistration} register method
      */
-    void appendTooltip(ITooltip tooltip, T accessor);
+    void appendTooltip(IComponent tooltip, T accessor);
 }

@@ -6,7 +6,7 @@ import net.minecraft.util.StatCollector;
 
 import com.gtnewhorizons.wdmla.api.accessor.BlockAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IBlockComponentProvider;
-import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.util.FormatUtil;
 
 import gcewing.architecture.common.tile.TileShape;
@@ -18,7 +18,7 @@ public enum BlockShapeProvider implements IBlockComponentProvider {
     INSTANCE;
 
     @Override
-    public void appendTooltip(ITooltip tooltip, BlockAccessor accessor) {
+    public void appendTooltip(IComponent tooltip, BlockAccessor accessor) {
         if (accessor.getTileEntity() instanceof TileShape shape) {
             if (shape.baseBlockState != null) {
                 String hardcodedName = Utils.displayNameOfBlock(

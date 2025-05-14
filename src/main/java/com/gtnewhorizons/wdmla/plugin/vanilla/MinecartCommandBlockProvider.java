@@ -11,7 +11,7 @@ import org.apache.commons.lang3.StringUtils;
 import com.gtnewhorizons.wdmla.api.accessor.EntityAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IEntityComponentProvider;
 import com.gtnewhorizons.wdmla.api.provider.IServerDataProvider;
-import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.config.PluginsConfig;
 
 public enum MinecartCommandBlockProvider implements IEntityComponentProvider, IServerDataProvider<EntityAccessor> {
@@ -19,7 +19,7 @@ public enum MinecartCommandBlockProvider implements IEntityComponentProvider, IS
     INSTANCE;
 
     @Override
-    public void appendTooltip(ITooltip tooltip, EntityAccessor accessor) {
+    public void appendTooltip(IComponent tooltip, EntityAccessor accessor) {
         if (accessor.getEntity() instanceof EntityMinecartCommandBlock) {
             String command = accessor.getServerData().getString("command");
             if (StringUtils.isBlank(command)) {

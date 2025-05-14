@@ -6,7 +6,7 @@ import org.jetbrains.annotations.NotNull;
 
 import com.gtnewhorizons.wdmla.api.identifier.WDMlaIDs;
 import com.gtnewhorizons.wdmla.api.ui.IDrawable;
-import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.impl.ui.drawable.BackgroundDrawable;
 import com.gtnewhorizons.wdmla.impl.ui.drawable.BreakProgressDrawable;
 import com.gtnewhorizons.wdmla.impl.ui.sizer.Area;
@@ -43,7 +43,7 @@ public final class RootComponent extends VPanelComponent {
     }
 
     @Override
-    public ITooltip tag(ResourceLocation tag) {
+    public IComponent tag(ResourceLocation tag) {
         WailaExceptionHandler.handleErr(
                 new IllegalArgumentException("RootComponent tag cannot be replaced!"),
                 RootComponent.class.getName(),

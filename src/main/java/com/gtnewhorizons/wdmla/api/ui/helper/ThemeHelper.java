@@ -1,6 +1,6 @@
 package com.gtnewhorizons.wdmla.api.ui.helper;
 
-import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.ui.MessageType;
 import com.gtnewhorizons.wdmla.impl.ui.helper.ThemeHelperImpl;
 import net.minecraft.entity.Entity;
@@ -16,40 +16,40 @@ public interface ThemeHelper {
     }
 
     @Deprecated
-    void overrideTooltipIcon(ITooltip root, ItemStack newItemStack);
+    void overrideTooltipIcon(IComponent root, ItemStack newItemStack);
 
-    void overrideTooltipIcon(ITooltip root, ItemStack newItemStack, boolean overrideFancyRenderer);
+    void overrideTooltipIcon(IComponent root, ItemStack newItemStack, boolean overrideFancyRenderer);
 
-    void overrideTooltipTitle(ITooltip root, ItemStack newItemStack);
+    void overrideTooltipTitle(IComponent root, ItemStack newItemStack);
 
-    void overrideTooltipTitle(ITooltip root, String formattedNewName);
+    void overrideTooltipTitle(IComponent root, String formattedNewName);
 
-    void overrideEntityTooltipTitle(ITooltip root, String newName, @Nullable Entity entityMayHaveCustomName);
+    void overrideEntityTooltipTitle(IComponent root, String newName, @Nullable Entity entityMayHaveCustomName);
 
-    void overrideEntityTooltipIcon(ITooltip root, @Nullable Entity newEntity);
+    void overrideEntityTooltipIcon(IComponent root, @Nullable Entity newEntity);
 
-    void overrideTooltipModName(ITooltip root, ItemStack newItemStack);
+    void overrideTooltipModName(IComponent root, ItemStack newItemStack);
 
-    void overrideTooltipModName(ITooltip root, String newName);
+    void overrideTooltipModName(IComponent root, String newName);
 
-    void overrideTooltipHeader(ITooltip root, ItemStack newItemStack);
+    void overrideTooltipHeader(IComponent root, ItemStack newItemStack);
 
-    ITooltip info(String content);
+    IComponent info(String content);
 
-    ITooltip title(String content);
+    IComponent title(String content);
 
-    ITooltip success(String content);
+    IComponent success(String content);
 
-    ITooltip warning(String content);
+    IComponent warning(String content);
 
-    ITooltip danger(String content);
+    IComponent danger(String content);
 
-    ITooltip failure(String content);
+    IComponent failure(String content);
 
-    ITooltip color(String content, MessageType type);
+    IComponent color(String content, MessageType type);
 
-    ITooltip furnaceLikeProgress(List<ItemStack> input, List<ItemStack> output, int currentProgress,
-                                 int maxProgress, boolean showDetails);
+    IComponent furnaceLikeProgress(List<ItemStack> input, List<ItemStack> output, int currentProgress,
+                                   int maxProgress, boolean showDetails);
 
     /**
      * Provides Minecraft furnace progress arrow and item display.
@@ -63,27 +63,27 @@ public interface ThemeHelper {
      *                          auto generated.
      * @return built component
      */
-    ITooltip furnaceLikeProgress(List<ItemStack> input, List<ItemStack> output, int currentProgress,
-                                 int maxProgress, boolean showDetails, @Nullable ITooltip legacyProcessText);
+    IComponent furnaceLikeProgress(List<ItemStack> input, List<ItemStack> output, int currentProgress,
+                                   int maxProgress, boolean showDetails, @Nullable IComponent legacyProcessText);
 
-    ITooltip value(String entry, String value);
+    IComponent value(String entry, String value);
 
     /**
      * Provides an ItemComponent with size of default text height
      *
      * @param itemStack Base ItemStack to display
      */
-    ITooltip smallItem(ItemStack itemStack);
+    IComponent smallItem(ItemStack itemStack);
 
     /**
      * Constructs a component to display an ItemStack in "(icon) 3x Apple" format
      */
-    ITooltip itemStackFullLine(ItemStack stack);
+    IComponent itemStackFullLine(ItemStack stack);
 
     /**
      * display any crop's growth value with percentage
      *
      * @param growthValue growth value (0 ~ 1)
      */
-    ITooltip growthValue(float growthValue);
+    IComponent growthValue(float growthValue);
 }

@@ -13,7 +13,7 @@ import com.google.common.base.Objects;
 import com.gtnewhorizons.wdmla.api.accessor.EntityAccessor;
 import com.gtnewhorizons.wdmla.api.provider.IEntityComponentProvider;
 import com.gtnewhorizons.wdmla.api.provider.IServerDataProvider;
-import com.gtnewhorizons.wdmla.api.ui.ITooltip;
+import com.gtnewhorizons.wdmla.api.ui.IComponent;
 import com.gtnewhorizons.wdmla.api.config.PluginsConfig;
 import com.gtnewhorizons.wdmla.api.ui.helper.ThemeHelper;
 
@@ -24,7 +24,7 @@ public enum PetProvider implements IEntityComponentProvider, IServerDataProvider
     INSTANCE;
 
     @Override
-    public void appendTooltip(ITooltip tooltip, EntityAccessor accessor) {
+    public void appendTooltip(IComponent tooltip, EntityAccessor accessor) {
         if (accessor.getEntity() instanceof EntityTameable pet && pet.isTamed()
                 && PluginsConfig.vanilla.pet.showPetSit) {
             tooltip.child(
