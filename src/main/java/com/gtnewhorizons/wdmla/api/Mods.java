@@ -20,7 +20,7 @@ public enum Mods {
     // ProcessedVersion of GregTech is always "MC1.7.10"
     GREGTECH("gregtech", version -> !Loader.isModLoaded("gregapi")),
     IGUANATWEAKS("IguanaTweaksTConstruct", null),
-    TCONSTUCT("TConstruct", null),
+    TCONSTUCT("TConstruct", version -> !Loader.isModLoaded("materialis")),
     NOTENOUGHITEMS("NotEnoughItems", version -> new DefaultArtifactVersion("2.7.29-GTNH").compareTo(version) <= 0),
     FORGEMULTIPARTS("ForgeMultipart", null),
 
