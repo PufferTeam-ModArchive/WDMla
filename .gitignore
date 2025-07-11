@@ -28,4 +28,3 @@ whitelist.json
 src/main/resources/mixins.*.json
 *.bat
 /src/doc/
-/libs/

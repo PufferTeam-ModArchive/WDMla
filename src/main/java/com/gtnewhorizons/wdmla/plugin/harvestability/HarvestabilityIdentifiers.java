@@ -20,6 +20,7 @@ public class HarvestabilityIdentifiers {
     public static final ResourceLocation TINKERSCONSTRUCT = Harvestability("tinkersconstruct");
     public static final ResourceLocation IGUANATWEAKS = Harvestability("iguanatweaks");
     public static final ResourceLocation VANILLA_SPECIAL = Harvestability("vanilla_special");
+    public static final ResourceLocation MATERIALIS = Harvestability("materialis");
 
     public static final String NAMESPACE_HARVESTABILITY = "harvestability";
 

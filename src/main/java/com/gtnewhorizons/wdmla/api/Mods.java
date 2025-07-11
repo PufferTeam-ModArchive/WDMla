@@ -23,6 +23,7 @@ public enum Mods {
     TCONSTUCT("TConstruct", version -> !Loader.isModLoaded("materialis")),
     NOTENOUGHITEMS("NotEnoughItems", version -> new DefaultArtifactVersion("2.7.29-GTNH").compareTo(version) <= 0),
     FORGEMULTIPARTS("ForgeMultipart", null),
+    MATERIALIS("materialis", null),
 
     // spotless: off
     ;

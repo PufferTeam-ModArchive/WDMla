@@ -36,6 +36,9 @@ public class HarvestabilityPlugin implements IWDMlaPlugin {
         if (Mods.GREGTECH.isLoaded()) {
             registration.registerHarvest(GregTechHarvestHandler.INSTANCE, Block.class);
         }
+        if(Mods.MATERIALIS.isLoaded()) {
+            registration.registerHarvest(MaterialisHarvestHandler.INSTANCE, Block.class);
+        }
         registration.registerHarvest(LiquidHarvestHandler.INSTANCE, BlockLiquid.class);
         registration.registerHarvest(VanillaSpecialHarvestHandler.INSTANCE, BlockDragonEgg.class);
         registration.registerHarvest(VanillaSpecialHarvestHandler.INSTANCE, BlockSnow.class);

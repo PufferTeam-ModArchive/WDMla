@@ -12,6 +12,9 @@ dependencies {
     compileOnly("com.github.GTNewHorizons:StorageDrawers:2.1.2-GTNH:dev") {transitive = false}
     compileOnly("com.github.GTNewHorizons:ForestryMC:4.10.11:dev") {transitive = false}
     compileOnly("com.github.GTNewHorizons:ArchitectureCraft:1.10.3:dev") {transitive = false}
+
+    api files("libs/materialis-1.1.10.jar")
+
 //    compileOnly fileTree(dir: 'run/mods', include: ['blockrenderer*.jar'])
 
 //    api("com.github.GTNewHorizons:Angelica:1.0.0-beta46:dev")

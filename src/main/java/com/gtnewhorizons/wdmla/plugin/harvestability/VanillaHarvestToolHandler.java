@@ -12,6 +12,8 @@ import net.minecraft.item.ItemTool;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.ResourceLocation;
 
+import net.pufferlab.materialis.Materialis;
+
 import com.gtnewhorizons.wdmla.api.harvestability.EffectiveTool;
 import com.gtnewhorizons.wdmla.api.harvestability.HarvestabilityInfo;
 import com.gtnewhorizons.wdmla.api.harvestability.HarvestabilityTestPhase;
@@ -27,24 +29,24 @@ public enum VanillaHarvestToolHandler implements HarvestHandler {
     public static final EffectiveTool TOOL_PICKAXE = new EffectiveTool(
             "pickaxe",
             Arrays.asList(
-                    new ItemStack(Items.wooden_pickaxe),
-                    new ItemStack(Items.stone_pickaxe),
+                    new ItemStack(Materialis.flint_pickaxe),
+                    new ItemStack(Materialis.bronze_pickaxe),
                     new ItemStack(Items.iron_pickaxe),
-                    new ItemStack(Items.diamond_pickaxe)));
+                    new ItemStack(Materialis.steel_pickaxe)));
     public static final EffectiveTool TOOL_SHOVEL = new EffectiveTool(
             "shovel",
-            Arrays.asList(new ItemStack(Items.wooden_shovel)));
+            Arrays.asList(new ItemStack(Materialis.flint_shovel)));
     public static final EffectiveTool TOOL_AXE = new EffectiveTool(
             "axe",
-            Arrays.asList(new ItemStack(Items.wooden_axe)));
+            Arrays.asList(new ItemStack(Materialis.flint_axe)));
     public static final EffectiveTool TOOL_SWORD = new EffectiveTool(
             "sword",
-            Arrays.asList(new ItemStack(Items.wooden_sword)));
+            Arrays.asList(new ItemStack(Materialis.flint_sword)));
 
     static {
-        testTools.put(TOOL_PICKAXE, new ItemStack(Items.wooden_pickaxe));
-        testTools.put(TOOL_SHOVEL, new ItemStack(Items.wooden_shovel));
-        testTools.put(TOOL_AXE, new ItemStack(Items.wooden_axe));
+        testTools.put(TOOL_PICKAXE, new ItemStack(Materialis.flint_pickaxe));
+        testTools.put(TOOL_SHOVEL, new ItemStack(Materialis.flint_shovel));
+        testTools.put(TOOL_AXE, new ItemStack(Materialis.flint_axe));
     }
 
     @Override
