@@ -13,7 +13,7 @@ dependencies {
     compileOnly("com.github.GTNewHorizons:ForestryMC:4.10.11:dev") {transitive = false}
     compileOnly("com.github.GTNewHorizons:ArchitectureCraft:1.10.3:dev") {transitive = false}
 
-    api files("libs/materialis-1.1.10.jar")
+    api files("libs/materialis-1.1.15.jar")
 
 //    compileOnly fileTree(dir: 'run/mods', include: ['blockrenderer*.jar'])
 
