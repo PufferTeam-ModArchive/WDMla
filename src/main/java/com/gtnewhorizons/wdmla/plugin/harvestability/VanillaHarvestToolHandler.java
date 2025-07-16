@@ -12,7 +12,7 @@ import net.minecraft.item.ItemTool;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.ResourceLocation;
 
-import net.pufferlab.materialis.Materialis;
+import net.pufferlab.materialis.Registry;
 
 import com.gtnewhorizons.wdmla.api.harvestability.EffectiveTool;
 import com.gtnewhorizons.wdmla.api.harvestability.HarvestabilityInfo;
@@ -29,24 +29,24 @@ public enum VanillaHarvestToolHandler implements HarvestHandler {
     public static final EffectiveTool TOOL_PICKAXE = new EffectiveTool(
             "pickaxe",
             Arrays.asList(
-                    new ItemStack(Materialis.flint_pickaxe),
-                    new ItemStack(Materialis.bronze_pickaxe),
+                    new ItemStack(Registry.flint_pickaxe),
+                    new ItemStack(Registry.bronze_pickaxe),
                     new ItemStack(Items.iron_pickaxe),
-                    new ItemStack(Materialis.steel_pickaxe)));
+                    new ItemStack(Registry.steel_pickaxe)));
     public static final EffectiveTool TOOL_SHOVEL = new EffectiveTool(
             "shovel",
-            Arrays.asList(new ItemStack(Materialis.flint_shovel)));
+            Arrays.asList(new ItemStack(Registry.flint_shovel)));
     public static final EffectiveTool TOOL_AXE = new EffectiveTool(
             "axe",
-            Arrays.asList(new ItemStack(Materialis.flint_axe)));
+            Arrays.asList(new ItemStack(Registry.flint_axe)));
     public static final EffectiveTool TOOL_SWORD = new EffectiveTool(
             "sword",
-            Arrays.asList(new ItemStack(Materialis.flint_sword)));
+            Arrays.asList(new ItemStack(Registry.flint_sword)));
 
     static {
-        testTools.put(TOOL_PICKAXE, new ItemStack(Materialis.flint_pickaxe));
-        testTools.put(TOOL_SHOVEL, new ItemStack(Materialis.flint_shovel));
-        testTools.put(TOOL_AXE, new ItemStack(Materialis.flint_axe));
+        testTools.put(TOOL_PICKAXE, new ItemStack(Registry.flint_pickaxe));
+        testTools.put(TOOL_SHOVEL, new ItemStack(Registry.flint_shovel));
+        testTools.put(TOOL_AXE, new ItemStack(Registry.flint_axe));
     }
 
     @Override
