@@ -25,7 +25,7 @@ import mcp.mobius.waila.utils.Constants;
 public class NEIHandler {
 
     public static void register() {
-        GuiContainerManager.addTooltipHandler(new TooltipHandlerWaila());
+        //GuiContainerManager.addTooltipHandler(new TooltipHandlerWaila());
 
         // We mute the default keybind for displaying the tooltip
         NEIClientConfig.getSetting(Constants.BIND_NEI_SHOW).setIntValue(Keyboard.KEY_NONE);
